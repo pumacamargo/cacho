@@ -1,6 +1,6 @@
 /**
  * Divide un texto en chunks para respetar el límite de caracteres de Telegram (4096)
- * Limpia caracteres problemáticos y comillas especiales
+ * Limpia caracteres problemáticos y corta por caracteres (no por líneas)
  * @param {string} texto - Texto a dividir
  * @param {number} maxChars - Máximo de caracteres por mensaje (default: 4096)
  * @returns {array} Array de strings, cada uno <= maxChars y limpio
@@ -11,8 +11,6 @@ function splitForTelegram(texto, maxChars = 4096) {
     .replace(/"/g, '"')  // Comillas dobles curvas → rectas
     .replace(/'/g, "'")  // Comillas simples curvas → rectas
     .replace(/[""'']/g, '') // Quita comillas especiales
-    .replace(/[^\w\s\n\.\,\:\;\!\?\-\(\)]/g, '') // Quita caracteres ASCII especiales
-    .replace(/\s+/g, ' ') // Espacios múltiples → 1 espacio
     .trim();
 
   if (texto.length <= maxChars) {
@@ -20,19 +18,25 @@ function splitForTelegram(texto, maxChars = 4096) {
   }
 
   const chunks = [];
-  const lineas = texto.split('\n');
-  let chunk = '';
+  let inicio = 0;
 
-  for (const linea of lineas) {
-    if ((chunk + linea + '\n').length > maxChars) {
-      if (chunk) chunks.push(chunk.trim());
-      chunk = linea + '\n';
-    } else {
-      chunk += linea + '\n';
+  // Corta por caracteres (no depende de saltos de línea)
+  while (inicio < texto.length) {
+    // Intenta cortar en maxChars
+    let chunk = texto.substring(inicio, inicio + maxChars);
+
+    // Si no es el último chunk, retrocede al último espacio
+    if (inicio + maxChars < texto.length) {
+      const ultimoEspacio = chunk.lastIndexOf(' ');
+      if (ultimoEspacio > maxChars / 2) { // Solo si es un espacio "razonable"
+        chunk = chunk.substring(0, ultimoEspacio);
+      }
     }
+
+    chunks.push(chunk.trim());
+    inicio += chunk.length + 1;
   }
 
-  if (chunk) chunks.push(chunk.trim());
   return chunks;
 }
 
