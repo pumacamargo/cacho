@@ -1,0 +1,67 @@
+[
+  {
+    "fecha": "2024-01-26",
+    "dia_semana": "Lunes",
+    "tipo_entrenamiento": "Push",
+    "duracion_minutos": 45,
+    "ejercicios": [
+      {
+        "nombre": "Bench Press",
+        "sets": [
+          {"reps": 12, "peso_kg": 60},
+          {"reps": 12, "peso_kg": 60},
+          {"reps": 11, "peso_kg": 60},
+          {"reps": 10, "peso_kg": 60}
+        ]
+      },
+      {
+        "nombre": "Incline Dumbbell Press",
+        "sets": [
+          {"reps": 12, "peso_kg": 30},
+          {"reps": 12, "peso_kg": 30},
+          {"reps": 12, "peso_kg": 30}
+        ]
+      },
+      {
+        "nombre": "Cable Flyes",
+        "sets": [
+          {"reps": 13, "peso_kg": 25},
+          {"reps": 13, "peso_kg": 25},
+          {"reps": 12, "peso_kg": 25}
+        ]
+      },
+      {
+        "nombre": "Shoulder Press",
+        "sets": [
+          {"reps": 11, "peso_kg": 25},
+          {"reps": 11, "peso_kg": 25},
+          {"reps": 10, "peso_kg": 25}
+        ]
+      },
+      {
+        "nombre": "Lateral Raise",
+        "sets": [
+          {"reps": 14, "peso_kg": 15},
+          {"reps": 14, "peso_kg": 15},
+          {"reps": 13, "peso_kg": 15}
+        ]
+      },
+      {
+        "nombre": "Tricep Rope Pushdown",
+        "sets": [
+          {"reps": 14, "peso_kg": 30},
+          {"reps": 14, "peso_kg": 30},
+          {"reps": 13, "peso_kg": 30}
+        ]
+      },
+      {
+        "nombre": "Skull Crushers",
+        "sets": [
+          {"reps": 12, "peso_kg": 20},
+          {"reps": 12, "peso_kg": 20},
+          {"reps": 11, "peso_kg": 20}
+        ]
+      }
+    ]
+  }
+]

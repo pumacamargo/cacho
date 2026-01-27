@@ -1,0 +1,41 @@
+[
+  {
+    "fecha": "2024-01-26",
+    "dia_semana": "Viernes",
+    "tipo_dia": "Fasting",
+    "comidas": [
+      {
+        "hora": "20:00",
+        "nombre": "Comida 1",
+        "descripcion": "Pecho de pollo (250g) + arroz blanco (200g) + brócoli (150g)",
+        "calorias": 1050,
+        "macros": {
+          "proteina_g": 50,
+          "carbos_g": 110,
+          "grasas_g": 18
+        }
+      },
+      {
+        "hora": "22:00",
+        "nombre": "Comida 2",
+        "descripcion": "Salmón (200g) + batata (150g) + ensalada (lechuga, tomate)",
+        "calorias": 1350,
+        "macros": {
+          "proteina_g": 55,
+          "carbos_g": 95,
+          "grasas_g": 35
+        }
+      }
+    ],
+    "total_calorias": 2400,
+    "macros_dia": {
+      "proteina_g": 105,
+      "carbos_g": 205,
+      "grasas_g": 53
+    },
+    "sensacion": "Muy saciado, energía alta",
+    "entrenamiento": "Piernas + Core (45 min)",
+    "agua_litros": 2.8,
+    "notas": "Ventana perfecta, comidas bien distribuidas"
+  }
+]
