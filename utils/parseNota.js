@@ -9,6 +9,7 @@ function parseNota(texto) {
     'gym': 'gym',
     'med': 'meditacion',
     'nut': 'nutricion',
+    'opt': 'options',
     'tra': 'trading',
     'inv': 'inversiones'
   };
@@ -31,7 +32,7 @@ function parseNota(texto) {
   if (!categoria) {
     return {
       error: true,
-      mensaje: `Categoría '${abreviatura}' no encontrada. Usa: gym, med, nut, tra, inv`
+      mensaje: `Categoría '${abreviatura}' no encontrada. Usa: gym, med, nut, opt, tra, inv`
     };
   }
 
@@ -64,6 +65,7 @@ module.exports = { parseNota };
  *     'gym': 'gym',
  *     'med': 'meditacion',
  *     'nut': 'nutricion',
+ *     'opt': 'options',
  *     'tra': 'trading',
  *     'inv': 'inversiones'
  *   };
@@ -92,6 +94,7 @@ module.exports = { parseNota };
  * - gym → gym
  * - med → meditacion
  * - nut → nutricion
+ * - opt → options
  * - tra → trading
  * - inv → inversiones
  */

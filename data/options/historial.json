@@ -1,0 +1,20 @@
+[
+  {
+    "id": "opt_20240126_001",
+    "fecha_apertura": "2024-01-26",
+    "simbolo": "QS",
+    "tipo_contrato": "put_vendido",
+    "strike": 25.00,
+    "expiration_date": "2024-02-02",
+    "dias_a_expiracion": 7,
+    "premium_recibido": 150,
+    "margen_requerido": 2500,
+    "fecha_cierre": "2024-01-28",
+    "tipo_cierre": "tp_50",
+    "precio_cierre": 75,
+    "pl_bruto": 75,
+    "pl_porcentaje": 50.0,
+    "estado": "cerrado",
+    "notas": "Trade de prueba - take profit al 50%"
+  }
+]
