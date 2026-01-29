@@ -504,3 +504,12 @@ Este documento consolida análisis de sector, pero enfatiza **timing, geopolíti
 
 **Última actualización**: Enero 2026
 **Fuentes**: Análisis profesionales de mercado, datos de PwC, Business Wire, Fortune Business Insights, J.P. Morgan, SEMI, Investing News Network, AlphaSense
+
+---
+
+## 🌐 English Version Available
+
+An English translation of this document is available at: `context.txt`
+
+For English readers, the complete investment analysis with all sections, recommendations, and risk signals is available in English format.
+
