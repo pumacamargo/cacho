@@ -509,7 +509,7 @@ Este documento consolida análisis de sector, pero enfatiza **timing, geopolíti
 
 ## 🌐 English Version Available
 
-An English translation of this document is available at: `context.txt`
+An English translation of this document is available at: `context.md`
 
 For English readers, the complete investment analysis with all sections, recommendations, and risk signals is available in English format.
 
