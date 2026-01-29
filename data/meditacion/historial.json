@@ -8,5 +8,25 @@
     "sensaciones": "Presión suave en frente, energía fluyendo bien",
     "profundidad": "Media-alta",
     "notas": "Primer día de práctica estructurada. Sensación clara de energía. Sin presión en tercer ojo aún, pero bien."
+  },
+  {
+    "fecha": "2026-01-28",
+    "hora": "08:00",
+    "tipo": "Mañana",
+    "duracion_minutos": 15,
+    "tecnicas": ["Pranayama", "Meditación consciente"],
+    "sensaciones": "Mente clara, energía renovada",
+    "profundidad": "Media",
+    "notas": "Sesión matutina"
+  },
+  {
+    "fecha": "2026-01-29",
+    "hora": "08:00",
+    "tipo": "Mañana",
+    "duracion_minutos": 15,
+    "tecnicas": ["Pranayama", "Meditación consciente"],
+    "sensaciones": "Mente clara, energía renovada",
+    "profundidad": "Media",
+    "notas": "Sesión matutina"
   }
 ]
