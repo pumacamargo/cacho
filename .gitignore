@@ -1,0 +1,8 @@
+# GitHub token - DO NOT COMMIT
+.github-token
+
+# Tokens and credentials
+.env
+.env.local
+*.key
+*.pem
