@@ -27,6 +27,8 @@ Estamos en un punto de inflexión estructural impulsado por:
 - **Equipamiento**: Ventas globales alcanzarán $145 mil millones (2026) y $156 mil millones (2027)
 - **Empresas**: TSMC, NVIDIA, ASML, Broadcom, Micron
 
+**⚠️ Advertencia de Ciclo**: Después de años de CAPEX masivo en fabricación, existe riesgo de **overcapacity en 2027-2028**. Vigilar señales de demanda sostenible.
+
 #### Infraestructura de IA
 - **Nvidia invierte**: $2,000M USD en infraestructura de IA (CoreWeave)
 - **Software**: Modelos generativos, herramientas empresariales
@@ -37,6 +39,11 @@ Estamos en un punto de inflexión estructural impulsado por:
 - Diseñadores de chips (NVIDIA) - pero ya está saturado
 - **Mejor opción**: Fabricantes de equipamiento de semiconductores
 - ETFs de semiconductores
+
+### ⚠️ Riesgo Crítico: Supply Chain China
+- **Realidad geopolítica**: China aún domina el procesamiento de tierras raras y semiconductor packaging
+- **Sanciones CHIPS Act**: Riesgos de restricciones comerciales US-China pueden destrozar valuaciones
+- **Recomendación**: Diversificar geográficamente, favorecer fabricantes con cadenas no-China cuando sea posible
 
 ---
 
@@ -66,14 +73,20 @@ Estamos en un punto de inflexión estructural impulsado por:
 
 ### Materias Primas Críticas
 - **Cobre**: Sin cobre no hay electrificación - materia prima fundamental de esta década
+  - ⚠️ **Caveat**: Premia de "IA + electrificación" ya está bastante incorporado en precios actuales
+  - Los mayores ganadores compraron hace 2-3 años
+  - Mejor punto de entrada fue 2022-2023
+
 - **Uranio**: Demanda creciente por energía nuclear
+  - Similar a cobre: ciclo de precios ya avanzado
+  - Monitorear pullbacks para entradas mejores
 
 ### Inversiones Recomendadas
 - NextEra Energy
 - First Solar
 - Empresas de infraestructura eléctrica (MYR Group)
-- Productores de cobre y uranio
-- Fabricantes de transformadores y cables de alta tensión
+- **Materias primas**: Mejor enfoque en timing de entrada que en expectativa de boom
+- Fabricantes de transformadores y cables de alta tensión (cuello de botella real ahora)
 
 ---
 
@@ -211,15 +224,32 @@ Estamos en un punto de inflexión estructural impulsado por:
 - España invirtiendo en redes globales (Nu Quantum)
 - Potencial: química, logística, criptografía
 - **Horizonte**: Largo plazo pero transformador
+- **⚠️ Riesgo**: Startups de deeptech vulnerables a ciclos de crédito alto
 
 ### Telecomunicaciones Avanzadas (5G/6G)
 - Crucial para IoT, telemedicina, autos autónomos
 - Cadenas de suministro críticas
+- **⚠️ Timing**: Ciclos largos, mejor enfoque 2027+
 
 ### Aeroespacial y Espacio Comercial
 - Ciclos largos pero nuevas oportunidades
 - Data y comunicaciones vía satélites
 - Infraestructura orbital
+
+---
+
+## ⚡ Consideración Crítica: Ciclos de Crédito y Startups DeepTech
+
+**Problema subestimado en todos los análisis:**
+
+Muchas startups en biotech, quantum, y tecnologías emergentes dependen de financiación VC continua:
+- **Tasas de interés altas** presionan directamente disponibilidad de capital
+- **Valuaciones infladas** en 2021-2023 requieren validación de ingresos reales
+- **Riesgo de "dinero barato" que se termina**: Startups que no sean rentables enfrentarán fundraising crudo en 2026-2027
+
+**Recomendación**: Favorecer empresas públicas o private equity con fundamentales sólidos sobre puro "potencial futuro". Las que ya generan ingresos > las que solo prometen.
+
+**Alternativa segura**: ETFs que diversifiquen este riesgo en lugar de apuestas concentradas.
 
 ---
 
@@ -251,25 +281,46 @@ Estamos en un punto de inflexión estructural impulsado por:
 
 ---
 
-## ⚠️ Consideraciones de Riesgo
+## ⚠️ Consideraciones de Riesgo - Crítico
 
-1. **Valoraciones Elevadas en Tech**
+### Riesgos de Timing (Lo más importante)
+
+1. **Overcapacity en Semiconductores (2027-2028)**
+   - CAPEX masivo 2023-2026 puede resultar en exceso de capacidad
+   - Precios de equipamiento y memoria pueden caer cuando demanda no acompañe
+   - **Acción**: Favorecerequipamiento de semiconductores ANTES de 2027
+
+2. **Cobre y Uranio: Premia Ya Incorporado**
+   - Estos sectores ya pricearon la tesis de IA + electrificación
+   - Mejores entradas fueron 2022-2024
+   - **Acción**: Esperar pullbacks, no perseguir rally
+
+3. **Incertidumbre Geopolítica (CRÍTICO)**
+   - Tensiones US-China en semiconductores, tecnología
+   - Sanciones CHIPS Act pueden impactar TSMC, supply chain
+   - Aranceles pueden destrozar márgenes de equipamiento
+   - **Acción**: Diversificar geográficamente, no concentrarse en dependencia China
+
+### Riesgos de Mercado
+
+4. **Valoraciones Elevadas en Tech**
    - Algunas acciones de IA ya tienen múltiplos muy altos
    - Vigilar burbujas potenciales
 
-2. **IA Agéntica**
+5. **IA Agéntica**
    - Si no entrega ganancias de productividad prometidas
    - Posible corrección significativa a finales 2026/2027
 
-3. **Incertidumbre Geopolítica**
-   - Tensiones comerciales y aranceles
-   - Impacto en cadenas de suministro
+6. **Ciclos de Crédito y Startups**
+   - Tasas altas presionan financiación de deeptech startups
+   - Muchas biotech, quantum no son rentables aún
+   - **Acción**: Favorecer público sobre privado
 
-4. **Tasas de Interés**
+7. **Tasas de Interés**
    - Afectan particularmente a sectores de crecimiento
    - Monitoreo continuo necesario
 
-5. **Regulación Política**
+8. **Regulación Política**
    - Energía limpia y biotech dependen de incentivos gubernamentales
    - Cambios políticos pueden afectar flujos de capital
 
@@ -279,17 +330,35 @@ Estamos en un punto de inflexión estructural impulsado por:
 
 ✔️ **Diversifica dentro de tendencias**: No concentrarse solo en mega-corporaciones (NVIDIA), incluir infraestructura y servicios
 
+✔️ **Entiende el timing**: El análisis describe tendencias correctas pero algunas oportunidades ya están "priced in"
+   - Cobre/uranio: Mejor fue hace 2-3 años
+   - Semiconductores: Riesgo de overcapacity 2027-2028
+   - **Acción**: Esperar pullbacks, no perseguir momentum
+
+✔️ **Geopolítica > fundamentals en 2026**: US-China, sanciones, aranceles afectarán más que valuaciones
+   - No concentres en supply chains China-dependientes
+   - Diversifica proveedores y geografía
+
 ✔️ **Combina sectores**: Mezcla cíclicos (tech) con defensivos (utilities, energía)
+
+✔️ **Favorece público sobre privado**: Startups deeptech (biotech, quantum) vulnerables a tasas altas
+   - Mejor: Empresas públicas con ingresos reales que "potencial futuro"
 
 ✔️ **Observa regulación**: Incentivos gubernamentales críticos para energía limpia y biotech
 
 ✔️ **Piensa global, actúa local**: Economías emergentes (India, Indonesia, México) en etapas tempranas = oportunidades únicas
 
-✔️ **Favorece ETFs**: Para la mayoría, mejor vía es través de ETFs temáticos que individuales
+✔️ **Favorece ETFs**: Para la mayoría, mejor vía es través de ETFs temáticos que apuestas concentradas
 
-✔️ **Enfoque a largo plazo**: Estos ciclos se despliegan en años, no meses
+✔️ **Enfoque a largo plazo**: Estos ciclos se despliegan en años, no meses - pero timing importa
 
 ✔️ **Monitorea "segunda derivada"**: ¿Qué infraestructura necesita IA? ¿Qué problemas crea? Ahí están las mejores oportunidades
+
+---
+
+## 📝 Nota Final
+
+Este documento consolida análisis válidos pero con correcciones de **timing, geopolítica y ciclos de crédito** que el análisis original subestimó. Usar como mapa conceptual pero validar valuaciones actuales y puntos de entrada reales antes de invertir.
 
 ---
 
