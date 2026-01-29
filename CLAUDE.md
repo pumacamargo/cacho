@@ -54,6 +54,19 @@ This is a data + utilities project without build/test infrastructure. Work prima
 - **Adding new categories**: Create `data/{categoria}/historial.json` and `data/{categoria}/notas.json`
 - **Git commits**: Follow conventional commit format (examples: "Add parseNota utility", "Fix splitForTelegram character handling")
 
+### Handling Image Data (Screenshots)
+
+When the user shares historial data via image (ibb.co, imgur, or similar):
+
+1. Download the image to the scratchpad directory: `/tmp/claude/-root-cacho/[session-id]/scratchpad/`
+2. Read the image using the Read tool to extract the data visually
+3. Parse the exercise data and update the appropriate `data/{categoria}/historial.json`
+4. Images are temporary and won't be committed to git
+
+For ibb.co links specifically:
+- Extract the direct image URL from the page (usually `https://i.ibb.co/...`)
+- Use curl to download: `curl -L "{url}" -o {scratchpad}/filename.{ext}`
+
 ## Key Implementation Details
 
 ### parseNota Behavior

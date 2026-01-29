@@ -63,5 +63,109 @@
         ]
       }
     ]
+  },
+  {
+    "fecha": "2026-01-28",
+    "dia_semana": "Martes",
+    "tipo_entrenamiento": "Piernas",
+    "duracion_minutos": 35,
+    "ejercicios": [
+      {
+        "nombre": "Squats",
+        "sets": [
+          {"reps": 15, "peso_kg": 0},
+          {"reps": 15, "peso_kg": 5},
+          {"reps": 10, "peso_kg": 10},
+          {"reps": 10, "peso_kg": 10}
+        ]
+      },
+      {
+        "nombre": "Leg Press",
+        "sets": [
+          {"reps": 16, "peso_kg": 60},
+          {"reps": 15, "peso_kg": 90},
+          {"reps": 14, "peso_kg": 100}
+        ]
+      },
+      {
+        "nombre": "Leg Curl",
+        "sets": [
+          {"reps": 15, "peso_kg": 35},
+          {"reps": 12, "peso_kg": 40},
+          {"reps": 11, "peso_kg": 40}
+        ]
+      },
+      {
+        "nombre": "Leg Extension",
+        "sets": [
+          {"reps": 11, "peso_kg": 40},
+          {"reps": 12, "peso_kg": 40},
+          {"reps": 11, "peso_kg": 40}
+        ]
+      },
+      {
+        "nombre": "Calf Raises",
+        "sets": [
+          {"reps": 16, "peso_kg": 80},
+          {"reps": 20, "peso_kg": 120},
+          {"reps": 15, "peso_kg": 160}
+        ]
+      },
+      {
+        "nombre": "Ab Crunch",
+        "sets": [
+          {"reps": 15, "peso_kg": 35},
+          {"reps": 15, "peso_kg": 35},
+          {"reps": 9, "peso_kg": 35}
+        ]
+      }
+    ]
+  },
+  {
+    "fecha": "2026-01-29",
+    "dia_semana": "Miércoles",
+    "tipo_entrenamiento": "Push",
+    "duracion_minutos": 30,
+    "ejercicios": [
+      {
+        "nombre": "Chest Press",
+        "sets": [
+          {"reps": 15, "peso_kg": 50},
+          {"reps": 10, "peso_kg": 55},
+          {"reps": 9, "peso_kg": 55}
+        ]
+      },
+      {
+        "nombre": "Dumbbell Fly",
+        "sets": [
+          {"reps": 15, "peso_kg": 12},
+          {"reps": 13, "peso_kg": 12},
+          {"reps": 16, "peso_kg": 12}
+        ]
+      },
+      {
+        "nombre": "Shoulder Press",
+        "sets": [
+          {"reps": 12, "peso_kg": 35},
+          {"reps": 9, "peso_kg": 35},
+          {"reps": 9, "peso_kg": 32}
+        ]
+      },
+      {
+        "nombre": "Tricep Dips",
+        "sets": [
+          {"reps": 12, "peso_kg": 35},
+          {"reps": 11, "peso_kg": 35},
+          {"reps": 8, "peso_kg": 35}
+        ]
+      },
+      {
+        "nombre": "Lateral Raise",
+        "sets": [
+          {"reps": 12, "peso_kg": 9},
+          {"reps": 12, "peso_kg": 9}
+        ]
+      }
+    ]
   }
 ]
