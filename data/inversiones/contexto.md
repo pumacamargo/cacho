@@ -135,6 +135,113 @@ Cuántica, 6G, aeroespacial: transformadoras pero largas.
 
 ---
 
+## 📦 Portafolio 2026 - Implementación Práctica
+
+### ¿Qué es este portafolio?
+
+Un portafolio anti-recesión, diversificado por país, moneda y tipo de activo, diseñado para:
+
+- **Aguantar una recesión**
+- **Protegerte si USD o JPY se debilitan**
+- **Seguir creciendo gracias a IA + infraestructura**
+
+---
+
+### 🏦 Dónde Está el Dinero (Visión Rápida)
+
+| Cuenta | Monto | Para Qué Sirve |
+|--------|-------|---|
+| **RRSP Canadá** | 100k CAD | Crecimiento fuerte a largo plazo |
+| **Cash Canadá** | 100k CAD | CETES + protección + oportunidades |
+| **TFSA Canadá** | 12k CAD | Apuestas de alto crecimiento sin impuestos |
+| **Cuenta Japón** | 17k CAD | Estabilidad local + cobertura yen |
+| **Total** | **229k CAD** | Balance entre crecer y proteger |
+
+---
+
+### 1️⃣ RRSP Canadá (100k CAD) — El Motor de Crecimiento
+
+Aquí va lo que quieres mantener muchos años.
+
+**Asignación**:
+- **Infraestructura de IA** (data centers y REITs) → donde "vive" la IA
+- **Semiconductores** (equipamiento) → menos riesgo que diseñadores
+- **Salud / Biotech + IA** → sector barato con mucho potencial
+- **Ciberseguridad** → gasto obligatorio
+- **Energía y emergentes** → diversificación real
+
+**Mentalidad**: Es la parte que más crece en el tiempo, aunque tenga caídas temporales.
+
+---
+
+### 2️⃣ Cash Canadá (100k CAD) — El Escudo y la Munición
+
+Es tu colchón de seguridad y tu arma para comprar barato.
+
+**Asignación**:
+- **CETES en México** → rendimiento real + otra moneda
+- **Oro y metales** → protección si el dólar se debilita
+- **Cash líquido** → comprar cuando el mercado cae
+- **Energía y un poco de crypto** → hedge extra
+
+**Regla clave**: En recesión, el que tiene cash manda.
+
+---
+
+### 3️⃣ TFSA Canadá (12k CAD) — El Turbo Sin Impuestos
+
+Aquí aceptas volatilidad porque:
+- Si ganas mucho → no pagas impuestos
+- Si cae → no daña el portafolio total
+
+**Asignación**:
+- **IA / semiconductores agresivos**
+- **Biotech disruptivo**
+- **Crypto (BTC / ETH)**
+- **Algo de tecnología futura** (quantum)
+
+**Mentalidad**: Es tu opción de "10x" controlada.
+
+---
+
+### 4️⃣ Cuenta Japón (17k CAD) — La Base Estable
+
+No busca explosión, busca tranquilidad.
+
+**Asignación**:
+- **Utilities e infraestructura** → ingresos estables
+- **Pharma japonés** → envejecimiento poblacional
+- **Exportadores** → se benefician de yen débil
+- **Algo de cash local** → flexibilidad
+
+**Mentalidad**: Funciona como hedge si USD cae o yen sigue débil.
+
+---
+
+### 🧠 En Pocas Palabras
+
+Este portafolio:
+
+**❌ No depende de**:
+- Una sola moneda
+- Un solo país
+- Apuestas "de moda" en IA
+
+**✅ Invierte en**:
+- Infraestructura real
+- Cash listo para crisis
+- Horizonte 3–5 años, no trading diario
+
+---
+
+### ⚠️ Regla de Oro
+
+- Si el mercado cae fuerte → usas el cash
+- Si algo sube demasiado → tomas ganancias
+- No adivinas el futuro → reaccionas a señales
+
+---
+
 ## 📌 Señales de Alerta Clave a Monitorear
 
 - **ASML guidance baja > 5%** → overcapacity inminente
