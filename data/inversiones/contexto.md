@@ -487,6 +487,138 @@ Crees que tienes 4 exposiciones, en realidad tienes 1.5.
 
 ---
 
+## 📊 Asignación Estratégica del Portafolio 2026
+
+### ⚠️ Contexto Macroeconómico
+
+**Preocupación Crítica**: Riesgo de recesión global y devaluación concurrente de dólar y yen japonés.
+
+**Implicaciones**:
+- **Dólar débil** → Activos en USD pierden valor en otras monedas, pero mejora competitividad de exportadores US
+- **Yen débil** → Japón mantiene exportaciones competitivas, pero reduce poder adquisitivo de inversores japoneses
+- **Recesión posible** → Volatilidad en activos de riesgo, fortaleza en defensivos y commodities
+- **Respuesta**: Diversificación multidivisa y multiactivodividuos para reducir riesgo de devaluación concentrada
+
+Esta estructura de portafolio está diseñada específicamente para **resistir estos escenarios macro adversos**.
+
+---
+
+### 🎯 Distribución del Portafolio
+
+#### **40% – Activos Productivos (Con Exposición Divisa Estratégica)**
+
+**Objetivo**: Crecimiento de largo plazo, ingresos, diversificación geográfica
+
+- **USA** (Tech, Health, Infrastructure)
+  - Semiconductores (NVIDIA, ASML)
+  - Biotech/Salud digital
+  - Infraestructura (data centers, utilities)
+  - Exposición: Dólar fuerte en recesión, pero tech mantiene demanda
+
+- **Japón (Selectivo)**
+  - ⚠️ Yen débil = oportunidad para compradores extranjeros
+  - Enfoque: Exportadores (autos, electrónica), utilities, pharma
+  - Beneficio: Valuaciones atractivas + cobertura divisa (yen débil)
+  - Riesgo: Recesión global afecta exportadores
+
+- **Mercados Emergentes de Crecimiento**
+  - India (tech, fintech, servicios)
+  - Latinoamérica (México, Brasil)
+  - Beneficio: Menos saturados, monedas potencialmente más estables
+  - Riesgo: Mayor volatilidad en recesión
+
+---
+
+#### **20% – Metales & Commodities (Protección Inflacionaria y Divisa)**
+
+**Objetivo**: Hedge contra devaluación, inflación, mantener poder adquisitivo
+
+- **Oro** (Principal, ~12%)
+  - Activo refugio en recesión y devaluación de dólar
+  - No emite tasa pero preserva valor
+  - Impulsado por: Miedo geopolítico, debilidad del dólar
+
+- **Plata / Energía / Agrícolas** (~8%)
+  - Plata: Más volatilidad que oro, pero mayor upside industrial
+  - Energía: Gas natural y petróleo (demanda resiliente)
+  - Agrícolas: Desacoplados de ciclo financiero, impulsados por clima + demanda global
+
+---
+
+#### **20% – Cash + CETES MX (Liquidez Estratégica Multidivisa)**
+
+**Objetivo**: Seguridad capital, oportunidad de entrada, cobertura divisa
+
+- **CETES Corto y Mediano Plazo**
+  - Tasas atractivas en MXN (~8-9% anual)
+  - Riesgo: Inflación, pero tasas reales positivas
+  - Ventaja: Diversificación de dólar, acceso a mercado emergente
+
+- **Cash en USD / EUR**
+  - Mantener liquidez para rebalancear en volatilidad
+  - Esperar oportunidades de entry en recesión
+  - Cobertura si dólar debilitarse significativamente
+
+---
+
+#### **5% – Cripto (BTC/ETH)**
+
+**Objetivo**: Hedge monetario extremo, protección contra devaluación concurrente de dólar/yen
+
+- **Bitcoin (Principal)**
+  - Activo descorrelacionado de monedas fiat
+  - Si dólar se debilita, BTC tiende a apreciarse (en dólares)
+  - Escasez absoluta: No se puede "imprimir" más
+
+- **Ethereum**
+  - Exposición a tendencia de infraestructura digital (IA)
+  - Menor correlación que BTC pero más riesgo
+
+**⚠️ Riesgo**: Volatilidad extrema en recesión. Solo 5% mitiga el hedge que no destrozaría portafolio.
+
+---
+
+#### **15% – Activos Reales / Defensivos (Inflación + Estabilidad)**
+
+**Objetivo**: Protección contra inflación, ingresos estables, resistencia a recesión
+
+- **REITs (Real Estate Investment Trusts)**
+  - Data centers: Demanda de IA impulsa valores
+  - Infraestructura: Utilities, telecom towers
+  - Defensa: Activos tangibles, ingresos por alquiler
+
+- **Infraestructura**
+  - Carreteras, puertos, ferrocarriles (con ingresos)
+  - Menos sensible a ciclo económico
+  - Beneficiado por gasto estatal en recesión
+
+- **Utilities Globales**
+  - Electricidad, agua, gas (demanda esencial)
+  - Ingresos estables en recesión
+  - Mejor defensa que stocks cíclicos
+
+---
+
+### 📈 Cómo Esta Distribución Maneja Recesión + Devaluación
+
+| Escenario | Impacto | Protección |
+|-----------|--------|-----------|
+| **Recesión global** | Tech cae, mercados volátiles | 35% en defensivos (cash, utilities, oro, commodities) |
+| **Dólar se debilita** | Activos USD pierden valor | Cripto, oro, JPY, MXN actúan como hedge |
+| **Yen se debilita** | Oportunidad de compra en Japón | Exposición selectiva aprovecha valuaciones bajas |
+| **Inflación resurge** | Bonos se vuelven tóxicos | Oro, commodities, REITs se aprecian |
+| **Deflación** | Efectivo es rey | 20% en cash permite rebalancear agresivamente |
+
+---
+
+### 🔄 Rebalanceo Trimestral
+
+- **Señal de alerta**: Si alguna clase de activos crece > 50% sobre su target
+- **Acción**: Vender ganancias, comprar clases bajistas
+- **Timing**: Usar recesión (pánico) para comprar barato
+
+---
+
 ## 📝 Nota Final
 
 Este documento consolida análisis de sector, pero enfatiza **timing, geopolítica, ciclos de crédito y señales de alerta** más que predicciones vagas.
