@@ -486,6 +486,138 @@ You think you have 4 exposures, actually you have 1.5.
 
 ---
 
+## 📊 Strategic Portfolio Allocation 2026
+
+### ⚠️ Macroeconomic Context
+
+**Critical Concern**: Risk of global recession and concurrent devaluation of US dollar and Japanese yen.
+
+**Implications**:
+- **Weak dollar** → USD-denominated assets lose value in other currencies, but improves competitiveness of US exporters
+- **Weak yen** → Japan maintains competitive exports, but reduces purchasing power of Japanese investors
+- **Possible recession** → Volatility in risk assets, strength in defensives and commodities
+- **Response**: Multicurrency and multi-asset diversification to reduce concentrated devaluation risk
+
+This portfolio structure is specifically designed to **resist these adverse macro scenarios**.
+
+---
+
+### 🎯 Portfolio Distribution
+
+#### **40% – Productive Assets (With Strategic Currency Exposure)**
+
+**Objective**: Long-term growth, income, geographic diversification
+
+- **USA** (Tech, Health, Infrastructure)
+  - Semiconductors (NVIDIA, ASML)
+  - Biotech/Digital health
+  - Infrastructure (data centers, utilities)
+  - Exposure: Strong dollar in recession, but tech maintains demand
+
+- **Japan (Selective)**
+  - ⚠️ Weak yen = opportunity for foreign buyers
+  - Focus: Exporters (autos, electronics), utilities, pharma
+  - Benefit: Attractive valuations + currency hedge (weak yen)
+  - Risk: Global recession impacts exporters
+
+- **Emerging Growth Markets**
+  - India (tech, fintech, services)
+  - Latin America (Mexico, Brazil)
+  - Benefit: Less saturated, potentially more stable currencies
+  - Risk: Higher volatility in recession
+
+---
+
+#### **20% – Metals & Commodities (Inflation Protection and Currency Hedge)**
+
+**Objective**: Hedge against devaluation, inflation, maintain purchasing power
+
+- **Gold** (Primary, ~12%)
+  - Safe-haven asset in recession and dollar devaluation
+  - Doesn't yield but preserves value
+  - Driven by: Geopolitical fear, dollar weakness
+
+- **Silver / Energy / Agriculturals** (~8%)
+  - Silver: More volatile than gold, but higher industrial upside
+  - Energy: Natural gas and oil (resilient demand)
+  - Agriculturals: Decoupled from financial cycles, driven by climate + global demand
+
+---
+
+#### **20% – Cash + Mexican CETES (Multicurrency Strategic Liquidity)**
+
+**Objective**: Capital safety, entry opportunity, currency diversification
+
+- **Short and Medium-Term CETES**
+  - Attractive rates in MXN (~8-9% annually)
+  - Risk: Inflation, but real rates remain positive
+  - Advantage: Dollar diversification, access to emerging market
+
+- **Cash in USD / EUR**
+  - Maintain liquidity for rebalancing in volatility
+  - Wait for entry opportunities in recession
+  - Hedge if dollar weakens significantly
+
+---
+
+#### **5% – Crypto (BTC/ETH)**
+
+**Objective**: Extreme monetary hedge, protection against concurrent dollar/yen devaluation
+
+- **Bitcoin (Primary)**
+  - Uncorrelated asset to fiat currencies
+  - If dollar weakens, BTC tends to appreciate (in dollars)
+  - Absolute scarcity: Cannot be "printed" more
+
+- **Ethereum**
+  - Exposure to digital infrastructure trend (AI)
+  - Lower correlation than BTC but higher risk
+
+**⚠️ Risk**: Extreme volatility in recession. Only 5% ensures hedge without portfolio destruction.
+
+---
+
+#### **15% – Real Assets / Defensives (Inflation + Stability)**
+
+**Objective**: Inflation protection, stable income, recession resistance
+
+- **REITs (Real Estate Investment Trusts)**
+  - Data centers: AI demand drives valuations
+  - Infrastructure: Utilities, telecom towers
+  - Defense: Tangible assets, rental income
+
+- **Infrastructure**
+  - Roads, ports, railroads (with revenue streams)
+  - Less sensitive to economic cycle
+  - Benefits from government spending in recession
+
+- **Global Utilities**
+  - Electricity, water, gas (essential demand)
+  - Stable income in recession
+  - Better defense than cyclical stocks
+
+---
+
+### 📈 How This Distribution Manages Recession + Devaluation
+
+| Scenario | Impact | Protection |
+|----------|--------|-----------|
+| **Global recession** | Tech falls, market volatility | 35% in defensives (cash, utilities, gold, commodities) |
+| **Dollar weakens** | USD assets lose value | Crypto, gold, JPY, MXN act as hedge |
+| **Yen weakens** | Buying opportunity in Japan | Selective exposure leverages low valuations |
+| **Inflation resurges** | Bonds become toxic | Gold, commodities, REITs appreciate |
+| **Deflation** | Cash is king | 20% cash enables aggressive rebalancing |
+
+---
+
+### 🔄 Quarterly Rebalancing
+
+- **Alert signal**: If any asset class grows > 50% above its target
+- **Action**: Sell gains, buy underperforming classes
+- **Timing**: Use recession (panic) to buy cheap
+
+---
+
 ## 📝 Final Note
 
 This document consolidates sector analysis while emphasizing **timing, geopolitics, credit cycles and alert signals** over vague predictions.
