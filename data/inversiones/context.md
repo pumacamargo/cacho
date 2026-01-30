@@ -618,6 +618,214 @@ This portfolio structure is specifically designed to **resist these adverse macr
 
 ---
 
+## 🌍 Fiscal and Operational Considerations by Country
+
+This section is **critical**: avoid costly mistakes and maximize the tax efficiency of your multi-currency portfolio.
+
+---
+
+### 🇲🇽 Mexico — The "Dry Powder" (CETES)
+
+#### 🎯 Strategy: CETES Laddering
+
+**Why CETES**:
+- Real yield: 7-9% annually (only investment that beats MXN inflation)
+- Safe liquidity if there's panic (you can always sell)
+- Your insurance against global recession
+
+#### 📊 Recommended Laddering Structure
+
+| Maturity | % of Cash | Amount | Reason |
+|----------|-----------|--------|--------|
+| **Bondia (overnight)** | 30% | 12k CAD | Immediate liquidity, emergencies |
+| **CETES 28 days** | 20% | 8k CAD | Quick rotation, reinvestment |
+| **CETES 91 days** | 30% | 12k CAD | Balance between rate and liquidity |
+| **CETES 182 days** | 20% | 8k CAD | Maximum rate, lock in yield |
+
+**Goal**: You have access to ~12k CAD monthly (Bondia + 28d rotation) to rebalance without touching long-term.
+
+#### 🏦 Recommended Platforms
+
+1. **Cetesdirecto** (official government platform)
+   - Requirement: Mexican RFC
+   - Commission: 0% (direct from government)
+   - Best for: Mexican residents
+
+2. **GBM+** (accepts foreigners)
+   - Requirement: Valid ID
+   - Commission: Very low (~0.05%)
+   - Best for: Canadians, permanent residents in Mexico
+
+#### 📋 Taxes: CETES in Mexico
+
+**Key point**: SAT (Mexican Tax Authority) automatically withholds ISR (income tax).
+
+- **Automatic withholding**: 19.6% on earned interest
+- **Final payment**: No need to declare CETES on annual tax return
+- **Reporting**: GBM+ or Cetesdirecto report directly to SAT
+
+**If you're a non-resident in Mexico**:
+- Still the same: automatic 19.6% tax
+- Doesn't affect your immigration status
+- Only pays ISR on interest (not on initial capital)
+
+---
+
+### 🇯🇵 Japan — The Dependent Loophole
+
+#### 🎯 Strategy: Register Your Mom as Dependent
+
+**Why it works**: Japan allows you to deduct ¥380,000 (~3,000 CAD) in taxes for each foreign dependent you support, even if they don't live with you.
+
+#### 📋 Requirements (Kakutei Shinkoku — Japanese Tax Return)
+
+1. **Minimum annual transfer**: ¥380,000 (~3,000 CAD) to your mom's name
+   - Via Wise, TransferWise, or bank
+   - Must be documented
+
+2. **Required documents**:
+   - Your mom's passport
+   - Bank transfer receipts (proof of sustainability)
+   - Affidavit stating you support her (Spanish + Japanese translation)
+
+3. **Submission**:
+   - Kakutei Shinkoku (Japanese tax declaration)
+   - Submit at municipal tax office before March 15
+
+#### 💰 Estimated Tax Savings
+
+- Deduction: ¥380,000
+- Tax savings: ~¥150,000–200,000 (~1,200–1,600 CAD)
+- **ROI**: Transfer 3,000, save 1,200-1,600 in taxes = 40-50% return
+
+#### ⚠️ DON'T Try This in Mexico
+
+- As a non-resident in Mexico, dependent deductions for Mexican family members don't work
+- Better: Only declare her in Japan (where it actually works)
+- Mexico can ignore foreign dependents if you're not paying Mexican ISR
+
+---
+
+### 🇨🇦 Canada — RRSP/TFSA (Complete Inactivity)
+
+#### 🎯 Strategy: Don't Sell Anything
+
+**Why**: As long as money remains INSIDE RRSP/TFSA, there's no taxation. Compound interest works tax-free.
+
+#### 📋 Rules of Gold (RRSP)
+
+| Action | Tax | Note |
+|--------|-----|------|
+| **Contribute** | 0% | Tax deductible if Canadian resident |
+| **Grow** | 0% | No capital gains tax |
+| **Rebalance inside** | 0% | Sell/buy without tax |
+| **Withdraw money** | Yes | Treated as regular income |
+
+**Strategy**:
+- Let capital grow 3-5 years untouched
+- If you need money, USE the 15k CAD Cash account instead of touching RRSP
+- Only withdraw from RRSP when: confirmed recession OR real emergency
+
+#### 📋 Rules of Gold (TFSA)
+
+| Action | Tax | Note |
+|--------|-----|------|
+| **Contribute** | 0% | No deduction (but fully tax-free) |
+| **Grow** | 0% | Completely tax-free |
+| **Withdraw** | 0% | No penalty whatsoever |
+| **Reinvest space** | 0% | Space returns next year |
+
+**Strategy**:
+- It's your "aggressive account" without tax guilt
+- Gain 50% on crypto → 0% taxes in Canada
+- Lose 30% on biotech → recover without pressure
+
+#### 🔐 CRA Protection (Canadian Tax Agency)
+
+**Key**: Register as **non-resident** with your broker
+
+- CRA doesn't monitor non-residents' RRSP/TFSA
+- As long as you don't sell or withdraw to Canada
+- If you live in Japan and your money grows in Canada = invisible to CRA
+
+**Limit**:
+- Don't try to deduct RRSP contributions if non-resident
+- Only works if you move to Canada (then it's deductible)
+
+---
+
+### 🛡️ Devaluation and Recession Hedge
+
+#### Scenario 1: Dollar Falls (Weak USD/CAD)
+
+**Your protection**:
+- ✅ 40k CETES (Mexican pesos) — rise when dollar weakens
+- ✅ 5k Crypto (Bitcoin) — inverse to weak dollar
+- ❌ Risk: Your RRSP stocks fall in dollars, but hold in CAD
+
+**Action**: Increase CETES if dollar drops < 1.30 CAD/USD
+
+---
+
+#### Scenario 2: Yen Falls (Weak JPY)
+
+**Your protection**:
+- ✅ Canadian stocks (USD/CAD) — gain vs JPY
+- ✅ Japanese exporters (Toyota, Sony) — benefit from weak yen
+- ✅ 40k CETES in MXN — uncorrelated with yen
+
+**Action**: Increase exporters in Japan account if yen drops < 170 JPY/USD
+
+---
+
+#### Scenario 3: Stock Market Crashes (Global Recession)
+
+**Your buffer**:
+- 💰 **44% in safe cash**: 40k CETES + 15k CAD liquid
+- This 44% lets you buy cheap when panic sells
+
+**Breakdown**:
+```
+Total: 229k CAD
+- CETES: 40k (17.5%)
+- Cash CAD: 15k (6.5%)
+- Gold: 25k (11%)
+- Silver: 5k (2%)
+- Gas: 4k (1.7%)
+= 89k (38.9%) in non-correlated assets
++ 15k liquid cash = 44% ready for emergencies
+```
+
+**Action during recession**:
+1. Market drops 20-25%: Use 5k cash to buy tech cheap
+2. Market drops 30-35%: Use 10k cash to load semiconductors/biotech
+3. Market drops 40%+: Use 15k cash (maximum) if 2-3 alert signals confirmed
+
+---
+
+### 📅 Annual Fiscal Calendar
+
+| Month | Action | Jurisdiction |
+|-------|--------|---|
+| **Jan-Feb** | Collect CETES documents, mom's transfers | Mexico + Japan |
+| **March 15** | File Kakutei Shinkoku (Japanese tax return) | Japan |
+| **Apr-May** | File SAT declaration if Mexico resident (optional) | Mexico |
+| **June** | Review positions, rebalance if needed | Global |
+| **Sept** | Plan Q4, verify taxes paid | Global |
+| **Dec** | Close-out: take profits if applicable, plan next year | Global |
+
+---
+
+### 🎯 Monthly Operational Checklist
+
+- [ ] **Japan**: Did mom's transfer go through this month? (if applicable)
+- [ ] **Mexico**: Are CETES renewing per ladder schedule?
+- [ ] **Canada**: Is RRSP/TFSA balance accurate?
+- [ ] **Global**: Any alert signals activated?
+- [ ] **Liquidity**: Is at least 5k CAD available liquid?
+
+---
+
 ## 📝 Final Note
 
 This document consolidates sector analysis while emphasizing **timing, geopolitics, credit cycles and alert signals** over vague predictions.

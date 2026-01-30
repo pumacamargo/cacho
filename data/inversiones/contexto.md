@@ -494,6 +494,214 @@ Esta estructura de portafolio está diseñada específicamente para **resistir e
 
 ---
 
+## 🌍 Consideraciones Fiscales y Operacionales por País
+
+Esta sección es **crítica**: evita errores costosos y maximiza la eficiencia fiscal de tu portafolio multidivisa.
+
+---
+
+### 🇲🇽 México — La "Pólvora Seca" (CETES)
+
+#### 🎯 Estrategia: Laddering de CETES
+
+**Por qué CETES**:
+- Rendimiento real: 7-9% anual (la única inversión que gana contra la inflación MXN)
+- Liquidez segura si hay pánico (puedes vender siempre)
+- Tu seguro contra recesión global
+
+#### 📊 Estructura de Laddering (Recomendado)
+
+| Plazo | % del Cash | Monto | Razón |
+|-------|-----------|-------|-------|
+| **Bonos Bondia (overnight)** | 30% | 12k CAD | Liquidez inmediata, emergencias |
+| **CETES 28 días** | 20% | 8k CAD | Rotación rápida, reinversión |
+| **CETES 91 días** | 30% | 12k CAD | Balance entre tasa y liquidez |
+| **CETES 182 días** | 20% | 8k CAD | Tasa máxima, amarrar rendimiento |
+
+**Objetivo**: Tienes acceso a ~12k CAD mensual (Bondia + rotación 28d) para rebalancear sin tocar largo plazo.
+
+#### 🏦 Plataformas Recomendadas
+
+1. **Cetesdirecto** (plataforma oficial)
+   - Requisito: RFC mexicano
+   - Comisión: 0% (direct del gobierno)
+   - Mejor para: Mexicanos residentes
+
+2. **GBM+** (acepta extranjeros)
+   - Requisito: Documento de identidad válido
+   - Comisión: Muy baja (~0.05%)
+   - Mejor para: Canadienses, residentes permanentes MX
+
+#### 📋 Impuestos: CETES en México
+
+**Lo importante**: El SAT (Servicio de Administración Tributaria) retiene automáticamente el ISR (Impuesto Sobre la Renta).
+
+- **Retención automática**: 19.6% sobre intereses ganados
+- **Pago definitivo**: No necesitas declarar los CETES en tu declaración anual
+- **Reporte**: GBM+ o Cetesdirecto envían directamente a SAT
+
+**Si eres no residente en México**:
+- Sigue igual: impuesto automático 19.6%
+- No afecta tu estatus migratorio
+- Solo paga ISR sobre intereses (no sobre capital inicial)
+
+---
+
+### 🇯🇵 Japón — El Hack de Dependientes Extranjeros
+
+#### 🎯 Estrategia: Registrar a tu Mamá como Dependiente
+
+**Por qué funciona**: Japón te permite deducir 38万円 (~3,000 CAD) de impuestos por cada dependiente extranjero que sostengas, incluso si no viven contigo.
+
+#### 📋 Requisitos (Kakutei Shinkoku — Declaración Japonesa)
+
+1. **Transferencia mínima anual**: ¥380,000 (~3,000 CAD) a nombre de tu mamá
+   - Vía Wise, TransferWise, o banco directo
+   - Debe ser documentable
+
+2. **Documentos requeridos**:
+   - Pasaporte de tu mamá
+   - Comprobante de transferencias (extractos bancarios)
+   - Declaración que la sostienes (Affidavit en español + traducción al japonés)
+
+3. **Presentación**:
+   - Kakutei Shinkoku (declaración de impuestos japonesa)
+   - Se entrega en la oficina municipal de impuestos antes del 15 de marzo
+
+#### 💰 Ahorro Fiscal Estimado
+
+- Deducción: ¥380,000
+- Ahorro en impuestos: ~¥150,000–200,000 (~1,200–1,600 CAD)
+- **ROI**: Transferes 3,000, ahorras 1,200-1,600 en impuestos = 40-50% de retorno
+
+#### ⚠️ NO lo intentes en México
+
+- Como no residente en México, las deducciones por dependientes mexicanos NO funcionan en México
+- Mejor: Solo declárale en Japón (donde sí funciona)
+- México puede ignorar a dependientes en el extranjero si no estás pagando ISR mexicano
+
+---
+
+### 🇨🇦 Canadá — RRSP/TFSA (Inactividad Total)
+
+#### 🎯 Estrategia: No Vendas Nada
+
+**Por qué**: Mientras el dinero permanece DENTRO de RRSP/TFSA, no hay tributación. El interés compuesto trabaja sin impuestos.
+
+#### 📋 Reglas de Oro (RRSP)
+
+| Acción | Impuesto | Nota |
+|--------|----------|------|
+| **Contribuir** | 0% | Deducible en Canada (si residente) |
+| **Crecer** | 0% | Sin capital gains tax |
+| **Rebalancear dentro** | 0% | Puedes vender/comprar sin impuestos |
+| **Sacar dinero** | Sí | Se trata como ingreso regular |
+
+**Estrategia**:
+- Deja el capital creciendo 3-5 años sin tocar
+- Si necesitas dinero, USA el 15k CAD de Cash Canadá en lugar de tocar RRSP
+- Solo saca de RRSP cuando: recesión confirmada O necesidad real
+
+#### 📋 Reglas de Oro (TFSA)
+
+| Acción | Impuesto | Nota |
+|--------|----------|------|
+| **Contribuir** | 0% | Sin deducción (pero sí libre de impuestos) |
+| **Crecer** | 0% | Completamente libre de impuestos |
+| **Retirar** | 0% | Puedes retirar sin penalidad |
+| **Reinvertir espacio** | 0% | El espacio vuelve el próximo año |
+
+**Estrategia**:
+- Es tu "cuenta agresiva" sin culpa fiscal
+- Ganas 50% en crypto → 0% impuestos en Canadá
+- Pierdes 30% en biotech → puedes recuperarte sin presión impositiva
+
+#### 🔐 Protección CRA (Agencia de Impuestos Canadiense)
+
+**Clave**: Registrarse como **non-resident** en tu broker
+
+- CRA no monitorea RRSP/TFSA de no residentes
+- Siempre y cuando no vendas o saques dinero a Canadá
+- Si vives en Japón y tu dinero crece en Canadá = invisible para CRA
+
+**Límite**:
+- No intentes deducir RRSP contributions si no eres residente canadiense
+- Solo sirve si vienes a vivir a Canadá (ahí sí deducible)
+
+---
+
+### 🛡️ Blindaje Contra Devaluación y Recesión
+
+#### Escenario 1: Dólar Cae (Debilidad USD/CAD)
+
+**Tu protección**:
+- ✅ 40k CETES (pesos MXN) — suben cuando dólar cae
+- ✅ 5k Crypto (Bitcoin) — inverso al dólar débil
+- ❌ Riesgo: Tus acciones en RRSP caen en dólares, pero en CAD se mantienen
+
+**Acción**: Aumenta CETES si dólar desciende < 1.30 CAD/USD
+
+---
+
+#### Escenario 2: Yen Cae (JPY Débil)
+
+**Tu protección**:
+- ✅ Acciones en Canadá (USD/CAD) — suben vs JPY
+- ✅ Exportadores en Japón (Toyota, Sony) — se benefician de yen débil
+- ✅ 40k CETES en MXN — no correlacionado con yen
+
+**Acción**: Aumenta exportadores en cuenta Japón si yen cae < 170 JPY/USD
+
+---
+
+#### Escenario 3: Bolsa Cae (Recesión Global)
+
+**Tu buffer**:
+- 💰 **44% en cash seguro**: 40k CETES + 15k CAD líquido
+- Este 44% te permite comprar barato cuando pánico vende
+
+**Desglose**:
+```
+Total: 229k CAD
+- CETES: 40k (17.5%)
+- Cash CAD: 15k (6.5%)
+- Oro: 25k (11%)
+- Plata: 5k (2%)
+- Gas: 4k (1.7%)
+= 89k (38.9%) en activos no-correlacionados
++ 15k cash líquido = 44% ready para emergencias
+```
+
+**Acción en recesión**:
+1. Mercado cae 20-25%: Usa 5k cash para comprar tech barato
+2. Mercado cae 30-35%: Usa 10k cash para cargar semiconductores/biotech
+3. Mercado cae 40%+: Usa 15k cash (máximo) si tienes 2-3 señales de alerta confirmadas
+
+---
+
+### 📅 Calendario Fiscal Anual
+
+| Mes | Acción | Jurisdicción |
+|-----|--------|---|
+| **Enero-Febrero** | Recopilar documentos CETES, transferencias a mamá | México + Japón |
+| **Marzo 15** | Presentar Kakutei Shinkoku (declaración japonesa) | Japón |
+| **Abril-Mayo** | Presentar declaración SAT si residente México (opcional) | México |
+| **Junio** | Revisar posiciones, rebalancear si es necesario | Global |
+| **Septiembre** | Planificar Q4, verificar impuestos pagados | Global |
+| **Diciembre** | Cierre: tomar ganancias si aplica, planificar próximo año | Global |
+
+---
+
+### 🎯 Checklist Operacional Mensual
+
+- [ ] **Japón**: ¿Se envió transferencia a mamá este mes? (si aplica)
+- [ ] **México**: ¿CETES renovándose según ladder?
+- [ ] **Canadá**: ¿Saldo RRSP/TFSA reflejado correctamente?
+- [ ] **Global**: ¿Alguna señal de alerta activada?
+- [ ] **Liquidez**: ¿Hay al menos 5k CAD líquido disponible?
+
+---
+
 ## 📝 Nota Final
 
 Este documento consolida análisis de sector, pero enfatiza **timing, geopolítica, ciclos de crédito y señales de alerta** más que predicciones vagas.
