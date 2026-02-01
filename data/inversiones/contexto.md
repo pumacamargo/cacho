@@ -1,185 +1,5 @@
 # 🧭 Contexto de Inversiones 2026 — Guía Completa
 
-## 📌 Introducción: Componentes de Este Documento
-
-Este documento está dividido en **5 componentes clave** que van de lo estratégico a lo operacional:
-
-### 1️⃣ **Tesis y Análisis de Sectores**
-Responde: ¿Por qué invertir en estos sectores? ¿Cuáles son las tendencias estructurales?
-- Entiende el "por qué" antes de invertir
-- Identifica dónde está el dinero real
-
-### 2️⃣ **Riesgos y Señales de Alerta**
-Responde: ¿Qué puede salir mal? ¿Cuándo debo reaccionar?
-- Monitorea señales concretas, no predicciones
-- Reacciona cuando el mercado te da evidencia
-
-### 3️⃣ **Marco Estratégico (Asignación 40/20/20/5/15)**
-Responde: ¿Cómo distribuyo mi dinero por tipo de activo?
-- Define los porcentajes objetivo
-- Balance entre crecimiento y protección
-
-### 4️⃣ **Portafolio 2026 — Implementación Detallada** ⭐
-Responde: ¿Exactamente qué compro? ¿En qué cuenta? ¿Cuánto dinero?
-- Desglose por cuenta (RRSP, Cash, TFSA, Japón)
-- Tickers específicos y montos
-- Cómo verificar que estás en el target correcto
-
-### 5️⃣ **Reglas Operacionales**
-Responde: ¿Cómo ejecuto esto en práctica? ¿Cuándo rebalanceo?
-- Triggers de rebalanceo
-- Señales de alerta para actuar
-- Uso táctico del cash
-
----
-
-## 🎯 Tesis Central
-
-Estamos en un cambio estructural, no cíclico:
-
-- La **IA es como la electricidad**: transforma todo y llegó para quedarse.
-- La **segunda derivada es donde está el dinero**: infraestructura física, energía y cadenas críticas, no solo software.
-- **Muchos ganadores ya subieron** → timing y selección importan más que hype.
-
----
-
-## 📊 Análisis de Sectores Clave
-
-### 🤖 IA e Infraestructura
-
-La inversión fuerte no está en "apps de IA", sino en:
-
-- **Semiconductores** (equipamiento > diseñadores)
-- **Data centers, redes y memoria (HBM)**
-
-**⚠️ Riesgo real**: overcapacity 2027–2028 tras años de CAPEX.
-
-**⚠️ Riesgo #1**: geopolítica US–China y dependencia de supply chains.
-
-**Mejor enfoque**: fabricantes de equipamiento + ETFs bien diversificados.
-
----
-
-### 🔋 Energía (el cuello de botella real)
-
-La IA consume energía brutal y la red actual no da abasto.
-
-**Ganadores estructurales**:
-- Red eléctrica, transformadores, cables
-- Nuclear (incluyendo SMRs) para energía 24/7
-- Gas natural como combustible puente (2025–2028), aunque no sea sexy
-
-**Materias primas clave**:
-- **Cobre y uranio** → tendencia correcta, pero ciclo avanzado → esperar pullbacks.
-
----
-
-### 🏥 Biotech, Salud Digital y Longevidad
-
-Sector castigado en precio, pero con fundamentos intactos.
-
-**Catalizadores**:
-- IA en descubrimiento de fármacos
-- GLP-1 (obesidad/metabólico)
-- Genética, CRISPR y diagnósticos con IA
-
-**Mejor vía**: ETFs biotech o empresas públicas con ingresos reales.
-
----
-
-### 🔐 Ciberseguridad y Defensa Digital
-
-Gasto no discrecional (aunque haya recesión).
-
-**Pilares**:
-- Zero Trust, identidad digital y seguridad en nube son obligatorios.
-- Defensa cibernética crece junto con tensiones geopolíticas.
-- Premium en valuación, pero justificado por necesidad.
-
----
-
-### 🏗️ Data Centers, Edge y Cloud Soberano
-
-La infraestructura es la "carretera" de la IA.
-
-**Tendencias clave**:
-- Data centers y REITs
-- Refrigeración líquida
-- Edge computing
-
-**Data Sovereignty**:
-- Países exigen que los datos se queden localmente.
-- Beneficia clouds regionales y data centers locales.
-- Reta a AWS / Google / Azure fuera de EE.UU.
-
----
-
-### 🚗 Movilidad Eléctrica
-
-Tendencia sólida, pero sin euforia.
-
-**Oportunidades**:
-- Baterías
-- Infraestructura de carga
-- Componentes críticos
-
-**Mejor vía**: ETFs del ecosistema, no OEMs individuales.
-
----
-
-### 🧬 Tecnologías de Futuro (alto riesgo)
-
-Cuántica, 6G, aeroespacial: transformadoras pero largas.
-
-**⚠️ Muy sensibles a tasas altas y ciclo de crédito.**
-
-**Preferir**:
-- Empresas públicas
-- ETFs diversificados
-- Evitar apuestas "solo promesa"
-
----
-
-## ⚠️ Riesgos Estructurales a Vigilar
-
-- **Overcapacity en semiconductores** (2027–2028)
-- **Geopolítica > valuaciones**
-- **Tasas altas** = castigo a startups deeptech
-- **ETF overlap**: falsa diversificación (mucho MSFT / NVIDIA repetido)
-
----
-
-## 🧠 Reglas de Oro del Documento
-
-- ✔️ Timing > narrativa
-- ✔️ Infraestructura > software
-- ✔️ Público con ingresos > startups quemando cash
-- ✔️ Señales reales > predicciones
-- ✔️ Diversificación geográfica real (India, Europa, Asia)
-- ✔️ Horizonte 3–5 años
-
----
-
-## 🏆 Prioridades Estratégicas (5 años)
-
-1. **Infraestructura digital** (data centers, cooling)
-2. **Energía** (nuclear + red eléctrica + gas puente)
-3. **Semiconductores** (equipamiento)
-4. **Salud + IA**
-5. **Ciberseguridad Zero Trust**
-
----
-
-## 📌 Señales de Alerta Clave a Monitorear
-
-- **ASML guidance baja > 5%** → overcapacity inminente
-- **HBM prices caen > 20% Y/Y** → oversupply en memoria
-- **Nuevas sanciones a TSMC** → riesgos geopolíticos críticos
-- **Gas natural < $2/MMBTU** → productores recortan CAPEX
-- **High yield spreads > 600 bps** → mercado en risk-off
-
----
-
 ## 📊 Asignación Estratégica del Portafolio 2026
 
 ### ⚠️ Contexto Macroeconómico
@@ -211,7 +31,7 @@ Esta estructura de portafolio está diseñada específicamente para **resistir e
 ### 📈 Cómo Esta Distribución Maneja Recesión + Devaluación
 
 | Escenario | Impacto | Protección |
-|-----------|--------|-----------|
+|-----------|--------|-----------:|
 | **Recesión global** | Tech cae, mercados volátiles | 35% en defensivos (cash, utilities, oro, commodities) |
 | **Dólar se debilita** | Activos USD pierden valor | Cripto, oro, JPY, MXN actúan como hedge |
 | **Yen se debilita** | Oportunidad de compra en Japón | Exposición selectiva aprovecha valuaciones bajas |
@@ -429,6 +249,153 @@ Esta estructura de portafolio está diseñada específicamente para **resistir e
 - Aumentar Oro: 25k → 30k (+5k)
 - Aumentar Crypto: 5k → 8k (+3k)
 - Resultado: Cash: 47.5k (20.7%) ✅ | Commodities: 50k (21.8%) ✅
+
+---
+
+## 🎯 Tesis Central
+
+Estamos en un cambio estructural, no cíclico:
+
+- La **IA es como la electricidad**: transforma todo y llegó para quedarse.
+- La **segunda derivada es donde está el dinero**: infraestructura física, energía y cadenas críticas, no solo software.
+- **Muchos ganadores ya subieron** → timing y selección importan más que hype.
+
+---
+
+## 📊 Análisis de Sectores Clave
+
+### 🤖 IA e Infraestructura
+
+La inversión fuerte no está en "apps de IA", sino en:
+
+- **Semiconductores** (equipamiento > diseñadores)
+- **Data centers, redes y memoria (HBM)**
+
+**⚠️ Riesgo real**: overcapacity 2027–2028 tras años de CAPEX.
+
+**⚠️ Riesgo #1**: geopolítica US–China y dependencia de supply chains.
+
+**Mejor enfoque**: fabricantes de equipamiento + ETFs bien diversificados.
+
+---
+
+### 🔋 Energía (el cuello de botella real)
+
+La IA consume energía brutal y la red actual no da abasto.
+
+**Ganadores estructurales**:
+- Red eléctrica, transformadores, cables
+- Nuclear (incluyendo SMRs) para energía 24/7
+- Gas natural como combustible puente (2025–2028), aunque no sea sexy
+
+**Materias primas clave**:
+- **Cobre y uranio** → tendencia correcta, pero ciclo avanzado → esperar pullbacks.
+
+---
+
+### 🏥 Biotech, Salud Digital y Longevidad
+
+Sector castigado en precio, pero con fundamentos intactos.
+
+**Catalizadores**:
+- IA en descubrimiento de fármacos
+- GLP-1 (obesidad/metabólico)
+- Genética, CRISPR y diagnósticos con IA
+
+**Mejor vía**: ETFs biotech o empresas públicas con ingresos reales.
+
+---
+
+### 🔐 Ciberseguridad y Defensa Digital
+
+Gasto no discrecional (aunque haya recesión).
+
+**Pilares**:
+- Zero Trust, identidad digital y seguridad en nube son obligatorios.
+- Defensa cibernética crece junto con tensiones geopolíticas.
+- Premium en valuación, pero justificado por necesidad.
+
+---
+
+### 🏗️ Data Centers, Edge y Cloud Soberano
+
+La infraestructura es la "carretera" de la IA.
+
+**Tendencias clave**:
+- Data centers y REITs
+- Refrigeración líquida
+- Edge computing
+
+**Data Sovereignty**:
+- Países exigen que los datos se queden localmente.
+- Beneficia clouds regionales y data centers locales.
+- Reta a AWS / Google / Azure fuera de EE.UU.
+
+---
+
+### 🚗 Movilidad Eléctrica
+
+Tendencia sólida, pero sin euforia.
+
+**Oportunidades**:
+- Baterías
+- Infraestructura de carga
+- Componentes críticos
+
+**Mejor vía**: ETFs del ecosistema, no OEMs individuales.
+
+---
+
+### 🧬 Tecnologías de Futuro (alto riesgo)
+
+Cuántica, 6G, aeroespacial: transformadoras pero largas.
+
+**⚠️ Muy sensibles a tasas altas y ciclo de crédito.**
+
+**Preferir**:
+- Empresas públicas
+- ETFs diversificados
+- Evitar apuestas "solo promesa"
+
+---
+
+## ⚠️ Riesgos Estructurales a Vigilar
+
+- **Overcapacity en semiconductores** (2027–2028)
+- **Geopolítica > valuaciones**
+- **Tasas altas** = castigo a startups deeptech
+- **ETF overlap**: falsa diversificación (mucho MSFT / NVIDIA repetido)
+
+---
+
+## 🧠 Reglas de Oro del Documento
+
+- ✔️ Timing > narrativa
+- ✔️ Infraestructura > software
+- ✔️ Público con ingresos > startups quemando cash
+- ✔️ Señales reales > predicciones
+- ✔️ Diversificación geográfica real (India, Europa, Asia)
+- ✔️ Horizonte 3–5 años
+
+---
+
+## 🏆 Prioridades Estratégicas (5 años)
+
+1. **Infraestructura digital** (data centers, cooling)
+2. **Energía** (nuclear + red eléctrica + gas puente)
+3. **Semiconductores** (equipamiento)
+4. **Salud + IA**
+5. **Ciberseguridad Zero Trust**
+
+---
+
+## 📌 Señales de Alerta Clave a Monitorear
+
+- **ASML guidance baja > 5%** → overcapacity inminente
+- **HBM prices caen > 20% Y/Y** → oversupply en memoria
+- **Nuevas sanciones a TSMC** → riesgos geopolíticos críticos
+- **Gas natural < $2/MMBTU** → productores recortan CAPEX
+- **High yield spreads > 600 bps** → mercado en risk-off
 
 ---
 
