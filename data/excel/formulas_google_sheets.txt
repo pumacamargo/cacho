@@ -1,0 +1,428 @@
+═══════════════════════════════════════════════════════════════════
+FÓRMULAS LISTAS PARA GOOGLE SHEETS - Portafolio 2026
+═══════════════════════════════════════════════════════════════════
+
+SHEET: DASHBOARD
+═══════════════════════════════════════════════════════════════════
+
+SECCIÓN A: RESUMEN DE CUENTAS
+
+Celda A2 (Saldo RRSP):
+=SUMIF('PORTAFOLIO ACTUAL'!D:D,"RRSP",'PORTAFOLIO ACTUAL'!H:H)
+
+Celda A3 (Saldo Cash CAD):
+=SUMIF('PORTAFOLIO ACTUAL'!D:D,"Cash CAD",'PORTAFOLIO ACTUAL'!H:H)
+
+Celda A4 (Saldo TFSA):
+=SUMIF('PORTAFOLIO ACTUAL'!D:D,"TFSA",'PORTAFOLIO ACTUAL'!H:H)
+
+Celda A5 (Saldo Japón):
+=SUMIF('PORTAFOLIO ACTUAL'!D:D,"Japón",'PORTAFOLIO ACTUAL'!H:H)
+
+Celda A6 (Saldo Opciones):
+=SUMIF('PORTAFOLIO ACTUAL'!D:D,"Opciones",'PORTAFOLIO ACTUAL'!H:H)
+
+Celda A7 (Saldo NISA):
+=SUMIF('PORTAFOLIO ACTUAL'!D:D,"NISA",'PORTAFOLIO ACTUAL'!H:H)
+
+Celda A8 (TOTAL):
+=SUM(A2:A7)
+
+Celda B2 (% RRSP):
+=IF(A$8=0,0,A2/A$8)
+
+(Copiar B2 a B3:B7, y B8 será siempre =100%)
+Celda B8 (% TOTAL):
+=SUM(B2:B7)
+
+FORMATO: Columna B como Porcentaje (dos decimales)
+
+
+SECCIÓN B: DISTRIBUCIÓN ACTUAL VS TARGET
+
+Celda A12 (Activos Productivos - Actual CAD):
+=SUMIF('PORTAFOLIO ACTUAL'!E:E,"Activos Productivos",'PORTAFOLIO ACTUAL'!H:H)
+
+Celda B12 (% Actual):
+=IF(SUM($H:$H)=0,0,A12/SUM('PORTAFOLIO ACTUAL'!H:H))
+
+Celda C12 (Target %):
+=CONFIGURACIÓN!$C$3  [apunta a donde está 40% en CONFIGURACIÓN]
+
+Celda D12 (Desviación):
+=B12-C12
+
+Celda E12 (Status):
+=IF(ABS(D12)<=0.05,"✅","⚠️")
+
+(Repetir A12:E12 para cada categoría: REITs, Commodities, Cash, Crypto)
+
+FORMATO: Columna B y C como Porcentaje, Columna D como Porcentaje (dos decimales)
+
+
+═══════════════════════════════════════════════════════════════════
+SHEET: PORTAFOLIO ACTUAL
+═══════════════════════════════════════════════════════════════════
+
+Columnas esperadas:
+A: Ticker
+B: Nombre
+C: Cuenta (RRSP, Cash, TFSA, Japón, Opciones, NISA)
+D: Categoría (Activos Productivos, REITs, Commodities, Cash, Crypto, etc.)
+E: Shares
+F: Precio CAD
+G: Valor CAD
+H: % Portfolio
+I: Notas
+
+Celda G3 (Valor CAD):
+=E3*F3
+
+(Copiar G3 hasta G100)
+
+Celda H3 (% Portfolio):
+=IF(SUM($G$3:$G$100)=0,0,G3/SUM($G$3:$G$100))
+
+(Copiar H3 hasta H100)
+
+NOTA: Actualizar Precio CAD (columna F) manualmente o via:
+- Yahoo Finance
+- Importar desde API si tienes Pro
+- Usar GOOGLEFINANCE() en versión gratuita
+
+Celda H101 (Total %):
+=SUM(H3:H100)
+
+
+═══════════════════════════════════════════════════════════════════
+SHEET: HISTORIAL TRANSACCIONES
+═══════════════════════════════════════════════════════════════════
+
+Columnas esperadas:
+A: Fecha
+B: Tipo (BUY, SELL)
+C: Ticker
+D: Nombre
+E: Cuenta
+F: Shares
+G: Precio
+H: Comisión
+I: Valor Total
+
+Celda I3 (Valor Total - BUY):
+=IF(B3="BUY",(F3*G3)+H3,(F3*G3)-H3)
+
+(Copiar I3 hasta I100)
+
+FÓRMULA AVANZADA: Costo Promedio por Acción (en otra hoja)
+
+Para calcular el costo promedio de NVDA (ejemplo):
+
+=SUMIFS('HISTORIAL'!I:I,'HISTORIAL'!C:C,"NVDA",'HISTORIAL'!B:B,"BUY") /
+ SUMIFS('HISTORIAL'!F:F,'HISTORIAL'!C:C,"NVDA",'HISTORIAL'!B:B,"BUY")
+
+Esto divide el dinero total invertido entre total de shares compradas.
+
+
+═══════════════════════════════════════════════════════════════════
+SHEET: CUENTAS
+═══════════════════════════════════════════════════════════════════
+
+Columnas:
+A: Nombre Cuenta
+B: Tipo
+C: Saldo Total CAD
+D: Equity
+E: Cash
+F: Crypto
+G: Target %
+H: Actual %
+I: Estado
+
+Celda C2 (Saldo RRSP):
+=SUMIF('PORTAFOLIO ACTUAL'!C:C,"RRSP",'PORTAFOLIO ACTUAL'!G:G)
+
+(Repetir para cada cuenta)
+
+Celda D2 (Equity):
+=SUMIF('PORTAFOLIO ACTUAL'!C:C,"RRSP",'PORTAFOLIO ACTUAL'!G:G) - E2
+
+Celda E2 (Cash):
+[Manual o VLOOKUP si tienes tabla de cash por cuenta]
+
+Celda F2 (Crypto):
+=SUMIFS('PORTAFOLIO ACTUAL'!G:G,'PORTAFOLIO ACTUAL'!C:C,"RRSP",'PORTAFOLIO ACTUAL'!D:D,"Crypto")
+
+Celda G2 (Target %):
+=CONFIGURACIÓN!D2  [apunta a target de cada cuenta en CONFIGURACIÓN]
+
+Celda H2 (Actual %):
+=C2/SUM($C$2:$C$7)
+
+Celda I2 (Estado):
+=IF(ABS(H2-G2)<=0.05,"✅",IF(H2>G2,"⚠️ Alto","⚠️ Bajo"))
+
+Celda C8 (TOTAL):
+=SUM(C2:C7)
+
+
+═══════════════════════════════════════════════════════════════════
+SHEET: SEÑALES ALERTA
+═══════════════════════════════════════════════════════════════════
+
+Columnas:
+A: Indicador
+B: Señal Actual
+C: Threshold
+D: Status
+E: Acción
+
+Celda D2 (Status - ASML Guidance):
+=IF(B2<C2,"🔴 ALERTA",IF(B2<(C2*0.8),"🟡 ATENCIÓN","🟢 OK"))
+
+Celda D3 (Status - HBM Prices):
+=IF(B3<C3,"🔴 OVERCAPACITY","🟢 OK")
+
+Celda D4 (Status - Gas Natural):
+=IF(B4<C4,"🔴 BAJO PRECIO","🟢 OK")
+
+Celda D5 (Status - High Yield Spreads):
+=IF(B5>C5,"🔴 RISK-OFF","🟢 OK")
+
+(Actualizar manualmente B2:B5 con valores reales)
+
+
+═══════════════════════════════════════════════════════════════════
+SHEET: CONFIGURACIÓN
+═══════════════════════════════════════════════════════════════════
+
+Celda C2 (Fecha Actualización):
+=TODAY()
+
+Mantener resto de valores (USD/CAD, targets, etc.) como constantes para referencia.
+
+
+═══════════════════════════════════════════════════════════════════
+VALIDACIÓN DE DATOS (Data Validation)
+═══════════════════════════════════════════════════════════════════
+
+En PORTAFOLIO ACTUAL, Celda C3 (Cuenta):
+
+1. Selecciona el rango C3:C100
+2. Datos → Validación
+3. Elegir: Lista de elementos
+4. Elementos: RRSP,Cash CAD,TFSA,Japón,Opciones,NISA
+5. Mostrar mensajes de error: Checked
+6. Mensaje personalizado: "Elige una cuenta válida"
+
+En PORTAFOLIO ACTUAL, Celda D3 (Categoría):
+
+1. Selecciona el rango D3:D100
+2. Datos → Validación
+3. Elegir: Lista de elementos
+4. Elementos:
+   Activos Productivos,REITs/Infraestructura,Semiconductores,Biotech,Ciberseguridad,Energía,
+   Metales & Commodities,Oro,Cobre,Plata,Gas Natural,
+   Cash + CETES,Crypto,Mercados Emergentes
+
+En HISTORIAL TRANSACCIONES, Celda B3 (Tipo):
+
+1. Selecciona el rango B3:B100
+2. Datos → Validación
+3. Elegir: Lista de elementos
+4. Elementos: BUY,SELL
+
+
+═══════════════════════════════════════════════════════════════════
+FORMATEO CONDICIONAL
+═══════════════════════════════════════════════════════════════════
+
+DASHBOARD - Columna Desviación (D):
+
+1. Selecciona rango D12:D16
+2. Formato → Formateo condicional
+3. Escala de colores:
+   - Mínimo (-0.10): Rojo = #FF0000
+   - Centro (0.00): Blanco = #FFFFFF
+   - Máximo (+0.10): Verde = #00FF00
+
+PORTAFOLIO ACTUAL - Columna Shares (E):
+
+1. Selecciona rango E3:E100
+2. Formato → Formateo condicional
+3. Si el valor es > 100: Color de fondo amarillo (alerta de concentración)
+
+CUENTAS - Columna Estado (I):
+
+1. Selecciona rango I2:I7
+2. Formato → Formateo condicional
+3. Formato personalizado:
+   - Si contiene "✅": Fondo verde
+   - Si contiene "⚠️": Fondo naranja
+   - Si contiene "🔴": Fondo rojo
+
+
+═══════════════════════════════════════════════════════════════════
+GRÁFICOS RECOMENDADOS
+═══════════════════════════════════════════════════════════════════
+
+1. GRÁFICO DE TORTA: Distribución Actual
+   - Datos: PORTAFOLIO ACTUAL columnas A (Ticker) y G (Valor CAD)
+   - Ubicar en: DASHBOARD
+   - Título: "Distribución Actual (CAD)"
+
+2. GRÁFICO DE COMPARACIÓN: Actual vs Target
+   - Datos: DASHBOARD columnas A (Categoría), B (% Actual), C (% Target)
+   - Tipo: Gráfico de barras (lado a lado)
+   - Ubicar en: DASHBOARD
+   - Título: "Distribución Actual vs Target"
+
+3. GRÁFICO DE LÍNEA: Evolución del Portafolio
+   - Datos: HISTORIAL TRANSACCIONES A (Fecha) y valores acumulados
+   - Actualizar mensualmente
+   - Ubicar en: DASHBOARD
+   - Título: "Valor Total del Portafolio (2026)"
+
+4. GRÁFICO DE BARRAS: Valor por Categoría
+   - Datos: DASHBOARD columnas A (Categoría) y A (Actual CAD)
+   - Ubicar en: DASHBOARD
+   - Título: "Valor CAD por Categoría"
+
+
+═══════════════════════════════════════════════════════════════════
+IMPORTAR PRECIOS AUTOMÁTICAMENTE (Opcional - Google Finance)
+═══════════════════════════════════════════════════════════════════
+
+En PORTAFOLIO ACTUAL, Celda F3 (Precio CAD):
+
+=GOOGLEFINANCE("NASDAQ:EQIX","price",TODAY())
+
+NOTA:
+- GOOGLEFINANCE() trae precios en tiempo real de Google Finance
+- Funciona para tickers principales (NASDAQ, NYSE, TSE)
+- Para tickers canadienses: =GOOGLEFINANCE("TSX:EQIX","price",TODAY())
+
+TABLA DE REFERENCIAS:
+- NASDAQ: "NASDAQ:TICKER"
+- NYSE: "NYSE:TICKER"
+- TSX (Toronto): "TSX:TICKER"
+- Tokyo: "TSE:TICKER"
+
+LIMITACIÓN: Google Finance no cubre todos los tickers, especialmente OTC o pequeños.
+
+
+═══════════════════════════════════════════════════════════════════
+EJEMPLO: Seguimiento de P&L en Opciones
+═══════════════════════════════════════════════════════════════════
+
+Sheet: OPCIONES DETALLADO
+
+Columnas:
+A: Fecha Apertura
+B: Ticker
+C: Tipo (Call/Put)
+D: Strike
+E: Vencimiento
+F: Premium Recibido
+G: Precio Actual (manual)
+H: P&L
+I: Estado (Abierto/Cerrado)
+
+Celda H3 (P&L si Call):
+=IF(C3="Call",
+  IF(G3>F3,(G3-F3)*100,"Ganancia: "(F3-G3)*100),
+  IF(G3<F3,(F3-G3)*100,"Ganancia: "(G3-F3)*100))
+
+Celda H3 (P&L simple):
+=(IF(C3="Call",F3-G3,G3-F3))*100
+
+NOTAS:
+- Las opciones se expresan en premium por share (×100 por contrato)
+- Actualizar G3 (Precio Actual) manualmente desde broker
+
+
+═══════════════════════════════════════════════════════════════════
+FÓRMULAS ESPECIALES: CETES Y CONVERSIÓN DE MONEDA
+═══════════════════════════════════════════════════════════════════
+
+CETES en PORTAFOLIO ACTUAL:
+
+Celda A: "CETES-MXN"
+Celda B: "Certificados de la Tesorería"
+Celda C: "Cash CAD"
+Celda D: "Cash + CETES"
+Celda E: [Manual: cantidad en millones de MXN, ej. 5.2]
+Celda F: =CONFIGURACIÓN!$B$4  [MXN/CAD rate]
+Celda G: =E*F  [Valor en CAD]
+
+Ejemplo:
+E3 = 5200000 (MXN)
+F3 = 0.0192 (tasa MXN/CAD)
+G3 = 99,840 CAD
+
+
+CRYPTO EN PORTAFOLIO ACTUAL:
+
+Celda A: "BTCC.B.TO" (Bitcoin ETF TSX)
+Celda B: "Bitcoin"
+Celda C: "Cash CAD"
+Celda D: "Crypto"
+Celda E: 2000 (shares del ETF)
+Celda F: =GOOGLEFINANCE("TSX:BTCC.B.TO","price",TODAY())
+Celda G: =E*F
+
+
+CUENTA JAPÓN (Conversión a CAD):
+
+En CUENTAS, para Japón:
+=SUMIF('PORTAFOLIO ACTUAL'!C:C,"Japón",'PORTAFOLIO ACTUAL'!G:G)
+
+Si tienes posiciones en JPY, convertir manualmente:
+Valor JPY × CONFIGURACIÓN!$B$5 (JPY/CAD rate)
+
+
+═══════════════════════════════════════════════════════════════════
+REBALANCEO AUTOMÁTICO (Calculador)
+═══════════════════════════════════════════════════════════════════
+
+En una hoja aparte "REBALANCEO":
+
+Columnas:
+A: Categoría
+B: Valor Actual CAD
+C: Target %
+D: Valor Target CAD
+E: Diferencia
+F: Acción
+
+Celda D2 (Valor Target):
+=$D$1 * C2  [donde D1 es el Total Portfolio]
+
+Celda E2 (Diferencia):
+=D2-B2
+
+Celda F2 (Acción):
+=IF(E2>100,"COMPRAR: "&E2,IF(E2<-100,"VENDER: "&ABS(E2),"MANTENER"))
+
+Esto te da una lista clara de qué necesitas rebalancear cada trimestre.
+
+
+═══════════════════════════════════════════════════════════════════
+TIPS FINALES
+═══════════════════════════════════════════════════════════════════
+
+1. GUARDAR VERSIONES: Cada trimestre, descarga CSV de HISTORIAL TRANSACCIONES
+   para backup histórico.
+
+2. ACTUALIZAR PRECIOS: Haz un recordatorio mensual para actualizar columna F
+   en PORTAFOLIO ACTUAL (o usa GOOGLEFINANCE si aplica).
+
+3. AUTOMATIZACIÓN: Google Forms + Apps Script puede automatizar entrada de
+   transacciones (nivel avanzado).
+
+4. ALERTAS: Usa herramienta de notificaciones de Google Sheets para recibir
+   email si P&L cae >15% en un mes.
+
+5. AUDITORÍA: Cada trimestre, verifica que HISTORIAL TRANSACCIONES cuadre
+   con confirma de broker.
+

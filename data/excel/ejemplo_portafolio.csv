@@ -1,0 +1,48 @@
+Ticker,Nombre,Cuenta,Categoría,Tipo Posición,Shares,Precio CAD,Valor CAD,% Portfolio,Notas,Vencimiento,Strike
+EQIX,Equinix Inc,RRSP,REITs/Infraestructura,Stock,50,525.00,26250,11.5,Data Center REIT Líder,—,—
+DLR,Digital Realty,RRSP,REITs/Infraestructura,Stock,75,135.00,10125,4.4,Infraestructura IA,—,—
+SRVR,Invesco S&P 500 Equal Weight ETF,RRSP,REITs/Infraestructura,Stock,140,32.00,4480,2.0,Data Center ETF,—,—
+ASML,ASML Holding,RRSP,Semiconductores,Stock,20,550.00,11000,4.8,Equipamiento (NO diseñador),—,—
+LRCX,Lam Research,RRSP,Semiconductores,Stock,25,280.00,7000,3.1,Fab Equipment,—,—
+AMAT,Applied Materials,RRSP,Semiconductores,Stock,30,210.00,6300,2.8,Semiconductor Equipment,—,—
+ARKG,ARK Genomic Revolution ETF,RRSP,Biotech,Stock,100,28.50,2850,1.2,Biotech Diversificado,—,—
+XBI,SPDR S&P Biotech ETF,RRSP,Biotech,Stock,80,32.00,2560,1.1,Biotech ETF,—,—
+CRSP,CRISPR Therapeutics,RRSP,Biotech,Stock,15,95.00,1425,0.6,CRISPR,—,—
+EDIT,Editas Medicine,RRSP,Biotech,Stock,20,60.00,1200,0.5,Gene Editing,—,—
+HACK,Invesco Cybersecurity ETF,RRSP,Ciberseguridad,Stock,120,22.00,2640,1.2,Cybersecurity ETF,—,—
+CIBR,Nasdaq Cybersecurity ETF,RRSP,Ciberseguridad,Stock,100,25.00,2500,1.1,Cybersecurity ETF,—,—
+VPU,Vanguard Utilities ETF,RRSP,Energía,Stock,50,28.00,1400,0.6,Utilities,—,—
+XLU,Utilities Sector SPDR,RRSP,Energía,Stock,45,31.00,1395,0.6,Energy Sector,—,—
+CCO.TO,Cameco Corporation,RRSP,Energía,Stock,60,42.00,2520,1.1,Uranio Canadá,—,—
+URA,Global X Uranium ETF,RRSP,Energía,Stock,80,18.00,1440,0.6,Uranium ETF,—,—
+GRID,Global X Energy Infrastructure ETF,RRSP,Energía,Stock,100,8.50,850,0.4,Grid Modernization,—,—
+INDA,iShares MSCI India ETF,RRSP,Mercados Emergentes,Stock,150,15.00,2250,1.0,India ETF,—,—
+EWZ,iShares MSCI Brazil ETF,RRSP,Mercados Emergentes,Stock,80,32.00,2560,1.1,Brazil ETF,—,—
+VWO,Vanguard FTSE Emerging Markets ETF,RRSP,Mercados Emergentes,Stock,100,16.00,1600,0.7,Emerging Markets,—,—
+MNT.TO,Mint Gold ETF,Cash CAD,Metales & Commodities,Stock,200,125.00,25000,10.9,Oro Físico Canadá,—,—
+PHYS.TO,Sprott Physical Gold,Cash CAD,Metales & Commodities,Stock,150,85.00,12750,5.6,Oro en Bóveda,—,—
+COPX,Global X Copper Miners ETF,Cash CAD,Metales & Commodities,Stock,300,20.00,6000,2.6,Cobre,—,—
+CPER,Copper ETF,Cash CAD,Metales & Commodities,Stock,100,25.00,2500,1.1,Copper Futures,—,—
+PSLV.TO,Sprott Physical Silver,Cash CAD,Metales & Commodities,Stock,1000,5.00,5000,2.2,Plata Física,—,—
+UNG,Natural Gas ETF,Cash CAD,Metales & Commodities,Stock,400,10.00,4000,1.7,Gas Natural,—,—
+XEG.TO,Canadian Energy Producers,Cash CAD,Metales & Commodities,Stock,250,8.00,2000,0.9,Energy Canada,—,—
+BTCC.B.TO,Bitcoin ETF TSX,Cash CAD,Crypto,Stock,2000,2.50,5000,2.2,Bitcoin,—,—
+EETH.TO,Ethereum ETF TSX,Cash CAD,Crypto,Stock,1000,1.50,1500,0.7,Ethereum,—,—
+CETES-MXN,Certificados Tesorería México,Cash CAD,Cash + CETES,Stock,5200000,0.0000192,99840,43.6,Yields 7-9% MXN,—,—
+CASH-CAD,Efectivo Líquido Canadá,Cash CAD,Cash + CETES,Stock,1,15000.00,15000,6.6,Pólvora Seca,—,—
+NVDA,NVIDIA Corporation,TFSA,Semiconductores,Stock,25,850.00,21250,9.3,High Beta Semiconductores,—,—
+AVGO,Broadcom Inc,TFSA,Semiconductores,Stock,20,620.00,12400,5.4,Networking Infrastructure,—,—
+EDIT,Editas Medicine,TFSA,Biotech,Stock,15,60.00,900,0.4,Gene Editing,—,—
+CRSP,CRISPR Therapeutics,TFSA,Biotech,Stock,15,95.00,1425,0.6,CRISPR,—,—
+BTCC.B.TO,Bitcoin ETF TSX,TFSA,Crypto,Stock,1000,2.50,2500,1.1,Bitcoin Tax-Free,—,—
+EETH.TO,Ethereum ETF TSX,TFSA,Crypto,Stock,400,1.50,600,0.3,Ethereum Tax-Free,—,—
+9501.T,Tokyo Electric Power,Japón,Energía,Stock,100,1850.00,185000,80.8,Utilities Japón (JPY),—,—
+9503.T,Kansai Electric Power,Japón,Energía,Stock,50,2200.00,110000,48.0,Utilities Japón (JPY),—,—
+4502.T,Takeda Pharmaceutical,Japón,Biotech,Stock,60,3200.00,192000,83.8,Pharma Japón (JPY),—,—
+4503.T,Astellas Pharma,Japón,Biotech,Stock,80,2800.00,224000,97.8,Pharma Japón (JPY),—,—
+7203.T,Toyota Motor,Japón,Mercados Emergentes,Stock,50,1950.00,97500,42.6,Exportador Japón (JPY),—,—
+6758.T,Sony Corporation,Japón,Mercados Emergentes,Stock,40,1050.00,42000,18.3,Electrónica Japón (JPY),—,—
+CASH-JPY,Efectivo Líquido JPY,Japón,Cash + CETES,Stock,1,2500.00,2500,1.1,High-yield savings,—,—
+SPY,SPDR S&P 500 ETF,Opciones,Semiconductores,Call,10,2.50,2500,1.1,Call 560 Strike,2026-03-15,560
+QQQ,Invesco QQQ Trust,Opciones,Semiconductores,Put,8,1.75,1400,0.6,Put 420 Strike,2026-03-20,420
+TOTAL,Portfolio 2026,,,,,228000,228000,100,Estado al 1 Feb 2026,,
