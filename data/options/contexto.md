@@ -18,10 +18,10 @@ La estrategia tiene **2 fases**:
 
 ### FASE 1: VENTA DE PUTS SEMANALES
 
-- Vendes 2 puts OTM (fuera del dinero), separados 1 semana
-  - Semana 1: Vender 1 put que vence en 7 días
-  - Semana 2: Vender otro put que vence en 7 días (el primero está cerrándose)
-  - Resultado: **1 put cerrándose cada semana** = flujo consistente
+- Vendes puts OTM (fuera del dinero) cada semana
+  - Estructura: **1 put cerrándose cada semana** = flujo consistente
+  - Pueden ser 1, 2 o más contratos según el precio del stock y margen disponible
+  - Vende nuevo put cada semana para mantener el flujo
 - Recibes premium cada semana
 - Dejas que expiren naturalmente (sin take profit de 50%)
 - Si no te asignan → Ganancias limpias
@@ -34,7 +34,7 @@ La estrategia tiene **2 fases**:
 - **Take Profit de 50%**: Cierras la posición cuando ganes 50% en el call
 
 **Ciclo normal**: 4-8 semanas (si hay asignación)
-**Ganancia esperada**: $45-60 por semana en Fase 1 + prima adicional de Fase 2 si asignan
+**Ganancia esperada**: ~1.5% semanal de tu capital en Fase 1 + prima adicional de Fase 2 si asignan
 
 ---
 
@@ -50,7 +50,7 @@ La estrategia tiene **2 fases**:
 | **IV Rank** | > 30% (más alto = mejores premios) |
 | **Open Interest** | > 500 |
 | **Bid-Ask spread** | < $0.15 |
-| **Prima mínima** | 1.5% de capital ($45 mínimo) |
+| **Prima mínima** | 1.5% de tu capital por contrato |
 
 ### Gestión FASE 1
 
@@ -84,7 +84,7 @@ La estrategia tiene **2 fases**:
 - Stock price: $15-60
 - IV Rank > 30% (cuanto más alto = mejores premios)
 - Bid-Ask spread < $0.15
-- Prima de put ≥ 1.5% de tu capital ($45 mínimo)
+- Prima de put ≥ 1.5% de tu capital por contrato
 - **Que entiendas la empresa** (posibilidad de asignación)
 
 **Frecuencia**: Revisa **cada semana** para identificar puttos semanales a vender
@@ -158,11 +158,11 @@ Al elegir stocks para vender puts semanales, priorizar industrias que combinen:
 
 Con $3,000 de presupuesto, **enfoque en la misma empresa**:
 - **Enfoque concentrado**: Operas 1 sola empresa (mejor entendimiento, especialización)
-- **2 puts simultáneos**: Separados 1 semana para crear flujo consistente
-  - Semana 1: Vender put #1 (vence en 7 días)
-  - Semana 2: Vender put #2 (vence en 7 días)
-  - Semana 3: El put #1 expira, repites con put #3
-  - Resultado: 1 put cerrándose cada semana
+- **Puts semanales en cascada**: Separados 1 semana para crear flujo consistente
+  - Semana 1: Vender put(s) que vence en 7 días
+  - Semana 2: Vender nuevo(s) put(s) (los anteriores están cerrándose)
+  - Semana 3: Los puts de semana 1 expiran, repites con nuevos
+  - Resultado: **1 semana cerrándose cada semana**, margen reutilizable
 
 **Diversificación futura** (cuando crezca a $6,000+):
 - Mantén 1 empresa principal (puts semanales)
@@ -181,7 +181,7 @@ Antes de vender PUT en cualquier stock:
 - [ ] ¿Stock price entre $15-60?
 - [ ] ¿Open Interest > 500?
 - [ ] ¿Bid-Ask spread < $0.15?
-- [ ] ¿Prima ≥ 1.5% de mi capital ($45+ mínimo)?
+- [ ] ¿Prima ≥ 1.5% de mi capital por contrato?
 - [ ] ¿Entiendo el negocio de la empresa?
 - [ ] ¿Estaría cómodo manteniendo 100 acciones si me asignan? (Fase 2)
 - [ ] ¿La industria tiene potencial a mediano plazo?
