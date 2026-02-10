@@ -104,6 +104,24 @@ Si NO → Buscar otro stock
 
 ---
 
+## 🎯 Empresa Objetivo
+
+| Parámetro | Valor |
+|-----------|-------|
+| **Ticker** | UEC |
+| **Empresa** | Uranium Energy Corp |
+| **Precio actual** | $16.10 |
+| **Target 12M** | $27 (+67%) |
+| **Volatilidad** | 7.96% |
+| **Rating** | 🟢 Buy |
+| **Sector** | Energía Nuclear / Uranium |
+| **Catalizador** | Demanda uranium nuclear en tendencia alcista |
+| **Fecha selección** | Feb 10, 2026 |
+
+**Por qué UEC**: Empresa real operacional, target alcista, sector en momentum, volatilidad decent para premios semanales. Fácil de entender el negocio.
+
+---
+
 ## 📝 Registro y Seguimiento
 
 - **Último registro**: [Actualizar con fecha]
