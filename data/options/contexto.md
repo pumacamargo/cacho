@@ -4,56 +4,68 @@
 
 | Parámetro | Valor |
 |-----------|-------|
-| **Objetivo** | Generar ingresos vendiendo opciones (puts y calls) |
-| **Estrategia** | Wheel (repetible, genera premium) |
+| **Objetivo** | Generar ingresos semanales vendiendo puts, y ganancias adicionales con covered calls |
+| **Estrategia** | Sell Puts Semanales + Covered Call (si asignan) |
 | **Presupuesto** | 3,000 USD |
 | **Broker** | Webull |
-| **Meta** | 20-40% anual (~$600-1,200/año) |
+| **Meta** | $300-500/mes (5-8% mensual) |
 
 ---
 
-## 🎡 Wheel Strategy
+## 🎡 Estrategia: Sell Puts Semanales + Covered Call
 
-La estrategia wheel tiene **3 fases**:
+La estrategia tiene **2 fases**:
 
-### FASE 1: VENTA DE PUT
+### FASE 1: VENTA DE PUTS SEMANALES
 
-- Vendes put OTM (fuera del dinero)
-- Recibes premium
-- Si el precio baja y es asignado, compras 100 acciones
+- Vendes 2 puts OTM (fuera del dinero), separados 1 semana
+  - Semana 1: Vender 1 put que vence en 7 días
+  - Semana 2: Vender otro put que vence en 7 días (el primero está cerrándose)
+  - Resultado: **1 put cerrándose cada semana** = flujo consistente
+- Recibes premium cada semana
+- Dejas que expiren naturalmente (sin take profit de 50%)
+- Si no te asignan → Ganancias limpias
 
-### FASE 2: POSESIÓN DE STOCK (opcional)
+### FASE 2: VENTA DE CALL CUBIERTO (SOLO si asignan)
 
-- Si fuiste asignado, ahora tienes 100 acciones
+- Si fuiste asignado: ahora tienes 100 acciones
+- Vendes 1 call cubierto de 4-6 semanas
+- Strike: **50% sobre tu precio de entrada**
+- **Take Profit de 50%**: Cierras la posición cuando ganes 50% en el call
 
-### FASE 3: VENTA DE CALL CUBIERTO
-
-- Vendes call sobre las acciones que posees
-- Recibes más premium
-- Si es asignado, vendes las acciones con ganancia
-
-**Ciclo**: 4-8 semanas
-**Ganancia esperada**: 4-8% por ciclo
+**Ciclo normal**: 4-8 semanas (si hay asignación)
+**Ganancia esperada**: $45-60 por semana en Fase 1 + prima adicional de Fase 2 si asignan
 
 ---
 
 ## ⚙️ Parámetros de Entrada
 
-### Venta de PUT
+### Venta de PUT Semanal (FASE 1)
 
 | Parámetro | Valor |
 |-----------|-------|
-| **Stock price** | < $30 USD |
-| **DTE** | 30-45 días a expiración |
-| **Delta** | -0.35 a -0.25 (30-35% out of the money) |
-| **IV Rank** | > 60% (volatilidad alta = más premium) |
+| **Stock price** | $15-60 USD |
+| **DTE** | 7 días a expiración |
+| **Delta** | -0.25 a -0.15 (2-3 delta, conservador) |
+| **IV Rank** | > 30% (más alto = mejores premios) |
 | **Open Interest** | > 500 |
 | **Bid-Ask spread** | < $0.15 |
+| **Prima mínima** | 1.5% de capital ($45 mínimo) |
 
-### Salida
+### Gestión FASE 1
 
-- **Take Profit**: 50% de ganancia (cierre rápido, menos riesgo)
-- **Usar Limit Order** para automatizar
+- **Salida**: Dejas que expire naturalmente en 7 días
+- **Sin take profit de 50%** en puts semanales
+- Si precio baja peligrosamente → considera cerrar antes
+
+### Venta de CALL Cubierto (FASE 2 - solo si asignan)
+
+| Parámetro | Valor |
+|-----------|-------|
+| **DTE** | 4-6 semanas |
+| **Strike** | 50% sobre precio de entrada |
+| **Take Profit** | 50% de ganancia (cierre automático) |
+| **Herramienta** | Usar Limit Order para automatizar |
 
 ---
 
@@ -63,29 +75,34 @@ La estrategia wheel tiene **3 fases**:
 
 **Filtros principales**:
 - Symbols: Whole Market
-- Days to Expire: 30 to 45
-- Volume: 500 to 136,340
+- Days to Expire: 7 to 7 (solo opciones semanales)
+- Volume: 50+ (menos restrictivo para semanales)
 - Open Interest: 500 to 525,654
-- Delta: -0.35 to -0.25
+- Delta: -0.25 to -0.15
 
 **Después de resultados, filtra manualmente**:
-- Stock price < $30
-- IV Rank > 60%
+- Stock price: $15-60
+- IV Rank > 30% (cuanto más alto = mejores premios)
 - Bid-Ask spread < $0.15
+- Prima de put ≥ 1.5% de tu capital ($45 mínimo)
+- **Que entiendas la empresa** (posibilidad de asignación)
 
-**Frecuencia**: Revisa cada 2-3 días para nuevas oportunidades
+**Frecuencia**: Revisa **cada semana** para identificar puttos semanales a vender
+- Después de tu put actual, identifica el siguiente para la siguiente semana
+- Esto crea el flujo continuo de ingresos
 
 ---
 
-## 🏭 Industrias Recomendadas para Wheel Strategy
+## 🏭 Industrias Recomendadas para Puts Semanales
 
 ### Criterios de Selección
 
-Al elegir stocks para vender puts, priorizar industrias que combinen:
-- ✅ **Alta volatilidad** (IV > 60%) = Mejor premium
-- ✅ **Stocks < $30** = Compatible con presupuesto de $3,000
-- ✅ **Potencial largo plazo** = Si te asignan, puedes mantener con confianza
+Al elegir stocks para vender puts semanales, priorizar industrias que combinen:
+- ✅ **Volatilidad decent** (IV Rank > 30%) = Premios semanales atractivos
+- ✅ **Stocks $15-60** = Compatible con presupuesto de $3,000 y asignación
+- ✅ **Potencial a mediano plazo** = Si te asignan, puedes mantener 4-6 semanas con confianza
 - ✅ **Liquidez** = Open Interest > 500, Bid-Ask < $0.15
+- ✅ **Opciones semanales disponibles** = Trading todos los viernes
 
 ---
 
@@ -139,30 +156,36 @@ Al elegir stocks para vender puts, priorizar industrias que combinen:
 
 ## 🎯 Estrategia de Diversificación
 
-Con $3,000 de presupuesto, **enfoque conservador**:
-- **1 posición activa** a la vez (vender 1 put contract)
-- Rotar entre 2-3 sectores diferentes
-- Ejemplo:
-  - Ciclo 1: Energía limpia
-  - Ciclo 2: Biotech
-  - Ciclo 3: Energía limpia
-  - Evitar concentración excesiva
+Con $3,000 de presupuesto, **enfoque en la misma empresa**:
+- **Enfoque concentrado**: Operas 1 sola empresa (mejor entendimiento, especialización)
+- **2 puts simultáneos**: Separados 1 semana para crear flujo consistente
+  - Semana 1: Vender put #1 (vence en 7 días)
+  - Semana 2: Vender put #2 (vence en 7 días)
+  - Semana 3: El put #1 expira, repites con put #3
+  - Resultado: 1 put cerrándose cada semana
 
-**Si crece el capital a $6,000+**:
-- Puedes tener 2 posiciones simultáneas en sectores diferentes
+**Diversificación futura** (cuando crezca a $6,000+):
+- Mantén 1 empresa principal (puts semanales)
+- Alterna covered calls con 1-2 empresas secundarias si hay asignaciones
+- Ejemplo:
+  - Semanas 1-4: Puts en Empresa A
+  - Si asignan: Covered calls 4-6 semanas, luego vuelves a Empresa A
+  - Mientras tanto: Si hay tiempo, pequeñas posiciones en Empresa B
 
 ---
 
 ## 📋 Checklist Pre-Trade
 
 Antes de vender PUT en cualquier stock:
-- [ ] ¿IV Rank > 60%?
-- [ ] ¿Stock price < $30?
+- [ ] ¿IV Rank > 30%?
+- [ ] ¿Stock price entre $15-60?
 - [ ] ¿Open Interest > 500?
+- [ ] ¿Bid-Ask spread < $0.15?
+- [ ] ¿Prima ≥ 1.5% de mi capital ($45+ mínimo)?
 - [ ] ¿Entiendo el negocio de la empresa?
-- [ ] ¿Estaría cómodo manteniendo 100 acciones si me asignan?
-- [ ] ¿La industria tiene vientos a favor a largo plazo?
-- [ ] ¿Premium > 4% del margen requerido?
+- [ ] ¿Estaría cómodo manteniendo 100 acciones si me asignan? (Fase 2)
+- [ ] ¿La industria tiene potencial a mediano plazo?
+- [ ] ¿Hay opciones semanales disponibles?
 
 Si respuesta es NO a cualquiera → **Buscar otro stock**
 
