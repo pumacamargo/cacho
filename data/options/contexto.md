@@ -93,101 +93,14 @@ La estrategia tiene **2 fases**:
 
 ---
 
-## 🏭 Industrias Recomendadas para Puts Semanales
-
-### Criterios de Selección
-
-Al elegir stocks para vender puts semanales, priorizar industrias que combinen:
-- ✅ **Volatilidad decent** (IV Rank > 30%) = Premios semanales atractivos
-- ✅ **Stocks $15-60** = Compatible con presupuesto de $3,000 y asignación
-- ✅ **Potencial a mediano plazo** = Si te asignan, puedes mantener 4-6 semanas con confianza
-- ✅ **Liquidez** = Open Interest > 500, Bid-Ask < $0.15
-- ✅ **Opciones semanales disponibles** = Trading todos los viernes
-
----
-
-### 1. 🔋 Energía Limpia y Gas Natural
-
-**⚠️ Consideraciones**:
-- Sector cíclico, puede tener drawdowns significativos
-- Gas natural es "puente" 2025-2028, no largo plazo extremo
-
----
-
-### 2. 🧬 Biotecnología Small/Mid Cap
-
-**Áreas de enfoque**:
-- Oncología
-- GLP-1 (obesidad, diabetes)
-- Terapias genéticas (CRISPR)
-
-**⚠️ Consideraciones**:
-- **Alto riesgo**: Puede caer 50%+ en días por malas noticias de FDA
-- Investigar pipeline antes de vender put
-- Preferir empresas con múltiples catalizadores
-
----
-
-### 3. 💻 Semiconductores y Tech Small Cap
-
-**⚠️ Consideraciones**:
-- Cuidado con ciclo de semis (riesgo overcapacity 2027-2028)
-- Preferir diversificación geográfica (no 100% China)
-
----
-
-### 4. 📊 ETFs Sectoriales
-
-**⚠️ Consideraciones**:
-- Verificar precio < $30
-- Si asignan ETF, tienes exposición diversificada al sector
-
----
-
-### 5. ❌ Industrias a Evitar
-
-**No recomendadas para wheel con este presupuesto**:
-- **Penny stocks** (< $5): Demasiado riesgo, bid-ask spreads horribles
-- **Retail tradicional**: Declive estructural
-- **Real estate comercial**: Problemas post-pandemia
-- **Criptomonedas**: Volatilidad extrema sin fundamentos
-
----
-
-## 🎯 Estrategia de Diversificación
-
-Con $3,000 de presupuesto, **enfoque en la misma empresa**:
-- **Enfoque concentrado**: Operas 1 sola empresa (mejor entendimiento, especialización)
-- **Puts semanales en cascada**: Separados 1 semana para crear flujo consistente
-  - Semana 1: Vender put(s) que vence en 7 días
-  - Semana 2: Vender nuevo(s) put(s) (los anteriores están cerrándose)
-  - Semana 3: Los puts de semana 1 expiran, repites con nuevos
-  - Resultado: **1 semana cerrándose cada semana**, margen reutilizable
-
-**Diversificación futura** (cuando crezca a $6,000+):
-- Mantén 1 empresa principal (puts semanales)
-- Alterna covered calls con 1-2 empresas secundarias si hay asignaciones
-- Ejemplo:
-  - Semanas 1-4: Puts en Empresa A
-  - Si asignan: Covered calls 4-6 semanas, luego vuelves a Empresa A
-  - Mientras tanto: Si hay tiempo, pequeñas posiciones en Empresa B
-
----
-
 ## 📋 Checklist Pre-Trade
 
-Antes de vender PUT en cualquier stock:
-- [ ] ¿IV Rank > 30%?
-- [ ] ¿Stock price entre $15-60?
-- [ ] ¿Open Interest > 500?
-- [ ] ¿Bid-Ask spread < $0.15?
-- [ ] ¿Prima ≥ 1.5% de mi capital por contrato?
-- [ ] ¿Entiendo el negocio de la empresa?
-- [ ] ¿Estaría cómodo manteniendo 100 acciones si me asignan? (Fase 2)
-- [ ] ¿La industria tiene potencial a mediano plazo?
-- [ ] ¿Hay opciones semanales disponibles?
+Antes de vender PUT:
+- [ ] ¿Cumple todos los parámetros? (IV > 30%, precio, spread, prima)
+- [ ] ¿Entiendo el negocio?
+- [ ] ¿Estaría cómodo asignado?
 
-Si respuesta es NO a cualquiera → **Buscar otro stock**
+Si NO → Buscar otro stock
 
 ---
 
