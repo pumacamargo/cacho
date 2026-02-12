@@ -93,6 +93,27 @@ La estrategia tiene **2 fases**:
 
 ---
 
+## 📈 Indicador Técnico: RSI para Entrada
+
+### RSI Settings
+
+| Parámetro | Valor |
+|-----------|-------|
+| **Indicator** | RSI (Relative Strength Index) |
+| **Length** | 14 |
+| **Upper Band** | 70 (sobrecompra) |
+| **Lower Band** | 30 (sobreventa) |
+
+### Regla de Entrada Semanal
+
+- **RSI < 30** → ✅ VENDER PUT (sobrevendido, mejor entrada)
+- **RSI 30-70** → ⚠️ Evaluar con soporte/resistencia
+- **RSI > 70** → ❌ NO vender put (sobrecomprado, riesgo alto)
+
+**Objetivo**: Entrar cuando el stock está débil (RSI bajo) = mejor precio y menos riesgo
+
+---
+
 ## 📋 Checklist Pre-Trade
 
 Antes de vender PUT:
