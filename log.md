@@ -63,3 +63,8 @@
 - Complementado objetivo de find-bestsellers: se usa la data de la cuenta de la
   esposa (Momo's Choice) porque vende mucho y los productos ya están en casa.
   Coincide con sales_reference_data en el código (data subida de otras cuentas).
+
+## [2026-10-10] create | ttchop webapps (ttchop2 detalle)
+- Creada [[ttchop-webapps]]: relación ttchop/ttchop2 (fork, Firebase propio, server
+  compartido), secciones, stack, arquitectura (contenedores, imports, databaseService),
+  Firestore (colecciones) y funciones. Fuente: README.md + CLAUDE.md del repo.
