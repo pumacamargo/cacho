@@ -14,3 +14,8 @@
 ## [2026-10-10] create | Entidades iniciales
 - Creadas 4 páginas de entidades: [[cacho]], [[hermes-agent]], [[paperclip]], [[ttchop]].
 - Estructura completa: raw/, entities/, concepts/, comparisons/, queries/, operations/, _archive/.
+
+## [2026-10-10] create | Perfil de Arturo
+- Creada entidad [[arturo]]: biografía, carrera (rigger 3D), ubicación (Osaka, Japón),
+  motivos (proyectos con capital, nada de rigging) y preferencias de trabajo.
+- SCHEMA: añadidos tags tipo-de-pagina, personal, negocio.

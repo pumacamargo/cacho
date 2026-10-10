@@ -64,12 +64,14 @@ owner: persona | claude | hermes | paperclip | openrouter
 
 ## Tag Taxonomy (añadir aquí ANTES de usarlos)
 
-- **tipo-de-activo**: empresa, proyecto, producto, videojuego
+- **tipo-de-pagina**: persona, empresa, proyecto, producto, videojuego, sistema, hobby, gusto, decision
 - **sistema**: paperclip, hermes, n8n, affine, rustdesk, openrouter
 - **rol-agente**: c-level, developer, auditor, supervisor, task-runner
 - **infra**: docker, vps, tailscale, red, almacen
 - **proceso**: pipeline, cron, automatizacion, runbook
 - **integracion**: github, api, webhook, cli, sync
+- **personal**: biografia, ubicacion, idioma, arte, hobbies, preferencias
+- **negocio**: capital, ingresos, monetizacion, empresa
 
 Regla: todo tag usado en una página debe estar en esta lista. Si falta uno,
 añadirlo aquí PRIMERO y luego usarlo. Evita tag sprawl.
