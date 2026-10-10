@@ -20,7 +20,7 @@ Celular Android de Arturo, parte del inventario para proyectos.
 ## Uso
 
 Dispositivo móvil disponible para proyectos (por confirmar su rol).
-Parte del inventario: [[hardware-inventario]].
+Parte del inventario: [[hardware-inventario]]. Relacionado a [[arturo]].
 
 ## Pendiente
 

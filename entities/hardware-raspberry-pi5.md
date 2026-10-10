@@ -22,6 +22,7 @@ Raspberry Pi 5 de Arturo, en la red Tailscale como nodo `pi5puma01`.
 
 Disponible como dispositivo para **proyectos** de Arturo. Detalles de modelo,
 RAM y servicios por documentar. Parte del inventario: [[hardware-inventario]].
+Uso típico en proyectos de [[arturo]].
 
 ## Pendiente
 

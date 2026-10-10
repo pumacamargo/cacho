@@ -11,6 +11,7 @@ confidence: high
 # ttchop — Automatizaciones
 
 Detalle de las automatizaciones internas de `ttchop-bot` (ver [[proyecto-ttchop]]).
+La webapp que consume estas capacidades es [[ttchop-webapps]].
 El scheduler central (`ttchop-bot/scheduler/index.js`, node-cron en Asia/Tokyo)
 es mantenido vivo por PM2 y dispara cada job.
 

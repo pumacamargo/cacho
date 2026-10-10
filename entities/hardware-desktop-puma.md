@@ -23,6 +23,7 @@ Desktop (Windows) de Arturo, disponible para proyectos.
 
 Máquina de escritorio disponible para proyectos. Es el equipo donde Arturo
 también trabaja (rigging 3D). Parte del inventario: [[hardware-inventario]].
+Trabajo de [[arturo]].
 
 ## Pendiente
 

@@ -22,6 +22,7 @@ TikTok Shop Affiliate de forma **automatizada** con un bot.
 
 1. **Web app** (`ttchop`, `ttchop2`) — app web para creación de contenido de
    comerciales para TikTok Shop Affiliate (gestión de productos y planes).
+   Detalle en [[ttchop-webapps]].
 2. **Herramienta de edición y creación de videos** (`ttchop-server`, `post`) —
    render/TTS, montaje de videos de convenio.
 3. **Bot de automatización** (`ttchop-bot`) — automatiza todo el proceso de

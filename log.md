@@ -73,3 +73,10 @@
 - Quitadas menciones específicas a los agentes de Paperclip ([[paperclip]], [[ttchop]]).
   Arturo no está convencido de ellos y puede dejar de usarlos; se dejó nota de
   "en evaluación" en vez de documentar el detalle.
+
+## [2026-10-10] lint | Auditoría completa — todo OK
+- Revisión integral: frontmatter OK, sin links rotos, sin huérfanas, todas
+  indexadas, sin secretos.
+- Corregido durante lint: ttchop-webapps quedó huérfana → añadidos enlaces desde
+  proyecto-ttchop y ttchop-automatizaciones; 3 páginas de hardware tenían 1 solo
+  enlace de salida → añadido enlace a arturo.
