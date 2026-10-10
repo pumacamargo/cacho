@@ -36,3 +36,9 @@
 - Creada [[categorias-proyectos]]: mapa de las 6 categorías.
 - Creadas 6 páginas de categoría: backpack, macanishi, tts, moon, cliff, sandbox.
 - Creadas 13 páginas de proyecto + index reconstruido (30 páginas total).
+
+## [2026-10-10] create | ttchop proyecto + automatizaciones
+- Creada [[proyecto-ttchop]]: proyecto software (web app ttchop/ttchop2, editor
+  ttchop-server/post, bot ttchop-bot).
+- Creada [[ttchop-automatizaciones]]: scheduler (06/09/19/21/23:30 JST) y pipeline
+  scout→producer (daily-tasks, request-samples, needs-content, find-bestsellers, producer).
