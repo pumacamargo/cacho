@@ -19,3 +19,9 @@
 - Creada entidad [[arturo]]: biografía, carrera (rigger 3D), ubicación (Osaka, Japón),
   motivos (proyectos con capital, nada de rigging) y preferencias de trabajo.
 - SCHEMA: añadidos tags tipo-de-pagina, personal, negocio.
+
+## [2026-10-10] create | Inventario de hardware
+- Creada [[hardware-inventario]] con el mapa de la red Tailscale.
+- Creadas páginas por dispositivo: vps-tools, vps-projects, raspberry-pi5,
+  desktop-puma, celular-android.
+- Verificado el inventario contra `tailscale status` (5 nodos linux/windows).
