@@ -27,11 +27,10 @@ empresas de agentes IA y automatizaciones. Trae adapter nativo para
 - Una empresa registrada: **ttchop** ([[ttchop]]).
 - Conexión OpenRouter "My OpenRouter API" (variables de entorno, sin secretos
   en el repo).
-- 5 agentes: CEO, Developer, Auditor, Supervisor, Peon. Ver detalle en
-  la página de [[ttchop]].
+- Orquestación multi-agente (detalle por definir; Arturo evalúa si lo sigue usando).
 
 ## Relaciones
 
-- Orquesta a [[hermes-agent]] y a agentes propios.
+- Orquesta a [[hermes-agent]] y a agentes propios (en evaluación).
 - Empresa principal: [[ttchop]].
 - Documentación centralizada en [[cacho]].

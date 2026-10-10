@@ -13,15 +13,8 @@ confidence: high
 Empresa registrada en [[paperclip]] (id `f3009db4-1c63-4894-a00d-c568409b890b`)
 y pipelines diarios de automatización (scout → producer).
 
-## Agentes (en Paperclip)
-
-- CEO (Sonnet 5)
-- Developer
-- Auditor
-- Supervisor
-- Peon (Haiku 4.5, solo tareas sencillas)
-
-Presupuestos mensual/lifetime sin tope; **no** hay ventana diaria.
+> Los agentes multi-agente de Paperclip están **en evaluación** — Arturo no está
+> convencido de ellos y puede dejar de usarlos. No documentar detalle de agentes.
 
 ## Pipeline diario
 

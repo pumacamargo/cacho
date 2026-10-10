@@ -68,3 +68,8 @@
 - Creada [[ttchop-webapps]]: relación ttchop/ttchop2 (fork, Firebase propio, server
   compartido), secciones, stack, arquitectura (contenedores, imports, databaseService),
   Firestore (colecciones) y funciones. Fuente: README.md + CLAUDE.md del repo.
+
+## [2026-10-10] update | paperclip/ttchop — agentes en evaluación
+- Quitadas menciones específicas a los agentes de Paperclip ([[paperclip]], [[ttchop]]).
+  Arturo no está convencido de ellos y puede dejar de usarlos; se dejó nota de
+  "en evaluación" en vez de documentar el detalle.
