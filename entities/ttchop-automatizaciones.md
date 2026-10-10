@@ -136,6 +136,21 @@ en Firestore `bot_daily_runs/{date}` (per-fase: `tasks`, `requestSamples`,
 - A TikTok no le gustan los bots → automatizar es complicado; la parte física
   (grabar, pedir samples, subir) es de Arturo.
 
+## Escalabilidad multi-cuenta (REQUISITO de diseño)
+
+Actualmente se opera **1 cuenta** de TikTok, pero la idea es escalar a **varias
+cuentas** una vez el proceso esté 100% automatizado. **Los procesos deben estar
+diseñados generalizados/escalables a más cuentas desde ahora** — no hardcodear a
+una sola cuenta.
+
+Consideraciones:
+- No asumir una única cuenta en rutas ni constantes (ej. `ACCOUNT = 'arts.choice'`
+  aparece fijo en `intel/index.js` — debe volverse configurable/por-cuenta).
+- Los módulos de scout ya iteran "por cuenta activa" (`modules/scout/index.js`
+  corre para cada cuenta activa), lo cual es la base correcta.
+- Al añadir una cuenta nueva, verificar: colecciones Firestore por cuenta, límites
+  de riesgo anti-ban por cuenta, y cooldowns independientes.
+
 ## Relaciones
 
 - Proyecto: [[proyecto-ttchop]] · empresa/pipeline: [[ttchop]]

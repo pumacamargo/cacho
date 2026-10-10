@@ -53,3 +53,8 @@
 ## [2026-10-10] update | ttchop-automatizaciones — objetivos pipeline
 - Añadida sección "Objetivos del pipeline": objetivo de negocio para cada una de
   las 5 fases (daily-tasks, request-samples, needs-content, find-bestsellers, producer).
+
+## [2026-10-10] update | ttchop-automatizaciones — escalabilidad multi-cuenta
+- Añadido requisito de diseño: los procesos deben generalizarse/escalar a varias
+  cuentas; señalar hardcode de ACCOUNT en intel/index.js, y la base correcta
+  (scout ya itera por cuenta activa). Consideraciones Firestore/risk/cooldowns.
