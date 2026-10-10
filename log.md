@@ -58,3 +58,8 @@
 - Añadido requisito de diseño: los procesos deben generalizarse/escalar a varias
   cuentas; señalar hardcode de ACCOUNT en intel/index.js, y la base correcta
   (scout ya itera por cuenta activa). Consideraciones Firestore/risk/cooldowns.
+
+## [2026-10-10] update | ttchop-automatizaciones — find-bestsellers uso data esposa
+- Complementado objetivo de find-bestsellers: se usa la data de la cuenta de la
+  esposa (Momo's Choice) porque vende mucho y los productos ya están en casa.
+  Coincide con sales_reference_data en el código (data subida de otras cuentas).

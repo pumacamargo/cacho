@@ -48,7 +48,9 @@ en Firestore `bot_daily_runs/{date}` (per-fase: `tasks`, `requestSamples`,
    TikTok Shop como productos que necesitan contenido; generar una lista para
    crear ese contenido lo antes posible (evitar penalizaciones).
 4. **`find-bestsellers`** — encontrar los productos que mejor hemos vendido para
-   hacer más videos de ellos.
+   hacer más videos de ellos. **Se apoya en la data de la cuenta de la esposa
+   (Momo's Choice)**: está vendiendo bastantes productos, así que su data sirve y
+   los productos ya están en casa.
 5. **Producer** — generar los 3 videos que se publican en TikTok (3 diarios).
 
 ### Scout (módulos que controlan el celular vía ADB + visión)
