@@ -80,3 +80,10 @@
 - Corregido durante lint: ttchop-webapps quedó huérfana → añadidos enlaces desde
   proyecto-ttchop y ttchop-automatizaciones; 3 páginas de hardware tenían 1 solo
   enlace de salida → añadido enlace a arturo.
+
+## [2026-10-10] create | Runbook abrir task en Paperclip
+- Creada [[runbook-abrir-task-paperclip]] (operations/): pasos para abrir un issue
+  en Paperclip con el CLI board (agent list → issue create → verificar), con la
+  convención de asignar al Developer y la regla de commit de [[ttchop]].
+- Aplicado en vivo: issue TTC-52 creado y asignado a Developer (prioridad high)
+  — daily-tasks solo extrae showcaseProducts al crear la task, no al actualizarla.

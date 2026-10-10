@@ -56,4 +56,4 @@
 ## Queries
 
 ## Operations
-<!-- listado pendiente: runbooks por migrar aquí desde memoria -->
+- [[runbook-abrir-task-paperclip]] — abrir un task/issue en Paperclip y asignarlo a un agente (CLI board)
