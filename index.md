@@ -2,21 +2,49 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-10-10 | Total pages: 11
+> Last updated: 2026-10-10 | Total pages: 30
 
-## Entities
-<!-- alphabetically -->
-- [[arturo]] — perfil: biografía, trabajo (rigger), ubicación, gustos y preferencias
-- [[cacho]] — repositorio central, convertido a wiki de IA (2026-10-10)
-- [[hardware-celular-android]] — celular Android (draft)
-- [[hardware-desktop-puma]] — desktop Windows (desktop-puma)
+## Persona
+- [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
+
+## Categorías de proyectos
+- [[categorias-proyectos]] — mapa de las 6 categorías de proyectos de Arturo
+- [[categoria-backpack]] — aprendizaje/práctica (Japanese, Drums, Draw, Singing)
+- [[categoria-macanishi]] — proyectos familiares (Travel, Farmers)
+- [[categoria-tts]] — TikTok Shop (ttchop affiliate, Lemon Sushi seller)
+- [[categoria-moon]] — proyectos financieros (moon-sto, moon-fut)
+- [[categoria-cliff]] — creación de contenido (Apex, Papa, Tacosdepulpo, Chava)
+- [[categoria-sandbox]] — desarrollo (App, Game, Shortfilm)
+
+## Proyectos
+- [[proyecto-japanese]] — aprendizaje de japonés (Backpack)
+- [[proyecto-drums]] — práctica de batería (Backpack)
+- [[proyecto-draw]] — dibujo (Backpack)
+- [[proyecto-singing]] — canto (Backpack)
+- [[proyecto-travel]] — automatización de viajes + potencial vlog (Macanishi)
+- [[proyecto-farmers]] — booth de tacos en farmers markets (Macanishi)
+- [[ttchop]] — TikTok Shop affiliate, pipeline scout→producer (TT's)
+- [[proyecto-lemon-sushi]] — TikTok Shop seller, playeras impresas (TT's)
+- [[proyecto-moon-sto]] — portafolio de inversiones (Moon)
+- [[proyecto-moon-fut]] — daytrading de futuros (Moon)
+- [[proyecto-app-development]] — desarrollo de apps (Sandbox)
+- [[proyecto-game-development]] — desarrollo de videojuegos (Sandbox)
+- [[proyecto-shortfilm-development]] — desarrollo de cortometrajes (Sandbox)
+
+## Hardware
 - [[hardware-inventario]] — resumen de todo el hardware + red Tailscale
-- [[hardware-raspberry-pi5]] — Raspberry Pi 5 (pi5puma01)
+- [[hardware-vps-tools]] — VPS principal (este host), corre Hermes/Paperclip
 - [[hardware-vps-projects]] — segundo VPS para proyectos
-- [[hardware-vps-tools]] — VPS principal (este host), Correr Hermes/Paperclip
+- [[hardware-raspberry-pi5]] — Raspberry Pi 5 (pi5puma01)
+- [[hardware-desktop-puma]] — desktop Windows (desktop-puma)
+- [[hardware-celular-android]] — celular Android (draft)
+
+## Sistemas
 - [[hermes-agent]] — agente Hermes de Nous Research corriendo en vps-tools
 - [[paperclip]] — orquestador multi-agente auto-alojado (paperclip.lemonsushi.com)
-- [[ttchop]] — empresa y pipeline diario de automatización (scout→producer)
+
+## Repositorio
+- [[cacho]] — este repositorio, convertido a wiki de IA
 
 ## Concepts
 

@@ -25,3 +25,14 @@
 - Creadas páginas por dispositivo: vps-tools, vps-projects, raspberry-pi5,
   desktop-puma, celular-android.
 - Verificado el inventario contra `tailscale status` (5 nodos linux/windows).
+
+## [2026-10-10] create | Categorías y proyectos
+- Creada [[categorias-proyectos]] (mapa de 6 categorías).
+- Creadas 6 páginas de categoría: backpack, macanishi, tts, moon, cliff, sandbox.
+- Creadas 12 páginas de proyecto: japanese, drums, draw, singing, travel, farmers,
+  lemon-sushi, moon-sto, moon-fut, app/game/shortfilm-development.
+
+## [2026-10-10] create | Categorías y proyectos (taxonomía)
+- Creada [[categorias-proyectos]]: mapa de las 6 categorías.
+- Creadas 6 páginas de categoría: backpack, macanishi, tts, moon, cliff, sandbox.
+- Creadas 13 páginas de proyecto + index reconstruido (30 páginas total).
