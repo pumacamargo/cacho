@@ -49,3 +49,7 @@
   find-bestsellers, competitors; producer; intel + next-day-plan; risk anti-ban;
   delivery; adb/open/close/navigate/vision/png-crop/product-name-filter).
 - Criterios reales tomados de los comentarios de cabecera de cada módulo.
+
+## [2026-10-10] update | ttchop-automatizaciones — objetivos pipeline
+- Añadida sección "Objetivos del pipeline": objetivo de negocio para cada una de
+  las 5 fases (daily-tasks, request-samples, needs-content, find-bestsellers, producer).

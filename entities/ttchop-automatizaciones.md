@@ -36,7 +36,20 @@ Cada fase es tolerante a errores: una falla no aborta el resto. Resultado guarda
 en Firestore `bot_daily_runs/{date}` (per-fase: `tasks`, `requestSamples`,
 `needsContent`, `findBestsellers`, `producer`).
 
-## Automatizaciones individuales
+## Objetivos del pipeline (qué busca lograr cada fase)
+
+1. **`daily-tasks`** — revisar los tasks que TikTok Shop da al afiliado para
+   detectar los importantes que pasen nuestros filtros, y ver qué productos de
+   ese task tenemos disponibles para hacer el video, completar el task y cobrar
+   la recompensa (dinero o cupones).
+2. **`request-samples`** — agregar los productos de mejor calidad al showcase,
+   para que Arturo los revise y pida muestras gratuitas de los mejores.
+3. **`needs-content`** — cuando las muestras gratuitas llegan a casa aparecen en
+   TikTok Shop como productos que necesitan contenido; generar una lista para
+   crear ese contenido lo antes posible (evitar penalizaciones).
+4. **`find-bestsellers`** — encontrar los productos que mejor hemos vendido para
+   hacer más videos de ellos.
+5. **Producer** — generar los 3 videos que se publican en TikTok (3 diarios).
 
 ### Scout (módulos que controlan el celular vía ADB + visión)
 
