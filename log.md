@@ -42,3 +42,10 @@
   ttchop-server/post, bot ttchop-bot).
 - Creada [[ttchop-automatizaciones]]: scheduler (06/09/19/21/23:30 JST) y pipeline
   scout→producer (daily-tasks, request-samples, needs-content, find-bestsellers, producer).
+
+## [2026-10-10] update | ttchop-automatizaciones detallada
+- Expandida [[ttchop-automatizaciones]]: explicación individual de TODAS las
+  automatizaciones (scout: daily-tasks, request-samples, needs-content,
+  find-bestsellers, competitors; producer; intel + next-day-plan; risk anti-ban;
+  delivery; adb/open/close/navigate/vision/png-crop/product-name-filter).
+- Criterios reales tomados de los comentarios de cabecera de cada módulo.
