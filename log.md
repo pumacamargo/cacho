@@ -87,3 +87,13 @@
   convención de asignar al Developer y la regla de commit de [[ttchop]].
 - Aplicado en vivo: issue TTC-52 creado y asignado a Developer (prioridad high)
   — daily-tasks solo extrae showcaseProducts al crear la task, no al actualizarla.
+
+## [2026-10-11] update | Voz en Hermes + fixes del bot ttchop
+- Documentada la config de voz de [[hermes-agent]]: STT=Vosk es vía
+  `HERMES_LOCAL_STT_COMMAND`, TTS=Edge es-MX-JorgeNeural, modos `/voice`.
+- Documentados fixes de [[ttchop-automatizaciones]]:
+  - request-samples: robustez ADB (TTC-53) — timeout ya no tumba la fase.
+  - producer: fallback de emergencia (TTC-54) — si el fallback aleatorio da
+    0 candidatos por cooldown, produce igual 3 videos (source=random_emergency).
+- Operación verificada en vivo: request-samples 3/3, producer 3/3 con emergencia
+  (sin sesiones libres, red rescata el día).

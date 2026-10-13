@@ -1,7 +1,7 @@
 ---
 title: ttchop automatizaciones
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-11
 type: concept
 tags: [proceso, pipeline, cron, automatizacion]
 status: active
@@ -64,6 +64,10 @@ en Firestore `bot_daily_runs/{date}` (per-fase: `tasks`, `requestSamples`,
 - **`request-samples.js`** — añade al showcase hasta `MAX_SAMPLES_PER_RUN`
   productos free-sample que cumplan TODO: badge "Free sample" + badge
   "Top selling" + ≥1000 unidades vendidas.
+  **Robustez ADB (TTC-53, 2026-10-11)**: un timeout transitorio en
+  `adb pull`/`screencap` (canal VPS→Pi→ADB→teléfono) ya no tumba la fase
+  entera — hay reintentos/backoff, y se guardan conteos parciales aunque el
+  proceso salga con código ≠ 0.
 - **`needs-content.js`** — navega a goShopToolkit → Manage samples → Free sample
   (Pending criteria); extrae nombre del producto y días restantes para publicar
   contenido; guarda en `sample_content_needed`. **Alerta** si quedan ≤4 días.
@@ -84,6 +88,14 @@ en Firestore `bot_daily_runs/{date}` (per-fase: `tasks`, `requestSamples`,
   coinciden y no están en cooldown se producen; los huecos se rellenan con
   fallback aleatorio. Cooldown: `bot_productions` a 3 días. Registra `fromPlan`
   vs `fromRandomFallback` (para que el Auditor confíe en el ROI).
+- **Fallback de emergencia (TTC-54, 2026-10-11)** — regla de Arturo "no quedarse
+  sin videos diarios": si el fallback aleatorio encuentra **0 candidatos**
+  (todas las sesiones en cooldown de 20d → `0 candidates`), el producer **igual
+  produce los 3 videos** saltándose el cooldown de sesión y de producto,
+  eligiendo los **menos usados** (least-recently-used) y marcando el slot como
+  `random_emergency` (caption 🚨 en Telegram). Fuera de ese caso se respeta el
+  cooldown. **Dependencia**: si no hay NINGÚN clip grabado (no "en cooldown"),
+  ni esto produce — hace falta grabar clips nuevos.
 
 ### Intel (`modules/intel/*`)
 

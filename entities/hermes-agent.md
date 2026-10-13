@@ -1,7 +1,7 @@
 ---
 title: Hermes Agent
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-11
 type: entity
 tags: [sistema, infra, rol-agente]
 status: active
@@ -27,6 +27,19 @@ Arturo (`vps-tools`). Es una de las "IAs que consumen" la wiki.
   `hermes_gateway`); la vía recomendada es `hermes_gateway`.
 - Lee y mantiene esta wiki (`/root/cacho`).
 - Corre como gateway + dashboard.
+
+## Voz (STT / TTS) — configurada 2026-10-11
+
+- **Entrada (voz → texto)**: STT local con **Vosk** (modelo ES) vía
+  `HERMES_LOCAL_STT_COMMAND` → `/root/.hermes/bin/stt-vosk.sh` (wrapper que
+  resuelve python/ffmpeg de `/root/.hermes/tools`). `stt.provider: local_command`.
+- **Salida (texto → voz)**: **Edge TTS**, voz `es-MX-JorgeNeural` (español
+  mexicano). Edge a veces da un 403 transitorio → reintentar.
+- **Modo `/voice`** en Telegram: `off` (texto) | `voice_only` (voz solo si el
+  usuario mandó audio) | `tts` (voz en cada respuesta). Estado por chat en
+  `gateway_voice_mode.json`.
+- Nota: `faster-whisper` roto en este Python 3.14 (PyAV `metadata_errors`) — por
+  eso se usa Vosk vía `local_command`.
 
 ## Relaciones
 
