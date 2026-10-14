@@ -97,3 +97,13 @@
     0 candidatos por cooldown, produce igual 3 videos (source=random_emergency).
 - Operación verificada en vivo: request-samples 3/3, producer 3/3 con emergencia
   (sin sesiones libres, red rescata el día).
+
+## [2026-10-14] create/update | Agentes persistentes de Hermes + carruseles image_carousel
+- Creada [[hermes-agentes]]: roster de los 3 bots persistentes de [[hermes-agent]]
+  (Research → investiga, modelo gpt-6-luna; Developer → desarrolla código, gpt-6-sol;
+  ttchop_robot → asiste [[ttchop]], gpt-6-luna, conectado a Telegram como @Puma_gym_bot).
+  Modelos vía suscripción ChatGPT de Arturo (openai-codex). Actualizada [[hermes-agent]] con la sección.
+- Actualizada [[ttchop-webapps]]: feature **image_carousel** implementada y desplegada.
+  Plan TTC-55 (aprobado), implementación TTC-56 (fases 0–4, deploy en vivo), Fase 5 → TTC-57.
+  Detalle: generación photo-only con kie.ai (seedream-v4 default), texto en overlay (Remotion),
+  idioma es/en/ja, UI Carousels en webapp2, reglas no negociables. Smoke test real pasó (40 créd).

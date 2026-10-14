@@ -1,7 +1,7 @@
 ---
 title: ttchop webapps (ttchop / ttchop2)
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-14
 type: entity
 tags: [sistema, proyecto, negocio]
 status: active
@@ -81,6 +81,18 @@ públicas de producto en `/p/:id`, y páginas legales `/terms` y `/privacy`.
 `products`, `sessions`, `templates` (compartidos, sin accountId), `renders`,
 `scheduled_renders`, `master_videos`, `video_variations` (legacy), `imports` (ahí
 vive el contenedor), `analytics_orders`, `tiktok_videos`, `tiktok_accounts`.
+
+## Feature: carruseles de imágenes (image_carousel) — implementado y desplegado 2026-10-14
+
+Carruseles de imágenes como **contenido orgánico para subir seguidores** de la
+cuenta TikTok (NO comercial de producto). Publicación manual por Arturo.
+
+- **Plan**: TTC-55 (Supervisor) — aprobado. **Implementación**: TTC-56 (Developer) — fases 0–4 completas, desplegadas en vivo (servidor + UI + reglas). **Fase 5** (ranking por follows, check automático anti-texto) queda en **TTC-57** (necesita 2–3 semanas de posts reales).
+- **Flujo**: guion → expandido por LLM en N slides (texto en el idioma elegido, imagePrompt en inglés) → generación de fondos **photo-only** (sin texto) con kie.ai → composición final con texto en capa aparte (Remotion en ttchop-post) → `carousels` en Firestore.
+- **Modelos de imagen** (kie.ai, `POST /jobs/createTask`): `seedream-v4` (default, 5 créd/img, batch≤6, seed), `gpt-image-2` (6 créd/img), `nano-banana-2` (8 créd/img). Id de modelo configurable; idioma configurable (es/en/ja).
+- **UI**: pestaña "Carousels" en webapp2 (entre Templates y Create). Templates de guion (`carousel_script`) y de estilo (`carousel_style`, conceptos de dirección de arte).
+- **Reglas no negociables**: imágenes SIEMPRE photo-only (nunca texto dentro); texto SIEMPRE como overlay; `projectId` explícito (nunca inferido); callback con token + re-verificación + idempotente + sweep; URLs de kie temporales → re-subidas a Firebase Storage; la UI recuerda la etiqueta TikTok "AI-generated".
+- **Smoke test real pasó** (2026-10-14): create→approve-text→kie batch→callbacks→composición→`ready` (40 créditos). Limitación conocida: el modelo a veces "pinta" texto en el fondo (lo mitigas con Regenerar slide; el check automático es la Fase 5).
 
 ## Documentación interna
 

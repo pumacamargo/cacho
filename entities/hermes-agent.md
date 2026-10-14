@@ -1,7 +1,7 @@
 ---
 title: Hermes Agent
 created: 2026-10-10
-updated: 2026-10-11
+updated: 2026-10-14
 type: entity
 tags: [sistema, infra, rol-agente]
 status: active
@@ -40,6 +40,13 @@ Arturo (`vps-tools`). Es una de las "IAs que consumen" la wiki.
   `gateway_voice_mode.json`.
 - Nota: `faster-whisper` roto en este Python 3.14 (PyAV `metadata_errors`) — por
   eso se usa Vosk vía `local_command`.
+
+## Agentes persistentes (Bot Mode) — 2026-10-14
+
+Hermes corre ahora **tres agentes persistentes** (bot = perfil con SOUL.md y
+memoria propias): **Research** (investiga/resume), **Developer** (desarrolla
+código) y **ttchop_robot** (asiste ttchop). Detalle, modelos y estado de
+Telegram en [[hermes-agentes]].
 
 ## Relaciones
 

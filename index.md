@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-10-10 | Total pages: 33
+> Last updated: 2026-10-14 | Total pages: 34
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -44,6 +44,7 @@
 
 ## Sistemas
 - [[hermes-agent]] — agente Hermes de Nous Research corriendo en vps-tools
+- [[hermes-agentes]] — agentes persistentes de Hermes (research, developer, ttchop_robot)
 - [[paperclip]] — orquestador multi-agente auto-alojado (paperclip.lemonsushi.com)
 
 ## Repositorio
