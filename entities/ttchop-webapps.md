@@ -1,7 +1,7 @@
 ---
 title: ttchop webapps (ttchop / ttchop2)
 created: 2026-10-10
-updated: 2026-10-14
+updated: 2026-10-15
 type: entity
 tags: [sistema, proyecto, negocio]
 status: active
@@ -89,10 +89,17 @@ cuenta TikTok (NO comercial de producto). Publicación manual por Arturo.
 
 - **Plan**: TTC-55 (Supervisor) — aprobado. **Implementación**: TTC-56 (Developer) — fases 0–4 completas, desplegadas en vivo (servidor + UI + reglas). **Fase 5** (ranking por follows, check automático anti-texto) queda en **TTC-57** (necesita 2–3 semanas de posts reales).
 - **Flujo**: guion → expandido por LLM en N slides (texto en el idioma elegido, imagePrompt en inglés) → generación de fondos **photo-only** (sin texto) con kie.ai → composición final con texto en capa aparte (Remotion en ttchop-post) → `carousels` en Firestore.
-- **Modelos de imagen** (kie.ai, `POST /jobs/createTask`): `seedream-v4` (default, 5 créd/img, batch≤6, seed), `gpt-image-2` (6 créd/img), `nano-banana-2` (8 créd/img). Id de modelo configurable; idioma configurable (es/en/ja).
+- **Modelos de imagen** (kie.ai, `POST /jobs/createTask`): `seedream-v4` (default, 5 créd/img, batch≤6, seed), `gpt-image-2` (6 créd/img), `nano-banana-2` (8 créd/img), `nano-banana-2-lite` (añadido al catálogo; **precio y disponibilidad no confirmados**). Id de modelo configurable; idioma configurable (es/en/ja).
 - **UI**: pestaña "Carousels" en webapp2 (entre Templates y Create). Templates de guion (`carousel_script`) y de estilo (`carousel_style`, conceptos de dirección de arte).
 - **Reglas no negociables**: imágenes SIEMPRE photo-only (nunca texto dentro); texto SIEMPRE como overlay; `projectId` explícito (nunca inferido); callback con token + re-verificación + idempotente + sweep; URLs de kie temporales → re-subidas a Firebase Storage; la UI recuerda la etiqueta TikTok "AI-generated".
 - **Smoke test real pasó** (2026-10-14): create→approve-text→kie batch→callbacks→composición→`ready` (40 créditos). Limitación conocida: el modelo a veces "pinta" texto en el fondo (lo mitigas con Regenerar slide; el check automático es la Fase 5).
+
+### Catálogo de templates actualizado (2026-10-15)
+
+- Los estilos seed anteriores se sustituyeron por cinco direcciones visuales: fotografía candid profesional de mujeres adultas, hombres adultos y familias; paisajes profesionales; y B-roll artístico. Las instrucciones especifican adultos para retratos y negative prompts contra texto, logos, ilustración y renders 3D.
+- Los tres guiones seed actuales son: recomendación de libros/películas/TV/recetas; Problem + Fix (menopausia, sueño o baja energía); y lista/ranking con opiniones. Solicitan salida en el idioma seleccionado (es/en/ja) y roles hook/body/cta.
+- En Firestore de **ttchop2**, los seeds de carrusel de Arturo fueron reemplazados y se verificaron de vuelta: **5 `carousel_style` + 3 `carousel_script`**, todos `seed: true`, `seedVersion: 1`. Se conservaron sus otros templates no relacionados con carruseles.
+- Código en `master`, commits pusheados: webapp2 `d9b450b` y ttchop-server `32b4212`. `npm run build` fue reportado como exitoso por `jr_developer`. El despliegue de estos cambios posteriores a TTC-56 **no está confirmado**; no asumir que ya aparecen en la UI de producción. La prueba real de kie.ai para `nano-banana-2-lite` y su precio también quedan pendientes.
 
 ## Documentación interna
 

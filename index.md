@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-10-14 | Total pages: 34
+> Last updated: 2026-10-15 | Total pages: 35
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -32,7 +32,7 @@
 - [[proyecto-shortfilm-development]] — desarrollo de cortometrajes (Sandbox)
 - [[proyecto-ttchop]] — proyecto software ttchop: web app + editor de video + bot
 - [[ttchop-automatizaciones]] — automatizaciones del bot (scheduler, pipeline scout→producer)
-- [[ttchop-webapps]] — webapps ttchop/ttchop2: dashboard, productos, video, analytics
+- [[ttchop-webapps]] — webapps ttchop/ttchop2: dashboard, productos, video, analytics y carruseles de imagen (templates/modelos actualizados)
 
 ## Hardware
 - [[hardware-inventario]] — resumen de todo el hardware + red Tailscale

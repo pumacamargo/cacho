@@ -107,3 +107,11 @@
   Plan TTC-55 (aprobado), implementación TTC-56 (fases 0–4, deploy en vivo), Fase 5 → TTC-57.
   Detalle: generación photo-only con kie.ai (seedream-v4 default), texto en overlay (Remotion),
   idioma es/en/ja, UI Carousels en webapp2, reglas no negociables. Smoke test real pasó (40 créd).
+
+## [2026-10-15] update | Carruseles — templates y modelo nano-banana-2-lite
+- Actualizada [[ttchop-webapps]] con los 3 templates `carousel_script`, los 5 estilos `carousel_style`
+  y `nano-banana-2-lite`; se documentó que el precio/disponibilidad del modelo y el deploy de
+  estos cambios todavía no están confirmados.
+- Siembra Firestore de ttchop2 verificada de vuelta para Arturo: 5 estilos + 3 guiones seed
+  (seedVersion 1); se conservaron templates ajenos al carrusel. Commits de código pusheados a
+  master: webapp2 `d9b450b`, ttchop-server `32b4212`; build reportado por jr_developer como exitoso.
