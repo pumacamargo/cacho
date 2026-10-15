@@ -121,3 +121,8 @@
   template `temp_y3w17i3`, voz PumaVoice01, proyecto `ttchop`, idioma `ja`/`es` y overlay/personaje desactivados por default.
 - Aislado Vosk en Python 3.10 y actualizado su wrapper para no mezclar paquetes con Python 3.14;
   config de Hermes y proveedor STT alternativo quedaron intactos. Transcripción end-to-end verificada.
+
+## [2026-10-15] update | Carrusel — sombra oscura sin recuadro
+- Añadida a [[ttchop-webapps]] la configuración visual aprobada: fondo `none` y sombra negra `0 0 2px rgba(0,0,0,1), 0 3px 6px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,0.95)`.
+- Decisión basada en una prueba de un slide 1080×1920 reutilizando un fondo existente; sin generación IA ni gasto Kie.
+- Se documentó explícitamente que es una referencia visual aún no persistida en Firestore ni integrada/desplegada en producción.
