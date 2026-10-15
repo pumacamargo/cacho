@@ -101,14 +101,15 @@ cuenta TikTok (NO comercial de producto). Publicación manual por Arturo.
 - En Firestore de **ttchop2**, los seeds de carrusel de Arturo fueron reemplazados y se verificaron de vuelta: **5 `carousel_style` + 3 `carousel_script`**, todos `seed: true`, `seedVersion: 1`. Se conservaron sus otros templates no relacionados con carruseles.
 - Código en `master`, commits pusheados: webapp2 `d9b450b` y ttchop-server `32b4212`. `npm run build` fue reportado como exitoso por `jr_developer`. El despliegue de estos cambios posteriores a TTC-56 **no está confirmado**; no asumir que ya aparecen en la UI de producción. La prueba real de kie.ai para `nano-banana-2-lite` y su precio también quedan pendientes.
 
-### Decisión visual: sombra del texto de carrusel (2026-10-15)
+### Decisión visual: sombra de `image_carousel` (2026-10-15)
 
-Arturo aprobó como referencia para los overlays de texto una sombra negra más grande y oscura, con poco difuminado y **sin recuadro ni gradiente detrás**:
+Arturo aprobó una sombra negra más grande y oscura, con poco difuminado y **sin recuadro ni gradiente**, exclusivamente para el texto de las diapositivas de carrusel:
 
-- Fondo del texto: `typography.background: 'none'`.
+- **Alcance exclusivo:** `image_carousel`, componente Remotion `CarouselSlide`. No aplicar a los overlays de texto de videos/collage de `ttchop-post`, ni cambiar el `OverlayKit.SHADOW` general. No es un estilo global.
+- Fondo del texto del carrusel: `typography.background: 'none'`.
 - Sombra probada: `0 0 2px rgba(0,0,0,1), 0 3px 6px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,0.95)`.
-- La prueba final fue un único slide PNG de 1080×1920, reutilizando un fondo ya existente; no generó imágenes con IA ni consumió créditos Kie.
-- **Estado:** decisión visual documentada, todavía no persistida en el template de Firestore ni integrada en el código de producción. El preview usó un override temporal; el renderer actual no lee un `typography.textShadow` guardado y el template `temp_bi9e3iz` conserva `background: 'gradient'`. El ajuste de safe area está en la rama `fix/carousel-text-safe-area` (commit `737b80e`), sin despliegue confirmado.
+- La prueba final fue un único slide PNG de 1080×1920, reutilizando un fondo ya existente; no generó imágenes con IA ni consumió créditos Kie. El override temporal se limitó al nodo de texto de `CarouselSlide`.
+- **Estado:** decisión visual documentada, todavía no persistida en el template de Firestore ni integrada en el código de producción. El renderer actual no lee un `typography.textShadow` guardado y el template `temp_bi9e3iz` conserva `background: 'gradient'`. El ajuste de safe area está en la rama `fix/carousel-text-safe-area` (commit `737b80e`), sin despliegue confirmado.
 
 ## Documentación interna
 

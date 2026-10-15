@@ -126,3 +126,7 @@
 - Añadida a [[ttchop-webapps]] la configuración visual aprobada: fondo `none` y sombra negra `0 0 2px rgba(0,0,0,1), 0 3px 6px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,0.95)`.
 - Decisión basada en una prueba de un slide 1080×1920 reutilizando un fondo existente; sin generación IA ni gasto Kie.
 - Se documentó explícitamente que es una referencia visual aún no persistida en Firestore ni integrada/desplegada en producción.
+
+## [2026-10-15] update | Alcance exclusivo de sombra de carrusel
+- Aclarado en [[ttchop-webapps]] que la configuración aplica solo a `image_carousel`/`CarouselSlide`.
+- Es explícitamente no global: no modifica overlays de videos/collage ni el `OverlayKit.SHADOW` general; el preview temporal afectó únicamente el nodo de texto del carrusel.
