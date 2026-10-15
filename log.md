@@ -115,3 +115,9 @@
 - Siembra Firestore de ttchop2 verificada de vuelta para Arturo: 5 estilos + 3 guiones seed
   (seedVersion 1); se conservaron templates ajenos al carrusel. Commits de código pusheados a
   master: webapp2 `d9b450b`, ttchop-server `32b4212`; build reportado por jr_developer como exitoso.
+
+## [2026-10-15] update | Producer defaults + aislamiento de Vosk STT
+- Documentados en [[ttchop-automatizaciones]] los defaults del Producer verificados en código:
+  template `temp_y3w17i3`, voz PumaVoice01, proyecto `ttchop`, idioma `ja`/`es` y overlay/personaje desactivados por default.
+- Aislado Vosk en Python 3.10 y actualizado su wrapper para no mezclar paquetes con Python 3.14;
+  config de Hermes y proveedor STT alternativo quedaron intactos. Transcripción end-to-end verificada.

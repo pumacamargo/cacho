@@ -1,7 +1,7 @@
 ---
 title: Hermes Agent
 created: 2026-10-10
-updated: 2026-10-14
+updated: 2026-10-15
 type: entity
 tags: [sistema, infra, rol-agente]
 status: active
@@ -33,13 +33,17 @@ Arturo (`vps-tools`). Es una de las "IAs que consumen" la wiki.
 - **Entrada (voz → texto)**: STT local con **Vosk** (modelo ES) vía
   `HERMES_LOCAL_STT_COMMAND` → `/root/.hermes/bin/stt-vosk.sh` (wrapper que
   resuelve python/ffmpeg de `/root/.hermes/tools`). `stt.provider: local_command`.
+- Vosk queda aislado en `/root/.hermes/tools/vosk-stt-py310` (Python 3.10,
+  `vosk==0.3.45`); el wrapper limpia `PYTHONPATH`/`PYTHONHOME` para evitar que
+  importe paquetes del Python 3.14 administrado por Hermes. No cambia la config
+  global ni el proveedor STT alternativo.
 - **Salida (texto → voz)**: **Edge TTS**, voz `es-MX-JorgeNeural` (español
   mexicano). Edge a veces da un 403 transitorio → reintentar.
 - **Modo `/voice`** en Telegram: `off` (texto) | `voice_only` (voz solo si el
   usuario mandó audio) | `tts` (voz en cada respuesta). Estado por chat en
   `gateway_voice_mode.json`.
-- Nota: `faster-whisper` roto en este Python 3.14 (PyAV `metadata_errors`) — por
-  eso se usa Vosk vía `local_command`.
+- Nota: `faster-whisper` sigue roto en este Python 3.14 (PyAV `metadata_errors`);
+  Vosk usa el entorno Python 3.10 aislado vía `local_command`.
 
 ## Agentes persistentes (Bot Mode) — 2026-10-14
 

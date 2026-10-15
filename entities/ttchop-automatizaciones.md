@@ -1,7 +1,7 @@
 ---
 title: ttchop automatizaciones
 created: 2026-10-10
-updated: 2026-10-11
+updated: 2026-10-15
 type: concept
 tags: [proceso, pipeline, cron, automatizacion]
 status: active
@@ -96,6 +96,23 @@ en Firestore `bot_daily_runs/{date}` (per-fase: `tasks`, `requestSamples`,
   `random_emergency` (caption 🚨 en Telegram). Fuera de ese caso se respeta el
   cooldown. **Dependencia**: si no hay NINGÚN clip grabado (no "en cooldown"),
   ni esto produce — hace falta grabar clips nuevos.
+
+#### Parámetros predeterminados de render (Producer)
+
+Verificados contra `ttchop-bot/modules/producer/index.js` y
+`ttchop-server/routes/collage.js`. Los renders manuales deben replicar estos
+valores cuando se busca el comportamiento estándar:
+
+- **Template**: `temp_y3w17i3` ("25 sec").
+- **Voice**: `ve7BOdejheJbgrBriBx4` (`PumaVoice01`).
+- **Project**: `ttchop`.
+- **Language**: `ja` si `product.region === 'jp'`; `es` para las demás regiones.
+- **Overlay/personaje**: el Producer no manda `needsOverlay` ni `needsCharacter`;
+  `/collage/create` los inicializa en `false`, así que el render estándar no
+  agrega overlay ni personaje.
+- El payload además incluye `renderId`, `dialogue`, `sessions`, `product` y el
+  `collageTemplate` resuelto desde Firestore. Cualquier cambio de defaults debe
+  confirmarse primero en esos módulos.
 
 ### Intel (`modules/intel/*`)
 

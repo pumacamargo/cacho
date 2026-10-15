@@ -31,7 +31,7 @@
 - [[proyecto-game-development]] — desarrollo de videojuegos (Sandbox)
 - [[proyecto-shortfilm-development]] — desarrollo de cortometrajes (Sandbox)
 - [[proyecto-ttchop]] — proyecto software ttchop: web app + editor de video + bot
-- [[ttchop-automatizaciones]] — automatizaciones del bot (scheduler, pipeline scout→producer)
+- [[ttchop-automatizaciones]] — automatizaciones del bot (scheduler, pipeline scout→producer, defaults de render)
 - [[ttchop-webapps]] — webapps ttchop/ttchop2: dashboard, productos, video, analytics y carruseles de imagen (templates/modelos actualizados)
 
 ## Hardware
@@ -43,7 +43,7 @@
 - [[hardware-celular-android]] — celular Android (draft)
 
 ## Sistemas
-- [[hermes-agent]] — agente Hermes de Nous Research corriendo en vps-tools
+- [[hermes-agent]] — agente Hermes en vps-tools; voz local Vosk aislada y TTS es-MX
 - [[hermes-agentes]] — agentes persistentes de Hermes (research, developer, ttchop_robot)
 - [[paperclip]] — orquestador multi-agente auto-alojado (paperclip.lemonsushi.com)
 
