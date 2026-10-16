@@ -32,7 +32,7 @@
 - [[proyecto-shortfilm-development]] — desarrollo de cortometrajes (Sandbox)
 - [[proyecto-ttchop]] — proyecto software ttchop: web app + editor de video + bot
 - [[ttchop-automatizaciones]] — automatizaciones del bot (scheduler, pipeline scout→producer, defaults de render)
-- [[ttchop-webapps]] — webapps ttchop/ttchop2: dashboard, productos, video, analytics y carruseles (template de confesión/revancha desplegado en ttchop2)
+- [[ttchop-webapps]] — webapps ttchop/ttchop2: dashboard, productos, video, analytics, carruseles y flujo editorial Reddit → historia original
 
 ## Hardware
 - [[hardware-inventario]] — resumen de todo el hardware + red Tailscale
