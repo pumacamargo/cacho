@@ -1,7 +1,7 @@
 ---
 title: ttchop webapps (ttchop / ttchop2)
 created: 2026-10-10
-updated: 2026-10-15
+updated: 2026-10-16
 type: entity
 tags: [sistema, proyecto, negocio]
 status: active
@@ -100,6 +100,16 @@ cuenta TikTok (NO comercial de producto). Publicación manual por Arturo.
 - Los tres guiones seed actuales son: recomendación de libros/películas/TV/recetas; Problem + Fix (menopausia, sueño o baja energía); y lista/ranking con opiniones. Solicitan salida en el idioma seleccionado (es/en/ja) y roles hook/body/cta.
 - En Firestore de **ttchop2**, los seeds de carrusel de Arturo fueron reemplazados y se verificaron de vuelta: **5 `carousel_style` + 3 `carousel_script`**, todos `seed: true`, `seedVersion: 1`. Se conservaron sus otros templates no relacionados con carruseles.
 - Código en `master`, commits pusheados: webapp2 `d9b450b` y ttchop-server `32b4212`. `npm run build` fue reportado como exitoso por `jr_developer`. El despliegue de estos cambios posteriores a TTC-56 **no está confirmado**; no asumir que ya aparecen en la UI de producción. La prueba real de kie.ai para `nano-banana-2-lite` y su precio también quedan pendientes.
+
+### Template de guion: Confesión y giro de revancha (2026-10-16)
+
+La incertidumbre de despliegue anotada en la sección anterior correspondía al corte del 15 de octubre; este template quedó integrado y verificado en producción el 16 de octubre.
+
+- Se añadió como cuarto seed `carousel_script`, con `seedKey: carousel_script_reddit_confession_v1` y `seedVersion: 2`. El guion exige 7 slides exactos, portada que comienza con la narración (sin título independiente), resolución en la última lámina y sin CTA que sustituya el final. Máximo 160 caracteres por slide; idioma seleccionado `es`, `en` o `ja`, sin mezclarlos.
+- El texto público presenta una confesión original en primera persona: no copia el post ni afirma que los hechos estén verificados. No incluye “Reddit”, subreddit, usuario/handle, etiquetas de “ficción” ni datos identificables. Caption opcional, en el idioma elegido. La dirección visual del ejemplo —hombre japonés adulto y atractivo— es opcional, no una regla fija.
+- Procedencia editorial interna: post anónimo/no verificado usado como premisa: https://www.reddit.com/r/ProRevenge/comments/1d8rrg6/fired_from_my_job_but_received_a_years_worth_of/ . El permalink no forma parte del arte.
+- La migración verifica Firestore aunque exista la marca local v2; para cuentas con seeds de carrusel previos solo agrega el seed nuevo con clave estable, transacción create-if-absent y sin sobrescribir ediciones. Una cuenta nueva recibe el catálogo completo. No se hizo una escritura manual a Firestore.
+- El cambio quedó integrado en `master` de webapp2 (commit de integración por squash `6fa2ee0`) y desplegado a Firebase Hosting del proyecto `ttchop2` únicamente; no se tocaron `/root/ttchop`, reglas de Firestore ni `ttchop-server`. Verificación final en vivo: `https://ttchop2.web.app` respondió HTTP 200, el login se renderizó sin errores de Firebase y el bundle `index-4FlHiNuC.js` incluye el título y la clave estable del template. Build y 5 tests de backfill pasan. La copia temporal del `.env` se eliminó tras el despliegue.
 
 ## Documentación interna
 
