@@ -109,3 +109,8 @@
 - El PR #1 de `ttchop2` se integró a `master` en `6fa2ee0`; se desplegó solo Firebase Hosting del proyecto `ttchop2` (sin tocar `/root/ttchop`, reglas de Firestore ni `ttchop-server`).
 - Verificación in vivo final: `https://ttchop2.web.app` respondió HTTP 200, el login se renderizó sin errores de Firebase y `index-4FlHiNuC.js` contiene el título y `seedKey` del template. Build y 5 tests de backfill pasan.
 - La primera build desde un worktree limpio omitió `.env` (ignorado por Git) y causó `auth/invalid-api-key`; se corrigió con el entorno de `ttchop2`, permisos 600, rebuild y redeploy. La copia temporal de `.env` se eliminó; no se escribieron documentos manualmente a Firestore.
+
+## [2026-10-16] fix | 403 en backfill de seed
+- Confirmada la causa: el get transaccional del documento estable ausente chocaba con la regla de ownership basada en `resource.data.userId`.
+- En `ttchop2` PR #2, commit `3b203e0`, la regla permite solo el get del ID de seed propio cuando falta el documento; autenticación y ownership de otros documentos se conservan. `firebase deploy --only firestore:rules --project ttchop2` compiló y publicó las reglas.
+- Sin pruebas del Emulator por falta de Java en VPS; pendiente que el usuario recargue la app y abra Templates para confirmar el backfill autenticado.
