@@ -82,6 +82,56 @@ públicas de producto en `/p/:id`, y páginas legales `/terms` y `/privacy`.
 `scheduled_renders`, `master_videos`, `video_variations` (legacy), `imports` (ahí
 vive el contenedor), `analytics_orders`, `tiktok_videos`, `tiktok_accounts`.
 
+## Analytics: importaciones de referencia y acceso seguro
+
+### Dónde quedan los archivos de ventas
+
+`AnalyticsView.tsx` llama a `db.importSalesReference(file, activeAccountId)`. La app
+lee el `.xlsx`/`.csv` en el navegador; no guarda el libro original en Firebase
+Storage. Guarda metadatos en `imports` (`type: sales_reference`, `label`,
+`itemCount`, `importedAt` y `accountId` opcional) y filas parseadas en
+`sales_reference_data/{uid}/rows/{rowId}`, con `importId` y `data`. Para localizar
+una importación, filtra `imports` por `type`, identifica el `label`/`accountId` y
+consulta solo las filas cuyo `importId` coincide. No mezcles esta fuente con
+`analytics_orders`, que es la importación propia de Analytics. La relación de
+referencia con Momo's Choice está descrita en [[ttchop-automatizaciones]].
+
+### Cómo localizar la credencial correcta en `vps-projects`
+
+En la configuración revisada el **2026-10-16**, los archivos de proyecto tenían
+estas referencias (nombres de variables, no sus valores):
+
+- `ttchop-bot/.env` → `GOOGLE_APPLICATION_CREDENTIALS`.
+- `ttchop-server/.env` → `FIREBASE_SERVICE_ACCOUNT_PATH_TTCHOP2`.
+
+Ambas resolvían a la misma credencial de servicio y su `project_id` era `ttchop2`.
+El acceso se encontró siguiendo esas referencias de configuración y comprobando
+programáticamente que el archivo existe y que el JSON declara el proyecto
+esperado. La ruta resuelta y el contenido de la credencial no se guardan en esta
+wiki.
+
+Para repetir la verificación, lee las variables dentro de un proceso local y
+reporta solo si están presentes, si el archivo destino existe y el valor de
+`project_id`. **Nunca** imprimas o registres el valor de una variable, el JSON
+completo, claves privadas o tokens; no hagas `cat` de `.env`/credenciales ni los
+copies al chat o al wiki. La sesión shell puede no exportar estas variables: en
+este VPS la configuración estaba en los `.env` del proyecto. Las variables
+`VITE_FIREBASE_*` de `webapp2/.env` son configuración cliente; no son credenciales
+de inicio de sesión ni sustituyen la credencial de servicio.
+
+### Límites de uso
+
+La credencial de servicio tiene privilegios de Admin y puede leer/escribir por
+encima de las reglas de Firestore; **no es una sesión de usuario**. Para el uso
+ordinario de Analytics, utiliza una sesión autenticada de TTChop2. Solo usa una
+consulta administrativa si Arturo la autoriza explícitamente y especifica el
+proyecto y el objetivo; mantenla de solo lectura y con alcance mínimo. Nunca la
+uses para suplantar a un usuario, hacer un barrido amplio entre cuentas o escribir
+datos. Si falta sesión o autorización para el acceso solicitado, detente y pide
+una vía autenticada segura. Antes de inicializar Firebase Admin, confirma
+`project_id == ttchop2` y establece explícitamente ese proyecto; no dependas de
+defaults ni consultes el proyecto original `ttchop`.
+
 ## Feature: carruseles de imágenes (image_carousel) — implementado y desplegado 2026-10-14
 
 Carruseles de imágenes como **contenido orgánico para subir seguidores** de la

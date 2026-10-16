@@ -119,3 +119,8 @@
 - Ampliada [[ttchop-webapps]]: para este formato, primero se busca y registra internamente un post público; luego se resume y adapta como historia original de siete slides, sin presentar el post anónimo como verificado.
 - Documentados la referencia de r/ProRevenge usada, los beats de la adaptación japonesa, la dirección visual, composición local 1080×1920, QA y forma de entrega. Se aclara que el modelo exacto de Kie.ai no quedó registrado y que no se publicó.
 - Actualizado el índice de Cacho.
+
+## [2026-10-16] update | descubrimiento seguro de credenciales de TTChop2
+- Documentadas en [[ttchop-webapps]] las referencias `GOOGLE_APPLICATION_CREDENTIALS` (ttchop-bot) y `FIREBASE_SERVICE_ACCOUNT_PATH_TTCHOP2` (ttchop-server), verificando solo existencia y `project_id=ttchop2`; no se registran rutas resueltas ni valores secretos.
+- Añadidos el flujo actual de `sales_reference_data` frente a `analytics_orders` y los límites de alcance: sesión autenticada para uso normal; acceso administrativo solo ante autorización explícita, lectura mínima y sin suplantar usuarios.
+- Actualizado el índice de Cacho.
