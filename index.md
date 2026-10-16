@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-10-15 | Total pages: 35
+> Last updated: 2026-10-16 | Total pages: 33
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -36,7 +36,7 @@
 
 ## Hardware
 - [[hardware-inventario]] — resumen de todo el hardware + red Tailscale
-- [[hardware-vps-tools]] — VPS principal (este host), corre Hermes/Paperclip
+- [[hardware-vps-tools]] — VPS principal (este host), corre Hermes
 - [[hardware-vps-projects]] — segundo VPS para proyectos
 - [[hardware-raspberry-pi5]] — Raspberry Pi 5 (pi5puma01)
 - [[hardware-desktop-puma]] — desktop Windows (desktop-puma)
@@ -44,8 +44,7 @@
 
 ## Sistemas
 - [[hermes-agent]] — agente Hermes en vps-tools; voz local Vosk aislada y TTS es-MX
-- [[hermes-agentes]] — agentes persistentes de Hermes (research, developer, ttchop_robot)
-- [[paperclip]] — orquestador multi-agente auto-alojado (paperclip.lemonsushi.com)
+- [[hermes-agentes]] — agentes persistentes de Hermes (research, developer, jr_developer, ttchop_robot)
 
 ## Repositorio
 - [[cacho]] — este repositorio, convertido a wiki de IA
@@ -55,6 +54,3 @@
 ## Comparisons
 
 ## Queries
-
-## Operations
-- [[runbook-abrir-task-paperclip]] — abrir un task/issue en Paperclip y asignarlo a un agente (CLI board)

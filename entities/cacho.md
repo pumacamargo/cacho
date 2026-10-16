@@ -1,7 +1,7 @@
 ---
 title: Cacho (repositorio)
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-16
 type: entity
 tags: [empresa, proyecto, integracion]
 status: active
@@ -18,13 +18,13 @@ excel) con utilidades en JS; ese contenido quedó obsoleto y fue eliminado.
 ## Estado actual
 
 Reconvertido en **wiki central de IA** (patrón LLM Wiki): fuente de verdad
-compartida para [[hermes-agent]], los agentes de [[paperclip]] y Claude.
+compartida para [[hermes-agent]], sus agentes persistentes ([[hermes-agentes]]) y Claude.
 Estructura y reglas definidas en `SCHEMA.md`; catálogo en `index.md`.
 
 ## Relaciones
 
 - Repositorio consumido por [[hermes-agent]] (clon en `/root/cacho`).
-- Contenido gestionado por la orquestación de [[paperclip]].
+- Contenido mantenido por los agentes de Hermes y Claude.
 - Empresa principal documentada: [[ttchop]].
 
 ## Convención

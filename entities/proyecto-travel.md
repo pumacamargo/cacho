@@ -1,7 +1,7 @@
 ---
 title: Proyecto Travel
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-16
 type: entity
 tags: [proyecto, automatizacion, familia]
 status: draft
@@ -26,4 +26,4 @@ Definición inicial. Por detallar alcance (qué automatiza, IA involucrada, outp
 
 - Familia de [[arturo]].
 - Parte de las [[categorias-proyectos]].
-- Podría usar infraestructura de [[paperclip]] o [[hermes-agent]].
+- Podría usar infraestructura de [[hermes-agent]].

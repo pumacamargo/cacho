@@ -1,7 +1,7 @@
 ---
 title: ttchop automatizaciones
 created: 2026-10-10
-updated: 2026-10-15
+updated: 2026-10-16
 type: concept
 tags: [proceso, pipeline, cron, automatizacion]
 status: active
@@ -186,4 +186,4 @@ Consideraciones:
 ## Relaciones
 
 - Proyecto: [[proyecto-ttchop]] · empresa/pipeline: [[ttchop]]
-- Categoría [[categoria-tts]] · sistemas [[paperclip]], [[hermes-agent]]
+- Categoría [[categoria-tts]] · sistemas [[hermes-agent]], [[hermes-agentes]]

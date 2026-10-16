@@ -1,7 +1,7 @@
 ---
 title: Proyecto Lemon Sushi
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-16
 type: entity
 tags: [proyecto, negocio, monetizacion]
 status: draft
@@ -24,5 +24,5 @@ Definición inicial. Por detallar (producción, precios, logística).
 ## Relaciones
 
 - Categoría: [[categoria-tts]] (junto a [[ttchop]]).
-- Dominio lemon-sushi.com compartido con la UI de [[paperclip]].
+- Dominio lemon-sushi.com para el proyecto Lemon Sushi.
 - Parte de las [[categorias-proyectos]].

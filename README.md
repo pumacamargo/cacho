@@ -1,7 +1,7 @@
 # Cacho — Wiki central de IA de Arturo
 
 > **Fuente de verdad compartida** para todos los sistemas de IA de Arturo:
-> Claude, Hermes, agentes de Paperclip, y LLMs vía OpenRouter.
+> Claude, todos los agentes de Hermes, y LLMs vía OpenRouter.
 > Si una IA necesita contexto, lo busca aquí primero.
 
 ## Qué es esto

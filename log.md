@@ -5,16 +5,6 @@
 > Acciones: create, ingest, update, query, lint, archive, delete
 > Rotar a log-YYYY.md cuando supere 500 entradas.
 
-## [2026-10-10] create | Wiki inicializado
-- Repositorio "cacho" reutilizado: eliminados 26 archivos del asistente personal
-  N8N obsoleto (data/ gym,meditacion,nutricion,options,inversiones,excel; utils/; CLAUDE.md).
-- Creados: SCHEMA.md, README.md, index.md, log.md.
-- Entidades iniciales: [[cacho]], [[hermes-agent]], [[paperclip]], [[ttchop]].
-
-## [2026-10-10] create | Entidades iniciales
-- Creadas 4 páginas de entidades: [[cacho]], [[hermes-agent]], [[paperclip]], [[ttchop]].
-- Estructura completa: raw/, entities/, concepts/, comparisons/, queries/, operations/, _archive/.
-
 ## [2026-10-10] create | Perfil de Arturo
 - Creada entidad [[arturo]]: biografía, carrera (rigger 3D), ubicación (Osaka, Japón),
   motivos (proyectos con capital, nada de rigging) y preferencias de trabajo.
@@ -69,24 +59,12 @@
   compartido), secciones, stack, arquitectura (contenedores, imports, databaseService),
   Firestore (colecciones) y funciones. Fuente: README.md + CLAUDE.md del repo.
 
-## [2026-10-10] update | paperclip/ttchop — agentes en evaluación
-- Quitadas menciones específicas a los agentes de Paperclip ([[paperclip]], [[ttchop]]).
-  Arturo no está convencido de ellos y puede dejar de usarlos; se dejó nota de
-  "en evaluación" en vez de documentar el detalle.
-
 ## [2026-10-10] lint | Auditoría completa — todo OK
 - Revisión integral: frontmatter OK, sin links rotos, sin huérfanas, todas
   indexadas, sin secretos.
 - Corregido durante lint: ttchop-webapps quedó huérfana → añadidos enlaces desde
   proyecto-ttchop y ttchop-automatizaciones; 3 páginas de hardware tenían 1 solo
   enlace de salida → añadido enlace a arturo.
-
-## [2026-10-10] create | Runbook abrir task en Paperclip
-- Creada [[runbook-abrir-task-paperclip]] (operations/): pasos para abrir un issue
-  en Paperclip con el CLI board (agent list → issue create → verificar), con la
-  convención de asignar al Developer y la regla de commit de [[ttchop]].
-- Aplicado en vivo: issue TTC-52 creado y asignado a Developer (prioridad high)
-  — daily-tasks solo extrae showcaseProducts al crear la task, no al actualizarla.
 
 ## [2026-10-11] update | Voz en Hermes + fixes del bot ttchop
 - Documentada la config de voz de [[hermes-agent]]: STT=Vosk es vía
@@ -121,3 +99,8 @@
   template `temp_y3w17i3`, voz PumaVoice01, proyecto `ttchop`, idioma `ja`/`es` y overlay/personaje desactivados por default.
 - Aislado Vosk en Python 3.10 y actualizado su wrapper para no mezclar paquetes con Python 3.14;
   config de Hermes y proveedor STT alternativo quedaron intactos. Transcripción end-to-end verificada.
+
+## [2026-10-16] update | Enrutamiento de trabajo y roster Hermes
+- Alineada la documentación para delegar trabajo exclusivamente mediante los agentes Hermes: Research, Developer, jr_developer y ttchop_robot.
+- Retirados procedimientos y páginas de gestión externa obsoletos; actualizado el índice, schema y contexto de ttchop.
+- Actualizado el roster de [[hermes-agentes]] para incluir jr_developer.

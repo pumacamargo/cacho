@@ -1,7 +1,7 @@
 ---
 title: Hardware VPS Tools
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-16
 type: entity
 tags: [infra, vps, docker]
 status: active
@@ -25,8 +25,6 @@ VPS principal de Arturo, **este host** donde corre Hermes. Alojado en Contabo.
 ## Carga
 
 Centro de la orquestación de IA:
-- [[paperclip]] (Docker compose en `/root/paperclip`, API/UI en `172.17.0.1:3100`,
-  público https://paperclip.lemonsushi.com)
 - [[hermes-agent]] (gateway + dashboard, puerto 9119)
 - Otros servicios Docker: n8n, Affine, RustDesk
 - Empresa automatizada: [[ttchop]]
