@@ -124,3 +124,8 @@
 - Documentadas en [[ttchop-webapps]] las referencias `GOOGLE_APPLICATION_CREDENTIALS` (ttchop-bot) y `FIREBASE_SERVICE_ACCOUNT_PATH_TTCHOP2` (ttchop-server), verificando solo existencia y `project_id=ttchop2`; no se registran rutas resueltas ni valores secretos.
 - Añadidos el flujo actual de `sales_reference_data` frente a `analytics_orders` y los límites de alcance: sesión autenticada para uso normal; acceso administrativo solo ante autorización explícita, lectura mínima y sin suplantar usuarios.
 - Actualizado el índice de Cacho.
+
+## [2026-10-17] create/update | runbook de creación de carruseles editoriales
+- Creado [[ttchop-carousel-creation]] para diferenciar TTChop2 autenticado (Firestore) del flujo local Kie.ai + composición PNG (sin login de TTChop2, escrituras a Firebase ni publicación).
+- Documentados el gate de créditos, Seedream v4, batch 6+1, persistencia previa de `taskId`/slots/coste para sobrevivir timeouts, composición 1080×1920 con overlay CJK y QA visual. El coste real del ejemplo del 17 de octubre no pudo recuperarse; 35 créditos es solo estimación.
+- Registrada como procedencia editorial interna la historia anónima recopilada en r/BestofRedditorUpdates: post original fechado 2026-01-16 y actualización 2026-01-17; no se conservan nombres/handles ni van en el arte. Actualizados `ttchop-webapps.md` e `index.md`.

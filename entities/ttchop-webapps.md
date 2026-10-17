@@ -1,7 +1,7 @@
 ---
 title: ttchop webapps (ttchop / ttchop2)
 created: 2026-10-10
-updated: 2026-10-16
+updated: 2026-10-17
 type: entity
 tags: [sistema, proyecto, negocio]
 status: active
@@ -160,6 +160,8 @@ La incertidumbre de despliegue anotada en la sección anterior correspondía al 
 - Procedencia editorial interna: post anónimo/no verificado usado como premisa: https://www.reddit.com/r/ProRevenge/comments/1d8rrg6/fired_from_my_job_but_received_a_years_worth_of/ . El permalink no forma parte del arte.
 
 #### Flujo para futuros carruseles inspirados en Reddit
+
+El procedimiento detallado para escoger entre el pipeline autenticado de TTChop2 y la generación Kie.ai con composición local está en [[ttchop-carousel-creation]].
 
 1. **Buscar y seleccionar primero un post público** (antes de escribir el carrusel). Elegir un relato con conflicto entendible, detalles suficientes para conocer al protagonista y un giro/resolución que sostenga siete láminas. Guardar permalink, subreddit y fecha solo como procedencia editorial interna; no hace falta conservar ni publicar nombres de usuario/handles. Nunca asumir que un post anónimo está verificado. El precedente fue el post de r/ProRevenge publicado el 5 de junio de 2024 sobre el creador de videos universitarios despedido antes de completar su meta anual.
 2. **Leer y resumir la fuente**: separar lo que el post afirma de lo que se puede comprobar; extraer premisa, personajes, agravios, acciones y desenlace. No copiar frases; no inventar atribuciones ni presentar los hechos como confirmados.
