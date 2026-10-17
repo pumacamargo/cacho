@@ -32,7 +32,7 @@
 - [[proyecto-shortfilm-development]] — desarrollo de cortometrajes (Sandbox)
 - [[proyecto-ttchop]] — proyecto software ttchop: web app + editor de video + bot
 - [[ttchop-automatizaciones]] — automatizaciones del bot (scheduler, pipeline scout→producer, defaults de render)
-- [[ttchop-webapps]] — webapps ttchop/ttchop2: dashboard, productos, video, Analytics, importaciones de ventas, acceso seguro a credenciales, carruseles y flujo editorial Reddit → historia original; enlaza al runbook Kie.ai local
+- [[ttchop-webapps]] — webapps ttchop/ttchop2: dashboard, productos, video, Analytics, importaciones de ventas, acceso seguro a credenciales, carruseles y flujo editorial Reddit → historia original; safe area y sombra documentadas solo para image_carousel (integración pendiente); enlaza al runbook Kie.ai local
 
 ## Hardware
 - [[hardware-inventario]] — resumen de todo el hardware + red Tailscale

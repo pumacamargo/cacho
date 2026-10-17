@@ -174,6 +174,16 @@ El procedimiento detallado para escoger entre el pipeline autenticado de TTChop2
 - Fix de permisos posterior al despliegue: la transacción leía el ID estable antes de crearlo; la regla anterior, basada en `resource.data.userId`, denegaba ese get cuando el documento no existía. Se añadió una excepción autenticada, limitada al ID exacto del seed del usuario y solo cuando falta el documento; ownership de documentos existentes y regla de creación permanecen intactos. `ttchop2` PR #2 / commit `3b203e0` se desplegó con `firebase deploy --only firestore:rules --project ttchop2`; Firebase compiló y publicó las reglas. Emulator de reglas no ejecutado porque el VPS no tiene Java; la confirmación de lectura desde la sesión del usuario queda pendiente de recargar y abrir Templates.
 - El cambio quedó integrado en `master` de webapp2 (commit de integración por squash `6fa2ee0`) y desplegado a Firebase Hosting del proyecto `ttchop2` únicamente; no se tocaron `/root/ttchop`, reglas de Firestore ni `ttchop-server` en ese primer deploy. Verificación final en vivo: `https://ttchop2.web.app` respondió HTTP 200, el login se renderizó sin errores de Firebase y el bundle `index-4FlHiNuC.js` incluye el título y la clave estable del template. Build y 5 tests de backfill pasan. La copia temporal del `.env` se eliminó tras el despliegue.
 
+### Decisión visual: sombra de `image_carousel` (2026-10-15)
+
+Arturo aprobó una sombra negra más grande y oscura, con poco difuminado y **sin recuadro ni gradiente**, exclusivamente para el texto de las diapositivas de carrusel:
+
+- **Alcance exclusivo:** `image_carousel`, componente Remotion `CarouselSlide`. No aplicar a los overlays de texto de videos/collage de `ttchop-post`, ni cambiar el `OverlayKit.SHADOW` general. No es un estilo global.
+- Fondo del texto del carrusel: `typography.background: 'none'`.
+- Sombra probada: `0 0 2px rgba(0,0,0,1), 0 3px 6px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,0.95)`.
+- La prueba final fue un único slide PNG de 1080×1920, reutilizando un fondo ya existente; no generó imágenes con IA ni consumió créditos Kie. El override temporal se limitó al nodo de texto de `CarouselSlide`.
+- **Estado:** decisión visual documentada, todavía no persistida en el template de Firestore ni integrada en el código de producción. El renderer actual no lee un `typography.textShadow` guardado y el template `temp_bi9e3iz` conserva `background: 'gradient'`. El ajuste de safe area está en la rama `fix/carousel-text-safe-area` (commit `737b80e`), sin despliegue confirmado.
+
 ## Documentación interna
 
 - `CLAUDE.md` — arquitectura, esquema de datos, trampas conocidas.
