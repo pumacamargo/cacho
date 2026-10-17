@@ -1,7 +1,7 @@
 ---
 title: Hermes Agent
 created: 2026-10-10
-updated: 2026-10-15
+updated: 2026-10-16
 type: entity
 tags: [sistema, infra, rol-agente]
 status: active
@@ -23,8 +23,7 @@ Arturo (`vps-tools`). Es una de las "IAs que consumen" la wiki.
 
 ## Rol en el stack
 
-- Integra con [[paperclip]] vía el adapter nativo Hermes (`hermes_local` /
-  `hermes_gateway`); la vía recomendada es `hermes_gateway`.
+- Proporciona el runtime y los perfiles persistentes documentados en [[hermes-agentes]].
 - Lee y mantiene esta wiki (`/root/cacho`).
 - Corre como gateway + dashboard.
 
@@ -47,13 +46,9 @@ Arturo (`vps-tools`). Es una de las "IAs que consumen" la wiki.
 
 ## Agentes persistentes (Bot Mode) — 2026-10-14
 
-Hermes corre ahora **tres agentes persistentes** (bot = perfil con SOUL.md y
-memoria propias): **Research** (investiga/resume), **Developer** (desarrolla
-código) y **ttchop_robot** (asiste ttchop). Detalle, modelos y estado de
-Telegram en [[hermes-agentes]].
+Hermes corre **cuatro agentes persistentes** (perfiles con SOUL.md y memoria propias): **Research**, **Developer**, **jr_developer** y **ttchop_robot**. Sus responsabilidades, modelos y acceso están en [[hermes-agentes]].
 
 ## Relaciones
 
-- Orquestado por / conectado a [[paperclip]].
 - Comparte VPS con la infraestructura de Docker (n8n, Affine, RustDesk).
 - Empresa automatizada: [[ttchop]].

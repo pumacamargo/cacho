@@ -1,7 +1,7 @@
 ---
 title: Categoría TT's (TikTok Shop)
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-16
 type: entity
 tags: [proyecto, negocio, monetizacion]
 status: active
@@ -20,5 +20,5 @@ Categoría de proyectos dentro de **TikTok Shop**.
 
 ## Notas
 
-- Relación con el dominio lemon-sushi.com (también usado para Paperclip UI).
+- Relación con el dominio lemon-sushi.com.
 - Parte de las [[categorias-proyectos]].

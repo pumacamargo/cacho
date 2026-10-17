@@ -1,7 +1,7 @@
 ---
 title: ttchop (proyecto)
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-16
 type: entity
 tags: [proyecto, negocio, monetizacion, sistema, pipeline]
 status: active
@@ -49,4 +49,4 @@ Detalle de las automatizaciones internas en [[ttchop-automatizaciones]].
 
 - Categoría: [[categoria-tts]] (junto a [[proyecto-lemon-sushi]]).
 - Empresa/pipeline: [[ttchop]].
-- Orquestación: [[paperclip]], [[hermes-agent]].
+- Orquestación: [[hermes-agent]], [[hermes-agentes]].

@@ -9,7 +9,7 @@
 Todo lo que Arturo necesita que sus sistemas de IA tengan como contexto compartido:
 
 - **Empresas y proyectos** que gestiona (negocios, videojuegos, automatizaciones).
-- **Infraestructura de IA**: Paperclip, Hermes, n8n, Affine, OpenRouter, agentes multi-agente.
+- **Infraestructura de IA**: Hermes, n8n, Affine, OpenRouter, agentes multi-agente.
 - **Pipelines y automatizaciones** (ej. pipeline diario ttchop).
 - **Procedimientos operativos** (runbooks) y decisiones.
 
@@ -28,12 +28,14 @@ vive aquí. El objetivo es que **todas las IAs vean la misma información actual
 6. Cada acción debe **registrarse en `log.md`** (append-only).
 7. **Idioma**: el wiki es bilingüe tolerante pero el contenido de trabajo se escribe
    en español (como lo habla Arturo). Los nombres propios y técnicos van en su idioma
-   original (Paperclip, n8n, Docker).
+   original (n8n, Docker).
 8. **Sin secretos jamás**: NUNCA commitear tokens, claves, contraseñas, API keys.
    Van en `.env` / vaults / variables, referenciados por nombre en el wiki.
 9. **Escritura**: los agentes NO reescriben `entities/`, `concepts/` o `operations/`
-   a la carrera. Proponen cambios (issue/PR/branch) y Arturo (o un mantenedor)
-   los mergea. Solo el mantenedor toca `main` directamente para consolidar.
+   a la carrera. Para trabajo delegado, usar los perfiles Hermes adecuados
+   (Research, Developer, jr_developer o ttchop_robot); no crear ni enrutar tareas
+   en gestores externos. Arturo (o un mantenedor) revisa y mergea cambios.
+   Solo el mantenedor toca `main` directamente para consolidar.
 
 ## Frontmatter (plantilla de página)
 
@@ -58,14 +60,14 @@ related: [otra-pagina]            # opcional, sin [[ ]]
 source_url: https://...        # si aplica
 ingested: YYYY-MM-DD
 sha256: <hex del cuerpo>       # detecta drift al re-ingestar
-owner: persona | claude | hermes | paperclip | openrouter
+owner: persona | claude | hermes | openrouter
 ---
 ```
 
 ## Tag Taxonomy (añadir aquí ANTES de usarlos)
 
 - **tipo-de-pagina**: persona, empresa, proyecto, producto, videojuego, sistema, hobby, gusto, decision
-- **sistema**: paperclip, hermes, n8n, affine, rustdesk, openrouter
+- **sistema**: hermes, n8n, affine, rustdesk, openrouter
 - **rol-agente**: c-level, developer, auditor, supervisor, task-runner
 - **infra**: docker, vps, tailscale, red, almacen
 - **proceso**: pipeline, cron, automatizacion, runbook
@@ -138,9 +140,9 @@ Procedimientos operativos paso a paso (cómo ejecutar cosas, cómo arreglar X).
 ## Escritura y control de versiones
 
 - `main` es la fuente de verdad estable.
-- Los agentes trabajan en branch → abren PR/issue → Arturo aprueba y mergea.
+- Los agentes trabajan en branch → abren PR → Arturo aprueba y mergea.
 - Commits: mensajes claros en español o inglés técnico, formato convencional
-  (`feat:`, `fix:`, `docs:`, `wiki:`). Ej: `wiki: add entity for paperclip-agent`.
+  (`feat:`, `fix:`, `docs:`, `wiki:`). Ej: `wiki: add Hermes agent entity`.
 - `log.md`: formato `## [YYYY-MM-DD] accion | asunto`. Rotar cuando >500 entradas.
 
 ## Comandos de orientación (para agentes Hermes)

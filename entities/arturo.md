@@ -1,7 +1,7 @@
 ---
 title: Arturo
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-16
 type: entity
 tags: [persona, biografia, ubicacion, arte, idioma, negocio]
 status: active
@@ -35,12 +35,12 @@ con él debe leer esta página para conocerle.
 - Prefiere los caminos ya probados/documentados por la comunidad antes que
   soluciones improvisadas.
 - Revisa cada automatización en vivo antes de darla por buena.
-- Para fixes usa tasks de Paperclip al agente Developer ([[paperclip]]).
+- Para desarrollo delega mediante Hermes a los agentes adecuados: Research, Developer, jr_developer o ttchop_robot ([[hermes-agentes]]).
 - Quiere los cambios commiteados y pusheados (regla de commit TTC-41).
 
 ## Relaciones
 
 - Esposa: japonesa (vivieron en Vancouver y ahora Osaka).
 - Empresa principal: [[ttchop]].
-- Infraestructura orquestada con [[paperclip]] y [[hermes-agent]].
+- Infraestructura operada con [[hermes-agent]] y sus agentes persistentes ([[hermes-agentes]]).
 - Documentación centralizada en [[cacho]].

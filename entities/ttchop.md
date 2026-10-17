@@ -1,7 +1,7 @@
 ---
 title: ttchop (empresa y pipeline)
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-16
 type: entity
 tags: [empresa, proceso, pipeline, cron]
 status: active
@@ -10,11 +10,7 @@ confidence: high
 
 # ttchop
 
-Empresa registrada en [[paperclip]] (id `f3009db4-1c63-4894-a00d-c568409b890b`)
-y pipelines diarios de automatización (scout → producer).
-
-> Los agentes multi-agente de Paperclip están **en evaluación** — Arturo no está
-> convencido de ellos y puede dejar de usarlos. No documentar detalle de agentes.
+Empresa con pipelines diarios de automatización (scout → producer).
 
 ## Pipeline diario
 
@@ -24,12 +20,10 @@ y pipelines diarios de automatización (scout → producer).
 
 ## Infra relacionada
 
-- Corre sobre [[paperclip]] (orquestación) y comparte VPS con
-  [[hermes-agent]].
+- Comparte VPS y herramientas con [[hermes-agent]] y sus perfiles de [[hermes-agentes]].
 - Documentación central en [[cacho]].
 
 ## Convención operativa
 
 Arturo prefiere revisar cada función automatizada en vivo antes de darla por
-buena; para fixes abre tasks de Paperclip al agente Developer, y quiere cambios
-commiteados y pusheados (regla de commit TTC-41).
+buena; para desarrollo delega mediante Hermes a cualquiera de sus agentes adecuados (Research, Developer, jr_developer o ttchop_robot). Quiere cambios commiteados y pusheados (regla TTC-41).

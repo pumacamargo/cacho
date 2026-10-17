@@ -5,16 +5,6 @@
 > Acciones: create, ingest, update, query, lint, archive, delete
 > Rotar a log-YYYY.md cuando supere 500 entradas.
 
-## [2026-10-10] create | Wiki inicializado
-- Repositorio "cacho" reutilizado: eliminados 26 archivos del asistente personal
-  N8N obsoleto (data/ gym,meditacion,nutricion,options,inversiones,excel; utils/; CLAUDE.md).
-- Creados: SCHEMA.md, README.md, index.md, log.md.
-- Entidades iniciales: [[cacho]], [[hermes-agent]], [[paperclip]], [[ttchop]].
-
-## [2026-10-10] create | Entidades iniciales
-- Creadas 4 páginas de entidades: [[cacho]], [[hermes-agent]], [[paperclip]], [[ttchop]].
-- Estructura completa: raw/, entities/, concepts/, comparisons/, queries/, operations/, _archive/.
-
 ## [2026-10-10] create | Perfil de Arturo
 - Creada entidad [[arturo]]: biografía, carrera (rigger 3D), ubicación (Osaka, Japón),
   motivos (proyectos con capital, nada de rigging) y preferencias de trabajo.
@@ -69,24 +59,12 @@
   compartido), secciones, stack, arquitectura (contenedores, imports, databaseService),
   Firestore (colecciones) y funciones. Fuente: README.md + CLAUDE.md del repo.
 
-## [2026-10-10] update | paperclip/ttchop — agentes en evaluación
-- Quitadas menciones específicas a los agentes de Paperclip ([[paperclip]], [[ttchop]]).
-  Arturo no está convencido de ellos y puede dejar de usarlos; se dejó nota de
-  "en evaluación" en vez de documentar el detalle.
-
 ## [2026-10-10] lint | Auditoría completa — todo OK
 - Revisión integral: frontmatter OK, sin links rotos, sin huérfanas, todas
   indexadas, sin secretos.
 - Corregido durante lint: ttchop-webapps quedó huérfana → añadidos enlaces desde
   proyecto-ttchop y ttchop-automatizaciones; 3 páginas de hardware tenían 1 solo
   enlace de salida → añadido enlace a arturo.
-
-## [2026-10-10] create | Runbook abrir task en Paperclip
-- Creada [[runbook-abrir-task-paperclip]] (operations/): pasos para abrir un issue
-  en Paperclip con el CLI board (agent list → issue create → verificar), con la
-  convención de asignar al Developer y la regla de commit de [[ttchop]].
-- Aplicado en vivo: issue TTC-52 creado y asignado a Developer (prioridad high)
-  — daily-tasks solo extrae showcaseProducts al crear la task, no al actualizarla.
 
 ## [2026-10-11] update | Voz en Hermes + fixes del bot ttchop
 - Documentada la config de voz de [[hermes-agent]]: STT=Vosk es vía
@@ -121,3 +99,33 @@
   template `temp_y3w17i3`, voz PumaVoice01, proyecto `ttchop`, idioma `ja`/`es` y overlay/personaje desactivados por default.
 - Aislado Vosk en Python 3.10 y actualizado su wrapper para no mezclar paquetes con Python 3.14;
   config de Hermes y proveedor STT alternativo quedaron intactos. Transcripción end-to-end verificada.
+
+## [2026-10-16] update | Enrutamiento de trabajo y roster Hermes
+- Alineada la documentación para delegar trabajo exclusivamente mediante los agentes Hermes: Research, Developer, jr_developer y ttchop_robot.
+- Retirados procedimientos y páginas de gestión externa obsoletos; actualizado el índice, schema y contexto de ttchop.
+- Actualizado el roster de [[hermes-agentes]] para incluir jr_developer.
+
+## [2026-10-16] deploy | Template de confesión/revancha en TTChop2
+- El PR #1 de `ttchop2` se integró a `master` en `6fa2ee0`; se desplegó solo Firebase Hosting del proyecto `ttchop2` (sin tocar `/root/ttchop`, reglas de Firestore ni `ttchop-server`).
+- Verificación in vivo final: `https://ttchop2.web.app` respondió HTTP 200, el login se renderizó sin errores de Firebase y `index-4FlHiNuC.js` contiene el título y `seedKey` del template. Build y 5 tests de backfill pasan.
+- La primera build desde un worktree limpio omitió `.env` (ignorado por Git) y causó `auth/invalid-api-key`; se corrigió con el entorno de `ttchop2`, permisos 600, rebuild y redeploy. La copia temporal de `.env` se eliminó; no se escribieron documentos manualmente a Firestore.
+
+## [2026-10-16] fix | 403 en backfill de seed
+- Confirmada la causa: el get transaccional del documento estable ausente chocaba con la regla de ownership basada en `resource.data.userId`.
+- En `ttchop2` PR #2, commit `3b203e0`, la regla permite solo el get de seed propio cuando falta el documento; autenticación y ownership de otros documentos se conservan. `firebase deploy --only firestore:rules --project ttchop2` compiló y publicó las reglas.
+- Sin pruebas del Emulator por falta de Java en VPS; pendiente que el usuario recargue la app y abra Templates para confirmar el backfill autenticado.
+
+## [2026-10-16] update | flujo editorial y recreación de carrusel Reddit
+- Ampliada [[ttchop-webapps]]: para este formato, primero se busca y registra internamente un post público; luego se resume y adapta como historia original de siete slides, sin presentar el post anónimo como verificado.
+- Documentados la referencia de r/ProRevenge usada, los beats de la adaptación japonesa, la dirección visual, composición local 1080×1920, QA y forma de entrega. Se aclara que el modelo exacto de Kie.ai no quedó registrado y que no se publicó.
+- Actualizado el índice de Cacho.
+
+## [2026-10-16] update | descubrimiento seguro de credenciales de TTChop2
+- Documentadas en [[ttchop-webapps]] las referencias `GOOGLE_APPLICATION_CREDENTIALS` (ttchop-bot) y `FIREBASE_SERVICE_ACCOUNT_PATH_TTCHOP2` (ttchop-server), verificando solo existencia y `project_id=ttchop2`; no se registran rutas resueltas ni valores secretos.
+- Añadidos el flujo actual de `sales_reference_data` frente a `analytics_orders` y los límites de alcance: sesión autenticada para uso normal; acceso administrativo solo ante autorización explícita, lectura mínima y sin suplantar usuarios.
+- Actualizado el índice de Cacho.
+
+## [2026-10-17] create/update | runbook de creación de carruseles editoriales
+- Creado [[ttchop-carousel-creation]] para diferenciar TTChop2 autenticado (Firestore) del flujo local Kie.ai + composición PNG (sin login de TTChop2, escrituras a Firebase ni publicación).
+- Documentados el gate de créditos, Seedream v4, batch 6+1, persistencia previa de `taskId`/slots/coste para sobrevivir timeouts, composición 1080×1920 con overlay CJK y QA visual. El coste real del ejemplo del 17 de octubre no pudo recuperarse; 35 créditos es solo estimación.
+- Registrada como procedencia editorial interna la historia anónima recopilada en r/BestofRedditorUpdates: post original fechado 2026-01-16 y actualización 2026-01-17; no se conservan nombres/handles ni van en el arte. Actualizados `ttchop-webapps.md` e `index.md`.
