@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-10-16 | Total pages: 33
+> Last updated: 2026-10-17 | Total pages: 34
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -32,7 +32,7 @@
 - [[proyecto-shortfilm-development]] — desarrollo de cortometrajes (Sandbox)
 - [[proyecto-ttchop]] — proyecto software ttchop: web app + editor de video + bot
 - [[ttchop-automatizaciones]] — automatizaciones del bot (scheduler, pipeline scout→producer, defaults de render)
-- [[ttchop-webapps]] — webapps ttchop/ttchop2: dashboard, productos, video, Analytics, importaciones de ventas, acceso seguro a credenciales, carruseles y flujo editorial Reddit → historia original
+- [[ttchop-webapps]] — webapps ttchop/ttchop2: dashboard, productos, video, Analytics, importaciones de ventas, acceso seguro a credenciales, carruseles y flujo editorial Reddit → historia original; enlaza al runbook Kie.ai local
 
 ## Hardware
 - [[hardware-inventario]] — resumen de todo el hardware + red Tailscale
@@ -45,6 +45,9 @@
 ## Sistemas
 - [[hermes-agent]] — agente Hermes en vps-tools; voz local Vosk aislada y TTS es-MX
 - [[hermes-agentes]] — agentes persistentes de Hermes (research, developer, jr_developer, ttchop_robot)
+
+## Operaciones
+- [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA
 
 ## Repositorio
 - [[cacho]] — este repositorio, convertido a wiki de IA
