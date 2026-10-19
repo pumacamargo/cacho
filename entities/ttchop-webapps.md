@@ -36,7 +36,7 @@ ventas reales de la tienda contra los videos publicados** para saber qué funcio
   vistas), tendencia período a período, desempeño diario.
 - **Products** — librería de productos con pestañas Info, Clips y Renders.
 - **Templates** — plantillas de guion, voz y prompt de IA.
-- **Create Video** — generación: guion → voz → render.
+- **Create Video** — flujo de UI confirmado: guion → voz → render. No equivale al flujo de collage del Producer; ver [[ttchop-video-generation]].
 - **Calendario** — agenda de publicaciones con estrategia en texto y propuesta
   automática.
 - **Analytics** — importación de reportes `.xlsx` de TikTok Shop crusados con renders.
