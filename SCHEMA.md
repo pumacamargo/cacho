@@ -34,8 +34,11 @@ vive aquí. El objetivo es que **todas las IAs vean la misma información actual
 9. **Escritura**: los agentes NO reescriben `entities/`, `concepts/` o `operations/`
    a la carrera. Para trabajo delegado, usar los perfiles Hermes adecuados
    (Research, Developer, jr_developer o ttchop_robot); no crear ni enrutar tareas
-   en gestores externos. Arturo (o un mantenedor) revisa y mergea cambios.
-   Solo el mantenedor toca `main` directamente para consolidar.
+   en gestores externos. No crear ramas de tema ni PRs: todos los cambios finales
+   van directamente a `main`, después de la revisión del mantenedor. Antes de
+   editar, comprobar que `main` está limpia y sincronizada con `origin/main`. Si
+   está ocupada o sucia, parar y preservar los cambios existentes; nunca crear
+   una rama lateral para sortearlo.
 
 ## Frontmatter (plantilla de página)
 
@@ -139,8 +142,13 @@ Procedimientos operativos paso a paso (cómo ejecutar cosas, cómo arreglar X).
 
 ## Escritura y control de versiones
 
-- `main` es la fuente de verdad estable.
-- Los agentes trabajan en branch → abren PR → Arturo aprueba y mergea.
+- `main` es la única rama de trabajo y la fuente de verdad estable; no se crean
+  ramas de tema ni PRs.
+- Antes de editar, comprobar que `main` está limpia y sincronizada con
+  `origin/main`. Si está ocupada o sucia, detenerse y preservar el estado; no
+  crear una rama lateral.
+- Tras revisión del mantenedor, los cambios finales se commitean y pushean
+  directamente a `main`.
 - Commits: mensajes claros en español o inglés técnico, formato convencional
   (`feat:`, `fix:`, `docs:`, `wiki:`). Ej: `wiki: add Hermes agent entity`.
 - `log.md`: formato `## [YYYY-MM-DD] accion | asunto`. Rotar cuando >500 entradas.

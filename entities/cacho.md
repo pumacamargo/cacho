@@ -1,7 +1,7 @@
 ---
 title: Cacho (repositorio)
 created: 2026-10-10
-updated: 2026-10-16
+updated: 2026-10-19
 type: entity
 tags: [empresa, proyecto, integracion]
 status: active
@@ -29,5 +29,8 @@ Estructura y reglas definidas en `SCHEMA.md`; catálogo en `index.md`.
 
 ## Convención
 
-Nunca commitear secretos. Commit messages en formato convencional
-(`wiki:`, `docs:`, `feat:`). Ver SCHEMA.md para la política completa.
+No crear ramas de tema ni PRs: todos los cambios finales van directamente a
+`main`, tras revisión del mantenedor. Antes de editar, verificar que `main` esté
+limpia y sincronizada; si está ocupada o sucia, parar y preservar el estado sin
+crear ramas laterales. Commit messages convencionales (`wiki:`, `docs:`, `feat:`).
+Nunca commitear secretos. Ver SCHEMA.md para la política completa.

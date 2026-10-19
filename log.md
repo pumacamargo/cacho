@@ -142,3 +142,8 @@
 ## [2026-10-19] update | separación UI Create Video y Producer/collage
 - Aclarado [[ttchop-video-generation]] como dos flujos distintos: UI Create Video (solo hechos verificados, sin afirmar una ubicación de almacenamiento universal) y Producer/collage manual (prerrequisitos, cooldown, aprobación de diálogo, render explícito y validación MP4).
 - Separada generación/render de publicación; actualizado [[ttchop-webapps]] para enlazar la distinción.
+
+## [2026-10-19] update | Política Git de Cacho: solo main
+- Documentada la política de no crear ramas de tema ni PRs: cambios finales
+  directamente a `main` tras revisión del mantenedor; comprobar `main` limpia y
+  sincronizada antes de editar y detenerse preservando cualquier estado ocupado/sucio.

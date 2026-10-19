@@ -33,7 +33,8 @@ Toda IA con acceso a este repo (o que le inyecten su contenido) ve la
 - Markdown plano, nombres lowercase-con-guiones.
 - Toda página lleva frontmatter YAML y enlaza a ≥2 otras páginas.
 - NUNCA se commitean secretos — solo referencias por nombre.
-- `main` es estable; los agentes proponen cambios, Arturo los mergea.
+- No se crean ramas de trabajo ni PRs: todos los cambios finales van directamente a `main`.
+- Antes de editar, comprobar que `main` está limpia y sincronizada; si está ocupada o sucia, parar y preservar el estado, sin crear ramas laterales. Tras revisión del mantenedor, commit y push directos a `main`.
 - Actualiza `index.md` y `log.md` en cada cambio.
 
 ## Estado
