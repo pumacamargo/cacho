@@ -1,7 +1,7 @@
 ---
 title: ttchop webapps (ttchop / ttchop2)
 created: 2026-10-10
-updated: 2026-10-17
+updated: 2026-10-19
 type: entity
 tags: [sistema, proyecto, negocio]
 status: active
@@ -36,7 +36,7 @@ ventas reales de la tienda contra los videos publicados** para saber qué funcio
   vistas), tendencia período a período, desempeño diario.
 - **Products** — librería de productos con pestañas Info, Clips y Renders.
 - **Templates** — plantillas de guion, voz y prompt de IA.
-- **Create Video** — generación: guion → voz → render.
+- **Create Video** — flujo de UI confirmado: guion → voz → render. No equivale al flujo de collage del Producer; ver [[ttchop-video-generation]].
 - **Calendario** — agenda de publicaciones con estrategia en texto y propuesta
   automática.
 - **Analytics** — importación de reportes `.xlsx` de TikTok Shop crusados con renders.
@@ -86,15 +86,28 @@ vive el contenedor), `analytics_orders`, `tiktok_videos`, `tiktok_accounts`.
 
 ### Dónde quedan los archivos de ventas
 
-`AnalyticsView.tsx` llama a `db.importSalesReference(file, activeAccountId)`. La app
-lee el `.xlsx`/`.csv` en el navegador; no guarda el libro original en Firebase
-Storage. Guarda metadatos en `imports` (`type: sales_reference`, `label`,
-`itemCount`, `importedAt` y `accountId` opcional) y filas parseadas en
-`sales_reference_data/{uid}/rows/{rowId}`, con `importId` y `data`. Para localizar
-una importación, filtra `imports` por `type`, identifica el `label`/`accountId` y
-consulta solo las filas cuyo `importId` coincide. No mezcles esta fuente con
-`analytics_orders`, que es la importación propia de Analytics. La relación de
-referencia con Momo's Choice está descrita en [[ttchop-automatizaciones]].
+TTChop2 conserva filas parseadas y metadatos de importación, **no el libro Excel
+original**. No hay una ruta verificada en esta documentación donde recuperar el
+archivo fuente: búscalo donde se descargó/exportó originalmente o vuelve a
+exportarlo desde TikTok Shop.
+
+Hay dos tipos que no deben confundirse:
+
+- **`sales_file`**: líneas de pedidos propios normalizadas en
+  `analytics_orders/{uid}/orders` (por ejemplo, `orderId`, `skuId`, `productId`,
+  `itemsSold`, `itemsRefunded`, `orderDate` e `importId`).
+- **`sales_reference`**: referencia importada por `AnalyticsView.tsx` mediante
+  `db.importSalesReference(file, activeAccountId)`. El navegador parsea `.xlsx`/
+  `.csv`; `imports` guarda metadatos como `type`, `label`, `itemCount`,
+  `importedAt` y `accountId` opcional. Las filas quedan en
+  `sales_reference_data/{uid}/rows/{rowId}` como datos parseados con `importId`.
+
+Para localizar filas, encuentra el registro `imports` por tipo y revisa su
+`importId`; consulta solo filas asociadas a ese ID. `label` y `accountId` ayudan
+a identificar/asignar una importación, pero **no prueban la procedencia ni el
+contenido del archivo**. No mezcles `sales_reference` con `sales_file` ni uses
+una como sustituto de la otra. La relación de referencia con Momo's Choice está
+descrita en [[ttchop-automatizaciones]].
 
 ### Cómo localizar la credencial correcta en `vps-projects`
 
@@ -133,6 +146,9 @@ una vía autenticada segura. Antes de inicializar Firebase Admin, confirma
 defaults ni consultes el proyecto original `ttchop`.
 
 ## Feature: carruseles de imágenes (image_carousel) — implementado y desplegado 2026-10-14
+
+El procedimiento detallado para crear y revisar carruseles está en
+[[ttchop-carousel-creation]]; usa ese runbook en vez de duplicar sus pasos aquí.
 
 Carruseles de imágenes como **contenido orgánico para subir seguidores** de la
 cuenta TikTok (NO comercial de producto). Publicación manual por Arturo.
@@ -192,5 +208,6 @@ Arturo aprobó una sombra negra más grande y oscura, con poco difuminado y **si
 
 ## Relaciones
 
-- Proyecto: [[proyecto-ttchop]] · automatizaciones: [[ttchop-automatizaciones]]
+- Proyecto: [[proyecto-ttchop]] · automatizaciones: [[ttchop-automatizaciones]] ·
+  generación de video: [[ttchop-video-generation]]
 - Servidor: `ttchop-server` (ver [[ttchop-automatizaciones]]) · categoría [[categoria-tts]]

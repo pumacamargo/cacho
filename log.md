@@ -133,3 +133,12 @@
 ## [2026-10-17] update | Incorporación de decisión visual de carrusel
 - Incorporada a [[ttchop-webapps]] la decisión aprobada originalmente el 2026-10-15: sombra negra sin recuadro, exclusiva de `image_carousel`; sigue sin persistir ni desplegarse.
 - Conservado el runbook [[ttchop-carousel-creation]] y sus entradas existentes en el índice y este historial.
+
+## [2026-10-19] update | ventas y flujos de contenido TTChop2
+- Aclarado en [[ttchop-webapps]] que TTChop2 conserva filas parseadas y metadatos, no el workbook original; se distinguieron `sales_file` y `sales_reference` y se señaló que `label`/`accountId` no prueban procedencia.
+- Mejorada la navegación al runbook existente [[ttchop-carousel-creation]] desde la página de webapps y el índice, sin duplicar el procedimiento.
+- Creado [[ttchop-video-generation]] con prerrequisitos Producer, verificación del render persistido y separación explícita entre render y publicación; actualizado `index.md`.
+
+## [2026-10-19] update | separación UI Create Video y Producer/collage
+- Aclarado [[ttchop-video-generation]] como dos flujos distintos: UI Create Video (solo hechos verificados, sin afirmar una ubicación de almacenamiento universal) y Producer/collage manual (prerrequisitos, cooldown, aprobación de diálogo, render explícito y validación MP4).
+- Separada generación/render de publicación; actualizado [[ttchop-webapps]] para enlazar la distinción.

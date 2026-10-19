@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-10-17 | Total pages: 34
+> Last updated: 2026-10-19 | Total pages: 35
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -32,7 +32,7 @@
 - [[proyecto-shortfilm-development]] — desarrollo de cortometrajes (Sandbox)
 - [[proyecto-ttchop]] — proyecto software ttchop: web app + editor de video + bot
 - [[ttchop-automatizaciones]] — automatizaciones del bot (scheduler, pipeline scout→producer, defaults de render)
-- [[ttchop-webapps]] — webapps ttchop/ttchop2: dashboard, productos, video, Analytics, importaciones de ventas, acceso seguro a credenciales, carruseles y flujo editorial Reddit → historia original; safe area y sombra documentadas solo para image_carousel (integración pendiente); enlaza al runbook Kie.ai local
+- [[ttchop-webapps]] — webapps ttchop/ttchop2: dashboard, productos, video, Analytics, distinción sales_file/sales_reference y límites de archivos fuente, acceso seguro y carruseles
 
 ## Hardware
 - [[hardware-inventario]] — resumen de todo el hardware + red Tailscale
@@ -48,6 +48,7 @@
 
 ## Operaciones
 - [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA
+- [[ttchop-video-generation]] — runbook: prerrequisitos, generación Producer, verificación del render y distinción frente a publicar
 
 ## Repositorio
 - [[cacho]] — este repositorio, convertido a wiki de IA
