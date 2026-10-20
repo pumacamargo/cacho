@@ -171,3 +171,8 @@
 - Actualizados [[hardware-desktop-puma]], [[hardware-inventario]] e `index.md`
   para reflejar el nodo actual `PumaDeskAsus` y distinguir la última prueba SSH
   exitosa de la comprobación posterior que agotó el tiempo.
+
+## [2026-10-20] update | MAC Ethernet de PumaDeskAsus
+- Consultada por SSH la interfaz física: MAC Ethernet `F0:2F:74:00:8D:3B`;
+  registrada en [[hardware-desktop-puma]] y [[acceso-remoto-pumadeskasus]] para
+  identificar el equipo en una futura prueba Wake-on-LAN.

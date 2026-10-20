@@ -12,6 +12,10 @@ confidence: high
 
 Desde `vps-tools` (`100.116.242.53`), conéctate por Tailscale:
 
+La interfaz Ethernet Realtek PCIe GbE, actualmente `Up`, tiene MAC
+`F0:2F:74:00:8D:3B` (la dirección necesaria para Wake-on-LAN). La interfaz Wi-Fi
+está desconectada.
+
 ```bash
 ssh -i /root/.ssh/id_ed25519_pumadeskasus \
   -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes \

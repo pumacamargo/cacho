@@ -15,6 +15,7 @@ Desktop (Windows) de Arturo, disponible para proyectos.
 ## Red y acceso remoto
 
 - **Host Windows/Tailscale actual**: `PumaDeskAsus`, IP `100.126.157.51`.
+- **MAC Ethernet (Wake-on-LAN)**: `F0:2F:74:00:8D:3B` (Realtek PCIe GbE).
 - **OS**: Windows.
 - Tras el formateo, el nodo anterior `desktop-puma` (`100.64.3.87`) quedó
   desconectado; no usarlo como endpoint actual.
