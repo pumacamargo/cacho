@@ -176,3 +176,8 @@
 - Consultada por SSH la interfaz física: MAC Ethernet `F0:2F:74:00:8D:3B`;
   registrada en [[hardware-desktop-puma]] y [[acceso-remoto-pumadeskasus]] para
   identificar el equipo en una futura prueba Wake-on-LAN.
+
+## [2026-10-21] update | encendido y apagado remoto de PumaDeskAsus
+- Ampliado [[acceso-remoto-pumadeskasus]] con comandos Wake-on-LAN desde
+  `pi5puma01` y apagado por SSH; ambos ciclos se probaron y la última
+  comprobación dejó la PC fuera de línea.
