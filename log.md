@@ -151,3 +151,7 @@
 ## [2026-10-20] update | runbook video manual de producto TTChop2
 - Ampliado [[ttchop-video-generation]] para elegir entre Create Video y collage manual; resolver clips y trims en TTChop2, distinguir defaults por proyecto, aprobar guion, enviar y seguir el job, verificar todos los clips solicitados y hacer QA/entrega sin publicar.
 - Actualizados resumen y fecha del runbook en `index.md`.
+
+## [2026-10-20] create/update | generación manual de canción con ElevenLabs Music
+- Creado [[ttchop-music-generation]] con el procedimiento reutilizable y guardrails; registra la prueba manual (200, audio/mpeg, variaciones verificadas) sin secretos ni assets.
+- Aclarada la diferencia entre TTS y canto, y que `audioBase64` en collage no es integración Music end-to-end validada; enlazado desde [[ttchop-video-generation]] y añadido al índice (36 páginas).

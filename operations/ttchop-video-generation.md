@@ -14,7 +14,9 @@ related: [ttchop-webapps, ttchop-automatizaciones]
 Esta página separa dos procesos distintos: la creación iniciada desde la UI de
 TTChop2 y la producción manual tipo Producer basada en un producto de catálogo y
 clips grabados. Crear o renderizar un video **no lo publica en TikTok**. Ver
-[[ttchop-webapps]] y [[ttchop-automatizaciones]].
+[[ttchop-webapps]] y [[ttchop-automatizaciones]]. Para generación manual de
+canciones con ElevenLabs Music, sin integración de servidor, consulta
+[[ttchop-music-generation]].
 
 ## A. Crear video desde la UI de TTChop2
 
