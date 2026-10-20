@@ -147,3 +147,7 @@
 - Documentada la política de no crear ramas de tema ni PRs: cambios finales
   directamente a `main` tras revisión del mantenedor; comprobar `main` limpia y
   sincronizada antes de editar y detenerse preservando cualquier estado ocupado/sucio.
+
+## [2026-10-20] update | runbook video manual de producto TTChop2
+- Ampliado [[ttchop-video-generation]] para elegir entre Create Video y collage manual; resolver clips y trims en TTChop2, distinguir defaults por proyecto, aprobar guion, enviar y seguir el job, verificar todos los clips solicitados y hacer QA/entrega sin publicar.
+- Actualizados resumen y fecha del runbook en `index.md`.

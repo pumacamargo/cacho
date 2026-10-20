@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-10-19 | Total pages: 35
+> Last updated: 2026-10-20 | Total pages: 35
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -48,7 +48,7 @@
 
 ## Operaciones
 - [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA
-- [[ttchop-video-generation]] — runbook: prerrequisitos, generación Producer, verificación del render y distinción frente a publicar
+- [[ttchop-video-generation]] — runbook: flujos UI y collage manual de producto con clips/trims, seguimiento, QA y entrega
 
 ## Repositorio
 - [[cacho]] — este repositorio, convertido a wiki de IA
