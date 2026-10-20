@@ -1,23 +1,30 @@
 ---
-title: Desktop Puma (Windows)
+title: Desktop Puma (PumaDeskAsus, Windows)
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-20
 type: entity
 tags: [infra]
 status: active
-confidence: medium
+confidence: high
 ---
 
 # Hardware: Desktop Puma
 
 Desktop (Windows) de Arturo, disponible para proyectos.
 
-## Red
+## Red y acceso remoto
 
-- **IP Tailscale**: `100.64.3.87`
-- **Nodo**: `desktop-puma`
-- **OS**: Windows
-- **Estado**: offline en la red (última vista hace 2 días)
+- **Host Windows/Tailscale actual**: `PumaDeskAsus`, IP `100.126.157.51`.
+- **OS**: Windows.
+- Tras el formateo, el nodo anterior `desktop-puma` (`100.64.3.87`) quedó
+  desconectado; no usarlo como endpoint actual.
+- SSH por Tailscale está configurado desde `vps-tools` (`100.116.242.53`) al
+  puerto TCP/22. El acceso se autenticó como `pumadeskasus\puma_` y la sesión
+  mostró el grupo Administrators y nivel de integridad High. En la comprobación
+  más reciente (2026-10-20), ping de Tailscale y SSH agotaron el tiempo; la
+  causa no quedó determinada.
+- Ver instrucciones, clave de cliente, huella verificada y límites operativos
+  en [[acceso-remoto-pumadeskasus]].
 
 ## Uso
 

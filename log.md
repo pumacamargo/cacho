@@ -163,3 +163,11 @@
 - Actualizada [[ttchop-music-generation]] para reemplazar la afirmación obsoleta
   de que el hook no se había probado; actualizado el resumen en `index.md`.
 - El render de referencia quedó `done` y no se publicó.
+
+## [2026-10-20] create/update | acceso remoto SSH a PumaDeskAsus
+- Creado [[acceso-remoto-pumadeskasus]] con el endpoint Tailscale, autenticación
+  SSH verificada, huella de host, alcance del firewall, comandos y límites de
+  control remoto; no se guardaron claves ni secretos.
+- Actualizados [[hardware-desktop-puma]], [[hardware-inventario]] e `index.md`
+  para reflejar el nodo actual `PumaDeskAsus` y distinguir la última prueba SSH
+  exitosa de la comprobación posterior que agotó el tiempo.

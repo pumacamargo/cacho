@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-10-20 | Total pages: 36
+> Last updated: 2026-10-20 | Total pages: 37
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -39,7 +39,7 @@
 - [[hardware-vps-tools]] — VPS principal (este host), corre Hermes
 - [[hardware-vps-projects]] — segundo VPS para proyectos
 - [[hardware-raspberry-pi5]] — Raspberry Pi 5 (pi5puma01)
-- [[hardware-desktop-puma]] — desktop Windows (desktop-puma)
+- [[hardware-desktop-puma]] — desktop Windows (PumaDeskAsus)
 - [[hardware-celular-android]] — celular Android (draft)
 
 ## Sistemas
@@ -47,6 +47,7 @@
 - [[hermes-agentes]] — agentes persistentes de Hermes (research, developer, jr_developer, ttchop_robot)
 
 ## Operaciones
+- [[acceso-remoto-pumadeskasus]] — runbook: conexión SSH por Tailscale y control por comandos (Windows)
 - [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA
 - [[ttchop-video-generation]] — runbook: flujos UI, collage manual de producto y montaje de clips con canción ya generada, seguimiento, QA y entrega
 - [[ttchop-music-generation]] — runbook: canto manual con ElevenLabs Music, montaje vía `audioBase64`, QA de duración y límites de publicación
