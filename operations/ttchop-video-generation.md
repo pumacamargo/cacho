@@ -113,7 +113,31 @@ collage: no esperes `/collage/callback` ni lo confundas con `/ai/callback`.
 Consulta `renders/{renderId}` en el proyecto correcto hasta verificar
 `status=done` y `videoUrl`.
 
-### 5. QA y entrega
+### 5. Montar clips con una canción ya generada
+
+Prueba real del 2026-10-20: se envió manualmente una canción ya generada a
+`POST /collage/create` mediante `audioBase64`; no fue una integración con Music
+API ni se usó Producer. Se reutilizaron clips/sesiones y trims actuales del
+producto. `dialogue` llevaba la letra como contexto de edición; `voiceId` siguió
+siendo obligatorio por validación, pero no se sintetizó voz. Se usaron
+`language=ja`, `projectId=ttchop2`, `needsOverlay:false` y
+`needsCharacter:false`. El job terminó y el MP4 resultó H.264 vertical 1080×1920,
+con AAC estéreo 48 kHz. La fuente y el audio final midieron 16.032 s; no se
+recortó la canción y el resultado no se publicó.
+
+1. Mide la canción fuente con `ffprobe` y pasa su duración real en
+   `audioDurationSeconds`, junto con `audioBase64`; no supongas que el audio por
+   sí solo evita truncamientos. Conserva `dialogue`, `voiceId`, sesiones, trims
+   y demás campos requeridos por la ruta.
+2. Si una duración guardada de clip es 0, mide el archivo fuente y usa ese valor
+   solo en el payload, sin modificar Firestore.
+3. Tras `status=done`, descarga el MP4 y compara con `ffprobe` la duración del
+   stream de audio final con la fuente (no solo la duración del contenedor). Si
+   el audio final es más corto, extiende o rellena el video; nunca recortes la
+   pista. El route intenta rellenar huecos mayores de 0.5 s, pero el builder usa
+   `-shortest`; verifica la duración real del audio final.
+
+### 6. QA y entrega
 
 1. Compara en los logs los IDs de clips realmente usados y sus límites de trim
    contra la selección de la app. Si se omitió algún clip, identifica cuál. Si

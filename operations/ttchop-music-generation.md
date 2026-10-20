@@ -118,12 +118,13 @@ console.log({
 
 ## Límite de integración con collage
 
-`POST /collage/create` acepta `audioBase64` opcional para omitir su llamada TTS,
-pero sigue requiriendo `voiceId`, `dialogue`, `sessions` y `renderId`; diálogo y
-duración participan en la receta de edición. Esto es solo un hook, no una
-integración Music probada. Antes de usarlo para canción hace falta validar el
-flujo end-to-end, edición y continuidad; no hay alineación de sílabas como en
-TTS. Consulta [[ttchop-video-generation]].
+`POST /collage/create` acepta `audioBase64` para omitir su llamada TTS, pero
+sigue requiriendo `voiceId`, `dialogue`, `sessions` y `renderId`; diálogo y
+duración participan en la receta de edición. El 2026-10-20 se probó una vez el
+hook con una canción preexistente y clips/trims actuales: terminó el render y el
+audio final conservó los 16.032 s de la fuente. No es integración con Music API
+ni garantiza continuidad o alineación de sílabas. Para los pasos y la cautela
+sobre truncamiento, consulta [[ttchop-video-generation]].
 
 ## Prueba de referencia
 

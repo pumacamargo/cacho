@@ -48,8 +48,8 @@
 
 ## Operaciones
 - [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA
-- [[ttchop-video-generation]] — runbook: flujos UI y collage manual de producto con clips/trims, seguimiento, QA y entrega
-- [[ttchop-music-generation]] — runbook: canto manual con ElevenLabs Music, autorización de créditos, bytes de audio y QA sin integración ni publicación
+- [[ttchop-video-generation]] — runbook: flujos UI, collage manual de producto y montaje de clips con canción ya generada, seguimiento, QA y entrega
+- [[ttchop-music-generation]] — runbook: canto manual con ElevenLabs Music, montaje vía `audioBase64`, QA de duración y límites de publicación
 
 ## Repositorio
 - [[cacho]] — este repositorio, convertido a wiki de IA

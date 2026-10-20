@@ -155,3 +155,11 @@
 ## [2026-10-20] create/update | generación manual de canción con ElevenLabs Music
 - Creado [[ttchop-music-generation]] con el procedimiento reutilizable y guardrails; registra la prueba manual (200, audio/mpeg, variaciones verificadas) sin secretos ni assets.
 - Aclarada la diferencia entre TTS y canto, y que `audioBase64` en collage no es integración Music end-to-end validada; enlazado desde [[ttchop-video-generation]] y añadido al índice (36 páginas).
+
+## [2026-10-20] update | collage manual con canción preexistente
+- Documentada en [[ttchop-video-generation]] la prueba única de `audioBase64`
+  en `/collage/create`, incluida la verificación de duración con `ffprobe` y la
+  regla de extender/rellenar video, nunca recortar la canción.
+- Actualizada [[ttchop-music-generation]] para reemplazar la afirmación obsoleta
+  de que el hook no se había probado; actualizado el resumen en `index.md`.
+- El render de referencia quedó `done` y no se publicó.
