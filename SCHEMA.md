@@ -31,14 +31,17 @@ vive aquí. El objetivo es que **todas las IAs vean la misma información actual
    original (n8n, Docker).
 8. **Sin secretos jamás**: NUNCA commitear tokens, claves, contraseñas, API keys.
    Van en `.env` / vaults / variables, referenciados por nombre en el wiki.
-9. **Escritura**: los agentes NO reescriben `entities/`, `concepts/` o `operations/`
-   a la carrera. Para trabajo delegado, usar los perfiles Hermes adecuados
-   (Research, Developer, jr_developer o ttchop_robot); no crear ni enrutar tareas
-   en gestores externos. No crear ramas de tema ni PRs: todos los cambios finales
-   van directamente a `main`, después de la revisión del mantenedor. Antes de
-   editar, comprobar que `main` está limpia y sincronizada con `origin/main`. Si
-   está ocupada o sucia, parar y preservar los cambios existentes; nunca crear
-   una rama lateral para sortearlo.
+9. **Escritura**: cuando Arturo pide documentar algo, los agentes editan directamente
+   el wiki; el historial de Git versiona los cambios y no se requiere una propuesta
+   externa ni confirmación/revisión separada. Cuando Arturo pide código, implementarlo
+   dentro del alcance solicitado sin pedir confirmación redundante. Para trabajo
+   delegado, usar los perfiles Hermes adecuados (Research, Developer, jr_developer
+   o ttchop_robot); no crear ni enrutar tareas en gestores externos. No crear ramas
+   de tema ni PRs. Antes de editar, comprobar que `main` está limpia y sincronizada
+   con `origin/main`; si está ocupada o sucia, parar y preservar el estado, nunca
+   crear una rama lateral. Obtener autorización aparte antes de escrituras o
+   migraciones de producción, despliegues/reinicios, gastos/créditos o cambios de
+   credenciales, seguridad o red.
 
 ## Frontmatter (plantilla de página)
 
@@ -138,7 +141,7 @@ Procedimientos operativos paso a paso (cómo ejecutar cosas, cómo arreglar X).
 2. Si hay contradicción real, anota **ambas** posiciones con fechas y fuentes.
 3. Marca en frontmatter: `status: draft` o nota la contradicción.
 4. Nunca sobrescribas en silencio: deja rastro en `log.md` y flágalo a Arturo.
-5. Los agentes proponen cambios; no mutan `entities/concepts/operations` directamente.
+5. Si Arturo solicita un cambio documental, aplicarlo directamente en Cacho y dejarlo versionado; no detenerse en una propuesta salvo que él pida revisar primero o el estado Git impida editar. Si solicita código, proceder dentro del alcance pedido sin confirmación redundante. Mantener separados y pedir autorización aparte para efectos externos como datos de producción, despliegue/reinicio, gasto o cambios de seguridad/credenciales/red.
 
 ## Escritura y control de versiones
 
@@ -147,8 +150,11 @@ Procedimientos operativos paso a paso (cómo ejecutar cosas, cómo arreglar X).
 - Antes de editar, comprobar que `main` está limpia y sincronizada con
   `origin/main`. Si está ocupada o sucia, detenerse y preservar el estado; no
   crear una rama lateral.
-- Tras revisión del mantenedor, los cambios finales se commitean y pushean
-  directamente a `main`.
+- Tras aplicar y validar un cambio solicitado, commitearlo y pushearlo directamente
+  a `main`; no esperar una revisión/confirmación adicional de Arturo para la edición
+  documental o de código que pidió. La autorización de esa tarea no incluye por sí
+  sola migraciones/escrituras de datos de producción, despliegues/reinicios, gastos
+  o cambios de credenciales, seguridad o red.
 - Commits: mensajes claros en español o inglés técnico, formato convencional
   (`feat:`, `fix:`, `docs:`, `wiki:`). Ej: `wiki: add Hermes agent entity`.
 - `log.md`: formato `## [YYYY-MM-DD] accion | asunto`. Rotar cuando >500 entradas.

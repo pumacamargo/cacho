@@ -190,3 +190,11 @@
   escritura a Firebase ni publicación.
 - Enlazado desde [[ttchop-video-generation]] y añadido a `index.md` (38 páginas).
   Evidencias de prueba en `/root/.hermes/cache/scratch/filmcraft-demo-ttchop2-20261021/`.
+
+## [2026-10-21] update | edición solicitada directamente en wiki y código
+- Actualizados `README.md`, `SCHEMA.md` y [[cacho]]: los cambios documentales
+  solicitados se aplican directamente y quedan versionados en Git, sin requerir
+  propuesta/revisión adicional. El código pedido también se implementa dentro del
+  alcance explícito, sin confirmación redundante.
+- Conservada autorización separada para escrituras/migraciones de producción,
+  despliegues/reinicios, gastos/créditos y cambios de credenciales, seguridad o red.

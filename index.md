@@ -54,7 +54,7 @@
 - [[ttchop-music-generation]] — runbook: canto manual con ElevenLabs Music, montaje vía `audioBase64`, QA de duración y límites de publicación
 
 ## Repositorio
-- [[cacho]] — este repositorio, convertido a wiki de IA
+- [[cacho]] — wiki versionada: aplicar documentación y código pedidos directamente en main; preservar autorización separada para producción/infra
 
 ## Concepts
 

@@ -34,7 +34,7 @@ Toda IA con acceso a este repo (o que le inyecten su contenido) ve la
 - Toda página lleva frontmatter YAML y enlaza a ≥2 otras páginas.
 - NUNCA se commitean secretos — solo referencias por nombre.
 - No se crean ramas de trabajo ni PRs: todos los cambios finales van directamente a `main`.
-- Antes de editar, comprobar que `main` está limpia y sincronizada; si está ocupada o sucia, parar y preservar el estado, sin crear ramas laterales. Tras revisión del mantenedor, commit y push directos a `main`.
+- Antes de editar, comprobar que `main` está limpia y sincronizada; si está ocupada o sucia, parar y preservar el estado, sin crear ramas laterales. Cuando Arturo pide documentación, aplicarla directamente: el historial de Git conserva los cambios y no hace falta una revisión/confirmación separada. Cuando Arturo pide cambios de código, implementarlos dentro del alcance pedido sin pedir confirmación redundante. Validar y commitear/pushear directamente a `main`; pedir autorización aparte solo para escrituras/migraciones de producción, despliegues/reinicios, gastos/créditos o cambios de credenciales, seguridad o red.
 - Actualiza `index.md` y `log.md` en cada cambio.
 
 ## Estado

@@ -1,7 +1,7 @@
 ---
 title: Cacho (repositorio)
 created: 2026-10-10
-updated: 2026-10-19
+updated: 2026-10-21
 type: entity
 tags: [empresa, proyecto, integracion]
 status: active
@@ -29,8 +29,12 @@ Estructura y reglas definidas en `SCHEMA.md`; catálogo en `index.md`.
 
 ## Convención
 
-No crear ramas de tema ni PRs: todos los cambios finales van directamente a
-`main`, tras revisión del mantenedor. Antes de editar, verificar que `main` esté
-limpia y sincronizada; si está ocupada o sucia, parar y preservar el estado sin
-crear ramas laterales. Commit messages convencionales (`wiki:`, `docs:`, `feat:`).
-Nunca commitear secretos. Ver SCHEMA.md para la política completa.
+Cuando Arturo pide documentación, editarla directamente en el wiki: el historial
+de Git conserva las versiones y no se requiere propuesta/revisión separada. Cuando
+pide código, proceder dentro del alcance solicitado sin confirmación redundante.
+No crear ramas de tema ni PRs; trabajar directamente en `main`, pero solo si está
+limpia y sincronizada con `origin/main`. Si está ocupada o sucia, preservar el estado
+y detenerse. Commitear y pushear los cambios pedidos después de validar. Pedir
+autorización aparte para escrituras/migraciones de producción, despliegues/reinicios,
+gastos/créditos o cambios de credenciales, seguridad o red. Nunca commitear secretos.
+Ver SCHEMA.md para la política completa.
