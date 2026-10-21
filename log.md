@@ -208,3 +208,12 @@
   Escritura y recuperación tras reinicio permanecen sin probar.
 - Actualizados [[hardware-desktop-puma]], [[hardware-inventario]] e `index.md`
   para reflejar el acceso actual en vez del timeout anterior.
+
+## [2026-10-21] update | flujo manual de video FilmCraft con música y narración
+- Ampliados [[ttchop-filmcraft-video-tests]] y [[ttchop-video-generation]] con
+  el procedimiento local de montaje, mezcla en pistas separadas, export H.264,
+  QA, entrega en Polaris y límites de no integración con Producer.
+- Actualizado [[acceso-remoto-pumadeskasus]]: la escritura mediante `pumassh` y
+  la verificación SHA-256 de cinco archivos quedaron probadas; acceso de FilmCraft
+  nativo a `P:` y reapertura interactiva del `.fcproj` siguen sin verificar.
+- Actualizado `index.md`. Sin cambios en código, Firebase, publicación ni secretos.

@@ -18,8 +18,8 @@ clips grabados. Crear o renderizar un video **no lo publica en TikTok**. Ver
 canciones con ElevenLabs Music, sin integración de servidor, consulta
 [[ttchop-music-generation]].
 
-> **Experimento separado, no flujo de producción:** las pruebas de FilmCraft
-> 0.9.0 con clips reales ELLISS/MAGINA de TTChop2, sin voz ni entrega, están en
+> **Experimento separado, no flujo de producción:** pruebas locales con FilmCraft
+> 0.9.0 —incluida una edición manual con canción y voz pre-generadas— están en
 > [[ttchop-filmcraft-video-tests]]. El Producer actual sigue usando
 > `ttchop-server`/FFmpeg; no usa FilmCraft.
 
@@ -153,3 +153,22 @@ recortó la canción y el resultado no se publicó.
    cualquier discrepancia en vez de darla por correcta.
 4. Entrega el MP4 como adjunto e indica que no se publicó. Publicar en TikTok es
    una acción separada y requiere autorización explícita de Arturo.
+
+## C. Montaje manual con FilmCraft (no integrado al Producer)
+
+Usa este flujo solo cuando el pedido sea una edición manual en FilmCraft. No
+ejecutes `runProducer()` ni `POST /collage/create`: son rutas distintas y no
+convierten el proyecto FilmCraft en parte del pipeline. Para la secuencia CLI,
+mezcla, exportación y un ejemplo verificado de canción más narración, sigue
+[[ttchop-filmcraft-video-tests]].
+
+- Genera/aprueba la narración por separado con el servicio TTS habitual e impórtala
+  como audio; FilmCraft fue validado para montar MP3 ya generados, no para sintetizar
+  esa voz. Si ya hay canción, usa su archivo y duración real; “25 sec” no obliga a
+  extender el video.
+- `pumassh` expone `P:` solo a PowerShell dentro de esa conexión. Copia los medios a
+  staging local de Windows para FilmCraft; al final copia MP4, proyecto y audios a
+  la carpeta de edición usando el wrapper. Verifica hashes/rutas y las limitaciones
+  de reapertura del proyecto portable en [[acceso-remoto-pumadeskasus]].
+- Revisa imagen y audio, adjunta el MP4 e indica que no se publicó. No escribas en
+  Firebase ni publiques en TikTok sin autorización específica.

@@ -62,6 +62,11 @@ Desde el VPS:
 /root/.local/bin/pumassh 'Get-Item P:\ -ErrorAction Stop; Get-ChildItem P:\AI -ErrorAction Stop | Select-Object -First 5 Name'
 ```
 
+```bash
+# Copia un archivo desde staging local de Windows y verifica el hash en Polaris.
+/root/.local/bin/pumassh '$src="C:\staging\aretes-20261021-song3-ja.mp4"; $dst="P:\TikTok\Hamaca\edits\aretes-prod_3adbqgd"; New-Item -ItemType Directory -Path $dst -Force | Out-Null; Copy-Item -LiteralPath $src -Destination $dst -ErrorAction Stop; Get-FileHash -LiteralPath (Join-Path $dst (Split-Path $src -Leaf)) -Algorithm SHA256'
+```
+
 ### Funcionamiento y límites
 
 1. Lee el JSON local, rechaza archivos con permisos de grupo/otros, propietario
@@ -89,9 +94,13 @@ e independientes mediante el wrapper terminaron con código `0`: se enumeró la
 raíz del NAS (incluidas `3Dprinter`, `AI`, `Animation` y `Chimo`) y se confirmó
 `P` como unidad del proveedor `Microsoft.PowerShell.Core\FileSystem`.
 
-- **Verificado:** autenticación SMB y lectura desde conexiones SSH nuevas.
-- **No probado:** escritura, acceso desde procesos nativos y recuperación después
-  de reiniciar Windows o el VPS. No se modificaron archivos del NAS en la prueba.
+- **Verificado:** autenticación SMB, lectura y copia/escritura por PowerShell en
+  conexiones SSH nuevas. El 2026-10-21 se copiaron cinco entregables FilmCraft a
+  `P:\TikTok\Hamaca\edits\aretes-prod_3adbqgd`; sus tamaños se leyeron de vuelta
+  y los SHA-256 coincidieron con los archivos locales.
+- **No probado:** acceso de FilmCraft/FFmpeg u otros procesos nativos a `P:` ni
+  recuperación después de reiniciar Windows o el VPS. El PSDrive de `pumassh` es
+  temporal y no vuelve `P:` un montaje global.
 - Antes del wrapper, SSH normal no podía enumerar `P:` ni el UNC; el mapeo
   consultado con `Get-SmbGlobalMapping` figuraba `Unavailable`. Polaris respondía
   en TCP/445: eso probaba transporte, no autenticación ni acceso al recurso.

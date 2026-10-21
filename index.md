@@ -47,10 +47,10 @@
 - [[hermes-agentes]] — agentes persistentes de Hermes (research, developer, jr_developer, ttchop_robot)
 
 ## Operaciones
-- [[acceso-remoto-pumadeskasus]] — runbook: SSH por Tailscale, encendido/apagado y acceso PowerShell a Polaris/P: con pumassh y credenciales privadas en el VPS
+- [[acceso-remoto-pumadeskasus]] — runbook: SSH por Tailscale, encendido/apagado y lectura/escritura PowerShell a Polaris/P: con pumassh; no habilita acceso nativo global
 - [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA
-- [[ttchop-video-generation]] — runbook: flujos UI, collage manual de producto y montaje de clips con canción ya generada, seguimiento, QA y entrega; Producer no usa FilmCraft
-- [[ttchop-filmcraft-video-tests]] — runbook draft: pruebas FilmCraft 0.9.0 con clips reales ELLISS/MAGINA y límites de integración
+- [[ttchop-video-generation]] — runbook: flujos UI, collage manual y montaje manual FilmCraft; Producer no usa FilmCraft
+- [[ttchop-filmcraft-video-tests]] — runbook draft: FilmCraft 0.9.0, montaje con clips + canción + voz pre-generada, export/QA y límites de integración
 - [[ttchop-music-generation]] — runbook: canto manual con ElevenLabs Music, montaje vía `audioBase64`, QA de duración y límites de publicación
 
 ## Repositorio
