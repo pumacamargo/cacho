@@ -33,6 +33,74 @@ es `SHA256:SzDDMv1kz9aiv7XiB2tZ0q1toyDJ0Bwg4sJrTD8wDt0`.
 El acceso SSH es por Tailscale, TCP/22; `OpenSSH-Server-In-TCP` permanece
 desactivada y no se abrió ningún puerto del router.
 
+## Acceder a Polaris como P: desde SSH
+
+Arturo eligió guardar las credenciales del NAS en **vps-tools** y usarlas en
+cada conexión mediante un wrapper, en lugar de introducirlas en el escritorio
+de Windows. Este es el camino probado para operaciones PowerShell sobre el NAS.
+
+- Wrapper instalado: `/root/.local/bin/pumassh` (Python 3, permisos `700`).
+- Archivo privado: `/root/.config/pumassh/polaris.json` (permisos `600`, propietario
+  `root`); directorio `/root/.config/pumassh` con permisos `700`.
+- El JSON contiene las claves `username` y `password`. Arturo lo completa o
+  actualiza directamente en el VPS, por ejemplo con
+  `nano /root/.config/pumassh/polaris.json`. Nunca imprimir su contenido ni copiarlo
+  a chats, logs, commits o este repositorio. Es texto plano protegido por permisos,
+  no un archivo cifrado; una cuenta con acceso root puede leerlo.
+- Destino: `puma_@100.126.157.51`; recurso SMB `\\Polaris\Projects`.
+
+Desde el VPS:
+
+```bash
+# Sin argumentos, lista las primeras entradas del recurso.
+/root/.local/bin/pumassh
+
+# Ejecuta una instrucción PowerShell después de conectar el recurso.
+/root/.local/bin/pumassh 'Get-ChildItem P:\ -ErrorAction Stop | Select-Object -First 5 Name,Mode'
+
+# Varias operaciones deben viajar juntas en la misma invocación.
+/root/.local/bin/pumassh 'Get-Item P:\ -ErrorAction Stop; Get-ChildItem P:\AI -ErrorAction Stop | Select-Object -First 5 Name'
+```
+
+### Funcionamiento y límites
+
+1. Lee el JSON local, rechaza archivos con permisos de grupo/otros, propietario
+   distinto al usuario ejecutor, enlaces simbólicos o credenciales vacías.
+2. Usa la clave SSH y comprobación estricta de host documentadas arriba, con
+   `BatchMode=yes`. Envía credenciales e instrucción por **stdin cifrado de SSH**,
+   nunca como argumentos del proceso. El `EncodedCommand` remoto contiene solo
+   código, no credenciales; base64 no es cifrado.
+3. Crea un `PSCredential` en memoria y un `New-PSDrive` de tipo `FileSystem`,
+   nombre `P`, raíz `\\Polaris\Projects`, con `-Scope Global` dentro del proceso
+   PowerShell. Si `P:` ya apunta a otra raíz, aborta sin reemplazarlo.
+4. Comprueba acceso y ejecuta la instrucción en ese mismo proceso.
+
+**No es un montaje global de Windows:** `-Scope Global` aquí es el ámbito de
+PowerShell, no `New-SmbGlobalMapping`. No usa `-Persist`, no sustituye el mapeo
+del escritorio y no instala un hook para conexiones `ssh` normales. Cada llamada
+a `pumassh` vuelve a preparar el acceso; `P:` no queda disponible automáticamente
+para procesos nativos externos como `cmd.exe`, FFmpeg o FilmCraft. Para estos
+casos se necesita otro mecanismo validado; no asumir que este wrapper los resuelve.
+
+### Estado verificado y diagnóstico
+
+El **2026-10-21**, tras Arturo completar el archivo, dos conexiones SSH nuevas
+e independientes mediante el wrapper terminaron con código `0`: se enumeró la
+raíz del NAS (incluidas `3Dprinter`, `AI`, `Animation` y `Chimo`) y se confirmó
+`P` como unidad del proveedor `Microsoft.PowerShell.Core\FileSystem`.
+
+- **Verificado:** autenticación SMB y lectura desde conexiones SSH nuevas.
+- **No probado:** escritura, acceso desde procesos nativos y recuperación después
+  de reiniciar Windows o el VPS. No se modificaron archivos del NAS en la prueba.
+- Antes del wrapper, SSH normal no podía enumerar `P:` ni el UNC; el mapeo
+  consultado con `Get-SmbGlobalMapping` figuraba `Unavailable`. Polaris respondía
+  en TCP/445: eso probaba transporte, no autenticación ni acceso al recurso.
+- Si falla, revisar permisos del archivo **sin mostrar su contenido**, disponibilidad
+  de la PC/Polaris y el mensaje de error. Para renovar la contraseña, Arturo edita
+  el JSON localmente; no incluirla en comandos `net use`, argumentos SSH o scripts.
+- El wrapper y las credenciales viven fuera de Cacho; este runbook documenta sus
+  rutas y uso, pero no instala el wrapper en otro VPS al clonar el repositorio.
+
 ## Encender y apagar
 
 Wake-on-LAN se envía desde la Pi, que está en la misma LAN. Desde `vps-tools`:

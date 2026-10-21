@@ -198,3 +198,13 @@
   alcance explícito, sin confirmación redundante.
 - Conservada autorización separada para escrituras/migraciones de producción,
   despliegues/reinicios, gastos/créditos y cambios de credenciales, seguridad o red.
+
+## [2026-10-21] update | acceso a Polaris/P: por SSH con credenciales en el VPS
+- Ampliado [[acceso-remoto-pumadeskasus]] con el wrapper `pumassh`, rutas y
+  permisos de su archivo privado, transporte por stdin cifrado de SSH, comandos
+  de uso y diagnóstico sin exponer credenciales. No se incorporó ningún secreto.
+- Documentadas dos conexiones SSH nuevas con autenticación y lectura del NAS
+  exitosas; diferenciados PSDrive por proceso, mapeo global y acceso nativo.
+  Escritura y recuperación tras reinicio permanecen sin probar.
+- Actualizados [[hardware-desktop-puma]], [[hardware-inventario]] e `index.md`
+  para reflejar el acceso actual en vez del timeout anterior.

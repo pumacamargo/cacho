@@ -1,7 +1,7 @@
 ---
 title: Hardware (inventario)
 created: 2026-10-10
-updated: 2026-10-20
+updated: 2026-10-21
 type: concept
 tags: [infra, red, vps, docker]
 status: active
@@ -20,7 +20,7 @@ Total del hardware de Arturo para proyectos, todo conectado vía **Tailscale**
 | VPS contabo-tools | 100.116.242.53 | vps-tools | activo |
 | VPS proyectos | 100.68.238.117 | vps-projects | activo |
 | Raspberry Pi 5 | 100.117.79.114 | pi5puma01 | activo |
-|| Desktop (Windows) | 100.126.157.51 | PumaDeskAsus | SSH autenticó antes; última prueba expiró |
+| Desktop (Windows) | 100.126.157.51 | PumaDeskAsus | SSH y lectura de Polaris mediante pumassh verificados 2026-10-21 |
 | Celular Android | — | — | — |
 | (nodo helper) | 100.83.201.72 | helper | activo |
 
