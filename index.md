@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-10-20 | Total pages: 37
+> Last updated: 2026-10-21 | Total pages: 38
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -49,7 +49,8 @@
 ## Operaciones
 - [[acceso-remoto-pumadeskasus]] — runbook: conexión SSH por Tailscale y control por comandos (Windows)
 - [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA
-- [[ttchop-video-generation]] — runbook: flujos UI, collage manual de producto y montaje de clips con canción ya generada, seguimiento, QA y entrega
+- [[ttchop-video-generation]] — runbook: flujos UI, collage manual de producto y montaje de clips con canción ya generada, seguimiento, QA y entrega; Producer no usa FilmCraft
+- [[ttchop-filmcraft-video-tests]] — runbook draft: pruebas FilmCraft 0.9.0 con clips reales ELLISS/MAGINA y límites de integración
 - [[ttchop-music-generation]] — runbook: canto manual con ElevenLabs Music, montaje vía `audioBase64`, QA de duración y límites de publicación
 
 ## Repositorio

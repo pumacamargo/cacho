@@ -181,3 +181,12 @@
 - Ampliado [[acceso-remoto-pumadeskasus]] con comandos Wake-on-LAN desde
   `pi5puma01` y apagado por SSH; ambos ciclos se probaron y la última
   comprobación dejó la PC fuera de línea.
+
+## [2026-10-21] create/update | pruebas FilmCraft de videos TTChop2
+- Creado [[ttchop-filmcraft-video-tests]] como runbook draft: separa Producer
+  vigente (`ttchop-bot`/`ttchop-server`/FFmpeg), pruebas locales FilmCraft 0.9.0
+  con clips reales ELLISS y MAGINA de `ttchop2`, y el flujo futuro aún no integrado.
+  Las muestras son MP4 verticales sin audio; no se ejecutó Producer, no hubo
+  escritura a Firebase ni publicación.
+- Enlazado desde [[ttchop-video-generation]] y añadido a `index.md` (38 páginas).
+  Evidencias de prueba en `/root/.hermes/cache/scratch/filmcraft-demo-ttchop2-20261021/`.

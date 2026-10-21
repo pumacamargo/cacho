@@ -1,12 +1,12 @@
 ---
 title: Generación de videos en TTChop2
 created: 2026-10-19
-updated: 2026-10-20
+updated: 2026-10-21
 type: runbook
 tags: [sistema, runbook, pipeline]
 status: active
 confidence: high
-related: [ttchop-webapps, ttchop-automatizaciones]
+related: [ttchop-webapps, ttchop-automatizaciones, ttchop-filmcraft-video-tests]
 ---
 
 # Flujos de creación y render de video
@@ -17,6 +17,11 @@ clips grabados. Crear o renderizar un video **no lo publica en TikTok**. Ver
 [[ttchop-webapps]] y [[ttchop-automatizaciones]]. Para generación manual de
 canciones con ElevenLabs Music, sin integración de servidor, consulta
 [[ttchop-music-generation]].
+
+> **Experimento separado, no flujo de producción:** las pruebas de FilmCraft
+> 0.9.0 con clips reales ELLISS/MAGINA de TTChop2, sin voz ni entrega, están en
+> [[ttchop-filmcraft-video-tests]]. El Producer actual sigue usando
+> `ttchop-server`/FFmpeg; no usa FilmCraft.
 
 ## A. Crear video desde la UI de TTChop2
 
