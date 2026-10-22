@@ -162,6 +162,8 @@ convierten el proyecto FilmCraft en parte del pipeline. Para la secuencia CLI,
 mezcla, exportación y un ejemplo verificado de canción más narración, sigue
 [[ttchop-filmcraft-video-tests]].
 
+Cuando traduzcas un render de `ttchop-server` a FilmCraft, usa **tres pistas de video por defecto**: asigna los segmentos secuenciales en ciclo V1→V2→V3, conserva sus inicios y duraciones, y evita clips contiguos o solapados en la misma pista. El procedimiento y la variante verificada están en [[ttchop-filmcraft-video-tests]] §5.
+
 - Genera/aprueba la narración por separado con el servicio TTS habitual e impórtala
   como audio; FilmCraft fue validado para montar MP3 ya generados, no para sintetizar
   esa voz. Si ya hay canción, usa su archivo y duración real; “25 sec” no obliga a

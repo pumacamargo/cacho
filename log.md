@@ -222,3 +222,8 @@
 - Documentado en [[ttchop-filmcraft-video-tests]] el flujo de crear un render vía `ttchop-server`, recuperar el `editManifest` y reconstruirlo en FilmCraft; se separa explícitamente del Producer integrado.
 - Añadido el caso verificado del masajeador: 10 segmentos, 492 frames, H.264 1080×1920/24 fps + AAC 48 kHz; render final verificado en Polaris y sin publicación. Se dejó constancia de cuantización de duración y de que el audio es un master mezclado, no stems separados confirmados.
 - Enlazado desde [[ttchop-video-generation]] y actualizado `index.md`. No se modificaron código, Firestore ni configuración del servidor.
+
+## [2026-10-22] update | layout predeterminado de tres pistas en FilmCraft
+- Documentado en [[ttchop-filmcraft-video-tests]] el reparto cíclico V1→V2→V3 para segmentos secuenciales y la verificación de que no haya clips contiguos ni solapados en una misma pista.
+- Registrada la variante verificada de 10 clips en Polaris (4/3/3), abierta en FilmCraft; conserva audio y medios. No se hizo un render nuevo ni se publicó.
+- Actualizados [[ttchop-video-generation]] e `index.md` para indicar que tres pistas es el default al traducir un render a FilmCraft.
