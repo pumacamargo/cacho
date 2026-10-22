@@ -1,7 +1,7 @@
 ---
 title: Pruebas de edición de video con FilmCraft para TTChop2
 created: 2026-10-21
-updated: 2026-10-21
+updated: 2026-10-22
 type: runbook
 tags: [runbook, pipeline, cli]
 status: draft
@@ -60,7 +60,25 @@ Procedimiento probado:
 
 En el `.fcproj` portable de esta prueba, se cambiaron las rutas de los siete medios importados para apuntar a `P:`; `pumassh` confirmó que las siete rutas existen y los hashes de los entregables coinciden con los locales. **No se volvió a abrir ese proyecto portable en la interfaz interactiva de FilmCraft**, así que su reapertura desde el escritorio sigue pendiente de validar. Esto no afecta la exportación MP4, que sí se produjo desde el staging local con los medios online.
 
-## 5. Límites y posible integración futura
+## 5. Flujo verificado: render de `ttchop-server` → reconstrucción en FilmCraft
+
+Este es un traspaso manual de dos etapas, **no una integración del Producer con FilmCraft**. La primera etapa crea el MP4 y manifiesto con `ttchop-server`; la segunda traduce el `editManifest` a un proyecto FilmCraft nuevo. Para crear el render del servidor, usa el flujo manual y la aprobación de guion de [[ttchop-video-generation]]. No ejecutes `runProducer()` para sustituir un pedido manual ni publiques el resultado sin autorización.
+
+1. En el proyecto Firebase correcto, prepara producto, sesión, clips, plantilla y diálogo aprobado; crea un render nuevo con `projectId` explícito y espera `renders/{renderId}.status == done` y `videoUrl`. Descarga el MP4 final. Verifica que el render guarde `inputs.collage.editManifest`; el manifiesto documenta IDs de fuente, intervalos de entrada/salida, velocidad y offsets previstos del timeline. No reconstruyas cortes exactos desde el MP4 si falta el manifiesto. Los offsets son planeados por el builder: pueden diferir de los tiempos medidos por segmento y de la duración cuantizada a frames.
+2. Resuelve en Storage los clips indicados por `sessionId` y `sourceClipId`. Descarga esos medios, conserva un `source-media-manifest.json` con procedencia, nombres y SHA-256, y verifica los hashes antes de editar. Trabaja en scratch y en un directorio Windows temporal nuevo; incluye el MP4 original como referencia. **No uses el contenido de un proyecto FilmCraft antiguo como fuente.**
+3. Si no hay pista de audio original separada disponible, extrae una sola mezcla master del MP4 del servidor y documéntala como tal; no la presentes como stems de voz/música. En el ejemplo de abajo se usó un WAV estéreo de 48 kHz extraído del render; no se confirmaron stems separados en Storage.
+4. En `--data-dir` aislado, crea un proyecto FilmCraft 0.9.0 y una secuencia 1080×1920, 24 fps, 48 kHz estéreo. Importa las fuentes y coloca los segmentos del manifiesto en orden usando `sourceStartSeconds`, `sourceEndSeconds`, `speed` y `timelineStartSeconds`; redondea a frames y registra la duración resultante. Aplica `clip.fillFrame` solo tras revisar el recorte. Guarda y reabre el `.fcproj`; inspecciona timeline, preview y medios offline.
+5. Exporta H.264 con audio (no añadas `--no-audio` si quieres conservar el master), GPU desactivada para el modo probado: `filmcraft-cli.exe --data-dir "<data-dir>" --project "<project.fcproj>" export "<output.mp4>" --format h264 --gpu-rendering off`. Para un proyecto portable que apunta a `P:`, verifica primero que la unidad esté disponible **en la misma sesión interactiva** que ejecutará FilmCraft; la unidad PSDrive creada por `pumassh` no se hereda a procesos nativos de SSH Session 0. Copia los entregables con el flujo de [[acceso-remoto-pumadeskasus]] y valida tamaño, SHA-256 y todas las rutas del `.fcproj` en el destino.
+6. Valida el MP4 con `ffprobe` (H.264/AAC, dimensiones, fps, frames, duración de ambas pistas), reproduce/escucha el resultado e inspecciona fotogramas representativos. No declares la reconstrucción idéntica a la salida del servidor: FilmCraft cuantiza a frames y el manifiesto contiene tiempos planeados. Mantén el render de servidor como referencia, no publiques y reporta cualquier limitación de audio.
+
+### Ejemplo verificado: masajeador, 2026-10-22
+
+- `projectId=ttchop2`, producto `prod_t6mr0j8`, sesión `sess_v02pwoi`, render del servidor `massager_server_prod_t6mr0j8_1792621245766_75ae9caf`; plantilla local `temp_s6m3u02` (“25 sec”), idioma `ja`, PumaVoice01 (`ve7BOdejheJbgrBriBx4`), overlay desactivado.
+- El manifiesto tiene 10 segmentos: cuatro hooks de 0.75 s a 2.5× y seis segmentos de cuerpo a 2×. Se verificaron 9 archivos fuente del inventario Firebase (6 IDs distintos usados) y sus hashes; el paquete mantuvo el render original como referencia y el audio master mezclado.
+- La secuencia FilmCraft quedó en 492 frames (20.50 s) a 24 fps, frente a 20.48 s del MP4 del servidor por cuantización. El MP4 exportado final mide 20.501 s: H.264 1080×1920/24 fps + AAC estéreo 48 kHz; 46,486,597 bytes. La captura interactiva mostró el proyecto cargado; no había indicación visible de medios offline ni diálogo de error. La inspección de seis muestras no mostró barras negras ni cortes vacíos.
+- El proyecto `massager-render-1792621245766-portable.fcproj`, fuentes y export se guardaron en `P:\TikTok\Hamaca\edits\massager-render-1792621245766`. El render final es `massager-render-1792621245766-filmcraft-final-20261022.mp4` (46,486,597 bytes; SHA-256 `7ea27f3f48b2b38ddfef377ef21bcfacca7dbf10afa29c35181734c78dd70944`); tamaño y hash se verificaron después de copiarlo a Polaris. No se publicó en TikTok.
+
+## 6. Límites y posible integración futura
 
 Producer→FilmCraft sigue sin integrarse. El ejemplo manual de aretes confirma importar y mezclar música y una narración ya generadas; no confirma TTS dentro de FilmCraft ni sincronización automática de voz, música o cortes. Siguen sin probarse la receta LLM, overlays/personajes, polling, escritura a Storage/Firestore, cooldowns, reintentos/idempotencia y entrega automática por `ttchop_robot`. Tampoco se demostró un cliente Hermes remoto que invoque el MCP de Windows. ELLISS/MAGINA siguen siendo muestras video-only. Ningún caso prueba que el nombre “25 sec” haga que el render dure 25 segundos.
 

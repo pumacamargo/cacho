@@ -217,3 +217,8 @@
   la verificación SHA-256 de cinco archivos quedaron probadas; acceso de FilmCraft
   nativo a `P:` y reapertura interactiva del `.fcproj` siguen sin verificar.
 - Actualizado `index.md`. Sin cambios en código, Firebase, publicación ni secretos.
+
+## [2026-10-22] update | traspaso manual ttchop-server → FilmCraft
+- Documentado en [[ttchop-filmcraft-video-tests]] el flujo de crear un render vía `ttchop-server`, recuperar el `editManifest` y reconstruirlo en FilmCraft; se separa explícitamente del Producer integrado.
+- Añadido el caso verificado del masajeador: 10 segmentos, 492 frames, H.264 1080×1920/24 fps + AAC 48 kHz; render final verificado en Polaris y sin publicación. Se dejó constancia de cuantización de duración y de que el audio es un master mezclado, no stems separados confirmados.
+- Enlazado desde [[ttchop-video-generation]] y actualizado `index.md`. No se modificaron código, Firestore ni configuración del servidor.

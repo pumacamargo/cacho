@@ -1,7 +1,7 @@
 ---
 title: Generación de videos en TTChop2
 created: 2026-10-19
-updated: 2026-10-21
+updated: 2026-10-22
 type: runbook
 tags: [sistema, runbook, pipeline]
 status: active
@@ -172,3 +172,11 @@ mezcla, exportación y un ejemplo verificado de canción más narración, sigue
   de reapertura del proyecto portable en [[acceso-remoto-pumadeskasus]].
 - Revisa imagen y audio, adjunta el MP4 e indica que no se publicó. No escribas en
   Firebase ni publiques en TikTok sin autorización específica.
+
+### Del render de `ttchop-server` a FilmCraft
+
+Si el pedido es traducir a FilmCraft un render ya creado por `ttchop-server`, sigue
+el flujo manual de [[ttchop-filmcraft-video-tests]] §5: usa el
+`inputs.collage.editManifest`, descarga sus fuentes, reconstruye una secuencia
+independiente y valida el MP4 exportado. El `.fcproj` no forma parte del Producer
+y los tiempos de su secuencia se cuantizan a frames.
