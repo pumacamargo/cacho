@@ -58,6 +58,30 @@ Después, Arturo pidió añadir el instrumental de celebración. Las versiones s
 
 QA de la última salida: H.264 1080×1920/25 fps, video 11,520 s; AAC mono 48 kHz, audio 11,540 s; contenedor 11,541 s; 10 649 478 bytes. En la música a 0,2×, `volumedetect` midió −28,8 dB promedio/−14,2 dB pico; el audio original base midió −18,3/−1,8 dB y la mezcla final −17,7/−0,5 dB, sin clipping y con decodificación FFmpeg exitosa. La salida se adjuntó en Telegram y no se publicó. Los originales del NAS se dejaron intactos; medios, token de transferencia y payload temporales se borraron. Los MP4 quedaron solo en el scratch del perfil, no en Cacho ni en el repo del servidor.
 
+## Caso verificado: ELLISS Shining Shot, 2026-10-26
+
+El producto se identifica por el diálogo japonés proporcionado por Arturo; no se usó ficha de producto ni metadata de catálogo/sesión en Firestore. Los clips se leyeron desde `P:\Tiktok\hamaca\edits\03_ellisWhiteDiscount\`:
+
+| Archivo | Tamaño | Video origen |
+|---|---:|---|
+| `EllisWhite_corte_01.mp4` | 3 679 181 bytes | 6,111 s, 720×1280, 120 fps |
+| `EllisWhite_corte_02.mp4` | 6 535 890 bytes | 11,989 s, 720×1280, 60 fps |
+| `EllisWhite_corte_04.mp4` | 6 707 777 bytes | 12,400 s, 720×1280, 30 fps |
+
+### Voz y script de montaje
+
+La voz se generó con la función existente `textToSpeech` de `ttchop-server/pipeline/elevenlabs.js`, PumaVoice01 (`ve7BOdejheJbgrBriBx4`), modelo `eleven_v3`, salida MP3 44,1 kHz/128 kbps y settings del Producer (`stability:0`, `style:0`, `similarity_boost:0`, `use_speaker_boost:true`, `speed:0.5`). El MP3 inicial duró 17,633 s; luego se aceleró 1,5× con FFmpeg (`-filter:a atempo=1.5 -codec:a libmp3lame -b:a 128k`) a `elliss-shining-shot-producer-voice-1.5x.mp3` (11,781 s de contenedor; 11,744 s PCM decodificado).
+
+Los montajes usaron directamente el script existente `ttchop-server/scripts/collage_builder.py` con recetas JSON temporales y rutas `src` locales. No se ejecutó `runProducer()` ni `/collage/create`; no se crearon documentos `products`, `sessions` o `renders` en Firestore, ni se cambió código. El builder retiró el audio nativo de los clips y usó la narración aprobada.
+
+### Tres versiones entregadas
+
+1. **`elliss-white-discount-producer-edit.mp4`** — usó `EllisWhite_corte_01.mp4`, `EllisWhite_corte_02.mp4` y `EllisWhite_corte_04.mp4` más la narración; sin música ni flip. Receta de 3 segmentos hook y 4 body. El builder midió hooks de 1,008, 1,050 y 1,067 s (ligeramente mayores que el límite de 1 s), y body de 2,200, 2,200, 2,267 y 2,200 s; no se rehízo esta versión. FFmpeg volvió a muxear la voz aprobada y extendió el último frame. QA final: H.264 1080×1920/25 fps, video 11,800 s, AAC mono 44,1 kHz, 11,744 s; 9 384 015 bytes.
+2. **`elliss-white-discount-02-04-hflip.mp4`** — solo `EllisWhite_corte_02.mp4` y `EllisWhite_corte_04.mp4` más la misma voz; flip horizontal solicitado explícitamente, sin música. Receta de 3 hooks y 3 body; se reutilizó un momento distinto de `corte_04` para el tercer beat del hook porque solo había dos archivos permitidos. Duraciones medidas: hooks 0,933 s cada uno; body 2,867, 3,000 y 3,000 s. FFmpeg aplicó `hflip` únicamente al video y extendió el último frame para preservar la voz. QA: H.264 1080×1920/25 fps, video 11,760 s, AAC mono 44,1 kHz, 11,744 s; 10 252 448 bytes.
+3. **`elliss-white-discount-02-04-hflip-with-music-0.2x.mp4`** — misma edición #2, clips y flip; añadido el instrumental de celebración usado en Juice Discount (`audio_3dae2d554059.mp3`) a `volume=0.2`. FFmpeg copió el stream H.264 y mezcló solo la pista de música con `amix=inputs=2:duration=first:dropout_transition=0:normalize=0`; no se redujo la ganancia de la voz. QA: 1080×1920, 11,760 s, AAC mono 48 kHz, pico −0,7 dB, sin clipping; 10 241 441 bytes.
+
+Las tres salidas se entregaron en Telegram y no se publicaron. Las copias NAS, staging y recetas temporales se limpiaron; las salidas no se guardaron en Cacho ni en el repo del servidor.
+
 ## Enlaces relacionados
 
 - [[ttchop-video-generation]] — collage manual con catálogo y otros flujos de video.

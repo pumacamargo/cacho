@@ -50,7 +50,7 @@
 - [[acceso-remoto-pumadeskasus]] — runbook: SSH por Tailscale, encendido/apagado y lectura/escritura PowerShell a Polaris/P: con pumassh; no habilita acceso nativo global
 - [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA
 - [[ttchop-video-generation]] — runbook: flujos UI/collage y traducción manual `ttchop-server` → FilmCraft con 3 pistas por defecto; Producer no usa FilmCraft
-- [[ttchop-raw-asset-manual-edit]] — edición Producer-style con solo audio/videos; mezcla de música y flip horizontal opt-in
+- [[ttchop-raw-asset-manual-edit]] — edición Producer-style sin catálogo; casos Juice Discount y ELLISS, música/flip por pedido
 - [[ttchop-filmcraft-video-tests]] — runbook draft: traducción manual `ttchop-server` → FilmCraft con 3 pistas por defecto, export/QA y límites de integración
 - [[ttchop-music-generation]] — runbook: canto manual con ElevenLabs Music, montaje vía `audioBase64`, QA de duración y límites de publicación
 

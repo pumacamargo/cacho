@@ -236,3 +236,9 @@
 ## [2026-10-26] update | mezcla final Juice Discount y flip bajo pedido
 - Actualizada [[ttchop-raw-asset-manual-edit]] con las revisiones de música: final `volume=0.2` desde la pista original para evitar atenuación acumulativa; la voz queda sin ganancia. Se registraron streams, niveles medidos y QA de la salida final.
 - El flip horizontal se aplicó porque Arturo lo pidió explícitamente y se dejó como operación opt-in, nunca default; se señala que espeja también el texto del empaque. Actualizado el resumen en `index.md`; sin cambios en código, Firebase, deploy ni publicación.
+
+## [2026-10-26] create/update | bitácora de tres videos ELLISS Shining Shot
+- Producto según el diálogo de Arturo: **ELLISS Shining Shot**. Fuentes NAS: `P:\Tiktok\hamaca\edits\03_ellisWhiteDiscount\`; `EllisWhite_corte_01.mp4`, `EllisWhite_corte_02.mp4` y `EllisWhite_corte_04.mp4`.
+- Voz: `ttchop-server/pipeline/elevenlabs.js` (`textToSpeech`, PumaVoice01, `eleven_v3`); aceleración con FFmpeg `atempo=1.5` → `elliss-shining-shot-producer-voice-1.5x.mp3`.
+- Videos entregados: (1) `elliss-white-discount-producer-edit.mp4`, clips 01/02/04, sin música ni flip; (2) `elliss-white-discount-02-04-hflip.mp4`, solo clips 02/04, flip pedido y sin música; (3) `elliss-white-discount-02-04-hflip-with-music-0.2x.mp4`, clips 02/04, flip y el instrumental de celebración `audio_3dae2d554059.mp3` a `volume=0.2`, manteniendo la voz.
+- Montaje de los tres: `ttchop-server/scripts/collage_builder.py` con receta JSON temporal; FFmpeg para el mux/padding, `hflip` solo en versiones 2–3 y `amix` en versión 3. Sin `runProducer()`, `/collage/create`, escrituras a Firestore, cambios de código ni publicación. Inputs temporales limpiados; bitácora detallada en [[ttchop-raw-asset-manual-edit]].
