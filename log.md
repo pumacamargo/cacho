@@ -232,3 +232,7 @@
 - Creado [[ttchop-raw-asset-manual-edit]] con el flujo raw-assets sin catálogo/sesiones y el caso Juice Discount: inspección de NAS, metadata derivada, reglas Producer, fallback al `collage_builder.py` y mezcla de instrumental a 0,6×.
 - Se documentó que `/collage/create` falló con OpenRouter 404 (`o4-mini-2025-04-16`); el builder directo produjo y entregó el MP4, pero `-shortest` acortó el último segmento visual. Se registra ese límite y se evita afirmar que todos los cortes finales cumplen el mínimo de body.
 - Actualizados el enlace y fecha de [[ttchop-video-generation]] y el catálogo. El documento fallido `renders/render_manual_juice_20261026_001` permanece en `ttchop`; no hubo render exitoso en Firestore/Storage, cambios de código, deploy ni publicación. Los temporales se limpiaron; salida solo en scratch.
+
+## [2026-10-26] update | mezcla final Juice Discount y flip bajo pedido
+- Actualizada [[ttchop-raw-asset-manual-edit]] con las revisiones de música: final `volume=0.2` desde la pista original para evitar atenuación acumulativa; la voz queda sin ganancia. Se registraron streams, niveles medidos y QA de la salida final.
+- El flip horizontal se aplicó porque Arturo lo pidió explícitamente y se dejó como operación opt-in, nunca default; se señala que espeja también el texto del empaque. Actualizado el resumen en `index.md`; sin cambios en código, Firebase, deploy ni publicación.
