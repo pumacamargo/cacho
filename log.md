@@ -242,3 +242,8 @@
 - Voz: `ttchop-server/pipeline/elevenlabs.js` (`textToSpeech`, PumaVoice01, `eleven_v3`); aceleración con FFmpeg `atempo=1.5` → `elliss-shining-shot-producer-voice-1.5x.mp3`.
 - Videos entregados: (1) `elliss-white-discount-producer-edit.mp4`, clips 01/02/04, sin música ni flip; (2) `elliss-white-discount-02-04-hflip.mp4`, solo clips 02/04, flip pedido y sin música; (3) `elliss-white-discount-02-04-hflip-with-music-0.2x.mp4`, clips 02/04, flip y el instrumental de celebración `audio_3dae2d554059.mp3` a `volume=0.2`, manteniendo la voz.
 - Montaje de los tres: `ttchop-server/scripts/collage_builder.py` con receta JSON temporal; FFmpeg para el mux/padding, `hflip` solo en versiones 2–3 y `amix` en versión 3. Sin `runProducer()`, `/collage/create`, escrituras a Firestore, cambios de código ni publicación. Inputs temporales limpiados; bitácora detallada en [[ttchop-raw-asset-manual-edit]].
+
+## [2026-10-27] create/update | transcripción NAS del curso Gerardo Santiago
+- Creado [[transcripcion-curso-gerardo-santiago]]: inventario de los ocho MP4 originales y TXT homónimos, entorno Python 3.10 aislado con faster-whisper, transferencia serial por PSDrive/FileStream, publicación, reanudación segura y límites de STT automático.
+- Contrastados de nuevo en Polaris los ocho TXT: tamaño y SHA-256 coinciden con `progress.json` (8/8). El log cerró el 2026-10-26 17:59:32 +0100 con `processed=5 verified=8/8`. El noveno MP4 posterior queda fuera del manifiesto; no se transcribió ahora ni se modificaron originales o servicios.
+- Enlazado el runbook de [[acceso-remoto-pumadeskasus]] y actualizado `index.md` (40 páginas). Ni medios ni transcripciones se incorporaron al repositorio.

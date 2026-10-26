@@ -1,7 +1,7 @@
 ---
 title: Acceso SSH a PumaDeskAsus
 created: 2026-10-20
-updated: 2026-10-21
+updated: 2026-10-27
 type: runbook
 tags: [infra, tailscale, runbook]
 status: active
@@ -109,6 +109,9 @@ raíz del NAS (incluidas `3Dprinter`, `AI`, `Animation` y `Chimo`) y se confirm�
   el JSON localmente; no incluirla en comandos `net use`, argumentos SSH o scripts.
 - El wrapper y las credenciales viven fuera de Cacho; este runbook documenta sus
   rutas y uso, pero no instala el wrapper en otro VPS al clonar el repositorio.
+- Ejemplo de lectura serial de MP4 grandes vía FileStream del PSDrive y publicación
+  verificada de TXT al NAS: [[transcripcion-curso-gerardo-santiago]]. Ese pipeline
+  no convierte `P:` en montaje nativo ni altera la configuración del wrapper.
 
 ## Encender y apagar
 
