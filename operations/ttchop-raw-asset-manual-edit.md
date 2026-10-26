@@ -1,7 +1,7 @@
 ---
 title: Edición manual Producer-style con solo audio y videos
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 type: runbook
 tags: [sistema, runbook, pipeline]
 status: active
@@ -14,6 +14,8 @@ related: [ttchop-video-generation, ttchop-music-generation, acceso-remoto-pumade
 Este flujo sirve cuando se cuenta con **un audio aprobado por Arturo y archivos de video originales**, pero no existe una ficha de producto ni `sessions` con metadata en Firestore. No se ejecuta `runProducer()`: se prepara un montaje manual con `ttchop-server/scripts/collage_builder.py` y se entrega el MP4. No inventes ni persistas productos, sesiones o clips de catálogo. Para leer el NAS usa el alcance temporal documentado en [[acceso-remoto-pumadeskasus]]; para los flujos de collage y música existentes consulta [[ttchop-video-generation]] y [[ttchop-music-generation]].
 
 ## Procedimiento reutilizable
+
+Si los archivos de entrada necesitan separarse primero por cambios de toma, usar [[separar-videos-nas-por-cortes]]: documenta detección/revisión visual, límites de frame, recodificación, QA y los clips Juice/EllisWhite que después se usaron en estos montajes. Separar una fuente no es lo mismo que editarla con reglas Producer.
 
 1. **Verifica la ubicación y cada archivo.** `P:` de Polaris solo está disponible en el proceso PowerShell de `pumassh`, no en Linux ni en FFmpeg. Enumera los nombres exactos, extensiones y tamaños desde esa sesión. Si la ruta indicada no existe, inspecciona solo el directorio cercano y acepta una corrección de nombre únicamente cuando todos los archivos solicitados coincidan.
 2. **Staging temporal y limitado.** Copia solo los medios elegidos a un directorio único fuera de cualquier repo. Si se requiere transferencia NAS→VPS, usa un receptor temporal enlazado únicamente a la IP Tailscale de `vps-projects`, con token aleatorio de un uso, allowlist de nombres y tope de bytes. Verifica tamaños; luego detén el receptor y elimina token, payload y medios staged. No sobrescribas ni muevas los originales.

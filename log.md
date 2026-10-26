@@ -247,3 +247,8 @@
 - Creado [[transcripcion-curso-gerardo-santiago]]: inventario de los ocho MP4 originales y TXT homónimos, entorno Python 3.10 aislado con faster-whisper, transferencia serial por PSDrive/FileStream, publicación, reanudación segura y límites de STT automático.
 - Contrastados de nuevo en Polaris los ocho TXT: tamaño y SHA-256 coinciden con `progress.json` (8/8). El log cerró el 2026-10-26 17:59:32 +0100 con `processed=5 verified=8/8`. El noveno MP4 posterior queda fuera del manifiesto; no se transcribió ahora ni se modificaron originales o servicios.
 - Enlazado el runbook de [[acceso-remoto-pumadeskasus]] y actualizado `index.md` (40 páginas). Ni medios ni transcripciones se incorporaron al repositorio.
+
+## [2026-10-27] create/update | separación de videos NAS por cortes visuales
+- Creado [[separar-videos-nas-por-cortes]] con el procedimiento ejecutado el 2026-10-26: staging por pumassh/scp, métricas scene y revisión visual, recorte por frames/timestamps, H.264/AAC y verificación de decodificación, cobertura y hashes al devolver a Polaris.
+- Conservados inventario y límites históricos de cinco clips Juice, cuatro partes de 5.702 s de su clip final y cuatro clips EllisWhite. Se distingue la recodificación de una copia sin pérdidas y se documenta que cambios de tracking facial no prueban cortes editoriales; los límites históricos de Juice ligados a máscara requieren revalidación si se exigen solo cortes reales.
+- Enlazado [[ttchop-raw-asset-manual-edit]] y actualizado índice. Documentación solamente: no se volvieron a procesar ni modificar videos del NAS.
