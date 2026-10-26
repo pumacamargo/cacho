@@ -227,3 +227,8 @@
 - Documentado en [[ttchop-filmcraft-video-tests]] el reparto cíclico V1→V2→V3 para segmentos secuenciales y la verificación de que no haya clips contiguos ni solapados en una misma pista.
 - Registrada la variante verificada de 10 clips en Polaris (4/3/3), abierta en FilmCraft; conserva audio y medios. No se hizo un render nuevo ni se publicó.
 - Actualizados [[ttchop-video-generation]] e `index.md` para indicar que tres pistas es el default al traducir un render a FilmCraft.
+
+## [2026-10-26] create/update | edición manual desde audio y clips originales
+- Creado [[ttchop-raw-asset-manual-edit]] con el flujo raw-assets sin catálogo/sesiones y el caso Juice Discount: inspección de NAS, metadata derivada, reglas Producer, fallback al `collage_builder.py` y mezcla de instrumental a 0,6×.
+- Se documentó que `/collage/create` falló con OpenRouter 404 (`o4-mini-2025-04-16`); el builder directo produjo y entregó el MP4, pero `-shortest` acortó el último segmento visual. Se registra ese límite y se evita afirmar que todos los cortes finales cumplen el mínimo de body.
+- Actualizados el enlace y fecha de [[ttchop-video-generation]] y el catálogo. El documento fallido `renders/render_manual_juice_20261026_001` permanece en `ttchop`; no hubo render exitoso en Firestore/Storage, cambios de código, deploy ni publicación. Los temporales se limpiaron; salida solo en scratch.

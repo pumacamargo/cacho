@@ -1,12 +1,12 @@
 ---
 title: Generación de videos en TTChop2
 created: 2026-10-19
-updated: 2026-10-22
+updated: 2026-10-26
 type: runbook
 tags: [sistema, runbook, pipeline]
 status: active
 confidence: high
-related: [ttchop-webapps, ttchop-automatizaciones, ttchop-filmcraft-video-tests]
+related: [ttchop-webapps, ttchop-automatizaciones, ttchop-filmcraft-video-tests, ttchop-raw-asset-manual-edit]
 ---
 
 # Flujos de creación y render de video
@@ -16,7 +16,8 @@ TTChop2 y la producción manual tipo Producer basada en un producto de catálogo
 clips grabados. Crear o renderizar un video **no lo publica en TikTok**. Ver
 [[ttchop-webapps]] y [[ttchop-automatizaciones]]. Para generación manual de
 canciones con ElevenLabs Music, sin integración de servidor, consulta
-[[ttchop-music-generation]].
+[[ttchop-music-generation]]. Si Arturo entrega solo audio y videos originales,
+sin producto/sesión en Firestore, sigue [[ttchop-raw-asset-manual-edit]].
 
 > **Experimento separado, no flujo de producción:** pruebas locales con FilmCraft
 > 0.9.0 —incluida una edición manual con canción y voz pre-generadas— están en
