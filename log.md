@@ -272,3 +272,8 @@
 - A petición de Arturo se activó FilmCraft en la sesión interactiva de Windows 1 y se verificó visualmente el proyecto `MAGINA-Tagiras-FilmCraft-verified`: nombre esperado en la ventana, miniaturas del media bin, preview y timeline poblado con video, voz y música. No apareció aviso de medios offline ni diálogo de error; esto cierra la verificación GUI que había quedado pendiente en la entrada anterior.
 - Se capturó el escritorio a 1920×1080 y se envió por Telegram un recorte de 1540×1080 para excluir una notificación superpuesta sin retocar la imagen; SHA-256 del PNG enviado: `7faa87616fc10bafc61a3c9caea59e4b3d66a8fad906e883be8613654875bd33`. La captura está en scratch local, no en el repo.
 - No se modificó ni reexportó el proyecto o sus medios; sin cambios de código, Firebase/Firestore, despliegue ni publicación.
+
+## [2026-10-27] update | flip horizontal del video MAGINA Tagiras
+- A petición de Arturo se creó una variante de la última exportación FilmCraft verificada (`magina-tagirasa-filmcraft-verified-7e2af133ba.mp4`); no se modificó el `.fcproj`. `hflip` se aplicó solo al video y el audio AAC se copió intacto.
+- Salida local `magina-tagirasa-filmcraft-verified-7e2af133ba-hflip.mp4`: 15 755 225 bytes, SHA-256 `4037cd4ea7543f9bb8e95ce1fda39b7e52d9e4858e8cc1dd9989a86da44c12f4`. H.264, 1080×1920/24 fps, video 11,375 s; AAC estéreo 48 kHz, audio 11,392 s. El hash del stream de audio coincide antes/después (`53b608cd15e9f85205aa6da61518ba08d6fbbe443c7b37f684c06e6cfd9687c6`), con pico −3,7 dB.
+- Decodificación completa y QA visual correctas; envases/texto legibles tras el flip. Entregado por Telegram, no publicado; sin cambios en Polaris, Firebase/Firestore, código ni despliegue.
