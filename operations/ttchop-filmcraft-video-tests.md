@@ -1,7 +1,7 @@
 ---
 title: Pruebas de edición de video con FilmCraft para TTChop2
 created: 2026-10-21
-updated: 2026-10-27
+updated: 2026-10-28
 type: runbook
 tags: [runbook, pipeline, cli]
 status: draft
@@ -14,6 +14,8 @@ related: [ttchop-video-generation, ttchop-automatizaciones, ttchop-webapps]
 Esta página distingue la implementación vigente del Producer, las pruebas locales de FilmCraft del 2026-10-21 y una posible integración futura. Para los otros flujos manuales y sus límites, consulta [[ttchop-video-generation]]; para scheduler y cooldowns, [[ttchop-automatizaciones]]. TTChop2 y `ttchop` son proyectos Firebase distintos: [[ttchop-webapps]]. Las exportaciones ELLISS/MAGINA no se publicaron ni se guardaron como renders en Firebase; el estado de entrega por Telegram se registra por caso. La prueba manual de aretes descrita abajo sí se guardó en Polaris y se envió como adjunto por Telegram; no se publicó ni escribió en Firebase.
 
 ## Estado por proyecto (no mezclar entregables)
+
+**Orden de acceso NAS actualizado:** [[acceso-nas-polaris]] prioriza SMB directo VPS→NAS para archivos; Windows por SSH queda para ejecutar FilmCraft, verificar rutas del escritorio o reparar `P:`. Se conservan abajo procedimientos y resultados anteriores. No se transfirió ningún proyecto pendiente ni se verificó reapertura nueva al documentar esta alternativa; el acceso directo no hace que FilmCraft vea automáticamente `P:` ni demuestra escritura por el nuevo cliente.
 
 Cada producto/carpeta tiene su propio `.fcproj`; un proyecto FilmCraft existente es solo precedente de flujo y no acredita que otro video ya tenga proyecto.
 

@@ -1,7 +1,7 @@
 ---
 title: Separar videos del NAS por cortes visuales
 created: 2026-10-27
-updated: 2026-10-27
+updated: 2026-10-28
 type: runbook
 tags: [runbook, pipeline, almacen, cli]
 status: active
@@ -16,6 +16,8 @@ Procedimiento usado el 2026-10-26 para dividir `Juice.mp4` y `EllisWhite.mp4` en
 El trabajo histórico usó `C:\staging`; las recetas reutilizables de staging en esta página usan ahora `D:\staging`, por solicitud de Arturo del 2026-10-27. Los registros históricos conservan la ruta efectivamente utilizada.
 
 ## 1. Resolver la fuente y preparar staging
+
+**Prioridad para trabajos nuevos:** seguir [[acceso-nas-polaris]]: SMB directo VPS→NAS primero, Windows por SSH solo si hace falta o como alternativa. Los pasos y comandos siguientes conservan la ruta Windows usada por estos casos; no son un requisito para todo acceso al NAS. La prueba directa solo acreditó lectura/listado: verificar escritura antes de afirmar una entrega por ese cliente.
 
 - Enumerar la ruta literal con `/root/.local/bin/pumassh` antes de copiar. La carpeta escrita inicialmente como `02_juiceDiscout` no existía; la enumeración de su padre identificó `02_JuiceDiscount`, que se comunicó a Arturo antes de usarla.
 - `P:` es un PSDrive del proceso PowerShell de `pumassh`, no un montaje nativo disponible para scp o FFmpeg. Hacer `Copy-Item` en ese proceso hacia un directorio propio de `D:\staging\<id>`, luego scp al scratch del VPS.

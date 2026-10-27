@@ -1,7 +1,7 @@
 ---
 title: Desktop Puma (PumaDeskAsus, Windows)
 created: 2026-10-10
-updated: 2026-10-21
+updated: 2026-10-28
 type: entity
 tags: [infra]
 status: active
@@ -28,6 +28,7 @@ Desktop (Windows) de Arturo, disponible para proyectos.
 - Ver instrucciones, clave de cliente, huella verificada y límites operativos
   en [[acceso-remoto-pumadeskasus]].
 - **NAS de proyectos**: `\\Polaris\Projects`, normalmente `P:` en el escritorio.
+  Para archivos desde el VPS, priorizar SMB directo por Tailscale sin esta computadora: [[acceso-nas-polaris]]. No equivale a reparar el mapping `P:` de Windows.
   Para operaciones PowerShell por SSH, usar `pumassh` desde `vps-tools`; toma las
   credenciales de un archivo privado en el VPS y prepara `P:` en cada proceso.
   No es un montaje global para aplicaciones nativas. Procedimiento y límites en

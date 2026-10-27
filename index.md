@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-10-27 | Total pages: 41
+> Last updated: 2026-10-28 | Total pages: 42
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -47,7 +47,8 @@
 - [[hermes-agentes]] — agentes persistentes de Hermes (research, developer, jr_developer, ttchop_robot)
 
 ## Operaciones
-- [[acceso-remoto-pumadeskasus]] — runbook: SSH por Tailscale, encendido/apagado y lectura/escritura PowerShell a Polaris/P: con pumassh; no habilita acceso nativo global
+- [[acceso-nas-polaris]] — orden de acceso: SMB directo VPS→NAS primero; Windows por IP/FQDN si se necesita; wrapper corto histórico conservado y diagnóstico sin causa raíz confirmada
+- [[acceso-remoto-pumadeskasus]] — alternativa Windows: SSH por Tailscale, encendido/apagado y PowerShell a Polaris/P: con pumassh; mantiene historial y límites, no habilita acceso nativo global
 - [[transcripcion-curso-gerardo-santiago]] — ocho videos originales del curso: transcripción NAS→TXT, hashes, reanudación y límites STT
 - [[separar-videos-nas-por-cortes]] — FFmpeg y revisión visual para segmentar Juice/EllisWhite, cuatro partes iguales y QA de entrega al NAS; entregas Tagilas/Shampoo registradas en log.md el 2026-10-27
 - [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA

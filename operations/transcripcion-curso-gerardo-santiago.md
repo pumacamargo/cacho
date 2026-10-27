@@ -1,7 +1,7 @@
 ---
 title: Transcripción NAS del curso Gerardo Santiago
 created: 2026-10-27
-updated: 2026-10-27
+updated: 2026-10-28
 type: runbook
 tags: [runbook, pipeline, almacen]
 status: active
@@ -28,9 +28,11 @@ El alcance es la lista explícita de ocho MP4 y tamaños en `manifest.json`, no 
 
 ## Entorno y flujo efectivo
 
+**Orden actualizado (2026-10-28):** para nuevas operaciones de archivos, consultar [[acceso-nas-polaris]] y priorizar SMB directo VPS→NAS. El detalle siguiente documenta el pipeline histórico, que no se migró automáticamente a SMB directo; no cambiar su transporte ni relanzarlo al leer esta página.
+
 - Worker en `vps-tools`: `/root/.hermes/profiles/jr_developer/cache/scratch/gerardoSantiago_transcription/`. Allí están `pipeline.py`, `HANDOFF.md`, `manifest.json`, `progress.json`, `pipeline.log`, `pipeline.lock`, `staging/`, `venv/` y `models/`. No son parte de Cacho; no copiar aquí videos, audio ni el texto íntegro del curso. `HANDOFF.md` relata un estado anterior mientras el proceso corría: para estado final prevalecen log, progress y lectura NAS.
 - Python 3.10.12 en `venv/`, `faster-whisper` 1.2.1 con modelo small multilingüe (`models/`), CPU `int8`, `cpu_threads=2`, `num_workers=1`; `/usr/bin/ffmpeg` (4.4.2) convierte cada MP4 a WAV PCM mono 16 kHz. Whisper transcribe con `language='es'`, `beam_size=3`, `condition_on_previous_text=True`, `vad_filter=True`; escribe líneas de segmentos no vacíos en UTF-8, sin marcas de tiempo. Las dependencias de `faster-whisper` fallaban con el Python 3.14 de Hermes: se aisló este Python 3.10 **sin cambiar el STT global** de [[hermes-agent]].
-- Acceso a NAS exclusivamente por PowerShell en `/root/.local/bin/pumassh`: `P:` es un PSDrive de proveedor dentro de esa invocación, no una unidad nativa para FFmpeg ni `scp`. Véase [[acceso-remoto-pumadeskasus]]. La copia grande con `Copy-Item` falló; el pipeline usa `FileStream` remoto, `Seek` y lecturas de 1 MiB codificadas en base64 por el SSH del wrapper, con tres intentos por comando. `scp` no resuelve por sí solo el acceso al PSDrive `P:`; **`pipeline.py` no invoca `scp`**. La descarga parcial descarta el último bloque incompleto antes de reanudar y contrasta el SHA-256 local del MP4 con el remoto antes de transcribir.
+- Acceso a NAS de este pipeline histórico exclusivamente por PowerShell en `/root/.local/bin/pumassh`: `P:` es un PSDrive de proveedor dentro de esa invocación, no una unidad nativa para FFmpeg ni `scp`. Véase [[acceso-remoto-pumadeskasus]]. La copia grande con `Copy-Item` falló; el pipeline usa `FileStream` remoto, `Seek` y lecturas de 1 MiB codificadas en base64 por el SSH del wrapper, con tres intentos por comando. `scp` no resuelve por sí solo el acceso al PSDrive `P:`; **`pipeline.py` no invoca `scp`**. La descarga parcial descarta el último bloque incompleto antes de reanudar y contrasta el SHA-256 local del MP4 con el remoto antes de transcribir.
 - Recorre los ocho nombres ordenados, uno por uno. Tras transcribir, conserva TXT local en `staging/`. Publica fragmentos de 3072 bytes a un temporal `.gerardo-upload-part` mediante escrituras por offset; verifica tamaño y SHA-256 del temporal, mueve sin sobrescribir el destino y vuelve a leer tamaño y SHA-256 del TXT final en NAS. El estado se guarda con reemplazo atómico en `progress.json`; hitos y errores van a `pipeline.log`. Después de publicar, elimina solo el MP4 y WAV temporales del video; no elimina el original NAS ni el TXT local.
 - Si el TXT ya existe en NAS, `pipeline.py` lo registra como `verified_existing` y calcula su hash, pero **no coteja automáticamente ese hash con una versión previa en progress**: para detectar cambios posteriores, comparar explícitamente contra los hashes de la tabla. Si hay TXT local de un upload interrumpido, lo reutiliza sin volver a transcribir; no sobrescribe un TXT final existente. El `flock` no bloqueante en `pipeline.lock` evita dos instancias de este script en el mismo worker.
 

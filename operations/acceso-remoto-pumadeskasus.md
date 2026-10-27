@@ -1,7 +1,7 @@
 ---
 title: Acceso SSH a PumaDeskAsus
 created: 2026-10-20
-updated: 2026-10-27
+updated: 2026-10-28
 type: runbook
 tags: [infra, tailscale, runbook]
 status: active
@@ -9,6 +9,8 @@ confidence: high
 ---
 
 # Conectar a PumaDeskAsus
+
+**Orden vigente para archivos del NAS (2026-10-28):** primero SMB directo VPS→Polaris con las credenciales protegidas existentes; después Windows por SSH con IP/FQDN si el trabajo requiere Windows; conservar el wrapper por nombre corto como alternativa histórica hoy fallida. Procedimiento, pruebas y límites en [[acceso-nas-polaris]]. Esta página conserva íntegros los comandos y antecedentes de acceso Windows; no implica que el VPS necesite `P:` para acceder a `Projects`.
 
 Desde `vps-tools` (`100.116.242.53`), conéctate por Tailscale:
 
@@ -89,7 +91,7 @@ casos se necesita otro mecanismo validado; no asumir que este wrapper los resuel
 
 ### Estado verificado y diagnóstico
 
-**Último intento registrado (2026-10-27):** `pumassh` volvió a fallar al preparar `P:` con `pumassh: Not enough memory resources are available to process this command`. La operación no verificó acceso al share ni completó lectura/escritura; no se diagnosticó la causa ni se debe inferir que falta memoria física. TCP/445 accesible solo confirma transporte, no autenticación o disponibilidad del PSDrive. Hasta que una llamada nueva de `pumassh` prepare `P:` y lea el destino exacto, considera la transferencia NAS **no verificada**.
+**Antecedente por nombre corto (2026-10-27):** `pumassh` falló al preparar `P:` con `pumassh: Not enough memory resources are available to process this command`. Esa operación no completó lectura/escritura. Developer después aisló el fallo en `New-PSDrive`/error nativo 8 para `\\Polaris\Projects`; el nombre resolvía a la misma IP que sí funcionó. No se confirmó causa raíz ni falta de RAM física. La prueba directa del 2026-10-28 sí verificó autenticación/listado/lectura desde el VPS sin Windows: ver [[acceso-nas-polaris]]. TCP/445 por sí solo no basta y la escritura directa sigue sin probar; una transferencia concreta solo está verificada tras comprobar su salida por la ruta elegida. El fallo del wrapper corto no invalida otras rutas verificadas ni repara la unidad del escritorio.
 
 El **2026-10-21**, tras Arturo completar el archivo, dos conexiones SSH nuevas
 e independientes mediante el wrapper terminaron con código `0`: se enumeró la
@@ -116,7 +118,7 @@ raíz del NAS (incluidas `3Dprinter`, `AI`, `Animation` y `Chimo`) y se confirm�
   para leer/copiar datos **después** de que `pumassh` prepare `P:`; no puede corregir
   un fallo al preparar la unidad. En un trabajo FilmCraft autorizado local-first,
   mantén los archivos locales y marca la entrega NAS pendiente hasta que `P:` pueda
-  verificarse; no uses rutas alternativas ni credenciales fuera del wrapper. Ese
+  verificarse. Para nuevas operaciones de archivos, usar el orden de [[acceso-nas-polaris]] con las mismas credenciales protegidas; no improvisar credenciales ni alterar mappings. Ese
   pipeline no convierte `P:` en montaje nativo ni altera la configuración del wrapper.
 
 ## Encender y apagar
