@@ -1,7 +1,7 @@
 ---
 title: Generación de videos en TTChop2
 created: 2026-10-19
-updated: 2026-10-26
+updated: 2026-10-27
 type: runbook
 tags: [sistema, runbook, pipeline]
 status: active
@@ -170,7 +170,7 @@ Cuando traduzcas un render de `ttchop-server` a FilmCraft, usa **tres pistas de 
   esa voz. Si ya hay canción, usa su archivo y duración real; “25 sec” no obliga a
   extender el video.
 - `pumassh` expone `P:` solo a PowerShell dentro de esa conexión. Copia los medios a
-  staging local de Windows para FilmCraft; al final copia MP4, proyecto y audios a
+  `D:\staging\<id>` en Windows para FilmCraft; al final copia MP4, proyecto y audios a
   la carpeta de edición usando el wrapper. Verifica hashes/rutas y las limitaciones
   de reapertura del proyecto portable en [[acceso-remoto-pumadeskasus]].
 - Revisa imagen y audio, adjunta el MP4 e indica que no se publicó. No escribas en

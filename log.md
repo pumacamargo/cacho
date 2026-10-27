@@ -288,3 +288,8 @@
 - Documentado el flujo local-first autorizado: trabajar/guardar en `C:\staging` si Polaris no está disponible, marcar NAS pendiente, conservar los medios hasta verificar la copia y relink. Aclarado que FileStream solo aplica después de preparar `P:`; añadido el último error observado de `pumassh` sin atribuirlo a RAM física.
 - Aclarado en [[ttchop-raw-asset-manual-edit]] que el proyecto MAGINA de `04_tagilas` no es el de Ellis if01 de `07_ellis_if01`; las imágenes fuente de Ellis siguen en caché local. Se actualizó el resumen del índice para advertir que no se mezclen proyectos entre productos.
 - Documentación solamente: sin cambios a FilmCraft, medios, NAS, código, Firestore, despliegue ni publicación.
+
+## [2026-10-27] update | ruta local de staging FilmCraft
+- A petición de Arturo, se fija `D:\staging` como raíz preferida para staging local en nuevos trabajos FilmCraft y se actualizan las recetas de `[[ttchop-filmcraft-video-tests]]`, `[[ttchop-video-generation]]`, `[[acceso-remoto-pumadeskasus]]` y `[[separar-videos-nas-por-cortes]]`.
+- Se conservan en log y casos verificados las rutas `C:\staging` realmente usadas en trabajos anteriores; no se reescribió el historial operativo.
+- Documentación solamente; no se creó la carpeta ni se modificaron medios, FilmCraft o Polaris.

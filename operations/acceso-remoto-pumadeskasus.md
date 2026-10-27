@@ -63,8 +63,8 @@ Desde el VPS:
 ```
 
 ```bash
-# Copia un archivo desde staging local de Windows y verifica el hash en Polaris.
-/root/.local/bin/pumassh '$src="C:\staging\aretes-20261021-song3-ja.mp4"; $dst="P:\TikTok\Hamaca\edits\aretes-prod_3adbqgd"; New-Item -ItemType Directory -Path $dst -Force | Out-Null; Copy-Item -LiteralPath $src -Destination $dst -ErrorAction Stop; Get-FileHash -LiteralPath (Join-Path $dst (Split-Path $src -Leaf)) -Algorithm SHA256'
+# Ejemplo de trabajo nuevo: staging local Windows en D:\staging.
+/root/.local/bin/pumassh '$src="D:\staging\aretes-20261021-song3-ja.mp4"; $dst="P:\TikTok\Hamaca\edits\aretes-prod_3adbqgd"; New-Item -ItemType Directory -Path $dst -Force | Out-Null; Copy-Item -LiteralPath $src -Destination $dst -ErrorAction Stop; Get-FileHash -LiteralPath (Join-Path $dst (Split-Path $src -Leaf)) -Algorithm SHA256'
 ```
 
 ### Funcionamiento y límites

@@ -13,20 +13,22 @@ related: [acceso-remoto-pumadeskasus, ttchop-raw-asset-manual-edit]
 
 Procedimiento usado el 2026-10-26 para dividir `Juice.mp4` y `EllisWhite.mp4` en clips independientes, preservando audio, dimensiones y originales. No fue un pipeline de Producer ni una función de OBS: se usaron **FFmpeg/ffprobe, Python y revisión visual de hojas de contacto** en `vps-tools`. El acceso a Polaris se describe en [[acceso-remoto-pumadeskasus]]; el montaje posterior de estos clips es otra operación, documentada en [[ttchop-raw-asset-manual-edit]].
 
+El trabajo histórico usó `C:\staging`; las recetas reutilizables de staging en esta página usan ahora `D:\staging`, por solicitud de Arturo del 2026-10-27. Los registros históricos conservan la ruta efectivamente utilizada.
+
 ## 1. Resolver la fuente y preparar staging
 
 - Enumerar la ruta literal con `/root/.local/bin/pumassh` antes de copiar. La carpeta escrita inicialmente como `02_juiceDiscout` no existía; la enumeración de su padre identificó `02_JuiceDiscount`, que se comunicó a Arturo antes de usarla.
-- `P:` es un PSDrive del proceso PowerShell de `pumassh`, no un montaje nativo disponible para scp o FFmpeg. Hacer `Copy-Item` en ese proceso hacia un directorio propio de `C:\staging`, luego scp al scratch del VPS.
+- `P:` es un PSDrive del proceso PowerShell de `pumassh`, no un montaje nativo disponible para scp o FFmpeg. Hacer `Copy-Item` en ese proceso hacia un directorio propio de `D:\staging\<id>`, luego scp al scratch del VPS.
 - Verificar SHA-256 de la copia contra el origen. No imprimir credenciales ni usar el JSON privado de SMB como argumento. Si una copia grande falla por red, consultar la alternativa FileStream/reintentos de [[transcripcion-curso-gerardo-santiago]]; no confundir poder enumerar con poder transferir todo el archivo. FileStream solo aplica después de que `pumassh` preparó `P:`; no resuelve fallas previas de conexión/autenticación o de creación del PSDrive.
 
 Ejemplo del caso Juice:
 
 ```bash
-/root/.local/bin/pumassh '$d="C:\staging\hermes-juice-cuts"; New-Item -ItemType Directory -Path $d -Force | Out-Null; Copy-Item -LiteralPath "P:\tiktok\hamaca\edits\02_JuiceDiscount\Juice.mp4" -Destination "$d\Juice.mp4" -ErrorAction Stop; Get-FileHash -LiteralPath "$d\Juice.mp4" -Algorithm SHA256'
+/root/.local/bin/pumassh '$d="D:\staging\hermes-juice-cuts"; New-Item -ItemType Directory -Path $d -Force | Out-Null; Copy-Item -LiteralPath "P:\tiktok\hamaca\edits\02_JuiceDiscount\Juice.mp4" -Destination "$d\Juice.mp4" -ErrorAction Stop; Get-FileHash -LiteralPath "$d\Juice.mp4" -Algorithm SHA256'
 mkdir -p /root/.hermes/cache/scratch/juice-cuts
 scp -i /root/.ssh/id_ed25519_pumadeskasus \
   -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes \
-  'puma_@100.126.157.51:C:/staging/hermes-juice-cuts/Juice.mp4' \
+  'puma_@100.126.157.51:D:/staging/hermes-juice-cuts/Juice.mp4' \
   /root/.hermes/cache/scratch/juice-cuts/Juice.mp4
 ```
 
@@ -83,7 +85,7 @@ ffmpeg -v error -n -i INPUT.mp4 \
 
 - Decodificar cada resultado: `ffmpeg -v error -i OUTPUT.mp4 -f null -`.
 - Comprobar video/audio, dimensiones, frames y duraciones con ffprobe. Los intervalos de frame no se solapan ni dejan huecos; la suma debe igualar el total fuente. Para la subdivisión temporal posterior de Juice se normalizó a 30 fps: no aplicarle la prueba de igualdad de frames con el VFR original.
-- Subir por scp a staging Windows; copiar desde allí mediante PowerShell/pumassh a la **misma carpeta de origen**.
+- Subir por scp a `D:\staging\<id>` en Windows; copiar desde allí mediante PowerShell/pumassh a la **misma carpeta de origen**.
 - Antes de escribir, comprobar **todos** los nombres destino y abortar si existe cualquiera; no sobrescribir ni borrar archivos ajenos.
 - Leer cada tamaño y SHA-256 desde el NAS y compararlos programáticamente con el manifiesto local. Comprobar además que el hash del original no cambió. Un scp o Copy-Item exitoso por sí solo no certifica la entrega.
 
