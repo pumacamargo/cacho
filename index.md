@@ -53,7 +53,7 @@
 - [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA
 - [[ttchop-video-generation]] — runbook: flujos UI/collage y traducción manual `ttchop-server` → FilmCraft con 3 pistas por defecto; Producer no usa FilmCraft
 - [[ttchop-raw-asset-manual-edit]] — edición Producer-style sin catálogo; casos Juice Discount y ELLISS, música/flip por pedido
-- [[ttchop-filmcraft-video-tests]] — runbook FilmCraft: staging C solo temporal, medios finales en `P:\TikTok\Hamaca\edits\<producto>\assets`, relink del `.fcproj`, export/QA y límites de integración
+- [[ttchop-filmcraft-video-tests]] — runbook FilmCraft: staging C solo temporal, medios finales en `P:\TikTok\Hamaca\edits\<producto>\assets`, relink del `.fcproj`, export/QA, reapertura GUI verificada y límites de integración
 - [[ttchop-music-generation]] — runbook: canto manual con ElevenLabs Music, montaje vía `audioBase64`, QA de duración y límites de publicación
 
 ## Repositorio
