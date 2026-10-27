@@ -293,3 +293,9 @@
 - A petición de Arturo, se fija `D:\staging` como raíz preferida para staging local en nuevos trabajos FilmCraft y se actualizan las recetas de `[[ttchop-filmcraft-video-tests]]`, `[[ttchop-video-generation]]`, `[[acceso-remoto-pumadeskasus]]` y `[[separar-videos-nas-por-cortes]]`.
 - Se conservan en log y casos verificados las rutas `C:\staging` realmente usadas en trabajos anteriores; no se reescribió el historial operativo.
 - Documentación solamente; no se creó la carpeta ni se modificaron medios, FilmCraft o Polaris.
+
+## [2026-10-27] create/verify | proyecto FilmCraft Ellis if01 local
+- Creado `D:\staging\filmcraft-ellis-if01-20261027\Ellis-IF01-Layered.fcproj` en FilmCraft CLI 0.9.0: V1 con tres videos, V2 con tres overlays, A1 con preguntas/respuestas separadas y A2 con música a volumen 0,2 (−13,9794 dB). Los 14 medios de `assets/` se verificaron por hash.
+- Export `Ellis-IF01-Layered-preview.mp4`: H.264 1080×1920/30 fps, 449 frames; AAC estéreo 48 kHz. `offlineMedia:[]`, decodificación correcta, pico −0,7 dB sin clipping y QA visual de los tres overlays. Hashes: `.fcproj` `90369D3F98F03758A72E8BFC54AA224228DAB2E68941924CDAEA75DE8E86B6B9`; preview `988b1329685f8725bf1bc2581b207fd1f4735e8c151e194e16bfc023f8bad502`.
+- Local-only y no publicado. No se transfirió a Polaris: la lectura del destino Ellis falló con `pumassh: Not enough memory resources are available to process this command`. Relink y apertura en la GUI interactiva quedan pendientes; conservar `D:\staging` hasta verificar la copia NAS.
+- Actualizados el estado de [[ttchop-filmcraft-video-tests]], [[ttchop-raw-asset-manual-edit]] y el resumen de `index.md`; sin cambios a Producer, Firestore, código ni servicios.

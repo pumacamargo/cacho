@@ -20,7 +20,7 @@ Cada producto/carpeta tiene su propio `.fcproj`; un proyecto FilmCraft existente
 | Caso | Estado al 2026-10-27 | Proyecto FilmCraft | Qué verificar |
 |---|---|---|---|
 | MAGINA Tagiras | Completado y reabierto en la interfaz interactiva; sin medios offline visibles. | `P:\Tiktok\hamaca\edits\04_tagilas\filmcraft-magina-tagirasa-20261027\MAGINA-Tagiras-FilmCraft-verified.fcproj` | Este `.fcproj` pertenece únicamente a MAGINA Tagiras. |
-| Ellis if01 | MP4 final existente; `.fcproj` todavía no creado. Arturo pidió reconstrucción editable por capas (videos, voces, música e imágenes). | Pendiente; no hay ruta de proyecto que reutilizar. | Las imágenes fuente siguen en caché local, no en Polaris. No confundir con MAGINA ni copiar su `.fcproj` como si fuera el de Ellis. |
+| Ellis if01 | `.fcproj` local creado y exportado; transferencia/relink a Polaris y reapertura GUI pendientes. | `D:\staging\filmcraft-ellis-if01-20261027\Ellis-IF01-Layered.fcproj` | Proyecto por capas (videos, voces, música e imágenes); export CLI con `offlineMedia:[]`. Es local-only, no afirmar que sea portable/online en Polaris. No confundir con MAGINA. |
 
 Antes de afirmar que un video ya está en FilmCraft, confirma el `.fcproj` de ese mismo caso, su ruta y la verificación correspondiente. El nombre o la existencia de otro proyecto FilmCraft no basta.
 
