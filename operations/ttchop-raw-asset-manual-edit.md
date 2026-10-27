@@ -99,6 +99,8 @@ Las tres salidas se entregaron en Telegram y no se publicaron. Las copias NAS, s
 
 Salida final en `P:\Tiktok\hamaca\edits\07_ellis_if01\ellis-if01-pointing-01-02-03-with-music-0.2.mp4`: 9 233 047 bytes; SHA-256 `72c73033377875ad8a613c2f77beb6cd14b95925d9b6fdbeee3282a92fc3ca0d`; H.264 1080×1920/30 fps, 449 frames, video 14,967 s; AAC estéreo 44,1 kHz, audio 14,984 s; contenedor 14,985 s. `volumedetect`: media −19,5 dB, pico −0,9 dB, sin clipping; decodificación completa correcta. La hoja de contactos confirmó el orden, los tres overlays y ausencia de cuadros negros. Copia y SHA-256 se verificaron en Polaris. No se ejecutó Producer ni `/collage/create`; no hubo escritura a Firestore, cambios de código ni publicación.
 
+**Estado FilmCraft, 2026-10-27:** este MP4 no tiene todavía un proyecto `.fcproj`. Arturo pidió reconstruirlo con videos, voces, música e imágenes en capas separadas. Las imágenes fuente permanecen en la caché local, no en Polaris. El proyecto MAGINA Tagiras de `04_tagilas` es otro caso y no es el proyecto de Ellis; consulta el inventario de [[ttchop-filmcraft-video-tests]].
+
 ## Enlaces relacionados
 
 - [[ttchop-video-generation]] — collage manual con catálogo y otros flujos de video.

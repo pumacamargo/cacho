@@ -89,6 +89,8 @@ casos se necesita otro mecanismo validado; no asumir que este wrapper los resuel
 
 ### Estado verificado y diagnóstico
 
+**Último intento registrado (2026-10-27):** `pumassh` volvió a fallar al preparar `P:` con `pumassh: Not enough memory resources are available to process this command`. La operación no verificó acceso al share ni completó lectura/escritura; no se diagnosticó la causa ni se debe inferir que falta memoria física. TCP/445 accesible solo confirma transporte, no autenticación o disponibilidad del PSDrive. Hasta que una llamada nueva de `pumassh` prepare `P:` y lea el destino exacto, considera la transferencia NAS **no verificada**.
+
 El **2026-10-21**, tras Arturo completar el archivo, dos conexiones SSH nuevas
 e independientes mediante el wrapper terminaron con código `0`: se enumeró la
 raíz del NAS (incluidas `3Dprinter`, `AI`, `Animation` y `Chimo`) y se confirmó
@@ -110,8 +112,12 @@ raíz del NAS (incluidas `3Dprinter`, `AI`, `Animation` y `Chimo`) y se confirm�
 - El wrapper y las credenciales viven fuera de Cacho; este runbook documenta sus
   rutas y uso, pero no instala el wrapper en otro VPS al clonar el repositorio.
 - Ejemplo de lectura serial de MP4 grandes vía FileStream del PSDrive y publicación
-  verificada de TXT al NAS: [[transcripcion-curso-gerardo-santiago]]. Ese pipeline
-  no convierte `P:` en montaje nativo ni altera la configuración del wrapper.
+  verificada de TXT al NAS: [[transcripcion-curso-gerardo-santiago]]. FileStream sirve
+  para leer/copiar datos **después** de que `pumassh` prepare `P:`; no puede corregir
+  un fallo al preparar la unidad. En un trabajo FilmCraft autorizado local-first,
+  mantén los archivos locales y marca la entrega NAS pendiente hasta que `P:` pueda
+  verificarse; no uses rutas alternativas ni credenciales fuera del wrapper. Ese
+  pipeline no convierte `P:` en montaje nativo ni altera la configuración del wrapper.
 
 ## Encender y apagar
 

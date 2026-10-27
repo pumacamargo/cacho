@@ -17,7 +17,7 @@ Procedimiento usado el 2026-10-26 para dividir `Juice.mp4` y `EllisWhite.mp4` en
 
 - Enumerar la ruta literal con `/root/.local/bin/pumassh` antes de copiar. La carpeta escrita inicialmente como `02_juiceDiscout` no existía; la enumeración de su padre identificó `02_JuiceDiscount`, que se comunicó a Arturo antes de usarla.
 - `P:` es un PSDrive del proceso PowerShell de `pumassh`, no un montaje nativo disponible para scp o FFmpeg. Hacer `Copy-Item` en ese proceso hacia un directorio propio de `C:\staging`, luego scp al scratch del VPS.
-- Verificar SHA-256 de la copia contra el origen. No imprimir credenciales ni usar el JSON privado de SMB como argumento. Si una copia grande falla por red, consultar la alternativa FileStream/reintentos de [[transcripcion-curso-gerardo-santiago]]; no confundir poder enumerar con poder transferir todo el archivo.
+- Verificar SHA-256 de la copia contra el origen. No imprimir credenciales ni usar el JSON privado de SMB como argumento. Si una copia grande falla por red, consultar la alternativa FileStream/reintentos de [[transcripcion-curso-gerardo-santiago]]; no confundir poder enumerar con poder transferir todo el archivo. FileStream solo aplica después de que `pumassh` preparó `P:`; no resuelve fallas previas de conexión/autenticación o de creación del PSDrive.
 
 Ejemplo del caso Juice:
 

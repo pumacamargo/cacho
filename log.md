@@ -282,3 +282,9 @@
 - Añadido a [[ttchop-raw-asset-manual-edit]] el procedimiento manual: voz pregunta/pausa/respuesta, video 2× y `hflip`, imágenes 540×540 en `x=48,y=120`, concatenación 01→02→03 y música `audio_3dae2d554059.mp3` a `volume=0.2` sin atenuar la voz.
 - Registradas las tres variantes individuales y el composite final `ellis-if01-pointing-01-02-03-with-music-0.2.mp4` en Polaris, con tamaños, SHA-256, streams y QA (14,985 s; pico −0,9 dB; decodificación completa). Los adjuntos de imagen quedaron en caché local, no en Polaris; no se creó `.fcproj`.
 - Los originales de `06_Pointing` permanecen intactos. Sin Producer, `/collage/create`, escrituras a Firestore, cambios de código ni publicación; actualizado el resumen del índice.
+
+## [2026-10-27] update | desambiguación de proyectos FilmCraft
+- Añadido a [[ttchop-filmcraft-video-tests]] un inventario explícito por caso y ruta: MAGINA Tagiras tiene un `.fcproj` propio, verificado en la interfaz; Ellis if01 tenía MP4 final pero aún no `.fcproj`, y el solicitado debía separar videos, voces, música e imágenes.
+- Documentado el flujo local-first autorizado: trabajar/guardar en `C:\staging` si Polaris no está disponible, marcar NAS pendiente, conservar los medios hasta verificar la copia y relink. Aclarado que FileStream solo aplica después de preparar `P:`; añadido el último error observado de `pumassh` sin atribuirlo a RAM física.
+- Aclarado en [[ttchop-raw-asset-manual-edit]] que el proyecto MAGINA de `04_tagilas` no es el de Ellis if01 de `07_ellis_if01`; las imágenes fuente de Ellis siguen en caché local. Se actualizó el resumen del índice para advertir que no se mezclen proyectos entre productos.
+- Documentación solamente: sin cambios a FilmCraft, medios, NAS, código, Firestore, despliegue ni publicación.
