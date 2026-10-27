@@ -277,3 +277,8 @@
 - A petición de Arturo se creó una variante de la última exportación FilmCraft verificada (`magina-tagirasa-filmcraft-verified-7e2af133ba.mp4`); no se modificó el `.fcproj`. `hflip` se aplicó solo al video y el audio AAC se copió intacto.
 - Salida local `magina-tagirasa-filmcraft-verified-7e2af133ba-hflip.mp4`: 15 755 225 bytes, SHA-256 `4037cd4ea7543f9bb8e95ce1fda39b7e52d9e4858e8cc1dd9989a86da44c12f4`. H.264, 1080×1920/24 fps, video 11,375 s; AAC estéreo 48 kHz, audio 11,392 s. El hash del stream de audio coincide antes/después (`53b608cd15e9f85205aa6da61518ba08d6fbbe443c7b37f684c06e6cfd9687c6`), con pico −3,7 dB.
 - Decodificación completa y QA visual correctas; envases/texto legibles tras el flip. Entregado por Telegram, no publicado; sin cambios en Polaris, Firebase/Firestore, código ni despliegue.
+
+## [2026-10-27] update | montaje Ellis if01 con tres cortes, imágenes y música
+- Añadido a [[ttchop-raw-asset-manual-edit]] el procedimiento manual: voz pregunta/pausa/respuesta, video 2× y `hflip`, imágenes 540×540 en `x=48,y=120`, concatenación 01→02→03 y música `audio_3dae2d554059.mp3` a `volume=0.2` sin atenuar la voz.
+- Registradas las tres variantes individuales y el composite final `ellis-if01-pointing-01-02-03-with-music-0.2.mp4` en Polaris, con tamaños, SHA-256, streams y QA (14,985 s; pico −0,9 dB; decodificación completa). Los adjuntos de imagen quedaron en caché local, no en Polaris; no se creó `.fcproj`.
+- Los originales de `06_Pointing` permanecen intactos. Sin Producer, `/collage/create`, escrituras a Firestore, cambios de código ni publicación; actualizado el resumen del índice.

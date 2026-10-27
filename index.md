@@ -52,7 +52,7 @@
 - [[separar-videos-nas-por-cortes]] — FFmpeg y revisión visual para segmentar Juice/EllisWhite, cuatro partes iguales y QA de entrega al NAS; entregas Tagilas/Shampoo registradas en log.md el 2026-10-27
 - [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA
 - [[ttchop-video-generation]] — runbook: flujos UI/collage y traducción manual `ttchop-server` → FilmCraft con 3 pistas por defecto; Producer no usa FilmCraft
-- [[ttchop-raw-asset-manual-edit]] — edición Producer-style sin catálogo; casos Juice Discount y ELLISS, música/flip por pedido
+- [[ttchop-raw-asset-manual-edit]] — edición Producer-style sin catálogo; casos Juice Discount, ELLISS y Ellis if01 con música, flip e imágenes por pedido
 - [[ttchop-filmcraft-video-tests]] — runbook FilmCraft: staging C solo temporal, medios finales en `P:\TikTok\Hamaca\edits\<producto>\assets`, relink del `.fcproj`, export/QA; reapertura GUI verificada, límites de integración y variante MAGINA con flip postexport/audio intacto
 - [[ttchop-music-generation]] — runbook: canto manual con ElevenLabs Music, montaje vía `audioBase64`, QA de duración y límites de publicación
 

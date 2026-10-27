@@ -84,6 +84,21 @@ Los montajes usaron directamente el script existente `ttchop-server/scripts/coll
 
 Las tres salidas se entregaron en Telegram y no se publicaron. Las copias NAS, staging y recetas temporales se limpiaron; las salidas no se guardaron en Cacho ni en el repo del servidor.
 
+### Caso verificado: Ellis if01, tres videos con imágenes y música, 2026-10-27
+
+**Fuentes y voz.** Se copiaron (sin mover ni alterar los originales) `Pointing_corte_01.mp4`, `Pointing_corte_02.mp4` y `Pointing_corte_03.mp4` desde `P:\Tiktok\hamaca\edits\06_Pointing\` a `P:\Tiktok\hamaca\edits\07_ellis_if01\`. Se reutilizaron cuatro audios aprobados, generados con PumaVoice01/`eleven_v3` y postprocesados con `atempo=1.5`: `ellis-if01-question-01-skin-health-ja.mp3`, `ellis-if01-question-02-vitamin-c-ja.mp3`, `ellis-if01-question-03-inner-care-ja.mp3` y la respuesta común `ellis-if01-answer-orange-cart-ja.mp3`. Los textos fueron `[curious] 肌の健康、気になってる？`, `[curious] ビタミンC、足りてる？`, `[curious] インナーケア、始めてみたい？` y `[excited] オレンジのカートをチェック！`. Cada pieza combina su pregunta, 0,300 s de silencio y la respuesta común; se retiró el audio de cámara. No se cambió más la velocidad de las voces.
+
+**Imagen y montaje por corte.** Se aplicó 2× al video con `setpts=0.5*(PTS-STARTPTS)` y `hflip` solo a los fotogramas. Después se añadió una imagen cuadrada estática de 540×540 px en `x=48,y=120` sobre video 1080×1920; las imágenes no se espejaron. Orden de correspondencia: corte 01 → `img_a27753ec9718.jpg` (mujer tocándose las mejillas); corte 02 → `img_7d45a3f1d04a.jpg` (mujer con vaso de limón); corte 03 → `img_942c361c3c72.jpg` (mujer con frasco y fruta). QA visual confirmó margen visible y que no se taparan los ojos ni el gesto principal. Los tres adjuntos se recibieron por Telegram y permanecieron en la caché local; no se copiaron a Polaris ni se creó un proyecto `.fcproj`.
+
+**Variantes individuales finales** (H.264, 1080×1920, 30 fps; AAC copiado sin cambios al añadir cada imagen):
+- `ellis-if01-pointing-corte-01-q1-answer-test-2x-hflip-skin-image-3x-lower.mp4` — 2 588 127 bytes; SHA-256 `deef9ca0228218a19f966940de1e364c6f2acee3ba34ccc0de1a216a9ef2b81d`.
+- `ellis-if01-pointing-corte-02-q2-answer-test-2x-hflip-skin-image-3x-lower.mp4` — 2 843 084 bytes; SHA-256 `392a1010d0d2c65073e6af51dd85c8a43714506896d845ab01d7e9893e3ff5fe`.
+- `ellis-if01-pointing-corte-03-q3-answer-test-2x-hflip-skin-image-3x-lower.mp4` — 3 852 172 bytes; SHA-256 `3fffb2cc26f758384af1c9abc239e7b5c19703f142f00de8d47626f0e543ce57`.
+
+**Unión y música.** Se concatenaron esas tres variantes en orden 01→02→03 con cortes directos, sin crossfades. Se reutilizó el instrumental aprobado `P:\Tiktok\hamaca\edits\04_tagilas\assets\audio_3dae2d554059.mp3` (30,024 s, estéreo 48 kHz; SHA-256 `c8f235579823e11227250bfb7512f2db982dfc3fdae19dc27cf07eef6932ab85`). La música pasó por `volume=0.2` y `amix=inputs=2:duration=first:dropout_transition=0:normalize=0`; corre continua durante el montaje y queda limitada a la duración del audio de voz concatenado, sin atenuar ni normalizar la voz.
+
+Salida final en `P:\Tiktok\hamaca\edits\07_ellis_if01\ellis-if01-pointing-01-02-03-with-music-0.2.mp4`: 9 233 047 bytes; SHA-256 `72c73033377875ad8a613c2f77beb6cd14b95925d9b6fdbeee3282a92fc3ca0d`; H.264 1080×1920/30 fps, 449 frames, video 14,967 s; AAC estéreo 44,1 kHz, audio 14,984 s; contenedor 14,985 s. `volumedetect`: media −19,5 dB, pico −0,9 dB, sin clipping; decodificación completa correcta. La hoja de contactos confirmó el orden, los tres overlays y ausencia de cuadros negros. Copia y SHA-256 se verificaron en Polaris. No se ejecutó Producer ni `/collage/create`; no hubo escritura a Firestore, cambios de código ni publicación.
+
 ## Enlaces relacionados
 
 - [[ttchop-video-generation]] — collage manual con catálogo y otros flujos de video.
