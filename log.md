@@ -330,3 +330,8 @@
 - Clip 02: `pointing-hair-silky-02-hflip-minus-1s-motion-voice-1.5x.mp4`, 4 087 716 bytes, SHA-256 `ebeeb113091b75309d1957f57f7df019d054d98f62398aafa84af3bf58ff49eb`; 3,5 s, H.264 1080×1920/30 fps + AAC mono 44,1 kHz. Tras la voz (3,136122 s) se añadió 0,363878 s de silencio, dentro del umbral de cola breve; pico −0,9 dB, decodificación/contact sheet correctos.
 - Clip 03 no se exportó: a 2× y tras quitar 30 frames queda 5,233333 s de movimiento frente a 3,070385 s de voz, diferencia 2,162948 s. Queda pendiente la decisión de Arturo sobre conservar la cola silenciosa o retirar movimiento adicional. Clips 01–02 permanecen en scratch local, no Polaris; no se actualizaron servicios ni se publicó.
 - Actualizados `index.md` y [[ttchop-raw-asset-manual-edit]].
+
+## [2026-10-28] deliver | Ellis hair clip 03 con cola silenciosa aprobada
+- Arturo eligió conservar el recorte de 1 s solicitado y dejar que el video 03 continúe en movimiento sin voz durante 2,162948 s; no se hizo recorte adicional.
+- Render `pointing-hair-dry-ends-03-hflip-minus-1s-motion-voice-1.5x-silence-tail.mp4`: 6 089 148 bytes, SHA-256 `02fd6a6db962edc03d3bc37c0b7a3e675fcd2dc88ae634ca9aff44ab41c6f8a0`; H.264 1080×1920/30 fps, 157 frames/5,233333 s, AAC mono 44,1 kHz/5,233333 s. La voz 1,5× con pausa fija de 0,3 s dura 3,070385 s y la cola final silenciosa 2,162948 s. Pico −0,9 dB; cola, decodificación y revisión visual correctas.
+- Actualizados [[ttchop-raw-asset-manual-edit]] e `index.md`. Los tres videos siguen en scratch local; no se copiaron a Polaris ni se publicaron; sin escrituras a Firestore o cambios de código.
