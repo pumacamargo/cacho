@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-10-28 | Total pages: 42
+> Last updated: 2026-10-29 | Total pages: 43
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -56,6 +56,7 @@
 - [[ttchop-raw-asset-manual-edit]] — edición Producer-style sin catálogo; casos Juice Discount/ELLISS y Ellis if01; tres overlays nuevos, clips IF01 01–03 y montaje continuo 01–02–03 con instrumental aprobado actualizados en Polaris
 - [[ttchop-filmcraft-video-tests]] — runbook FilmCraft (flujo local-first autorizado en `D:\staging`, transferencia a Polaris, relink/export/QA) y estado por caso: MAGINA Tagiras completado; Ellis if01 portable copiado y hash-verificado en Polaris, con reapertura GUI pendiente; no mezclar proyectos entre productos
 - [[ttchop-music-generation]] — runbook: canto manual con ElevenLabs Music, montaje vía `audioBase64`, QA de duración y límites de publicación
+- [[traduccion-video-pumasvoice-sincronizada]] — traducir ES→JA con TTS PumaVoice, alinear inicio/fin de voz mediante atempo/adelay, conservar imagen y medir créditos reales; no lip-sync
 
 ## Repositorio
 - [[cacho]] — wiki versionada: aplicar documentación y código pedidos directamente en main; preservar autorización separada para producción/infra

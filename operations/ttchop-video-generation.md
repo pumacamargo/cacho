@@ -1,7 +1,7 @@
 ---
 title: Generación de videos en TTChop2
 created: 2026-10-19
-updated: 2026-10-28
+updated: 2026-10-29
 type: runbook
 tags: [sistema, runbook, pipeline]
 status: active
@@ -18,6 +18,8 @@ clips grabados. Crear o renderizar un video **no lo publica en TikTok**. Ver
 canciones con ElevenLabs Music, sin integración de servidor, consulta
 [[ttchop-music-generation]]. Si Arturo entrega solo audio y videos originales,
 sin producto/sesión en Firestore, sigue [[ttchop-raw-asset-manual-edit]].
+
+Para traducir un video existente con la voz PumaVoice y alinear el inicio/fin de la narración sin usar ElevenLabs Dubbing, consultar [[traduccion-video-pumasvoice-sincronizada]]. Es una operación manual separada: transcripción/traducción, TTS único y ajuste local de tiempos; no integra Producer ni hace lip-sync.
 
 > **Experimento separado, no flujo de producción:** pruebas locales con FilmCraft
 > 0.9.0 —incluida una edición manual con canción y voz pre-generadas— están en
