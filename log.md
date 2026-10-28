@@ -319,3 +319,7 @@
 - Se re-unieron los cortes nuevos en orden 01→02→03 con el instrumental aprobado continuo a volumen 0,2. Nuevo archivo en `P:\Tiktok\hamaca\edits\07_ellis_if01\ellis-if01-pointing-01-02-03-minus-1s-motion-with-music-0.2.mp4`, 12 340 702 bytes, SHA-256 `b1293e9ca54cf1d8398af8b208447e7eb7837b1b066f14b76062d485cb338f45`; se verificó lectura de retorno exacta en Polaris. El montaje previo con otro nombre se conservó.
 - QA: H.264 1080×1920/30 fps, 449 frames; AAC estéreo 44,1 kHz; streams difieren menos de un frame; decodificación completa, orden/cortes/overlays/cuadros finales y música en pausas revisados; pico −1,1 dB, sin clipping. El proyecto FilmCraft no se modificó y su reapertura GUI sigue pendiente; el nuevo MP4 es un render aplanado, no un proyecto editable. No publicado; sin Producer, Firestore ni cambios de código.
 - Actualizados [[ttchop-raw-asset-manual-edit]] e índice. De las salidas de esta actualización, los tres cortes individuales recortados siguen en scratch local; solo el montaje concatenado nuevo se verificó en Polaris.
+
+## [2026-10-28] preference | recorte solo por solicitud explícita
+- Arturo indicó que quitar el último segundo de movimiento debe ocurrir solo cuando él lo pida expresamente. No asumir por defecto duración ni ubicación del recorte; si pide recortar sin especificarlos, preguntar antes de editar.
+- Actualizados [[ttchop-raw-asset-manual-edit]], su resumen en índice y la skill local `ttchop-content-ops` para aplicar esa preferencia. No se modificó ningún video ni se publicó nada por esta actualización.

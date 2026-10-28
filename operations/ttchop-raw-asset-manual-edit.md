@@ -15,6 +15,8 @@ Este flujo sirve cuando se cuenta con **un audio aprobado por Arturo y archivos 
 
 ## Procedimiento reutilizable
 
+**Regla de recorte de movimiento (preferencia de Arturo):** no quites el último segundo ni asumas cantidad o punto de corte por defecto. Haz ese recorte solo cuando Arturo lo pida explícitamente. Si pide recortar pero no especifica cuánto o dónde, pregunta antes de editar. Si también pide conservar la voz aprobada, mantén intacto el audio y define el tratamiento visual del tramo final según su instrucción.
+
 **Acceso NAS para nuevas tareas:** priorizar SMB directo desde el VPS según [[acceso-nas-polaris]], sin Windows intermediario. Conservar los métodos de staging/SSH descritos abajo para trabajos que necesiten Windows y para reproducir casos históricos. Esta prioridad no cambia el estado pendiente de entregas existentes ni acredita escritura directa o reapertura en FilmCraft.
 
 Si los archivos de entrada necesitan separarse primero por cambios de toma, usar [[separar-videos-nas-por-cortes]]: documenta detección/revisión visual, límites de frame, recodificación, QA y los clips Juice/EllisWhite que después se usaron en estos montajes. Separar una fuente no es lo mismo que editarla con reglas Producer.
