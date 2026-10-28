@@ -357,3 +357,8 @@
 - Se actualizó y entregó clip 02 con la imagen correspondiente de L-シスチン. MP4 `pointing-l-cystine-02-hflip-minus-1s-motion-voice-1.5x-with-image.mp4`: 3 801 605 B, SHA `b6aadc2ad5709f6f903485d1f52de1027bc667fdc65e4e4a46e31ad93f0dbe1b`; H.264 1080×1920/30 fps, 105 frames/3,5 s; AAC mono/44,1 kHz. Audio packet hash sin cambios (`ca569f1748151d9f6ad7ffb81e164a36b14d905b5b01d732708432ec5f860b17`), pico −0,9 dBFS, full decode y contacto visual correctos.
 - Copia Polaris `P:\Tiktok\hamaca\edits\07_ellis_if01\pointing-l-cystine-02-hflip-minus-1s-motion-voice-1.5x-with-image.mp4` con lectura/hash de vuelta verificados.
 - El preflight del clip 03 detecta unos 2,54 s de silencio al final de la voz mientras continúa el video. La imagen 03 existe, pero el video nuevo no se renderizó ni entregó; queda pendiente la decisión de conservar esa cola o recortar el movimiento. No publicado.
+
+## [2026-10-28] deliver | Ellis IF01 — clip 03 con overlay Shine Muscat
+- Arturo indicó aplicar el mismo tratamiento de los videos recientes; se conservó la cola de movimiento y silencio (~2,54 s). MP4 `pointing-muscat-03-hflip-minus-1s-motion-voice-1.5x-silence-tail-with-image.mp4`: 5 586 550 B, SHA `98fbd43d800ddbf0599baec8c3f7f083103626276d6fcc63f6bf95dc2e835d62`; H.264 1080×1920/30 fps, 157 frames/5,233333 s; AAC mono/44,1 kHz/5,232993 s.
+- Audio aprobado remuxeado sin recodificar; hash de paquetes idéntico (`f36a7b32632a3ce80166b0a3ebbd72c4a1175b6ff242d1810db1c7174097db36`), pico −0,9 dBFS, cero clipping y full decode correcto. Contact sheet visual QA correcto.
+- Polaris `P:\Tiktok\hamaca\edits\07_ellis_if01\pointing-muscat-03-hflip-minus-1s-motion-voice-1.5x-silence-tail-with-image.mp4`; lectura/hash de vuelta verificados. No publicado.
