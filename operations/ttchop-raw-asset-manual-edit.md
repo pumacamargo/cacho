@@ -158,6 +158,16 @@ Para el clip 01 se regeneró solo el video: `hflip` antes del overlay 01 nuevo; 
 
 Versión actual local: `/root/.hermes/profiles/ttchop_robot/cache/scratch/ellis-inner-beauty-overlays-20261028/outputs/pointing-inner-beauty-01-hflip-minus-1s-motion-voice-1.5x-new-square-image-corrected.mp4`. Entrega canónica en Polaris: `P:\Tiktok\hamaca\edits\07_ellis_if01\pointing-inner-beauty-01-hflip-minus-1s-motion-voice-1.5x-new-square-image-corrected.mp4`; 3 440 492 bytes; SHA-256 `769243dd46cd0a346a52f617978490a6282c8d07fba59d8738ff9d9f1a1f6958`. Los tres PNGs anteriores también se copiaron a esa carpeta; lecturas de vuelta confirmaron tamaños y hashes. Se conserva la primera versión. Entregado como MP4 aplanado más PNGs individuales; no se creó proyecto FilmCraft ni se publicó.
 
+### Clip 02 actualizado: L-シスチン, 2026-10-28
+
+Arturo autorizó continuar con el clip 02 y su overlay correspondiente. Fuente `P:\Tiktok\hamaca\edits\06_Pointing\Pointing_corte_02.mp4` (10 110 058 bytes; SHA-256 `390f2b884f6a063b28b346e1e4a9f112f8f84839495996939cdf4b44d5991809`); original intacto. Guion: `[curious] L-シスチンって聞いたことある？` → `[excited] オレンジのカートをチェック！`. Se aplicó video 2×, `hflip` antes del overlay `ellis-if01-l-cystine-02-540x540.png` (540×540, `x=48,y=120`, no espejado), recorte de 1 s de movimiento, voz 1,5× y pausa de 0,3 s. Sin audio de cámara ni música.
+
+MP4 local: `/root/.hermes/profiles/ttchop_robot/cache/scratch/ellis-inner-beauty-overlays-20261028/outputs/pointing-l-cystine-02-hflip-minus-1s-motion-voice-1.5x-with-image.mp4`. Polaris: `P:\Tiktok\hamaca\edits\07_ellis_if01\pointing-l-cystine-02-hflip-minus-1s-motion-voice-1.5x-with-image.mp4`; 3 801 605 bytes; SHA-256 `b6aadc2ad5709f6f903485d1f52de1027bc667fdc65e4e4a46e31ad93f0dbe1b`. H.264 1080×1920/30 fps, 105 frames/3,5 s; AAC mono/44,1 kHz/3,5 s. Se remuxeó el audio aprobado del render de guion anterior con `-c:a copy`; hash de paquetes idéntico (`ca569f1748151d9f6ad7ffb81e164a36b14d905b5b01d732708432ec5f860b17`). Full decode, pico −0,9 dBFS, cero clipping y contact sheet correctos; overlay no tapa la cara ni el gesto. SMB verificó tamaño/hash de vuelta; no publicado.
+
+### Clip 03: preflight de cola, pendiente de decisión
+
+La imagen `ellis-if01-muscat-03-540x540.png` está lista y verificada, pero el clip 03 actualizado no se ha renderizado ni entregado. El render de guion existente dura 5,233 s y su pista tiene aproximadamente 2,54 s de silencio al final mientras sigue el movimiento. Como esa cola es mucho más larga que la del clip 01, falta la decisión de Arturo: conservarla o recortar el movimiento para terminar cerca del final de la voz. No asumir que la decisión de otro guion autoriza este cambio.
+
 ## Enlaces relacionados
 
 - [[ttchop-video-generation]] — collage manual con catálogo y otros flujos de video.
