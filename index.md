@@ -47,13 +47,13 @@
 - [[hermes-agentes]] — agentes persistentes de Hermes (research, developer, jr_developer, ttchop_robot)
 
 ## Operaciones
-- [[acceso-nas-polaris]] — orden de acceso: SMB directo VPS→NAS primero; Windows por IP/FQDN si se necesita; wrapper corto histórico conservado y diagnóstico sin causa raíz confirmada
+- [[acceso-nas-polaris]] — orden de acceso: SMB directo VPS→NAS primero; lectura y una escritura MP4 con hash de vuelta verificadas; Windows por IP/FQDN si se necesita; wrapper corto histórico conservado
 - [[acceso-remoto-pumadeskasus]] — alternativa Windows: SSH por Tailscale, encendido/apagado y PowerShell a Polaris/P: con pumassh; mantiene historial y límites, no habilita acceso nativo global
 - [[transcripcion-curso-gerardo-santiago]] — ocho videos originales del curso: transcripción NAS→TXT, hashes, reanudación y límites STT
 - [[separar-videos-nas-por-cortes]] — FFmpeg y revisión visual para segmentar Juice/EllisWhite, cuatro partes iguales y QA de entrega al NAS; entregas Tagilas/Shampoo registradas en log.md el 2026-10-27
 - [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA
 - [[ttchop-video-generation]] — runbook: flujos UI/collage y traducción manual `ttchop-server` → FilmCraft con 3 pistas por defecto; Producer no usa FilmCraft
-- [[ttchop-raw-asset-manual-edit]] — edición Producer-style sin catálogo; casos Juice Discount/ELLISS y Ellis if01; test Ellis hair: video 2×, voz 1,5×, pausa 0,3 s, hflip antes del overlay y recorte de 1 s; clips 01–03 verificados y montaje continuo con instrumental 0,2 hash-verificado en Polaris
+- [[ttchop-raw-asset-manual-edit]] — edición Producer-style sin catálogo; casos Juice Discount/ELLISS y Ellis if01; test Ellis hair: video 2×, voz 1,5×, pausa 0,3 s, hflip antes del overlay y recorte de 1 s; clips 01–03 y montaje musical verificados, más hook alternativo 01 de belleza interior en Polaris
 - [[ttchop-filmcraft-video-tests]] — runbook FilmCraft (flujo local-first autorizado en `D:\staging`, transferencia a Polaris, relink/export/QA) y estado por caso: MAGINA Tagiras completado; Ellis if01 portable copiado y hash-verificado en Polaris, con reapertura GUI pendiente; no mezclar proyectos entre productos
 - [[ttchop-music-generation]] — runbook: canto manual con ElevenLabs Music, montaje vía `audioBase64`, QA de duración y límites de publicación
 

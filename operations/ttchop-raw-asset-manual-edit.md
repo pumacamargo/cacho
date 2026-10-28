@@ -137,6 +137,14 @@ Las salidas individuales 01–03 son renders locales aplanados, no proyectos Fil
 
 El montaje final es H.264 1080×1920/30 fps, 359 frames/11,966667 s; AAC estéreo/44,1 kHz, 11,966667 s. QA: decodificación completa; contact sheet sin cuadros negros y cortes/overlays limpios; música presente en las colas silenciosas; pico PCM −0,66 dBFS y 0 muestras saturadas. El hash y tamaño se leyeron de vuelta en Polaris; staging temporal eliminado tras esa verificación. Es un MP4 aplanado, no se modificó el proyecto FilmCraft ni se publicó.
 
+### Hook alternativo Ellis IF01: belleza interior, clip 01, 2026-10-28
+
+Arturo pidió solo el primero de tres guiones nuevos y especificó reutilizar los videos originales de `06_Pointing` con el tratamiento de los clips recientes. Fuente `P:\Tiktok\hamaca\edits\06_Pointing\Pointing_corte_01.mp4` (9 241 817 bytes; SHA-256 `f0b297d43bdab627ba4ba210569b9aee3ef97eaac33f38dbe69bafcaee315450`); original intacto. Se reutilizó el stream visual ya aprobado del clip 01 anterior: video 2×, `hflip`, quitar 1 s/30 frames de movimiento y overlay `hair_overlay_01_frizz.png` de 540×540 px en `x=48,y=120`, sin espejar la imagen. El video final no se volvió a codificar: sus 97 frames decodificados coinciden con la versión visual aprobada. Audio de cámara reemplazado.
+
+Guion nuevo: `[curious] 内側からキレイになりたい？` → `[excited] オレンジのカートをチェック！`. La nueva pregunta se sintetizó con el helper `textToSpeech` de `ttchop-server/pipeline/elevenlabs.js` (PumaVoice01 `ve7BOdejheJbgrBriBx4`, `eleven_v3`) y se postprocesó a 1,5×. Se reutilizó la respuesta común aprobada; pausa fija de 0,3 s. Sin música. Secuencia de voz: 3,181270 s; se completó el video con 0,052063 s de silencio.
+
+MP4 aplanado local: `/root/.hermes/profiles/ttchop_robot/cache/scratch/ellis-if01-script-variants-20261028/outputs/pointing-inner-beauty-01-hflip-minus-1s-motion-voice-1.5x.mp4`. Copia canónica: `P:\Tiktok\hamaca\edits\07_ellis_if01\pointing-inner-beauty-01-hflip-minus-1s-motion-voice-1.5x.mp4`. Tamaño 3 303 002 bytes; SHA-256 `f12252f30fbf8d52a627a883519563c61e7b2a7aebc2198e0fb541c3ca0e03b1`. H.264 1080×1920/30 fps, 97 frames/3,233333 s; AAC mono/44,1 kHz/3,233333 s. Pico −0,90 dBFS, cero muestras saturadas, decodificación completa; inspección visual correcta y cola AAC silenciosa. La escritura SMB directa y la lectura de vuelta en Polaris se verificaron con el mismo tamaño/SHA-256. Se entregó solo este primer clip; no publicado. El archivo es aplanado: el overlay PNG y las pistas fuente no se copiaron como paquete editable.
+
 ## Enlaces relacionados
 
 - [[ttchop-video-generation]] — collage manual con catálogo y otros flujos de video.
