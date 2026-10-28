@@ -323,3 +323,10 @@
 ## [2026-10-28] preference | recorte solo por solicitud explícita
 - Arturo indicó que quitar el último segundo de movimiento debe ocurrir solo cuando él lo pida expresamente. No asumir por defecto duración ni ubicación del recorte; si pide recortar sin especificarlos, preguntar antes de editar.
 - Actualizados [[ttchop-raw-asset-manual-edit]], su resumen en índice y la skill local `ttchop-content-ops` para aplicar esa preferencia. No se modificó ningún video ni se publicó nada por esta actualización.
+
+## [2026-10-28] update | Ellis hair: parámetros y clips 01–02
+- Documentados en [[ttchop-raw-asset-manual-edit]] los parámetros que faltaban del nuevo test: video 2×, voz por locución a 1,5×, pausa fija de 0,3 s, `hflip` del video antes del overlay sin espejar la imagen y recorte explícito de 1 s/30 frames de movimiento. Sin música ni publicación; originales de `06_Pointing` intactos.
+- Clip 01 final: `pointing-hair-frizz-01-hflip-minus-1s-motion-voice-1.5x.mp4`, 3 298 106 bytes, SHA-256 `37bd72cd15a826104ca205be386787fb7fee8f5b3369fc738290a5a4505843d3`; H.264 1080×1920/30 fps, AAC mono 44,1 kHz; voz completa y QA correcto.
+- Clip 02: `pointing-hair-silky-02-hflip-minus-1s-motion-voice-1.5x.mp4`, 4 087 716 bytes, SHA-256 `ebeeb113091b75309d1957f57f7df019d054d98f62398aafa84af3bf58ff49eb`; 3,5 s, H.264 1080×1920/30 fps + AAC mono 44,1 kHz. Tras la voz (3,136122 s) se añadió 0,363878 s de silencio, dentro del umbral de cola breve; pico −0,9 dB, decodificación/contact sheet correctos.
+- Clip 03 no se exportó: a 2× y tras quitar 30 frames queda 5,233333 s de movimiento frente a 3,070385 s de voz, diferencia 2,162948 s. Queda pendiente la decisión de Arturo sobre conservar la cola silenciosa o retirar movimiento adicional. Clips 01–02 permanecen en scratch local, no Polaris; no se actualizaron servicios ni se publicó.
+- Actualizados `index.md` y [[ttchop-raw-asset-manual-edit]].
