@@ -15,14 +15,21 @@ Esta página distingue la implementación vigente del Producer, las pruebas loca
 
 ## Estado por proyecto (no mezclar entregables)
 
-**Orden de acceso NAS actualizado:** [[acceso-nas-polaris]] prioriza SMB directo VPS→NAS para archivos; Windows por SSH queda para ejecutar FilmCraft, verificar rutas del escritorio o reparar `P:`. Se conservan abajo procedimientos y resultados anteriores. No se transfirió ningún proyecto pendiente ni se verificó reapertura nueva al documentar esta alternativa; el acceso directo no hace que FilmCraft vea automáticamente `P:` ni demuestra escritura por el nuevo cliente.
+**Orden de acceso NAS actualizado:** [[acceso-nas-polaris]] prioriza SMB directo VPS→NAS para archivos; Windows por SSH queda para ejecutar FilmCraft, verificar rutas del escritorio o reparar `P:`. La nota inicial del 2026-10-28 reflejaba el estado al documentar esa alternativa; la transferencia posterior de Ellis if01 está registrada abajo. El acceso directo no hace que FilmCraft vea automáticamente `P:` ni demuestra escritura por el cliente SMB.
 
 Cada producto/carpeta tiene su propio `.fcproj`; un proyecto FilmCraft existente es solo precedente de flujo y no acredita que otro video ya tenga proyecto.
 
-| Caso | Estado al 2026-10-27 | Proyecto FilmCraft | Qué verificar |
+| Caso | Estado al 2026-10-28 | Proyecto FilmCraft | Qué verificar |
 |---|---|---|---|
 | MAGINA Tagiras | Completado y reabierto en la interfaz interactiva; sin medios offline visibles. | `P:\Tiktok\hamaca\edits\04_tagilas\filmcraft-magina-tagirasa-20261027\MAGINA-Tagiras-FilmCraft-verified.fcproj` | Este `.fcproj` pertenece únicamente a MAGINA Tagiras. |
-| Ellis if01 | `.fcproj` local creado y exportado; transferencia/relink a Polaris y reapertura GUI pendientes. | `D:\staging\filmcraft-ellis-if01-20261027\Ellis-IF01-Layered.fcproj` | Proyecto por capas (videos, voces, música e imágenes); export CLI con `offlineMedia:[]`. Es local-only, no afirmar que sea portable/online en Polaris. No confundir con MAGINA. |
+| Ellis if01 | Paquete portable copiado a Polaris y verificado por hash; reapertura en GUI pendiente. | `P:\Tiktok\hamaca\edits\07_ellis_if01\filmcraft-ellis-if01-20261027\Ellis-IF01-Layered.fcproj` | 14 medios con hashes/tamaños del manifest verificados; el proyecto tiene 14 rutas `P:` y cero rutas `D:`. No afirmar que FilmCraft GUI lo haya abierto ni que no haya medios offline en la interfaz. No confundir con MAGINA. |
+
+### Ellis if01 — paquete FilmCraft en Polaris (2026-10-28)
+
+- Destino del paquete: `P:\Tiktok\hamaca\edits\07_ellis_if01\filmcraft-ellis-if01-20261027\`. Proyecto editable: `Ellis-IF01-Layered.fcproj`; preview: `Ellis-IF01-Layered-preview.mp4`; manifest en la misma carpeta. Los medios están en `P:\Tiktok\hamaca\edits\07_ellis_if01\assets\`.
+- SHA-256 del `.fcproj` portable: `41fb0eb7386e3aa8c520385d826bc9e63aee3c82381d7e6d6a8eb8538f31713a`; del preview: `988b1329685f8725bf1bc2581b207fd1f4735e8c151e194e16bfc023f8bad502`. Los 14 archivos de `assets/` coinciden con los tamaños y hashes del manifest. El proyecto portable contiene 14 referencias a `P:` y ninguna a `D:\staging`.
+- La copia se hizo por la ruta Windows/SSH con IP Tailscale documentada en [[acceso-nas-polaris]], usando el adaptador temporal sobre el wrapper existente. Esto verifica esta transferencia, no repara el fallo histórico de `pumassh` por nombre corto ni demuestra escritura del cliente SMB directo.
+- El staging `D:\staging\filmcraft-ellis-if01-20261027` se conserva con el `.fcproj` original (SHA-256 `90369d3f98f03758a72e8bfc54aa224228dab2e68941924cdaea75de8e86b6b9`), la variante portable y 14 medios. La exportación/inspección CLI local no sustituye abrir el proyecto final en la GUI: esa reapertura sigue pendiente. No publicado.
 
 Antes de afirmar que un video ya está en FilmCraft, confirma el `.fcproj` de ese mismo caso, su ruta y la verificación correspondiente. El nombre o la existencia de otro proyecto FilmCraft no basta.
 
