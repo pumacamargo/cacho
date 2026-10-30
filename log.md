@@ -374,3 +374,9 @@
 - Salida aprobada `video_ja_sincronizado.mp4`: 4 977 530 bytes, SHA-256 `a780fda4eefdcd0661ad13f0fc28c58399c83543fc8d500f06081fbc21278ebf`, H.264 720×1280/AAC japonés; full decode correcto y bitstream de imagen igual al original. Entregada por Telegram; no publicada ni copiada al NAS en esta tarea.
 - Consumo TTS confirmado por header/historial: 14 créditos incluidos; sin overage reportado. La prueba Dubbing anterior registró aumento de cuenta de 1682 créditos: comparación puntual, no precio universal. Se guardaron receta, parámetros finales, límites y verificación; scratch/evidencias no se incorporaron al repo.
 - Actualizado [[ttchop-video-generation]] e índice (43 páginas). Documentación solamente: sin gasto adicional, cambios de servicios, credenciales o código de producción.
+
+## [2026-10-30] create/update | FTPS Lemon Sushi, raíz organizada y URL pública
+- A petición de Arturo se creó [[acceso-ftps-lemon-sushi]] con el endpoint probado `server310.web-hosting.com:21`, FTPS explícito con TLS/certificado y conexión de datos cifrada, autenticación y listado verificados. El alias `ftp.lemonsushi.com` falla la coincidencia de certificado; no se desactiva su validación.
+- Guardada en `/root/.config/ftp/config.json` la equivalencia `/public_html/uploads/vps2/` → `https://lemonsushi.com/uploads/vps2/`, condicionada a que `public_html` sea el document root del dominio; comprobación HTTP pendiente. Se conservaron las reglas de subcarpetas por proyecto/tarea, sin archivos sueltos en la raíz ni escrituras fuera de ella.
+- Documentadas la ubicación protegida de credenciales y la advertencia de accesibilidad pública: no subir secretos ni información privada. El repositorio no contiene la contraseña ni el archivo de credenciales. Actualizado el índice (44 páginas).
+- Esta actualización solo modifica configuración local y documentación; sin subidas FTP, cambios de hosting, despliegues ni pruebas de escritura remota.
