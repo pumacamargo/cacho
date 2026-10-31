@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-10-31 | Total pages: 45
+> Last updated: 2026-10-31 | Total pages: 46
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -51,6 +51,7 @@
 - [[acceso-nas-polaris]] — orden de acceso: SMB directo VPS→NAS primero; 5 MP4s y 3 PNGs escritos y verificados con hash de vuelta; Windows por IP/FQDN si se necesita; wrapper corto histórico conservado
 - [[acceso-remoto-pumadeskasus]] — alternativa Windows: SSH por Tailscale, encendido/apagado y PowerShell a Polaris/P: con pumassh; mantiene historial y límites, no habilita acceso nativo global
 - [[diagnostico-espacio-disco-vps]] — auditoría de solo lectura del disco: 96 % usado; Docker (~48 GB), caché npm (11 GB) y logs de contenedores sin rotación; 35–45 GB liberables, limpieza pendiente de autorización
+- [[estudio-creadores-fuentes-datos]] — inventario del estudio de Asu y Sora: 43 videos y transcripciones en el NAS, 13 reportes publicados, historial de 11 versiones del estudio y dónde vive cada medición
 - [[transcripcion-curso-gerardo-santiago]] — ocho videos originales del curso: transcripción NAS→TXT, hashes, reanudación y límites STT
 - [[separar-videos-nas-por-cortes]] — FFmpeg y revisión visual para segmentar Juice/EllisWhite, cuatro partes iguales y QA de entrega al NAS; entregas Tagilas/Shampoo registradas en log.md el 2026-10-27
 - [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA
