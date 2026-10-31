@@ -380,3 +380,11 @@
 - Guardada en `/root/.config/ftp/config.json` la equivalencia `/public_html/uploads/vps2/` → `https://lemonsushi.com/uploads/vps2/`, condicionada a que `public_html` sea el document root del dominio; comprobación HTTP pendiente. Se conservaron las reglas de subcarpetas por proyecto/tarea, sin archivos sueltos en la raíz ni escrituras fuera de ella.
 - Documentadas la ubicación protegida de credenciales y la advertencia de accesibilidad pública: no subir secretos ni información privada. El repositorio no contiene la contraseña ni el archivo de credenciales. Actualizado el índice (44 páginas).
 - Esta actualización solo modifica configuración local y documentación; sin subidas FTP, cambios de hosting, despliegues ni pruebas de escritura remota.
+
+## [2026-10-31] create | diagnóstico de espacio en disco en vps-tools
+- Arturo recibió una alerta de poco espacio y pidió un reporte de qué lo consumía; se creó [[diagnostico-espacio-disco-vps]] a partir de una auditoría de **solo lectura** del disco de [[hardware-vps-tools]].
+- Estado real: `/dev/sda3` 96 GB, 87 GB usados, **4.4 GB libres (96 %)**. Se descartó la hipótesis de copias de video del NAS: todo el material audiovisual del VPS suma menos de 1 GB (del curso solo 49 MB de staging y ~1.5 GB de entornos/modelos de transcripción en el scratch de `jr_developer`).
+- Causas medidas: Docker ~48 GB (capas 49 GB con 11.6 GB recuperables y 13 imágenes huérfanas, build cache 5.9 GB, volúmenes 7.5 GB con Paperclip 3.6 GB, logs de contenedores 4.0 GB, imagen Paperclip 5.1 GB), `/root/.npm` 11 GB, respaldo n8n de mayo 2025 2.0 GB, `.codex` 1.6 GB, `/var/cache/apt` 1.9 GB.
+- Hallazgo de causa raíz: ningún contenedor tiene rotación de logs salvo `affine_app`; `postiz-postgres` acumuló 3.1 GB de log desde el 18 de octubre, así que hay que revisar por qué registra errores, no solo truncar.
+- **Sin limpieza ejecutada**: 35–45 GB liberables quedaron como propuesta; las acciones sobre Paperclip y el respaldo de n8n requieren autorización explícita aparte. Evidencia cruda en scratch, no incorporada al repositorio.
+- Actualizado [[index.md|índice]] (45 páginas). Documentación solamente: sin borrados, cambios de servicios, reinicios ni despliegues.
