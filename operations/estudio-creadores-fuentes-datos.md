@@ -36,31 +36,45 @@ En `Projects\Tiktok\hamaca\creators_research\`:
 | `sora_no_kurashi3\audiovisual-audit.html` | Auditoría audiovisual de Sora | 10 192 783 B |
 | `creator-study-*.html` | Una copia por versión del estudio (10 archivos, de 247 KB a 9.3 MB) | — |
 
-## Reportes publicados (13 enlaces, verificados HTTP 200)
+## Reportes publicados (5 enlaces, verificados HTTP 200)
 
 Base: `https://lemonsushi.com/uploads/vps2/creators-research/`
 
-- Guías de estructura de guion (inglés): `asu_kurashi/index.html`, `sora_no_kurashi3/index.html`.
-- Auditorías audiovisuales: `asu_kurashi/audiovisual-audit.html`, `sora_no_kurashi3/audiovisual-audit.html`.
+- Guía de estructura de guion (inglés) de Asu: `asu_kurashi/index.html` (47 494 B) y su auditoría audiovisual `asu_kurashi/audiovisual-audit.html` (9 408 129 B).
+- Guía de estructura de guion (inglés) de Sora: `sora_no_kurashi3/index.html` (42 268 B) y su auditoría audiovisual `sora_no_kurashi3/audiovisual-audit.html` (10 192 783 B).
+- Los 5 enlaces se comprobaron con HTTP 200 y hash exacto el 2026-10-31. **Los reportes por creador se conservan en el hosting.**
 
 ## Versiones del estudio y su historial
 
-| Versión (URL) | Qué es |
-|---|---|
-| `study-97a276b8cae6` | Primer estudio integrado (5 grupos / 31 temas) |
-| `study-stitch-01aad09306bf` | Versión con el diseño de Stitch |
-| `study-complete-f49ae44b9303` | Reescritura completa con introducciones prácticas |
-| `study-evidence-2f685f21a16b` | Versión con evidencia y capturas reales (a la que Arturo regresó en su momento) |
-| `asu-script-pilot-93c58ce1deec` | Piloto de Script de Asu aprobado (fórmula editorial) |
-| `study-script-layout-1eb2e94a3542` | Script con dos guiones reales anotados y ejemplos al final |
-| `study-script-three-82ca7d46c1b1` | Tercer guion real; "Edition" renombrado a "Video Editing" |
-| `study-script-language-c9ed0947f474` | Script + análisis de escritura de todo el corpus (43 guiones) |
-| `study-av-collapse-b58470cb13b0` | Grabación con casos plegables y segmentos con solo la duración |
-| **`study-standard-63f35614c4fc`** | **Versión activa**: páginas estandarizadas en 5 secciones, todo desplegado por defecto, sin Hybrid |
-| `study-sources-d3e378514b07` | Retirada: añadía el bloque de fuentes en el pie (Arturo pidió quitarlo de la guía) |
+El hosting conserva **solo la última versión**; las anteriores se borraron del FTP el 2026-10-31 por petición de Arturo (ver [[#Limpieza del hosting|Limpieza del hosting]]). Su contenido sigue disponible en el NAS y en los espacios de trabajo del VPS.
+
+| Versión | Qué es | Estado en el hosting |
+|---|---|---|
+| `study` (sin hash) | Primer volcado del estudio | Borrada |
+| `study-97a276b8cae6` | Primer estudio integrado (5 grupos / 31 temas) | Borrada |
+| `study-stitch-01aad09306bf` | Versión con el diseño de Stitch | Borrada |
+| `study-complete-f49ae44b9303` | Reescritura completa con introducciones prácticas | Borrada |
+| `study-evidence-2f685f21a16b` | Versión con evidencia y capturas reales (a la que Arturo regresó en su momento) | Borrada |
+| `asu-script-pilot-93c58ce1deec` | Piloto de Script de Asu aprobado (fórmula editorial) | Borrada |
+| `study-script-layout-1eb2e94a3542` | Script con dos guiones reales anotados y ejemplos al final | Borrada |
+| `study-script-three-82ca7d46c1b1` | Tercer guion real; "Edition" renombrado a "Video Editing" | Borrada |
+| `study-script-language-c9ed0947f474` | Script + análisis de escritura de todo el corpus (43 guiones) | Borrada |
+| `study-av-collapse-b58470cb13b0` | Grabación con casos plegables y segmentos con solo la duración | Borrada |
+| `study-production-preview-6d019d36afd4` y `study-production-preview-8cf3205b762e` | Reescritura de producción (rechazada por Arturo) | Borradas |
+| `study-recording-editing-09be762d3696abfd` y `study-recording-editing-dd70e1ca628cd380` | Integración de la muestra visual de Grabación/Edición | Borradas |
+| `study-standard-4ab186c1e022` | Estandarización antes de dejarla desplegada por defecto | Borrada |
+| `study-sources-d3e378514b07` | Añadía el bloque de fuentes en el pie (Arturo pidió quitarlo de la guía) | Borrada |
+| **`study-standard-63f35614c4fc`** | **Versión activa**: páginas estandarizadas en 5 secciones, todo desplegado por defecto, sin Hybrid | **Conservada** |
 
 - Versión activa: `https://lemonsushi.com/uploads/vps2/creators-research/study-standard-63f35614c4fc/index.html` — SHA-256 `63f35614c4fc39508c20e4ff5a236ecdef77e36c57738162b91a3a0fc0137a03`, 16 306 232 B.
-- Cada versión se publica en su propia carpeta para no sobrescribir las anteriores; los 13 enlaces se comprobaron con HTTP 200 el 2026-10-31.
+
+## Limpieza del hosting
+
+- El 2026-10-31 se borraron **16 carpetas de versiones anteriores** de `/public_html/uploads/vps2/creators-research/` (~146 MB liberados): todas las `study-*` salvo la activa, la primera carpeta `study`, `asu-script-pilot-93c58ce1deec` y las dos `study-production-preview-*`.
+- Se conservaron la versión activa y los dos reportes por creador (`asu_kurashi`, `sora_no_kurashi3`), verificados por lectura exacta antes y después del borrado.
+- Comprobación del resultado: listado FTP con solo esas tres carpetas, lectura exacta de la guía activa (hash correcto) y de los 4 archivos de reportes (tamaños 47 494 / 9 408 129 / 42 268 / 10 192 783 B), y las 16 URLs antiguas sin responder.
+- Detalle importante del hosting: **devuelve 404 intermitentes en archivos que sí existen**, así que la prueba de existencia o borrado se hace por lectura y listado FTP, no por HTTP.
+- Para publicar una versión nueva, cada una va en su propia carpeta con hash en el nombre; si se decide limpiar, borrar antes de subir o listar candidatos y confirmar.
 
 ## Datos de medición guardados en el VPS
 
