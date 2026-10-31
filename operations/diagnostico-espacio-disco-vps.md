@@ -65,7 +65,16 @@ Arturo autorizó también las acciones 6–11 y se ejecutaron: Paperclip (conten
 
 Estado final del disco: **44 GB usados / 48 GB libres (48 %)**, frente a los 87 GB usados / 4.4 GB libres (96 %) del inicio — **43 GB liberados en total**. Comprobaciones posteriores: n8n y Affine responden HTTP 200, el daemon de Codex 0.166.0 sigue activo y ninguno de los 8 contenedores que quedan se detuvo.
 
-Quedan ~7.4 GB de **imágenes Docker sin uso** (Tradenote 604 MB, `mongo:6` 773 MB, `mysql:8` 777 MB, `php:8.2-cli` 527 MB, `n8nio/n8n:latest-debian` 1.84 GB, `n8n-custom:latest` 2.2 GB, entre otras): no se tocaron porque implican re-descarga si se vuelven a necesitar. Se pueden liberar con `docker image prune -a`.
+### Tercera limpieza autorizada (2026-10-31, mismo día)
+
+Arturo autorizó también las imágenes Docker sin uso y apagar Postiz:
+
+- **Imágenes sin uso:** `docker image prune -af` liberó **10.64 GB** (Tradenote, `mongo:6`, `mysql:8`, `php:8.2-cli`, `n8nio/n8n:latest`, `n8nio/n8n:latest-debian`, `postgres:17-alpine`, `alpine`, etc.). `n8n-custom:latest` **no** se borró: está en uso por el contenedor de n8n.
+- **Postiz:** verificado que la app llevaba atascada desde julio esperando el puerto 4200 y que no respondía en `localhost:5000`; se apagó el proyecto (`docker compose down`) y se eliminaron sus 3 contenedores y su red. **Se conservaron los volúmenes de datos** (`postiz_postiz-config`, `postiz_postiz-uploads`, `postiz_postiz-postgres-data`, ~540 MB) porque contienen material suyo; borrarlos requiere confirmación aparte.
+
+Estado final: **30 GB usados / 62 GB libres (32 %)**, frente a 87 GB usados / 4.4 GB libres (96 %) al inicio → **57 GB liberados en total**. Quedan 5 contenedores (3 de Affine + 2 de n8n) y 5 imágenes, todas en uso. n8n y Affine responden HTTP 200 y el daemon de Codex sigue activo.
+
+Pendiente de decisión: los 540 MB de volúmenes de Postiz, y el bloque `postiz.lemonsushi.com` del Caddyfile de `n8n-server`, que ahora apunta a un backend inexistente (devuelve 502; el dominio ya estaba caído antes de apagarlo).
 
 Evidencia cruda de la auditoría: `/root/.hermes/cache/scratch/disk-audit/disk-report.md` (escaneo completo) y `Reporte-espacio-disco-vps.md` (resumen entregado). No se incorporaron al repositorio.
 
