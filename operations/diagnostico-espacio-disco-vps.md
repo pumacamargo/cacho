@@ -39,20 +39,27 @@ Confirmado en la revisión: **el espacio NO lo consumen copias de videos del NAS
 
 Ningún contenedor tiene rotación de logs salvo `affine_app` (`max-size: 500m`). El daemon no configura log driver en `/etc/docker/daemon.json` (solo DNS). `postiz-postgres` acumuló 3.1 GB desde el 18 de octubre, lo que indica que ese contenedor está registrando errores de forma continua: **conviene investigar el motivo, no solo truncar el archivo**, porque el problema se repetirá.
 
-## Acciones propuestas y su estado de autorización
+## Acciones y su estado de autorización
 
 | # | Acción | Ahorro | Estado |
 |---|---|---|---|
-| 1 | `npm cache clean --force` | ~11 GB | Propuesta, sin ejecutar |
-| 2 | `docker builder prune -af` | ~5.9 GB | Propuesta, sin ejecutar |
-| 3 | `docker image prune -f` (huérfanas) | ~11.6 GB | Propuesta, sin ejecutar |
-| 4 | Truncar logs de postiz y activar rotación (`max-size 50m, max-file 3`) | ~3.6 GB | Propuesta, sin ejecutar |
-| 5 | `apt-get clean` | ~1.9 GB | Propuesta, sin ejecutar |
-| 6 | Eliminar Paperclip (imagen + volumen + `pgdata` + contenedor detenido) | ~8.8 GB | Requiere autorización explícita de Arturo |
-| 7 | Borrar respaldo de n8n de mayo 2025 | 2.0 GB | Requiere autorización explícita de Arturo |
-| 8 | Releases viejas de Codex y modelos duplicados de transcripción | ~2 GB | Propuesta, sin ejecutar |
+| 1 | `npm cache clean --force` | ~11 GB | **Ejecutada 2026-10-31** (11 GB → 1.5 GB) |
+| 2 | `docker builder prune -af` | ~5.9 GB | **Ejecutada 2026-10-31** (caché a 0) |
+| 3 | `docker image prune -f` (huérfanas) | ~11.6 GB | **Ejecutada 2026-10-31** (33 → 20 imágenes, 0 huérfanas) |
+| 4 | Truncar logs de contenedores | ~4.0 GB | **Ejecutada 2026-10-31** (4.0 GB → 864 KB) |
+| 5 | `apt-get clean` | ~1.9 GB | **Ejecutada 2026-10-31** (1.9 GB → 48 KB) |
+| 6 | Eliminar Paperclip (imagen + volumen + `pgdata`) | ~8.5 GB | Pendiente de autorización de Arturo |
+| 7 | Borrar respaldo de n8n de mayo 2025 | 2.0 GB | Pendiente de autorización de Arturo |
+| 8 | Tradenote (contenedores detenidos 3 meses + volumen mongo) | ~0.5 GB | Pendiente de autorización de Arturo |
+| 9 | Releases viejas de Codex (0.163.0, 0.165.0) | ~0.9 GB | Pendiente de autorización de Arturo |
+| 10 | Modelos de transcripción duplicados en `jr_developer` | ~1 GB | Pendiente de autorización de Arturo |
+| 11 | Caché `_npx` restante | 1.5 GB | Opcional |
 
-Total estimado: **35–45 GB liberables**. Las acciones 1–5 (≈34 GB) son caché y logs regenerables.
+### Resultado de la limpieza autorizada (2026-10-31)
+
+Ejecutadas las acciones 1–5 tras autorización de Arturo: el disco pasó de **87 GB usados / 4.4 GB libres (96 %)** a **58 GB usados / 34 GB libres (64 %)** — unos **29.6 GB liberados**. Servicios verificados después: n8n y Affine responden HTTP 200 y ningún contenedor se detuvo.
+
+Quedan ~14 GB adicionales en las acciones 6–11, todas pendientes de autorización explícita.
 
 Evidencia cruda de la auditoría: `/root/.hermes/cache/scratch/disk-audit/disk-report.md` (escaneo completo) y `Reporte-espacio-disco-vps.md` (resumen entregado). No se incorporaron al repositorio.
 

@@ -388,3 +388,9 @@
 - Hallazgo de causa raíz: ningún contenedor tiene rotación de logs salvo `affine_app`; `postiz-postgres` acumuló 3.1 GB de log desde el 18 de octubre, así que hay que revisar por qué registra errores, no solo truncar.
 - **Sin limpieza ejecutada**: 35–45 GB liberables quedaron como propuesta; las acciones sobre Paperclip y el respaldo de n8n requieren autorización explícita aparte. Evidencia cruda en scratch, no incorporada al repositorio.
 - Actualizado [[index.md|índice]] (45 páginas). Documentación solamente: sin borrados, cambios de servicios, reinicios ni despliegues.
+
+## [2026-10-31] update | limpieza de disco autorizada en vps-tools (~29.6 GB liberados)
+- Arturo autorizó las acciones seguras del diagnóstico [[diagnostico-espacio-disco-vps]] y se ejecutaron: caché de npm (11 GB → 1.5 GB), imágenes huérfanas de Docker (33 → 20 imágenes, 0 colgantes), caché de compilación (5.9 GB → 0), truncado de logs de contenedores (4.0 GB → 864 KB) y `apt-get clean` (1.9 GB → 48 KB).
+- Resultado medido: `/dev/sda3` pasó de **87 GB usados / 4.4 GB libres (96 %)** a **58 GB usados / 34 GB libres (64 %)**. Verificación posterior: n8n y Affine responden HTTP 200; los 10 contenedores activos siguen en pie; ninguna imagen en uso se eliminó.
+- Se mantienen **sin ejecutar y pendientes de autorización aparte** (~14 GB): Paperclip completo, respaldo de n8n de mayo 2025, Tradenote, releases viejas de Codex, modelos de transcripción duplicados y la caché `_npx` restante.
+- Sigue pendiente de decisión la rotación de logs en `/etc/docker/daemon.json` (requiere reiniciar Docker) y revisar por qué `postiz` lleva desde julio en espera del puerto 4200. Documentación operativa: sin cambios de credenciales, red, despliegues ni datos de producción.
