@@ -74,7 +74,14 @@ Arturo autorizó también las imágenes Docker sin uso y apagar Postiz:
 
 Estado final: **30 GB usados / 62 GB libres (32 %)**, frente a 87 GB usados / 4.4 GB libres (96 %) al inicio → **57 GB liberados en total**. Quedan 5 contenedores (3 de Affine + 2 de n8n) y 5 imágenes, todas en uso. n8n y Affine responden HTTP 200 y el daemon de Codex sigue activo.
 
-Pendiente de decisión: los 540 MB de volúmenes de Postiz, y el bloque `postiz.lemonsushi.com` del Caddyfile de `n8n-server`, que ahora apunta a un backend inexistente (devuelve 502; el dominio ya estaba caído antes de apagarlo).
+### Cierre de las dos acciones de fondo (2026-10-31)
+
+Siguiendo la recomendación aceptada por Arturo, no se borró nada más y se cerraron los dos pendientes que no eran de espacio:
+
+- **Caddyfile de `n8n-server`:** se retiraron los bloques `postiz.lemonsushi.com`, `tradenote.lemonsushi.com` y `paperclip.lemonsushi.com`, cuyos servicios ya no existen (todos apuntaban a backends muertos). Backup en `Caddyfile.bak3-20261031`. Configuración validada con `caddy validate` y recargada en caliente con `caddy reload`. Verificado después: `notes` 200, `flows` 200, `hermes` 302 (su login), `postiz` ya no responde. Nótese que `rd.lemonsushi.com` sigue devolviendo 502 (RustDesk eliminado); se dejó sin tocar.
+- **Rotación de logs de Docker:** `/etc/docker/daemon.json` ahora fija `log-driver: json-file` con `max-size: 10m` y `max-file: 3` (se conservó la configuración de DNS; backup en `disk-audit/daemon.json.bak-20261031`). Se reinició Docker y se recrearon los contenedores de `n8n-server` y `affine` para que heredaran la rotación. Verificado tras el reinicio: n8n 200, Affine 200, sitios de Caddy OK, n8n reactivó sus 4 workflows (`VideoCloner`, `ttchop_videoGen`, `ttchop_analizer`, `ttchop_webapp`) y los 5 contenedores reportan `max-size:10m max-file:3`. El total de logs de contenedores quedó en 140 KB.
+
+Pendiente de decisión: los 540 MB de volúmenes de Postiz
 
 Evidencia cruda de la auditoría: `/root/.hermes/cache/scratch/disk-audit/disk-report.md` (escaneo completo) y `Reporte-espacio-disco-vps.md` (resumen entregado). No se incorporaron al repositorio.
 
