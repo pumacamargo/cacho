@@ -48,18 +48,24 @@ Ningún contenedor tiene rotación de logs salvo `affine_app` (`max-size: 500m`)
 | 3 | `docker image prune -f` (huérfanas) | ~11.6 GB | **Ejecutada 2026-10-31** (33 → 20 imágenes, 0 huérfanas) |
 | 4 | Truncar logs de contenedores | ~4.0 GB | **Ejecutada 2026-10-31** (4.0 GB → 864 KB) |
 | 5 | `apt-get clean` | ~1.9 GB | **Ejecutada 2026-10-31** (1.9 GB → 48 KB) |
-| 6 | Eliminar Paperclip (imagen + volumen + `pgdata`) | ~8.5 GB | Pendiente de autorización de Arturo |
-| 7 | Borrar respaldo de n8n de mayo 2025 | 2.0 GB | Pendiente de autorización de Arturo |
-| 8 | Tradenote (contenedores detenidos 3 meses + volumen mongo) | ~0.5 GB | Pendiente de autorización de Arturo |
-| 9 | Releases viejas de Codex (0.163.0, 0.165.0) | ~0.9 GB | Pendiente de autorización de Arturo |
-| 10 | Modelos de transcripción duplicados en `jr_developer` | ~1 GB | Pendiente de autorización de Arturo |
-| 11 | Caché `_npx` restante | 1.5 GB | Opcional |
+| 6 | Eliminar Paperclip (imagen + volumen + `pgdata`) | ~8.5 GB | **Ejecutada 2026-10-31** (compose `down`, imagen, 3 volúmenes y la red borrados) |
+| 7 | Borrar respaldo de n8n de mayo 2025 | 2.0 GB | **Ejecutada 2026-10-31** (no lo montaba ningún contenedor) |
+| 8 | Tradenote (contenedores detenidos 3 meses + volumen mongo) | ~0.5 GB | **Ejecutada 2026-10-31** (2 contenedores y 2 volúmenes borrados) |
+| 9 | Releases viejas de Codex (0.163.0, 0.165.0) | ~0.9 GB | **Ejecutada 2026-10-31** (se conserva 0.166.0, que usa el daemon activo) |
+| 10 | Modelos de transcripción duplicados en `jr_developer` | ~1 GB | **Ejecutada 2026-10-31** (se conserva `models/`; solo se borraron las 2 copias) |
+| 11 | Caché `_npx` restante | 1.5 GB | **Ejecutada 2026-10-31** |
 
 ### Resultado de la limpieza autorizada (2026-10-31)
 
 Ejecutadas las acciones 1–5 tras autorización de Arturo: el disco pasó de **87 GB usados / 4.4 GB libres (96 %)** a **58 GB usados / 34 GB libres (64 %)** — unos **29.6 GB liberados**. Servicios verificados después: n8n y Affine responden HTTP 200 y ningún contenedor se detuvo.
 
-Quedan ~14 GB adicionales en las acciones 6–11, todas pendientes de autorización explícita.
+### Segunda limpieza autorizada (2026-10-31, mismo día)
+
+Arturo autorizó también las acciones 6–11 y se ejecutaron: Paperclip (contenedores, imagen, `paperclip_paperclip-data`, `paperclip_pgdata`, `paperclip_tailscale-state` y red), respaldo de n8n de mayo 2025, Tradenote (2 contenedores y 2 volúmenes), releases de Codex 0.163.0/0.165.0, copias duplicadas del modelo de transcripción en `jr_developer` y la caché `_npx`.
+
+Estado final del disco: **44 GB usados / 48 GB libres (48 %)**, frente a los 87 GB usados / 4.4 GB libres (96 %) del inicio — **43 GB liberados en total**. Comprobaciones posteriores: n8n y Affine responden HTTP 200, el daemon de Codex 0.166.0 sigue activo y ninguno de los 8 contenedores que quedan se detuvo.
+
+Quedan ~7.4 GB de **imágenes Docker sin uso** (Tradenote 604 MB, `mongo:6` 773 MB, `mysql:8` 777 MB, `php:8.2-cli` 527 MB, `n8nio/n8n:latest-debian` 1.84 GB, `n8n-custom:latest` 2.2 GB, entre otras): no se tocaron porque implican re-descarga si se vuelven a necesitar. Se pueden liberar con `docker image prune -a`.
 
 Evidencia cruda de la auditoría: `/root/.hermes/cache/scratch/disk-audit/disk-report.md` (escaneo completo) y `Reporte-espacio-disco-vps.md` (resumen entregado). No se incorporaron al repositorio.
 
