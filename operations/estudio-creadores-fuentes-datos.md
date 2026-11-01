@@ -1,7 +1,7 @@
 ---
 title: Estudio de creadores — fuentes, datos y versiones
 created: 2026-10-31
-updated: 2026-10-31
+updated: 2026-11-01
 type: runbook
 tags: [runbook, almacen, vps, red, decision]
 status: active
@@ -11,6 +11,8 @@ confidence: high
 # Estudio de creadores — fuentes, datos y versiones
 
 Inventario de todo el material generado al estudiar a los dos creadores japoneses de TikTok Shop (Asu y Sora) para [[proyecto-ttchop]]: videos, transcripciones, reportes y datos de medición, con sus rutas y enlaces verificados. Sirve para responder cualquier duda sobre una cifra de la guía revisando la fuente original. El acceso al NAS se documenta en [[acceso-nas-polaris]] y el hosting en [[acceso-ftps-lemon-sushi]].
+
+Para **recrear** un video de esos creadores paso a paso (transcripción en la PC, desglose script/recordings/editing, variación de guion, TTS y montaje con `ttchop-server`), ver [[recrear-video-creadores-edits]].
 
 ## Videos fuente (43)
 
