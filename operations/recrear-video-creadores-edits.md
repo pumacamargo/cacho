@@ -26,7 +26,24 @@ Caso verificado de punta a punta: `01_squishy01` (2026-11-01). Ver también
   análisis (transcript + desgloses).
 - `assets/audio/` — los audios generados (TTS), por línea y unidos.
 - `assets/video/` — el material propio (clips grabados por Arturo).
-- Raíz de la carpeta — el montaje final (`<NN_nombre>_edit*.mp4`).
+- Raíz de la carpeta — el montaje final (`<NN_nombre>_edit*.mp4`), la portada
+  (`<NN_nombre>_cover.png`) y los artefactos reproducibles: `<NN_nombre>_props.json` y
+  `<NN_nombre>_recipe_matched.json`.
+
+## Herramienta y artefactos de referencia
+
+- **Toolkit versionado:** `ttchop-server/scripts/creators/` (rama del repo: **`master`**, que es su
+  rama por defecto) — `build_recipe_from_plan.py` (receta desde un plan duración→clip, mide las
+  duraciones con `ffprobe`), `measure_caption_style.py` (mide la banda del caption del creador),
+  `extract_clip_frames.sh` (un frame por clip para la hoja de contacto) y `nas/{put,get,list_dir}.py`
+  (SMB al NAS con credenciales validadas y hash de vuelta). El `README.md` de esa carpeta dice qué
+  corre en qué host; los helpers SMB corren en **vps-tools** con el venv
+  `/root/.venvs/nas-smb/bin/python` (trae `smbclient`). Usarlos en vez de reescribirlos.
+  Verificado: `build_recipe_from_plan.py` **reproduce exactamente** el recetario del caso
+  `01_squishy01` (los 17 clips con sus `trimStart`/`trimEnd`, delta 0).
+- **Ejemplos reales por caso** (en la raíz de la carpeta del caso, en el NAS): `<NN_nombre>_props.json`
+  (props completos de la composición `caption-overlay`) y `<NN_nombre>_recipe_matched.json` (recetario
+  del montaje emparejado, plano↔clip). Copiarlos como plantilla para el video siguiente.
 
 ## 0. Dónde corre cada cosa (infra)
 
@@ -163,6 +180,17 @@ contorno.
 - Los tiempos de cada caption se sacan del **audio real** (p. ej. `silencedetect` para localizar
   las pausas), no de estimaciones.
 
+### Cómo se derivan los captions (regla)
+
+- **Un caption por LÍNEA del guion**, no por plano: en `01_squishy01` hay 12 líneas → 12 captions,
+  aunque el montaje tenga 17 planos. Dos o tres planos seguidos comparten caption.
+- Texto = **frase-clave corta que resume esa línea** (4–10 caracteres: 「在庫復活」「ぷにぷに」
+  「チェーン付き」「無くなる前にゲット」), no la frase hablada completa ni su traducción literal.
+- Tiempos = **límites de la línea en el audio final**, y **encadenados**: cada caption dura hasta el
+  inicio del siguiente (`end` de uno = `start` del próximo) para que no parpadee durante las pausas.
+- Referencia real y completa: `01_squishy01_props.json` en la carpeta del caso en el NAS (props
+  enteros de la composición, con los 12 captions, `tag`, `arrow`, `disc` y `endCard`).
+
 ### Opción elegida: Remotion (composición `caption-overlay`)
 
 `ttchop-post_templates` incorpora una composición genérica **`caption-overlay`** en `main`:
@@ -218,6 +246,10 @@ en la zona media-alta.
   ```
 - El frame base es un PNG extraído del montaje (en `public/`, gitignored); el `<OffthreadVideo>` se
   mantiene montado, así que **el audio no cambia**.
+- **Cómo elegir ese frame:** uno donde el **producto se lea claro** y quede **espacio libre** para el
+  texto (en `01_squishy01`: la caja con los mini squishies, t=4.0 s). Se extrae con
+  `ffmpeg -ss <t> -i <montaje>.mp4 -frames:v 1 frame.png`, se revisa a ojo y se copia a `public/`.
+  Sacar 5–6 candidatos en una hoja de contacto y elegir es más rápido que probar uno por uno.
 - Para sacar la portada suelta: extraer el último frame del render a PNG
   (`ffmpeg -i final.mp4 -vf "select='eq(n,833)'" -frames:v 1 cover.png`).
 
@@ -243,7 +275,9 @@ versionado.
 - Montajes: `01_squishy01_edit.mp4` (17 clips en orden de archivo, duraciones escaladas ×1.078)
   y `01_squishy01_edit_matched.mp4` (17 clips **empatados por contenido**, planos 1–16 con la
   duración exacta del original y el 17º absorbiendo los 2.01 s del audio). 27.81 s, 1080×1920.
-- 33 clips propios en `assets/video/`; mapeo usado documentado en el chat de la sesión.
+- 33 clips propios en `assets/video/`; el **mapeo plano↔clip** queda en
+  `01_squishy01_recipe_matched.json` (raíz de la carpeta del caso) y los **props completos** de la
+  composición en `01_squishy01_props.json` — ya no solo en el chat de la sesión.
 - **Subtítulos/overlays:** `01_squishy01_subs.ass` (versión one-off) y
   `01_squishy01_edit_matched_subs.mp4` (ffmpeg + stickers PNG, audio intacto). Versión **elegida
   por Arturo: Remotion** → `01_squishy01_remotion.mp4` (composición `caption-overlay`, audio

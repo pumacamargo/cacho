@@ -462,3 +462,13 @@
 - Texto de la portada: 「1個買ったらおまけ7個 / 人気スクイーズ再入荷」 (adaptado del cover real de Asu para este producto). Frame elegido: la caja con los mini squishies.
 - Verificado de forma independiente: último frame inspeccionado visualmente (frame + capa oscura + texto), `ffprobe` mono y `volumedetect` −18.2/−1.8 dB idéntico al base, y solo el frame 833 contiene el endCard.
 - NAS: `01_squishy01_remotion.mp4` reemplazado + **`01_squishy01_cover.png`** (portada suelta, 1080×1920) añadida. Runbook actualizado. Sin publicación.
+
+## [2026-11-01] audit | el runbook, ¿basta para que otro agente lo repita?
+- Arturo preguntó si otro agente podría recrear el siguiente video con esta documentación. Auditoría: el **procedimiento** estaba bien, pero faltaban **artefactos reproducibles**.
+- Huecos encontrados: (1) el `props.json` real solo existía en `/root/squishy_edit/` (scratch); (2) el mapeo plano↔clip se remitía a “el chat de la sesión”, no durable; (3) los scripts auxiliares vivían en el scratch efímero del perfil; (4) no estaba escrita la **regla de captions** ni cómo elegir el frame de la portada; (5) el skill `ttchop-content-ops` seguía recomendando los stickers PIL en vez de Remotion.
+- Cerrado todo:
+  - **NAS:** `01_squishy01_props.json` y `01_squishy01_recipe_matched.json` subidos a la carpeta del caso (hash verificado) como plantillas reales.
+  - **Toolkit versionado:** `ttchop-server/scripts/creators/` (rama `master`, la default del repo) con `build_recipe_from_plan.py`, `measure_caption_style.py`, `extract_clip_frames.sh`, `nas/{put,get,list_dir}.py`, `plan.example.json` y README (commit `13572b5`, + fix del README `830a484`). **Prueba de aceptación verificada por mí:** el builder regenera el recetario del caso con delta **0.00**.
+  - **Runbook:** se añadió la sección «Herramienta y artefactos de referencia», la **regla de captions** (un caption por LÍNEA del guion, no por plano; tiempos encadenados desde el audio) y cómo elegir el frame de la portada.
+  - **Skill:** Remotion como ruta preferida; PIL/`.ass` quedan como alternativas one-off.
+- Nota de infra: el venv con `smbclient` para los helpers SMB se dejó durable en `/root/.venvs/nas-smb` (antes solo en un venv del cache, que se poda).
