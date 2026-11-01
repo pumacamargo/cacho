@@ -450,3 +450,8 @@
   - **Flecha del tag:** se ancla **por construcción** al bloque de texto (`ここから / チェック`) — centro horizontal = centro del texto y borde superior ~18 px por debajo — con `arrow.dx/dy` opcionales. Antes usaba `x/y` fija y quedaba desalineada.
 - Verificado de forma independiente: commit en `origin/main`, `ffprobe` (1080×1920, mono) y `volumedetect` idénticos al base, y revisión visual de la flecha centrada bajo el texto.
 - `01_squishy01_remotion.mp4` reemplazado en la carpeta del caso del NAS (hash de vuelta verificado). Actualizado [[recrear-video-creadores-edits]]. Sin publicación.
+
+## [2026-11-01] update | tipografía del caption: peso natural (sin faux bold)
+- Arturo preguntó si el texto de Remotion estaba en negrita. Sí: caption y tag usaban `fontWeight: 700`, pero la primera fuente de la pila (`KeinannMaruPOPjp`, redondeada y la más parecida a Asu) **solo existe en peso Regular**, así que el navegador **sintetizaba** la negrita y engrosaba los trazos artificialmente.
+- Se cambió a **`fontWeight: 400`** (expuesto como prop con default 400) conservando la familia redondeada. Commit `06d4173` en `main` (verificado en `origin/main`).
+- Re-render con remux bit-exacto del audio: 1080×1920, **mono**, mean −18.2 dB / pico −1.8 dB (idéntico al base). Comparación visual original vs 700 vs 400: el 400 se ve más natural y más cercano al original. `01_squishy01_remotion.mp4` reemplazado en el NAS (hash de vuelta verificado) y runbook actualizado. Sin publicación.

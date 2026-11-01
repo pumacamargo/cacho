@@ -195,6 +195,11 @@ contorno.
 - **Flecha del tag:** se ancla **por construcción** al bloque de texto (centro horizontal = centro
   del texto; borde superior `gap`≈18 px por debajo del texto), con `arrow.dx`/`dy` opcionales para
   ajustes. Antes usaba una `x/y` fija y quedaba desalineada.
+- **Tipografía:** la pila de fuentes empieza por `KeinannMaruPOPjp` («けいなん丸ポップ体JP»,
+  redondeada, la más parecida al original). Esa familia **solo tiene peso Regular**, así que el
+  caption y el tag usan **`fontWeight: 400`** (configurable por prop): con `700` el navegador
+  **sintetiza** la negrita (faux bold) y los trazos se ven engrosados y sucios. `Noto Sans CJK JP`
+  sí tiene Bold real si en algún momento se quiere negrita auténtica.
 
 ### Alternativa one-off: PIL + ffmpeg
 
