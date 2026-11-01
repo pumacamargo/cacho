@@ -443,3 +443,10 @@
 - **Arturo eligió la versión de Remotion.** Queda anotado el **pendiente de audio**: ese render entregó el audio en estéreo y ~3 dB más bajo que el base (mean −21.2 dB / pico −4.8 dB vs −18.2/−1.8); corregir o remuxear el audio original antes de darlo por final.
 - Delegación: el perfil `developer` y `jr_developer` estaban **rate-limited** (~68 h) por su proveedor; el trabajo lo ejecutó `developer_ds` y se verificó el commit y el MP4 de forma independiente.
 - Entregables en el NAS (carpeta del caso): `01_squishy01_edit_matched_subs.mp4` (ffmpeg), `01_squishy01_subs.ass`, `01_squishy01_remotion.mp4` (Remotion). Actualizado [[recrear-video-creadores-edits]] y el índice. Sin publicación.
+
+## [2026-11-01] update | fixes de subtítulos/overlays: audio y flecha
+- A petición de Arturo se aplicaron dos correcciones a la composición `caption-overlay` de `ttchop-post_templates`, en `main` (commit `30edb5e`, verificado en `origin/main`):
+  - **Audio:** el render salía en estéreo y ~3 dB más bajo que el video base; ahora el MP4 final es **mono** y coincide con el base (mean −18.2 dB / pico −1.8 dB).
+  - **Flecha del tag:** se ancla **por construcción** al bloque de texto (`ここから / チェック`) — centro horizontal = centro del texto y borde superior ~18 px por debajo — con `arrow.dx/dy` opcionales. Antes usaba `x/y` fija y quedaba desalineada.
+- Verificado de forma independiente: commit en `origin/main`, `ffprobe` (1080×1920, mono) y `volumedetect` idénticos al base, y revisión visual de la flecha centrada bajo el texto.
+- `01_squishy01_remotion.mp4` reemplazado en la carpeta del caso del NAS (hash de vuelta verificado). Actualizado [[recrear-video-creadores-edits]]. Sin publicación.

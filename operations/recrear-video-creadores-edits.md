@@ -182,9 +182,11 @@ contorno.
 
 - Ventajas: queda **versionado y reutilizable** (para la siguiente recreación solo cambian los
   props) y permite animaciones por frame.
-- **Pendiente conocido:** el render de Remotion entregó el audio en **estéreo y ~3 dB más bajo**
-  que el base (mean −21.2 dB / pico −4.8 dB, frente a −18.2 / −1.8). Corregir (o remuxear el audio
-  original) antes de usarlo como entrega final.
+- **Audio:** el primer render salió en **estéreo y ~3 dB más bajo** que el base; ya corregido: el
+  MP4 final queda **mono** con la misma media y pico que el base (−18.2 dB / −1.8 dB).
+- **Flecha del tag:** se ancla **por construcción** al bloque de texto (centro horizontal = centro
+  del texto; borde superior `gap`≈18 px por debajo del texto), con `arrow.dx`/`dy` opcionales para
+  ajustes. Antes usaba una `x/y` fija y quedaba desalineada.
 
 ### Alternativa one-off: PIL + ffmpeg
 
