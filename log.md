@@ -471,4 +471,4 @@
   - **Toolkit versionado:** `ttchop-server/scripts/creators/` (rama `master`, la default del repo) con `build_recipe_from_plan.py`, `measure_caption_style.py`, `extract_clip_frames.sh`, `nas/{put,get,list_dir}.py`, `plan.example.json` y README (commit `13572b5`, + fix del README `830a484`). **Prueba de aceptación verificada por mí:** el builder regenera el recetario del caso con delta **0.00**.
   - **Runbook:** se añadió la sección «Herramienta y artefactos de referencia», la **regla de captions** (un caption por LÍNEA del guion, no por plano; tiempos encadenados desde el audio) y cómo elegir el frame de la portada.
   - **Skill:** Remotion como ruta preferida; PIL/`.ass` quedan como alternativas one-off.
-- Nota de infra: el venv con `smbclient` para los helpers SMB se dejó durable en `/root/.venvs/nas-smb` (antes solo en un venv del cache, que se poda).
+- Nota de infra: el venv con `smbclient` para los helpers SMB se dejó durable en `/root/.venvs/nas-smb` (antes solo en un venv del cache, que se poda). Probados **en vivo** contra el NAS con ese venv: `nas/list_dir.py` y `nas/get.py` (hash del archivo bajado coincide con el local).

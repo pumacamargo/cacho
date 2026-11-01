@@ -38,7 +38,8 @@ Caso verificado de punta a punta: `01_squishy01` (2026-11-01). Ver también
   `extract_clip_frames.sh` (un frame por clip para la hoja de contacto) y `nas/{put,get,list_dir}.py`
   (SMB al NAS con credenciales validadas y hash de vuelta). El `README.md` de esa carpeta dice qué
   corre en qué host; los helpers SMB corren en **vps-tools** con el venv
-  `/root/.venvs/nas-smb/bin/python` (trae `smbclient`). Usarlos en vez de reescribirlos.
+  `/root/.venvs/nas-smb/bin/python` (trae `smbclient` — probado en vivo contra el NAS:
+  `list_dir` y `get` funcionan y el hash bajado coincide). Usarlos en vez de reescribirlos.
   Verificado: `build_recipe_from_plan.py` **reproduce exactamente** el recetario del caso
   `01_squishy01` (los 17 clips con sus `trimStart`/`trimEnd`, delta 0).
 - **Ejemplos reales por caso** (en la raíz de la carpeta del caso, en el NAS): `<NN_nombre>_props.json`
