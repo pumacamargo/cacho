@@ -455,3 +455,10 @@
 - Arturo preguntó si el texto de Remotion estaba en negrita. Sí: caption y tag usaban `fontWeight: 700`, pero la primera fuente de la pila (`KeinannMaruPOPjp`, redondeada y la más parecida a Asu) **solo existe en peso Regular**, así que el navegador **sintetizaba** la negrita y engrosaba los trazos artificialmente.
 - Se cambió a **`fontWeight: 400`** (expuesto como prop con default 400) conservando la familia redondeada. Commit `06d4173` en `main` (verificado en `origin/main`).
 - Re-render con remux bit-exacto del audio: 1080×1920, **mono**, mean −18.2 dB / pico −1.8 dB (idéntico al base). Comparación visual original vs 700 vs 400: el 400 se ve más natural y más cercano al original. `01_squishy01_remotion.mp4` reemplazado en el NAS (hash de vuelta verificado) y runbook actualizado. Sin publicación.
+
+## [2026-11-01] feat | thumbnail de portada al final (`endCard`) en la recreación
+- Arturo pidió una **portada estilo Asu** (frame del producto + texto) visible **en el último frame** del video, con una **capa negra translúcida** entre el frame y el texto. Dejó de referencia su grid de portadas.
+- Se añadió el prop opcional **`endCard`** a la composición `caption-overlay` (`ttchop-post_templates`): dibuja la imagen del frame a pantalla completa → scrim negro (~0.35) → texto blanco con contorno; default **solo el último frame**. El `<OffthreadVideo>` se mantiene montado, así que el audio no cambia. Commit `1299621` en `main` (verificado en `origin/main`).
+- Texto de la portada: 「1個買ったらおまけ7個 / 人気スクイーズ再入荷」 (adaptado del cover real de Asu para este producto). Frame elegido: la caja con los mini squishies.
+- Verificado de forma independiente: último frame inspeccionado visualmente (frame + capa oscura + texto), `ffprobe` mono y `volumedetect` −18.2/−1.8 dB idéntico al base, y solo el frame 833 contiene el endCard.
+- NAS: `01_squishy01_remotion.mp4` reemplazado + **`01_squishy01_cover.png`** (portada suelta, 1080×1920) añadida. Runbook actualizado. Sin publicación.

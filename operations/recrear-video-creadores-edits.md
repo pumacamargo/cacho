@@ -201,6 +201,26 @@ contorno.
   **sintetiza** la negrita (faux bold) y los trazos se ven engrosados y sucios. `Noto Sans CJK JP`
   sí tiene Bold real si en algún momento se quiere negrita auténtica.
 
+### Thumbnail / portada al final (`endCard`)
+
+Arturo pidió una **portada al estilo de las de Asu** (producto + texto) visible **en el último frame**
+del video. Estilo de referencia: texto **blanco con contorno oscuro, sin caja**, 2 líneas centradas
+en la zona media-alta.
+
+- Prop opcional **`endCard`** que dibuja, en los últimos `frames` (default **1** = solo el último
+  frame): la **imagen** a pantalla completa → una **capa negra translúcida** (`scrim.opacity` ≈0.35) →
+  el **texto** con contorno.
+  ```json
+  "endCard": { "image": "<frame>.png", "frames": 1,
+               "scrim": { "color": "#000000", "opacity": 0.35 },
+               "text": { "lines": ["…","…"], "fontSize": 80, "centerY": 700,
+                         "color": "#ffffff", "outlineColor": "#141414", "outlineWidth": 6 } }
+  ```
+- El frame base es un PNG extraído del montaje (en `public/`, gitignored); el `<OffthreadVideo>` se
+  mantiene montado, así que **el audio no cambia**.
+- Para sacar la portada suelta: extraer el último frame del render a PNG
+  (`ffmpeg -i final.mp4 -vf "select='eq(n,833)'" -frames:v 1 cover.png`).
+
 ### Alternativa one-off: PIL + ffmpeg
 
 Stickers PNG generados con PIL (caja redondeada + texto oscuro) y superpuestos con
@@ -226,8 +246,11 @@ versionado.
 - 33 clips propios en `assets/video/`; mapeo usado documentado en el chat de la sesión.
 - **Subtítulos/overlays:** `01_squishy01_subs.ass` (versión one-off) y
   `01_squishy01_edit_matched_subs.mp4` (ffmpeg + stickers PNG, audio intacto). Versión **elegida
-  por Arturo: Remotion** → `01_squishy01_remotion.mp4` (composición `caption-overlay`), con el
-  pendiente de audio estéreo/‑3 dB anotado arriba.
+  por Arturo: Remotion** → `01_squishy01_remotion.mp4` (composición `caption-overlay`, audio
+  remuxeado bit-exacto).
+- **Portada final:** `01_squishy01_cover.png` (último frame del video: frame del producto +
+  capa negra translúcida + texto blanco con contorno «1個買ったらおまけ7個 / 人気スクイーズ再入荷»),
+  generado con el prop `endCard` de la composición.
 
 ## Pitfalls
 
