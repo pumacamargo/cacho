@@ -147,6 +147,56 @@ Es **lento** cuando lee por CIFS (~25 s por clip); lanzarlo en segundo plano.
 - Es un **artefacto del builder directo**, no un render de Firestore. **No publicar** sin
   autorización explícita de Arturo.
 
+## 7. Subtítulos y overlays
+
+Estilo del original (medido píxel a píxel en 8 fotogramas a 720×1280): **no** es texto blanco con
+contorno.
+
+- **El caption es un sticker**: caja **blanca con esquinas redondeadas** y **texto oscuro** en
+  negrita; ancho = texto + `2·padX`, alto = línea + `2·padY`, `borderRadius ≈ alto·0.42`, sombra suave.
+- **Un solo renglón** y texto **corto** (4–10 caracteres), no la frase hablada completa.
+- Centro vertical del caption en **≈26.3 % del alto** (a 1080×1920 → `y≈505`), centrado en x.
+- Tamaños de referencia a 1080 de ancho: fuente ≈48, `padX` 26, `padY` 16.
+- Al final del video: etiqueta «ここからチェック» (blanca con contorno oscuro, a la izquierda),
+  **flecha roja con contorno blanco apuntando hacia abajo** y un **disclaimer** pequeño al pie
+  («※クーポンや価格、割引率は投稿時点での情報です»).
+- Los tiempos de cada caption se sacan del **audio real** (p. ej. `silencedetect` para localizar
+  las pausas), no de estimaciones.
+
+### Opción elegida: Remotion (composición `caption-overlay`)
+
+`ttchop-post_templates` incorpora una composición genérica **`caption-overlay`** en `main`:
+
+- `src/CaptionOverlay.jsx` + registro en `src/Root.jsx` (1080×1920, fps 30, `durationInFrames`
+  = fps × duración).
+- Props: `videoSrc` (archivo dentro de `public/`, que está **gitignored** — nunca se commitea
+  media), `captions[{text,start,end}]`, `pill{fontSize,padX,padY,radiusRatio,centerY,fg,bg}`,
+  `tag{lines,start,end,x,y,fontSize}`, `arrow{start,end,x,y}`, `disc{text,start,end,x,y,fontSize}`.
+  El ancho del texto cuenta caracteres ASCII como medio ancho (el `7` de «おまけが7個…»).
+- Render: copiar el video base (p. ej. desde el NAS montado) a `public/` y ejecutar
+
+  ```bash
+  cd /root/projects/ttchop/ttchop-post_templates
+  npx remotion render index.ts caption-overlay <salida>.mp4 --props=/tmp/props.json --crf=18
+  ```
+
+- Ventajas: queda **versionado y reutilizable** (para la siguiente recreación solo cambian los
+  props) y permite animaciones por frame.
+- **Pendiente conocido:** el render de Remotion entregó el audio en **estéreo y ~3 dB más bajo**
+  que el base (mean −21.2 dB / pico −4.8 dB, frente a −18.2 / −1.8). Corregir (o remuxear el audio
+  original) antes de usarlo como entrega final.
+
+### Alternativa one-off: PIL + ffmpeg
+
+Stickers PNG generados con PIL (caja redondeada + texto oscuro) y superpuestos con
+`overlay=x:y:enable='between(t,a,b)'`. Conserva el audio original **intacto**, pero no queda
+versionado.
+
+- Pitfall: **no** intentar la caja redondeada con dibujo vectorial ASS (`\p1`) — quedó
+  desalineada; y con `BorderStyle=3` la caja usa el color de *outline*, no el de fondo.
+- Fuente CJK disponible en vps-tools: `Noto Sans CJK JP`
+  (`/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc`).
+
 ## Caso verificado — `01_squishy01`
 
 - Referencia: `input/snaptik_7685601865454587154_v3.mp4` — 25.83 s, 720×1280, 30 fps, audio ja.
@@ -159,6 +209,10 @@ Es **lento** cuando lee por CIFS (~25 s por clip); lanzarlo en segundo plano.
   y `01_squishy01_edit_matched.mp4` (17 clips **empatados por contenido**, planos 1–16 con la
   duración exacta del original y el 17º absorbiendo los 2.01 s del audio). 27.81 s, 1080×1920.
 - 33 clips propios en `assets/video/`; mapeo usado documentado en el chat de la sesión.
+- **Subtítulos/overlays:** `01_squishy01_subs.ass` (versión one-off) y
+  `01_squishy01_edit_matched_subs.mp4` (ffmpeg + stickers PNG, audio intacto). Versión **elegida
+  por Arturo: Remotion** → `01_squishy01_remotion.mp4` (composición `caption-overlay`), con el
+  pendiente de audio estéreo/‑3 dB anotado arriba.
 
 ## Pitfalls
 
@@ -166,4 +220,8 @@ Es **lento** cuando lee por CIFS (~25 s por clip); lanzarlo en segundo plano.
 - `P:` no existe en la sesión SSH de Windows: usar SMB con credenciales por stdin.
 - En la PC, el venv de transcripción falla si las credenciales se leen con `readline()`.
 - `ffprobe` por CIFS es lento: medir duraciones una vez y reutilizarlas en el recetario.
+- Al añadir subtítulos, **medir el estilo en el original** (posición/tamaño/caja); es fácil asumir
+  “blanco con contorno” cuando en realidad es caja blanca con texto oscuro.
+- Para tareas de código en `ttchop-post_templates`, el perfil `developer` puede estar
+  **rate-limited**; en ese caso `developer_ds` sí corrió. Verificar siempre el commit en `origin/main`.
 - No dejar credenciales en el wiki, en commits ni en el chat.
