@@ -182,8 +182,16 @@ contorno.
 
 - Ventajas: queda **versionado y reutilizable** (para la siguiente recreación solo cambian los
   props) y permite animaciones por frame.
-- **Audio:** el primer render salió en **estéreo y ~3 dB más bajo** que el base; ya corregido: el
-  MP4 final queda **mono** con la misma media y pico que el base (−18.2 dB / −1.8 dB).
+- **Audio:** Remotion entrega el audio en **estéreo y ~3 dB más bajo** que el base. La solución
+  aplicada es **remuxear el audio original** (copia bit-exacta) sobre el render, no un ajuste de la
+  composición:
+
+  ```bash
+  npx remotion render index.ts caption-overlay out_raw.mp4 --props=props.json   # render (video + overlays)
+  ffmpeg -i out_raw.mp4 -i <video_base>.mp4 -map 0:v -map 1:a -c:v copy -c:a copy out.mp4
+  ```
+
+  Resultado verificado: mono, mean −18.2 dB / pico −1.8 dB (idéntico al base). Conservar el `_raw`.
 - **Flecha del tag:** se ancla **por construcción** al bloque de texto (centro horizontal = centro
   del texto; borde superior `gap`≈18 px por debajo del texto), con `arrow.dx`/`dy` opcionales para
   ajustes. Antes usaba una `x/y` fija y quedaba desalineada.
