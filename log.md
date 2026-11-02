@@ -473,6 +473,11 @@
   - **Skill:** Remotion como ruta preferida; PIL/`.ass` quedan como alternativas one-off.
 - Nota de infra: el venv con `smbclient` para los helpers SMB se dejó durable en `/root/.venvs/nas-smb` (antes solo en un venv del cache, que se poda). Probados **en vivo** contra el NAS con ese venv: `nas/list_dir.py` y `nas/get.py` (hash del archivo bajado coincide con el local).
 
+## [2026-11-01] fix | el frame del thumbnail faltaba en el NAS
+- Arturo preguntó si, para **variar la edición** en unos días, está todo guardado. Auditoría: el material (33 clips), los audios, el montaje, los props y el recetario ya eran durables, pero el **PNG del frame del thumbnail no estaba en el NAS**: vivía solo en `public/` (gitignored) y en un scratch de vps-projects, y los props guardan únicamente el **nombre** del archivo, no de dónde salió.
+- Subido a la carpeta del caso como **`01_squishy01_endcard_frame.png`** (hash de vuelta verificado, `482f5997…`, idéntico al que está en `public/`).
+- Runbook: se explicita que **ese PNG es la imagen del thumbnail** (el fondo de la portada, sin texto ni capa oscura — eso lo añade la composición), que sale del frame de **t=4.0 s** del montaje (con el comando para regenerarlo si hiciera falta) y que antes de renderizar hacen falta **dos archivos en `public/`**: el video base y ese PNG (con el nombre que pida `endCard.image`). Actualizada también la estructura de carpetas y el caso verificado.
+
 ## [2026-10-31] update | curso Gerardo Santiago: confirmado transcrito al 100% (20 de 20)
 - Arturo preguntó si ya estaban todos los videos del curso transcritos. Verificación por SMB directo al NAS: **20 MP4 en `videos\` y 20 TXT en `transcripts\`**, emparejados uno a uno por nombre base, sin faltantes ni sobrantes y sin procesos activos.
 - Los 20 TXT se releyeron y hashearon: **los 20 coinciden** con el hash registrado en la corrida que los produjo (16 en `progress.json` de los lotes, 3 en `verification.json` del lote del Manual del Creador, 1 en el `pipeline.log` del video de Fitness). Copia local: `/root/.hermes/cache/scratch/curso-estado/estado-curso.private.json`.

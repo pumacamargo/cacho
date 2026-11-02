@@ -27,8 +27,8 @@ Caso verificado de punta a punta: `01_squishy01` (2026-11-01). Ver también
 - `assets/audio/` — los audios generados (TTS), por línea y unidos.
 - `assets/video/` — el material propio (clips grabados por Arturo).
 - Raíz de la carpeta — el montaje final (`<NN_nombre>_edit*.mp4`), la portada
-  (`<NN_nombre>_cover.png`) y los artefactos reproducibles: `<NN_nombre>_props.json` y
-  `<NN_nombre>_recipe_matched.json`.
+  (`<NN_nombre>_cover.png`), el **frame del thumbnail** (`<NN_nombre>_endcard_frame.png`) y los
+  artefactos reproducibles: `<NN_nombre>_props.json` y `<NN_nombre>_recipe_matched.json`.
 
 ## Herramienta y artefactos de referencia
 
@@ -247,6 +247,14 @@ en la zona media-alta.
   ```
 - El frame base es un PNG extraído del montaje (en `public/`, gitignored); el `<OffthreadVideo>` se
   mantiene montado, así que **el audio no cambia**.
+- **El PNG del frame ES la imagen del thumbnail** (el fondo de la portada): se guarda **también en el
+  NAS**, junto al caso, como `<NN_nombre>_endcard_frame.png` — no basta con dejarlo en `public/`.
+  **Registrar de qué cuadro salió:** en `01_squishy01` es el frame de **t=4.0 s** del montaje
+  (`ffmpeg -ss 4.0 -i 01_squishy01_edit_matched.mp4 -frames:v 1 01_squishy01_endcard_frame.png`),
+  elegido porque muestra la caja con los mini squishies y deja libre la zona del texto.
+- **Antes de renderizar** hacen falta **dos archivos en `public/`** (los dos gitignored, no se
+  commitean): el **video base** (copia del montaje del NAS) y el **PNG del frame**. El nombre del PNG
+  debe coincidir con `endCard.image` de los props (en `01_squishy01`: `squishy01_endcard_frame.png`).
 - **Cómo elegir ese frame:** uno donde el **producto se lea claro** y quede **espacio libre** para el
   texto (en `01_squishy01`: la caja con los mini squishies, t=4.0 s). Se extrae con
   `ffmpeg -ss <t> -i <montaje>.mp4 -frames:v 1 frame.png`, se revisa a ojo y se copia a `public/`.
@@ -286,6 +294,9 @@ versionado.
 - **Portada final:** `01_squishy01_cover.png` (último frame del video: frame del producto +
   capa negra translúcida + texto blanco con contorno «1個買ったらおまけ7個 / 人気スクイーズ再入荷»),
   generado con el prop `endCard` de la composición.
+- **Frame del thumbnail:** `01_squishy01_endcard_frame.png` — es el **fondo** de esa portada (frame de
+  t=4.0 s del montaje, **sin** texto ni capa oscura: eso lo añade la composición). Es el archivo que
+  hay que copiar a `public/` para re-renderizar.
 
 ## Pitfalls
 
