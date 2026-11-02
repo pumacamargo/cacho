@@ -472,3 +472,9 @@
   - **Runbook:** se añadió la sección «Herramienta y artefactos de referencia», la **regla de captions** (un caption por LÍNEA del guion, no por plano; tiempos encadenados desde el audio) y cómo elegir el frame de la portada.
   - **Skill:** Remotion como ruta preferida; PIL/`.ass` quedan como alternativas one-off.
 - Nota de infra: el venv con `smbclient` para los helpers SMB se dejó durable en `/root/.venvs/nas-smb` (antes solo en un venv del cache, que se poda). Probados **en vivo** contra el NAS con ese venv: `nas/list_dir.py` y `nas/get.py` (hash del archivo bajado coincide con el local).
+
+## [2026-10-31] update | curso Gerardo Santiago: confirmado transcrito al 100% (20 de 20)
+- Arturo preguntó si ya estaban todos los videos del curso transcritos. Verificación por SMB directo al NAS: **20 MP4 en `videos\` y 20 TXT en `transcripts\`**, emparejados uno a uno por nombre base, sin faltantes ni sobrantes y sin procesos activos.
+- Los 20 TXT se releyeron y hashearon: **los 20 coinciden** con el hash registrado en la corrida que los produjo (16 en `progress.json` de los lotes, 3 en `verification.json` del lote del Manual del Creador, 1 en el `pipeline.log` del video de Fitness). Copia local: `/root/.hermes/cache/scratch/curso-estado/estado-curso.private.json`.
+- Corregido en [[transcripcion-curso-gerardo-santiago]]: la página decía ocho videos y ubicaba los TXT en `videos\`. Ahora documenta el estado final de 20/20, la tabla completa de pares con bytes y SHA-256, el historial de lotes (original 8 + new_batch + queued_batch + mentalidad_batch + mentalidad04_queue + fitness05_batch + Manual del Creador) y que la carpeta final de los TXT es `transcripts\`.
+- Recordado en la página: los TXT son transcripción automática (no revisión humana) y para lecturas nuevas del NAS se usa SMB directo, no el wrapper `pumassh` (que sigue fallando por nombre corto). Solo lectura: no se relanzó ni modificó ninguna transcripción.
