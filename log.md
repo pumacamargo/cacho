@@ -427,6 +427,12 @@
 - Aprendido y documentado: el hosting **devuelve 404 intermitentes en archivos que sí existen**; la prueba de existencia o borrado debe hacerse por lectura y listado FTP. Además, tras `RMD` la sesión FTP queda dentro de la carpeta eliminada y el siguiente `MLSD` falla con `421` hasta volver a la raíz.
 - Actualizado [[estudio-creadores-fuentes-datos]] (tabla de versiones con estado y sección de limpieza). Documentación y hosting solamente: sin cambios en el NAS, el VPS ni el código de la guía.
 
+## [2026-10-31] update | curso Gerardo Santiago: confirmado transcrito al 100% (20 de 20)
+- Arturo preguntó si ya estaban todos los videos del curso transcritos. Verificación por SMB directo al NAS: **20 MP4 en `videos\` y 20 TXT en `transcripts\`**, emparejados uno a uno por nombre base, sin faltantes ni sobrantes y sin procesos activos.
+- Los 20 TXT se releyeron y hashearon: **los 20 coinciden** con el hash registrado en la corrida que los produjo (16 en `progress.json` de los lotes, 3 en `verification.json` del lote del Manual del Creador, 1 en el `pipeline.log` del video de Fitness). Copia local: `/root/.hermes/cache/scratch/curso-estado/estado-curso.private.json`.
+- Corregido en [[transcripcion-curso-gerardo-santiago]]: la página decía ocho videos y ubicaba los TXT en `videos\`. Ahora documenta el estado final de 20/20, la tabla completa de pares con bytes y SHA-256, el historial de lotes (original 8 + new_batch + queued_batch + mentalidad_batch + mentalidad04_queue + fitness05_batch + Manual del Creador) y que la carpeta final de los TXT es `transcripts\`.
+- Recordado en la página: los TXT son transcripción automática (no revisión humana) y para lecturas nuevas del NAS se usa SMB directo, no el wrapper `pumassh` (que sigue fallando por nombre corto). Solo lectura: no se relanzó ni modificó ninguna transcripción.
+
 ## [2026-11-01] create/update | recreación del primer video de creador (edits/01_squishy01)
 - Arturo pidió recrear un video de Asu y aprender el proceso; se documentó como runbook reutilizable [[recrear-video-creadores-edits]] (estructura de carpetas, transcripción en la PC, desglose script/recordings/editing, variación de guion, TTS, montaje con `ttchop-server`, QA y pitfalls).
 - **Transcripción** del original (`snaptik_7685601865454587154_v3.mp4`, 25.83 s, 720×1280, audio ja) en PumaDeskAsus con el entorno del estudio (faster-whisper `small`, CUDA, `ja`, beam 5, VAD), leyendo el NAS por SMB con credenciales por stdin cifrado. 12 segmentos.
@@ -473,6 +479,11 @@
   - **Skill:** Remotion como ruta preferida; PIL/`.ass` quedan como alternativas one-off.
 - Nota de infra: el venv con `smbclient` para los helpers SMB se dejó durable en `/root/.venvs/nas-smb` (antes solo en un venv del cache, que se poda). Probados **en vivo** contra el NAS con ese venv: `nas/list_dir.py` y `nas/get.py` (hash del archivo bajado coincide con el local).
 
+## [2026-11-01] fix | el frame del thumbnail faltaba en el NAS
+- Arturo preguntó si, para **variar la edición** en unos días, está todo guardado. Auditoría: el material (33 clips), los audios, el montaje, los props y el recetario ya eran durables, pero el **PNG del frame del thumbnail no estaba en el NAS**: vivía solo en `public/` (gitignored) y en un scratch de vps-projects, y los props guardan únicamente el **nombre** del archivo, no de dónde salió.
+- Subido a la carpeta del caso como **`01_squishy01_endcard_frame.png`** (hash de vuelta verificado, `482f5997…`, idéntico al que está en `public/`).
+- Runbook: se explicita que **ese PNG es la imagen del thumbnail** (el fondo de la portada, sin texto ni capa oscura — eso lo añade la composición), que sale del frame de **t=4.0 s** del montaje (con el comando para regenerarlo si hiciera falta) y que antes de renderizar hacen falta **dos archivos en `public/`**: el video base y ese PNG (con el nombre que pida `endCard.image`). Actualizada también la estructura de carpetas y el caso verificado.
+
 ## [2026-11-02] create | lista de shots para grabar con GIFs (segundo video: `02_blanket`)
 - Arturo arrancó el video siguiente y dejó la referencia en `creators_research/edits/02_blanket/input/` (`snaptik_7703402548501187847_v3.mp4`, 26.63 s). Transcripción (11 líneas) con el script ya generalizado `transcribe_creator_ref.py <caso>` y desglose automático (26 cortes → uno falso de 0.03 s → **25 tomas**).
 - Pidió una **lista HTML de los shots a grabar** con ejemplo visual de cada uno. Iteraciones: agrupar por tipo de toma; imágenes más chicas y menos texto; selector **Agrupado / Por orden**; corregir que el objeto era un **libro** (no un celular) en **3** tomas; mover las 3 tomas de los grupos G/H a **B**; y finalmente **GIF animados de 6 fps** en vez de imágenes fijas.
@@ -480,14 +491,3 @@
 - Publicado por FTPS con lectura de vuelta y verificado por HTTP (200 + tamaño + abierto en navegador): `https://lemonsushi.com/uploads/vps2/creators-research/02_blanket/02_blanket_shots.html`. Copia en el NAS: `input/02_blanket_shots.html` + `input/shots/`.
 - Comprobado que los frames salen del **punto medio** de cada shot (diff medio contra el inicio >10 y ~1 contra la mitad).
 - Documentado: runbook **§3b** (procedimiento completo + pitfalls) y toolkit versionado en `ttchop-server/scripts/creators/shotlist/`; skill `ttchop-content-ops` actualizado con el criterio.
-
-## [2026-11-01] fix | el frame del thumbnail faltaba en el NAS
-- Arturo preguntó si, para **variar la edición** en unos días, está todo guardado. Auditoría: el material (33 clips), los audios, el montaje, los props y el recetario ya eran durables, pero el **PNG del frame del thumbnail no estaba en el NAS**: vivía solo en `public/` (gitignored) y en un scratch de vps-projects, y los props guardan únicamente el **nombre** del archivo, no de dónde salió.
-- Subido a la carpeta del caso como **`01_squishy01_endcard_frame.png`** (hash de vuelta verificado, `482f5997…`, idéntico al que está en `public/`).
-- Runbook: se explicita que **ese PNG es la imagen del thumbnail** (el fondo de la portada, sin texto ni capa oscura — eso lo añade la composición), que sale del frame de **t=4.0 s** del montaje (con el comando para regenerarlo si hiciera falta) y que antes de renderizar hacen falta **dos archivos en `public/`**: el video base y ese PNG (con el nombre que pida `endCard.image`). Actualizada también la estructura de carpetas y el caso verificado.
-
-## [2026-10-31] update | curso Gerardo Santiago: confirmado transcrito al 100% (20 de 20)
-- Arturo preguntó si ya estaban todos los videos del curso transcritos. Verificación por SMB directo al NAS: **20 MP4 en `videos\` y 20 TXT en `transcripts\`**, emparejados uno a uno por nombre base, sin faltantes ni sobrantes y sin procesos activos.
-- Los 20 TXT se releyeron y hashearon: **los 20 coinciden** con el hash registrado en la corrida que los produjo (16 en `progress.json` de los lotes, 3 en `verification.json` del lote del Manual del Creador, 1 en el `pipeline.log` del video de Fitness). Copia local: `/root/.hermes/cache/scratch/curso-estado/estado-curso.private.json`.
-- Corregido en [[transcripcion-curso-gerardo-santiago]]: la página decía ocho videos y ubicaba los TXT en `videos\`. Ahora documenta el estado final de 20/20, la tabla completa de pares con bytes y SHA-256, el historial de lotes (original 8 + new_batch + queued_batch + mentalidad_batch + mentalidad04_queue + fitness05_batch + Manual del Creador) y que la carpeta final de los TXT es `transcripts\`.
-- Recordado en la página: los TXT son transcripción automática (no revisión humana) y para lecturas nuevas del NAS se usa SMB directo, no el wrapper `pumassh` (que sigue fallando por nombre corto). Solo lectura: no se relanzó ni modificó ninguna transcripción.
