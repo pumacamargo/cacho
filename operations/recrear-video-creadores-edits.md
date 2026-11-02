@@ -23,7 +23,8 @@ Caso verificado de punta a punta: `01_squishy01` (2026-11-01). Ver también
 `\\Polaris\Projects\Tiktok\hamaca\creators_research\edits\<NN_nombre>\`
 
 - `input/` — el video de referencia (p. ej. `snaptik_<id>_v3.mp4`) **y** los entregables del
-  análisis (transcript + desgloses).
+  análisis (transcript + desgloses), más la lista de shots (`<NN_nombre>_shots.html` + `shots/` con
+  los GIFs) cuando se preparó la grabación.
 - `assets/audio/` — los audios generados (TTS), por línea y unidos.
 - `assets/video/` — el material propio (clips grabados por Arturo).
 - Raíz de la carpeta — el montaje final (`<NN_nombre>_edit*.mp4`), la portada
@@ -45,6 +46,9 @@ Caso verificado de punta a punta: `01_squishy01` (2026-11-01). Ver también
 - **Ejemplos reales por caso** (en la raíz de la carpeta del caso, en el NAS): `<NN_nombre>_props.json`
   (props completos de la composición `caption-overlay`) y `<NN_nombre>_recipe_matched.json` (recetario
   del montaje emparejado, plano↔clip). Copiarlos como plantilla para el video siguiente.
+- **Toolkit de la lista de shots (para grabar):** `ttchop-server/scripts/creators/shotlist/` —
+  transcripción del caso, cortes + frames, GIFs por shot, HTML y publicación por FTPS; con
+  `shotlist.example.json` como plantilla real. Procedimiento en **§3b**.
 
 ## 0. Dónde corre cada cosa (infra)
 
@@ -114,6 +118,50 @@ Mismo formato que el estudio (ver [[estudio-creadores-fuentes-datos]] y el works
 - Sustituir lo que no se puede sostener: quitar testimonios personales no verificados
   (p. ej. “lo compré 4 veces”) y **no inventar porcentajes de descuento** — dejar la oferta
   genérica (“muy buena oferta”) o usar el % real de la campaña vigente.
+
+## 3b. Lista de shots para grabar (HTML con GIFs)
+
+Cuando hay que **grabar material propio**, antes del montaje se produce una **lista de shots**: un
+recorte animado del original por cada intervalo, con qué grabar y cuánto debe durar. Se publica como
+HTML para consultarlo desde el celular durante la grabación. Resultado real de `02_blanket`: 25
+tomas · 26.6 s · 6 grupos · ~4 MB de GIFs.
+
+Herramientas: `ttchop-server/scripts/creators/shotlist/` (con `shotlist.example.json` como plantilla
+real del caso `02_blanket`).
+
+1. **Transcripción** (PC): `transcribe_creator_ref.py <caso>` — baja la referencia del NAS por SMB
+   (credenciales por `stdin`) y hace el ASR.
+2. **Cortes y frames** (PC con ffmpeg): `analyze_ref_shots.py <video> <dir_salida> [umbral=0.27]` →
+   `intervals.json` + **un frame en el punto medio de cada intervalo** + hoja de contacto.
+   Los cortes son candidatos automáticos, no una EDL confirmada.
+3. **Revisar y describir** (esto es criterio, no automatizable): mirar los frames uno por uno y
+   escribir, por intervalo, `encuadre · ángulo · acción corta`, y **agrupar por tipo de toma** en un
+   `shotlist.json` (parte de `shotlist.example.json`).
+4. **GIFs**: `make_shot_gifs.py <video> <dir_shots> <dir_salida> 180 6` → `sNN.gif`
+   (6 fps · 180 px · 64 colores · dither bayer). Fusiona los cortes falsos igual que el HTML.
+5. **HTML**: `build_shotlist_html.py <dir_shots> <salida.html> <caso>` → tarjetas pequeñas con
+   `duración · encuadre` + una línea de acción, **número rojo = su lugar en la edición**, selector
+   **Agrupado / Por orden**, y el GIF animado con una miniatura embebida como respaldo.
+6. **Publicar** (vps-tools): `publish_ftp.py put` (HTML) y `putmany` (los GIFs a `shots/`) en
+   `/public_html/uploads/vps2/creators-research/<caso>/`, con lectura de vuelta; después verificar la
+   URL por HTTP (200 + tamaño) y abrirla.
+7. **Guardar copia en el NAS**: `input/<caso>_shots.html` + `input/shots/`.
+
+Ejemplo publicado:
+`https://lemonsushi.com/uploads/vps2/creators-research/02_blanket/02_blanket_shots.html`
+
+Pitfalls:
+- **Los frames van en el punto medio del shot**, no al inicio. Verificación usada: comparar el frame
+  guardado con el del inicio y con el de la mitad (diferencia media de píxeles: ~1 = mismo cuadro,
+  >10 = otro momento).
+- **Un corte falso de 0.03 s desfasa la numeración**: si las descripciones se indexan por el número
+  ya fusionado, cada shot se describe con la toma siguiente (en `02_blanket` apareció “celular” donde
+  había un **libro** y un “unboxing” que no existía). Describir siempre por **frame del original**.
+- **No inventar tomas que el original no tiene.** Si una línea habla de algo que no se ve (p. ej.
+  「丸洗いもOK」 y no hay lavadora en el video), la lista refleja solo lo que hay; si se quiere añadir
+  una toma propia, se marca como **extra**.
+- Los GIFs van como archivos aparte (el HTML queda ligero) **con respaldo embebido**, para que el
+  archivo suelto siga sirviendo sin conexión.
 
 ## 4. Generar los audios
 

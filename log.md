@@ -473,6 +473,14 @@
   - **Skill:** Remotion como ruta preferida; PIL/`.ass` quedan como alternativas one-off.
 - Nota de infra: el venv con `smbclient` para los helpers SMB se dejó durable en `/root/.venvs/nas-smb` (antes solo en un venv del cache, que se poda). Probados **en vivo** contra el NAS con ese venv: `nas/list_dir.py` y `nas/get.py` (hash del archivo bajado coincide con el local).
 
+## [2026-11-02] create | lista de shots para grabar con GIFs (segundo video: `02_blanket`)
+- Arturo arrancó el video siguiente y dejó la referencia en `creators_research/edits/02_blanket/input/` (`snaptik_7703402548501187847_v3.mp4`, 26.63 s). Transcripción (11 líneas) con el script ya generalizado `transcribe_creator_ref.py <caso>` y desglose automático (26 cortes → uno falso de 0.03 s → **25 tomas**).
+- Pidió una **lista HTML de los shots a grabar** con ejemplo visual de cada uno. Iteraciones: agrupar por tipo de toma; imágenes más chicas y menos texto; selector **Agrupado / Por orden**; corregir que el objeto era un **libro** (no un celular) en **3** tomas; mover las 3 tomas de los grupos G/H a **B**; y finalmente **GIF animados de 6 fps** en vez de imágenes fijas.
+- Resultado: 25 tomas · 26.6 s · 6 grupos · GIFs 6 fps/180 px/64 colores (~4 MB) · HTML con selector de modo y miniatura embebida de respaldo.
+- Publicado por FTPS con lectura de vuelta y verificado por HTTP (200 + tamaño + abierto en navegador): `https://lemonsushi.com/uploads/vps2/creators-research/02_blanket/02_blanket_shots.html`. Copia en el NAS: `input/02_blanket_shots.html` + `input/shots/`.
+- Comprobado que los frames salen del **punto medio** de cada shot (diff medio contra el inicio >10 y ~1 contra la mitad).
+- Documentado: runbook **§3b** (procedimiento completo + pitfalls) y toolkit versionado en `ttchop-server/scripts/creators/shotlist/`; skill `ttchop-content-ops` actualizado con el criterio.
+
 ## [2026-11-01] fix | el frame del thumbnail faltaba en el NAS
 - Arturo preguntó si, para **variar la edición** en unos días, está todo guardado. Auditoría: el material (33 clips), los audios, el montaje, los props y el recetario ya eran durables, pero el **PNG del frame del thumbnail no estaba en el NAS**: vivía solo en `public/` (gitignored) y en un scratch de vps-projects, y los props guardan únicamente el **nombre** del archivo, no de dónde salió.
 - Subido a la carpeta del caso como **`01_squishy01_endcard_frame.png`** (hash de vuelta verificado, `482f5997…`, idéntico al que está en `public/`).
