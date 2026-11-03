@@ -96,7 +96,7 @@ Este es un traspaso manual de dos etapas, **no una integración del Producer con
 1. En el proyecto Firebase correcto, prepara producto, sesión, clips, plantilla y diálogo aprobado; crea un render nuevo con `projectId` explícito y espera `renders/{renderId}.status == done` y `videoUrl`. Descarga el MP4 final. Verifica que el render guarde `inputs.collage.editManifest`; el manifiesto documenta IDs de fuente, intervalos de entrada/salida, velocidad y offsets previstos del timeline. No reconstruyas cortes exactos desde el MP4 si falta el manifiesto. Los offsets son planeados por el builder: pueden diferir de los tiempos medidos por segmento y de la duración cuantizada a frames.
 2. Resuelve en Storage los clips indicados por `sessionId` y `sourceClipId`. Descarga esos medios, conserva un `source-media-manifest.json` con procedencia, nombres y SHA-256, y verifica los hashes antes de editar. Trabaja en scratch y en un directorio Windows temporal nuevo; incluye el MP4 original como referencia. **No uses el contenido de un proyecto FilmCraft antiguo como fuente.**
 3. Si no hay pista de audio original separada disponible, extrae una sola mezcla master del MP4 del servidor y documéntala como tal; no la presentes como stems de voz/música. En el ejemplo de abajo se usó un WAV estéreo de 48 kHz extraído del render; no se confirmaron stems separados en Storage.
-4. En `--data-dir` aislado, crea un proyecto FilmCraft 0.9.0 y una secuencia 1080×1920, 24 fps, 48 kHz estéreo. Importa las fuentes y coloca los segmentos del manifiesto en orden usando `sourceStartSeconds`, `sourceEndSeconds`, `speed` y `timelineStartSeconds`; redondea a frames y registra la duración resultante. **Por defecto, distribuye los segmentos secuenciales en tres pistas de video cíclicamente por orden de timeline** (1→V1, 2→V2, 3→V3, 4→V1, etc.). Conserva el inicio y la duración; cambia solo la pista. Verifica que no haya clips contiguos ni solapados en la misma pista (`next.start > previous.start + previous.duration`). Mantén el audio master en una pista de audio separada (A1). Aplica `clip.fillFrame` solo tras revisar el recorte. Guarda y reabre el `.fcproj`; inspecciona timeline, preview y medios offline.
+4. En `--data-dir` aislado, crea un proyecto FilmCraft 0.9.0 y una secuencia 1080×1920, 24 fps, 48 kHz estéreo. Importa las fuentes y coloca los segmentos del manifiesto en orden usando `sourceStartSeconds`, `sourceEndSeconds`, `speed` y `timelineStartSeconds`; redondea a frames y registra la duración resultante. **Layout de pistas: no cambia el render.** Como los segmentos son secuenciales y nunca se solapan, sirven las dos disposiciones: **una sola pista `V1`** (así se verificó en `02_blanket`: 25 clips en V1, export idéntico al montaje de `collage_builder`) o **escalonados en tres pistas cíclicamente** (1→V1, 2→V2, 3→V3, 4→V1…), que es el layout usado en las reconstrucciones desde `editManifest` y en la variante `massager-…-3-tracks-no-adjacent`. Elige una y sé consistente; lo que **sí** hay que verificar en ambos casos es el orden y que no haya huecos ni solapes (`next.start >= previous.start + previous.duration`). Mantén el audio master en una pista de audio separada (A1). Aplica `clip.fillFrame` solo tras revisar el recorte. Guarda y reabre el `.fcproj`; inspecciona timeline, preview y medios offline.
 5. Exporta H.264 con audio (no añadas `--no-audio` si quieres conservar el master), GPU desactivada para el modo probado: `filmcraft-cli.exe --data-dir "<data-dir>" --project "<project.fcproj>" export "<output.mp4>" --format h264 --gpu-rendering off`. Para el paquete portable, coloca en `P:\TikTok\Hamaca\edits\<producto>\assets` todos los medios referenciados por el `.fcproj`, actualiza el proyecto a esas rutas y valida sus archivos por tamaño/SHA-256. Si `P:` no está disponible y Arturo autorizó local-first, conserva el paquete en `D:\staging` como local-only y marca la entrega NAS como pendiente; no afirmes que el paquete portable está listo. Después de restablecer acceso a `P:`, transfiere, verifica y relinkea antes de limpiar staging (ver §4, paso 2). La unidad PSDrive creada por `pumassh` no se hereda a FilmCraft en SSH Session 0: la comprobación final de medios online requiere abrir el `.fcproj` en la sesión interactiva de Windows. Si esa GUI no está disponible, reporta la validación pendiente. Copia los entregables y lee de vuelta las rutas con el flujo de [[acceso-remoto-pumadeskasus]].
 6. Valida el MP4 con `ffprobe` (H.264/AAC, dimensiones, fps, frames, duración de ambas pistas), reproduce/escucha el resultado e inspecciona fotogramas representativos. No declares la reconstrucción idéntica a la salida del servidor: FilmCraft cuantiza a frames y el manifiesto contiene tiempos planeados. Mantén el render de servidor como referencia, no publiques y reporta cualquier limitación de audio.
 
@@ -114,8 +114,9 @@ Variante del flujo §5 que **no** pasa por Firestore: el montaje se hizo manual 
   `source-media-manifest.json` de salida.
 - **Proyecto:** `file.newProject` + `file.newSequence` (`width:1080, height:1920, fps:30,
   sampleRate:48000, mix:"Stereo"`) vía JSONL; `import` de los 24 medios; `inspect project` para
-  obtener los IDs de medio (cambian por proyecto); `timeline.place` de los 25 clips en **V1** con
-  `sourceIn`/`duration` en ticks y `time` por `frame`, y la voz en **A1**.
+  obtener los IDs de medio (cambian por proyecto); `timeline.place` de los 25 clips en **V1** (una sola
+  pista: layout válido y verificado — el escalonado en 3 pistas de §5.4 **no** es obligatorio y el render
+  sale igual) con `sourceIn`/`duration` en ticks y `time` por `frame`, y la voz en **A1**.
 - **Ticks:** 254016000000 por segundo → **8467200000 por frame a 30 fps**; `duration = frames × 8467200000`.
   Redondear la duración de cada segmento a frames (el total quedó en **799 frames = 26.632 s**).
 - **Encuadre:** `clip.fillFrame clips=[…]` sobre los 25 clips, porque el material es horizontal y la
@@ -125,13 +126,22 @@ Variante del flujo §5 que **no** pasa por Firestore: el montaje se hizo manual 
   1080×1920 a 30 fps + AAC estéreo 48 kHz, `offlineMedia: []`, 56 s de render. Audio **−17.9 dB /
   pico −1.5 dB**, idéntico al montaje del servidor; decodificación completa OK y comparación de
   secuencia contra el MP4 de `collage_builder` sin diferencias.
-- **Paquete en el NAS:** `creators_research\edits\02_blanket\filmcraft-20261103\` con
-  `blanket02-filmcraft.mp4` (67 480 633 B), `blanket02-filmcraft.fcproj` (43 832 B) y
-  `source-media-manifest.json`. Hashes verificados tras la copia.
-- **Limitación declarada:** el `.fcproj` apunta a **`D:\staging\filmcraft-blanket02\assets`** (24 rutas
-  locales). **No se relinkeó a `P:`** porque desde la sesión SSH no hay unidad `P:` verificable, así que
-  es un **proyecto local**, no un paquete portable: para reabrirlo hay que conservar el staging en la PC.
-  La reapertura en la GUI interactiva tampoco se validó en esta corrida.
+- **Paquete en el NAS:** `creators_research\edits\02_blanket\filmcraft-20261103\` con el MP4 sin overlays
+  (`blanket02-filmcraft.mp4`, 67 480 633 B), el MP4 final **con overlays**
+  (`blanket02-filmcraft-overlays.mp4`, 67 711 946 B), los `.fcproj` y `source-media-manifest.json`.
+  Hashes verificados tras la copia.
+- **Relink al NAS (hecho):** existe `blanket02-filmcraft-portable.fcproj`; sus **27 rutas** apuntan a
+  `P:\tiktok\hamaca\creators_research\edits\02_blanket\…` (23 clips en `recordings\`, la voz en
+  `assets\audio\`, flecha y portada en la carpeta del proyecto) y **ninguna** a `D:\staging`. Los 27
+  archivos se verificaron por SMB en el NAS y el `.fcproj` abre bien en FilmCraft (29 items, secuencia
+  activa). El proyecto de `D:\staging` se conserva como **local** (es el que renderiza hoy).
+- **Límite del relink (no resoluble desde SSH):** al abrir el portable desde la sesión SSH los 27 medios
+  salen `missing`, porque ahí **no existe `P:`**. En la PC el mapeo persistente está **`Unavailable`**
+  (`net use` → `P:` a `\\Polaris\Projects`, el nombre corto que ya fallaba) y Windows **no** tiene
+  credenciales guardadas para `100.91.254.118`, así que mapear la unidad exige un prompt interactivo — no
+  automatizable sin dejar una credencial del NAS en la PC, que Arturo evita a propósito. **Validación
+  pendiente por diseño:** abrir el portable en la sesión interactiva de Windows una vez autenticada. No
+  afirmar que el paquete portable está online antes de eso.
 - **Dos trampas del CLI (costaron intentos):** (1) `exec <id> '<json>'` pierde las comillas a través de
   las capas bash→ssh→cmd y el parser lo interpreta como `key=value`; usar **archivo JSONL con `run`**.
   (2) El script pasado a `run` debe ir con **ruta absoluta**; la relativa no se resuelve.
