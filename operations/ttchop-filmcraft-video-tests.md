@@ -96,7 +96,7 @@ Este es un traspaso manual de dos etapas, **no una integración del Producer con
 1. En el proyecto Firebase correcto, prepara producto, sesión, clips, plantilla y diálogo aprobado; crea un render nuevo con `projectId` explícito y espera `renders/{renderId}.status == done` y `videoUrl`. Descarga el MP4 final. Verifica que el render guarde `inputs.collage.editManifest`; el manifiesto documenta IDs de fuente, intervalos de entrada/salida, velocidad y offsets previstos del timeline. No reconstruyas cortes exactos desde el MP4 si falta el manifiesto. Los offsets son planeados por el builder: pueden diferir de los tiempos medidos por segmento y de la duración cuantizada a frames.
 2. Resuelve en Storage los clips indicados por `sessionId` y `sourceClipId`. Descarga esos medios, conserva un `source-media-manifest.json` con procedencia, nombres y SHA-256, y verifica los hashes antes de editar. Trabaja en scratch y en un directorio Windows temporal nuevo; incluye el MP4 original como referencia. **No uses el contenido de un proyecto FilmCraft antiguo como fuente.**
 3. Si no hay pista de audio original separada disponible, extrae una sola mezcla master del MP4 del servidor y documéntala como tal; no la presentes como stems de voz/música. En el ejemplo de abajo se usó un WAV estéreo de 48 kHz extraído del render; no se confirmaron stems separados en Storage.
-4. En `--data-dir` aislado, crea un proyecto FilmCraft 0.9.0 y una secuencia 1080×1920, 24 fps, 48 kHz estéreo. Importa las fuentes y coloca los segmentos del manifiesto en orden usando `sourceStartSeconds`, `sourceEndSeconds`, `speed` y `timelineStartSeconds`; redondea a frames y registra la duración resultante. **Layout de pistas: no cambia el render.** Como los segmentos son secuenciales y nunca se solapan, sirven las dos disposiciones: **una sola pista `V1`** (así se verificó en `02_blanket`: 25 clips en V1, export idéntico al montaje de `collage_builder`) o **escalonados en tres pistas cíclicamente** (1→V1, 2→V2, 3→V3, 4→V1…), que es el layout usado en las reconstrucciones desde `editManifest` y en la variante `massager-…-3-tracks-no-adjacent`. Elige una y sé consistente; lo que **sí** hay que verificar en ambos casos es el orden y que no haya huecos ni solapes (`next.start >= previous.start + previous.duration`). Mantén el audio master en una pista de audio separada (A1). Aplica `clip.fillFrame` solo tras revisar el recorte. Guarda y reabre el `.fcproj`; inspecciona timeline, preview y medios offline.
+4. En `--data-dir` aislado, crea un proyecto FilmCraft 0.9.0 y una secuencia 1080×1920, 24 fps, 48 kHz estéreo. Importa las fuentes y coloca los segmentos del manifiesto en orden usando `sourceStartSeconds`, `sourceEndSeconds`, `speed` y `timelineStartSeconds`; redondea a frames y registra la duración resultante. **Layout de pistas: estándar = escalonado en 3 pistas; no cambia el render.** Los segmentos son secuenciales y nunca se solapan, así que el MP4 sale igual con una sola pista `V1` o **escalonado cíclicamente en tres pistas** (1→V1, 2→V2, 3→V3, 4→V1…). **Arturo fijó el escalonado como estándar (2026-11-03)** — era el layout de las reconstrucciones desde `editManifest` y de la variante `massager-…-3-tracks-no-adjacent`, y `02_blanket` se migró a él (9/8/8 clips). Herramientas: `sequence.addTracks {video:n, videoAfter}` para crear pistas y `timeline.move {moves:[{clip, track, time}]}` para repartir conservando el tiempo (`time` en ticks). **Si vas a poner overlays encima, primero deja los clips en las pistas inferiores y añade las pistas de texto arriba**; si no, un clip tapa el texto. Verifica el orden y que no haya huecos ni solapes (`next.start >= previous.start + previous.duration`). Mantén el audio master en una pista de audio separada (A1). Aplica `clip.fillFrame` solo tras revisar el recorte. Guarda y reabre el `.fcproj`; inspecciona timeline, preview y medios offline.
 5. Exporta H.264 con audio (no añadas `--no-audio` si quieres conservar el master), GPU desactivada para el modo probado: `filmcraft-cli.exe --data-dir "<data-dir>" --project "<project.fcproj>" export "<output.mp4>" --format h264 --gpu-rendering off`. Para el paquete portable, coloca en `P:\TikTok\Hamaca\edits\<producto>\assets` todos los medios referenciados por el `.fcproj`, actualiza el proyecto a esas rutas y valida sus archivos por tamaño/SHA-256. Si `P:` no está disponible y Arturo autorizó local-first, conserva el paquete en `D:\staging` como local-only y marca la entrega NAS como pendiente; no afirmes que el paquete portable está listo. Después de restablecer acceso a `P:`, transfiere, verifica y relinkea antes de limpiar staging (ver §4, paso 2). La unidad PSDrive creada por `pumassh` no se hereda a FilmCraft en SSH Session 0: la comprobación final de medios online requiere abrir el `.fcproj` en la sesión interactiva de Windows. Si esa GUI no está disponible, reporta la validación pendiente. Copia los entregables y lee de vuelta las rutas con el flujo de [[acceso-remoto-pumadeskasus]].
 6. Valida el MP4 con `ffprobe` (H.264/AAC, dimensiones, fps, frames, duración de ambas pistas), reproduce/escucha el resultado e inspecciona fotogramas representativos. No declares la reconstrucción idéntica a la salida del servidor: FilmCraft cuantiza a frames y el manifiesto contiene tiempos planeados. Mantén el render de servidor como referencia, no publiques y reporta cualquier limitación de audio.
 
@@ -114,9 +114,12 @@ Variante del flujo §5 que **no** pasa por Firestore: el montaje se hizo manual 
   `source-media-manifest.json` de salida.
 - **Proyecto:** `file.newProject` + `file.newSequence` (`width:1080, height:1920, fps:30,
   sampleRate:48000, mix:"Stereo"`) vía JSONL; `import` de los 24 medios; `inspect project` para
-  obtener los IDs de medio (cambian por proyecto); `timeline.place` de los 25 clips en **V1** (una sola
-  pista: layout válido y verificado — el escalonado en 3 pistas de §5.4 **no** es obligatorio y el render
-  sale igual) con `sourceIn`/`duration` en ticks y `time` por `frame`, y la voz en **A1**.
+  obtener los IDs de medio (cambian por proyecto); `timeline.place` de los 25 clips y la voz en **A1**, con
+  `sourceIn`/`duration` en ticks y `time` por `frame`. Luego se migró al **layout estándar escalonado**
+  (§5.4): `sequence.addTracks {video:2, videoAfter:"first"}` para crear las pistas de clips **debajo** de
+  los overlays y `timeline.move` para repartir los 25 clips cíclicamente → **9 en Video 1, 8 en Video 2,
+  8 en Video 3**, con huecos mínimos de 32 frames (sin solapes) y las pistas de texto (4–8) intactas
+  encima.
 - **Ticks:** 254016000000 por segundo → **8467200000 por frame a 30 fps**; `duration = frames × 8467200000`.
   Redondear la duración de cada segmento a frames (el total quedó en **799 frames = 26.632 s**).
 - **Encuadre:** `clip.fillFrame clips=[…]` sobre los 25 clips, porque el material es horizontal y la
@@ -127,9 +130,14 @@ Variante del flujo §5 que **no** pasa por Firestore: el montaje se hizo manual 
   pico −1.5 dB**, idéntico al montaje del servidor; decodificación completa OK y comparación de
   secuencia contra el MP4 de `collage_builder` sin diferencias.
 - **Paquete en el NAS:** `creators_research\edits\02_blanket\filmcraft-20261103\` con el MP4 sin overlays
-  (`blanket02-filmcraft.mp4`, 67 480 633 B), el MP4 final **con overlays**
-  (`blanket02-filmcraft-overlays.mp4`, 67 711 946 B), los `.fcproj` y `source-media-manifest.json`.
-  Hashes verificados tras la copia.
+  (`blanket02-filmcraft.mp4`, 67 480 633 B), el MP4 final **con overlays** en layout escalonado
+  (`blanket02-filmcraft-overlays.mp4`, 67 714 660 B, SHA-256 `759c592b…`), los `.fcproj` y
+  `source-media-manifest.json`. Hashes verificados tras la copia.
+- **Bug corregido (importante):** la primera entrega de overlays salió con los **captions en caja negra**
+  porque el estilo se aplicó con `background: true` pero **sin `background_color`** (negro por defecto).
+  Se detectó al ampliar un caption del render y se corrigió con
+  `graphics.set {props:{background_color:"#ffffff"}}` sobre los 11 captions; el MP4 del NAS ya es el
+  corregido (caja blanca con texto oscuro). Ver la sección de overlays.
 - **Relink al NAS (hecho):** existe `blanket02-filmcraft-portable.fcproj`; sus **27 rutas** apuntan a
   `P:\tiktok\hamaca\creators_research\edits\02_blanket\…` (23 clips en `recordings\`, la voz en
   `assets\audio\`, flecha y portada en la carpeta del proyecto) y **ninguna** a `D:\staging`. Los 27
@@ -156,16 +164,21 @@ portada). API usada y lo aprendido:
   video nueva encima de V1 (aquí "Video 2") y devuelve `{clip, layer}`.
 - **Estilo:** `graphics.set {clip, props:{…}}`. Props válidas comprobadas: `font`, `font_style`, `size`,
   `align`, `tracking`, `leading`, `fill_color`, `stroke`, `stroke_width`, `stroke_color`,
-  **`background`** (bool: dibuja la caja), **`background_radius`**, **`background_size`** (agranda la
-  caja = padding), **`background_opacity`**, `position`, `scale`, `rotation`, `opacity`.
-  La caja sale **blanca por defecto** — que es justo el estilo de la referencia (caja blanca, texto
-  oscuro); no hace falta (ni existe) un prop de color de fondo.
+  **`background`** (bool: dibuja la caja), **`background_color`**, **`background_radius`**,
+  **`background_size`** (agranda la caja = padding), **`background_opacity`**, `position`, `scale`,
+  `rotation`, `opacity`.
+  ⚠️ **La caja sale NEGRA por defecto** (`background_color` = negro): con `background: true` y texto
+  oscuro el caption queda ilegible (letras casi negras sobre caja negra). Hay que fijar
+  **`background_color: "#ffffff"`** explícitamente — ése es el estilo de la referencia (caja blanca,
+  texto oscuro). Este descuido produjo un render entregable con los captions en caja negra: **revisa
+  siempre un caption ampliado (zoom sobre el PNG del render, no la hoja de contacto a escala) antes de
+  exportar.**
 - **El CLI rechaza props inexistentes** (`no property …`). Eso permite *descubrir* nombres válidos
   probando candidatos con `--keep-going` y leyendo cuáles pasan: así se encontraron
   `background_radius`, `background_size` y `background_opacity`.
 - **Captions:** un texto por **línea del guion** (11 en este caso), encadenados con los tiempos medidos
-  del audio, `size: 48`, `fill_color: #141414`, `background: true`, `background_radius: 24`,
-  `background_size: 1.25`, centrados en `y=505`.
+  del audio, `size: 48`, `fill_color: #141414`, `background: true`, **`background_color: #ffffff`**,
+  `background_radius: 24`, `background_size: 1.25`, centrados en `y=505`.
 - **Etiqueta y disclaimer:** mismo `graphics.newText` pero con `background: false`, `fill_color: #ffffff`,
   `stroke: true`, `stroke_width: 6` (etiqueta) / `4` (disclaimer) y `stroke_color: #141414`.
 - **Flecha roja:** los clips de **imagen no se posicionan** con `graphics.set` (falla con *no graphic
