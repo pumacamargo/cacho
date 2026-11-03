@@ -143,13 +143,14 @@ Variante del flujo §5 que **no** pasa por Firestore: el montaje se hizo manual 
   `assets\audio\`, flecha y portada en la carpeta del proyecto) y **ninguna** a `D:\staging`. Los 27
   archivos se verificaron por SMB en el NAS y el `.fcproj` abre bien en FilmCraft (29 items, secuencia
   activa). El proyecto de `D:\staging` se conserva como **local** (es el que renderiza hoy).
-- **Límite del relink (no resoluble desde SSH):** al abrir el portable desde la sesión SSH los 27 medios
-  salen `missing`, porque ahí **no existe `P:`**. En la PC el mapeo persistente está **`Unavailable`**
-  (`net use` → `P:` a `\\Polaris\Projects`, el nombre corto que ya fallaba) y Windows **no** tiene
-  credenciales guardadas para `100.91.254.118`, así que mapear la unidad exige un prompt interactivo — no
-  automatizable sin dejar una credencial del NAS en la PC, que Arturo evita a propósito. **Validación
-  pendiente por diseño:** abrir el portable en la sesión interactiva de Windows una vez autenticada. No
-  afirmar que el paquete portable está online antes de eso.
+- **Relink validado en la GUI (2026-11-03):** Arturo abrió `blanket02-filmcraft-portable.fcproj` en
+  FilmCraft desde su sesión de escritorio y **los medios se ven correctamente (online)**: el relink y las
+  rutas `P:` son correctos. Ojo con el matiz que sigue vigente: desde la **sesión SSH** los 27 medios
+  salen `missing` porque ahí no existe `P:` (el mapeo persistente figura `Unavailable` — `P:` →
+  `\\Polaris\Projects`, el nombre corto con fallo histórico — y Windows no tiene credenciales guardadas
+  para `100.91.254.118`). Por eso: **la comprobación de medios online del paquete portable solo se puede
+  hacer en la sesión interactiva**; si esa GUI no está disponible, reporta la validación como pendiente y
+  no afirmes que está online.
 - **Dos trampas del CLI (costaron intentos):** (1) `exec <id> '<json>'` pierde las comillas a través de
   las capas bash→ssh→cmd y el parser lo interpreta como `key=value`; usar **archivo JSONL con `run`**.
   (2) El script pasado a `run` debe ir con **ruta absoluta**; la relativa no se resuelve.
