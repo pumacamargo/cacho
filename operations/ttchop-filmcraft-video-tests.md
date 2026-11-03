@@ -136,6 +136,40 @@ Variante del flujo §5 que **no** pasa por Firestore: el montaje se hizo manual 
   las capas bash→ssh→cmd y el parser lo interpreta como `key=value`; usar **archivo JSONL con `run`**.
   (2) El script pasado a `run` debe ir con **ruta absoluta**; la relativa no se resuelve.
 
+### Overlays de texto dentro de FilmCraft (probado en 02_blanket, 2026-11-03)
+
+Los overlays se pueden hacer **dentro** del proyecto (nada de PNG con texto horneado, salvo la flecha y la
+portada). API usada y lo aprendido:
+
+- **Crear texto:** `graphics.newText {text, position:[x,y], size, font, fontStyle, seconds, time}`.
+  `position` es el punto de anclaje (centro de la primera línea en texto "point"). Va a una pista de
+  video nueva encima de V1 (aquí "Video 2") y devuelve `{clip, layer}`.
+- **Estilo:** `graphics.set {clip, props:{…}}`. Props válidas comprobadas: `font`, `font_style`, `size`,
+  `align`, `tracking`, `leading`, `fill_color`, `stroke`, `stroke_width`, `stroke_color`,
+  **`background`** (bool: dibuja la caja), **`background_radius`**, **`background_size`** (agranda la
+  caja = padding), **`background_opacity`**, `position`, `scale`, `rotation`, `opacity`.
+  La caja sale **blanca por defecto** — que es justo el estilo de la referencia (caja blanca, texto
+  oscuro); no hace falta (ni existe) un prop de color de fondo.
+- **El CLI rechaza props inexistentes** (`no property …`). Eso permite *descubrir* nombres válidos
+  probando candidatos con `--keep-going` y leyendo cuáles pasan: así se encontraron
+  `background_radius`, `background_size` y `background_opacity`.
+- **Captions:** un texto por **línea del guion** (11 en este caso), encadenados con los tiempos medidos
+  del audio, `size: 48`, `fill_color: #141414`, `background: true`, `background_radius: 24`,
+  `background_size: 1.25`, centrados en `y=505`.
+- **Etiqueta y disclaimer:** mismo `graphics.newText` pero con `background: false`, `fill_color: #ffffff`,
+  `stroke: true`, `stroke_width: 6` (etiqueta) / `4` (disclaimer) y `stroke_color: #141414`.
+- **Flecha roja:** los clips de **imagen no se posicionan** con `graphics.set` (falla con *no graphic
+  clip*); no hay comando de transformación para ellos. Solución: **hornear la flecha en un PNG
+  1080×1920 transparente** ya colocada en su sitio y meterla con
+  `graphics.newFromFile {path, time}`.
+- **Portada:** PNG compuesto aparte (frame + capa negra al 35 % + texto blanco con contorno) e insertado
+  con `graphics.newFromFile` en el **último frame**. Ojo: `newFromFile` coloca **150 frames (5 s)** por
+  defecto y estira la secuencia; hay que recortar con
+  `timeline.trim {clip, edge:"out", mode:"regular", deltaFrames:-N}` hasta dejarla en **1 frame**.
+- **Borrar un clip:** `timeline.select {clips:[id]}` + `edit.clear`.
+- **Resultado:** 799 frames exactos, 1080×1920 a 30 fps, AAC estéreo, `offlineMedia: []`, audio
+  −17.9 dB / pico −1.5 dB (idéntico al montaje sin overlays). Render ~58 s.
+
 ### Ejemplo verificado: masajeador, 2026-10-22
 
 - `projectId=ttchop2`, producto `prod_t6mr0j8`, sesión `sess_v02pwoi`, render del servidor `massager_server_prod_t6mr0j8_1792621245766_75ae9caf`; plantilla local `temp_s6m3u02` (“25 sec”), idioma `ja`, PumaVoice01 (`ve7BOdejheJbgrBriBx4`), overlay desactivado.

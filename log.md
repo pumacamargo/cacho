@@ -507,3 +507,12 @@
 - Paquete en el NAS: `creators_research\edits\02_blanket\filmcraft-20261103\` (MP4 67 480 633 B + `.fcproj` 43 832 B + manifest), hashes verificados.
 - **Limitación declarada:** el `.fcproj` apunta a `D:\staging` (24 rutas locales) y **no se relinkeó a `P:`** (no hay unidad `P:` verificable desde SSH) → es un proyecto **local**, no portable; la reapertura en la GUI interactiva no se validó.
 - Documentado en [[ttchop-filmcraft-video-tests]] (nuevo «Ejemplo verificado: 02_blanket»), con las dos trampas del CLI (JSON por `exec` pierde comillas → usar JSONL con `run`; el script de `run` necesita ruta absoluta). Sin publicación.
+
+## [2026-11-03] feat | overlays de texto hechos DENTRO de FilmCraft (02_blanket)
+- Arturo pidió los overlays dentro de FilmCraft. Se hicieron con la API de gráficos del CLI, sin hornear texto en PNG (salvo la flecha y la portada).
+- **11 captions** (uno por línea del guion, encadenados con los tiempos medidos del audio): caja blanca redondeada con texto oscuro, `size 48`, `y=505` — el estilo medido de la referencia. Se consiguió con `graphics.newText` + `graphics.set` (`background`, `background_radius: 24`, `background_size: 1.25`, `background_opacity: 100`, `fill_color: #141414`).
+- **Etiqueta** 「ここから/チェック» y **disclaimer** al pie: texto blanco con contorno oscuro (`stroke`, `stroke_width`, `stroke_color`), sin caja.
+- **Flecha roja:** los clips de imagen no se posicionan con `graphics.set` (no hay transformación), así que se horneó en un PNG 1080×1920 transparente ya alineado y se insertó con `graphics.newFromFile`.
+- **Portada:** PNG compuesto (frame + capa negra 35 % + «ふわふわで暖かい / 人気の毛布») insertado en el último frame y **recortado a 1 frame** (`timeline.trim`), porque `newFromFile` coloca 5 s por defecto.
+- **Descubrimiento útil:** el CLI **rechaza props inexistentes** (`no property …`), así que se pueden encontrar los nombres válidos probando candidatos con `--keep-going`.
+- Export final: **799 frames** exactos, 1080×1920 a 30 fps, AAC estéreo, `offlineMedia: []`, audio −17.9/−1.5 dB sin cambios. Subido al NAS: `filmcraft-20261103\blanket02-filmcraft-overlays.mp4` (67 711 946 B) + `.fcproj` + `arrow_full.png` + `cover.png`. Documentado en [[ttchop-filmcraft-video-tests]]. Sin publicación.
