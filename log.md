@@ -491,3 +491,10 @@
 - Publicado por FTPS con lectura de vuelta y verificado por HTTP (200 + tamaño + abierto en navegador): `https://lemonsushi.com/uploads/vps2/creators-research/02_blanket/02_blanket_shots.html`. Copia en el NAS: `input/02_blanket_shots.html` + `input/shots/`.
 - Comprobado que los frames salen del **punto medio** de cada shot (diff medio contra el inicio >10 y ~1 contra la mitad).
 - Documentado: runbook **§3b** (procedimiento completo + pitfalls) y toolkit versionado en `ttchop-server/scripts/creators/shotlist/`; skill `ttchop-content-ops` actualizado con el criterio.
+
+## [2026-11-03] update | 02_blanket: voz, montaje y asignación por número de shot
+- Arturo aprobó el guion variado (11 líneas, 207 caracteres) y pidió la voz con PumaVoice01: 11 tomas por línea, natural 33.41 s → **1.4× + pausas de 0.3 s = 26.645 s** (referencia 26.633 s). Subido a `02_blanket/assets/audio/` (35 archivos).
+- **Primera asignación rechazada:** monté emparejando por contenido con nombres originales (`20261102_*`), pero Arturo ya había **renombrado los clips por número de shot** (`1A`, `1B`, `2A`… `25A`). Rehecho el recetario con shot N → `<N>A.mp4`; los shots 12 y 13 (sin archivo) reutilizan `10A`/`11A`.
+- Montaje final: `02_blanket_edit.mp4` — 25 tomas, 26.615 s, 1080×1920, 30 fps, audio mono pico −1.5 dB. Comparación shot por shot contra la referencia: 24/25 pares correctos (el shot 16 es el único flojo: quedó un plano de persona donde la referencia tiene un detalle de mano).
+- **Cambio en el builder:** `collage_builder.py` pasó a usar escalado **lanczos** en el ajuste a 1080×1920 (commit `370d022`), porque el material propio es horizontal y el recorte a vertical implica 1.8× de ampliación. Coste: ~40 s por clip (25 tomas ≈ 16–18 min).
+- Documentado en el runbook: bloque «Caso verificado — 02_blanket» + la convención de nombres de clips propios; `02_blanket_recipe.json` subido al NAS como artefacto del caso. Sin publicación.

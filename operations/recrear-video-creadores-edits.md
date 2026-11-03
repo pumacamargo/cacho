@@ -203,7 +203,15 @@ Reglas aprendidas:
    recortan a vertical. Guardar los originales.
 
 Ejecutar: `python3 scripts/collage_builder.py <recipe.json>` desde el repo.
-Es **lento** cuando lee por CIFS (~25 s por clip); lanzarlo en segundo plano.
+Es **lento** cuando lee por CIFS; lanzarlo siempre en segundo plano. Con el escalado
+**lanczos** (que el builder usa hoy para el ajuste a 1080×1920, commit `370d022`) tarda del
+orden de **40 s por clip**: 25 tomas ≈ **16–18 min**.
+
+**Nombres de los clips propios.** Arturo suele **numerar sus grabaciones por el número de shot**
+de la lista (`1A`, `1B`, `2A`… `25A`). Cuando lo haga, el recetario es directo: **shot N → `<N>A.mp4`**;
+si algún número no tiene archivo, se reutiliza el clip más parecido (él autoriza repetir tomas).
+Verificar la asignación **contra el contenido** (hoja de contacto) antes de montar: el nombre no
+garantiza que el plano coincida con el de la referencia.
 
 ## 6. QA y entrega
 
@@ -345,6 +353,27 @@ versionado.
 - **Frame del thumbnail:** `01_squishy01_endcard_frame.png` — es el **fondo** de esa portada (frame de
   t=4.0 s del montaje, **sin** texto ni capa oscura: eso lo añade la composición). Es el archivo que
   hay que copiar a `public/` para re-renderizar.
+
+## Caso verificado — `02_blanket` (2026-11-02/03)
+
+- Referencia: `input/snaptik_7703402548501187847_v3.mp4` — 26.63 s, **720×1280 (vertical)**, audio ja.
+- Transcripción: **11 líneas**. Guion variado aprobado por Arturo: 11 líneas / 207 caracteres, sin
+  nombrar el color (la referencia decía “rosa”), sin nombre de marca y **sin ningún % de descuento**
+  (la oferta quedó genérica).
+- Voz: PumaVoice01, una toma por línea (`line_01..11.mp3`). Natural 33.41 s → **1.4× + pausas de
+  0.3 s = 26.645 s** (referencia 26.633 s: +0.01 s). También se guardó la variante 1.5× (25.05 s).
+- Lista de shots: **25 tomas · 6 grupos · GIFs 6 fps**, publicada en
+  `https://lemonsushi.com/uploads/vps2/creators-research/02_blanket/02_blanket_shots.html`
+- Grabación propia: **27 clips** en `recordings/`, **1920×1080 horizontales** a 30 fps (≈3.8 min de
+  material). Arturo los **renombró por número de shot** (`1A`, `1B`, `2A`… `25A`).
+- Montaje: `02_blanket_recipe.json` (shot N → `<N>A.mp4`; los shots **12 y 13** no tienen archivo y
+  reutilizan `10A`/`11A` en otro tramo) → `02_blanket_edit.mp4`: **26.615 s, 1080×1920, 30 fps**,
+  audio mono, pico −1.5 dB.
+- **Lección de formato:** la referencia es vertical y el material propio se grabó horizontal; al
+  recortar el centro a 9:16 solo se conservan 607×1080 y se amplían a 1080×1920 (**1.8×**). Por eso
+  el builder pasó a usar **lanczos**. Grabar en vertical (o en 4K horizontal, que sí aguanta el
+  recorte) evita esa pérdida.
+- Pendiente al cerrar este bloque: captions/overlays y portada del último frame (la fase que sigue).
 
 ## Pitfalls
 
