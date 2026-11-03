@@ -373,7 +373,10 @@ versionado.
   recortar el centro a 9:16 solo se conservan 607×1080 y se amplían a 1080×1920 (**1.8×**). Por eso
   el builder pasó a usar **lanczos**. Grabar en vertical (o en 4K horizontal, que sí aguanta el
   recorte) evita esa pérdida.
-- Pendiente al cerrar este bloque: captions/overlays y portada del último frame (la fase que sigue).
+- Continuación (cerrada el 2026-11-03): los captions/overlays y la portada del último frame se hicieron
+  **dentro de FilmCraft** sobre este montaje, y el proyecto se migró al **layout escalonado en 3 pistas**.
+  Todo el detalle —API de gráficos, trampa de `background_color`, relink a `P:` del paquete portable—
+  está en [[ttchop-filmcraft-video-tests]].
 
 ## Pitfalls
 
@@ -383,6 +386,9 @@ versionado.
 - `ffprobe` por CIFS es lento: medir duraciones una vez y reutilizarlas en el recetario.
 - Al añadir subtítulos, **medir el estilo en el original** (posición/tamaño/caja); es fácil asumir
   “blanco con contorno” cuando en realidad es caja blanca con texto oscuro.
+- En FilmCraft la caja de fondo de un texto sale **negra por defecto**: si se usa `background: true` sin
+  fijar `background_color`, el caption queda ilegible (letras oscuras sobre caja negra). Detalle en
+  [[ttchop-filmcraft-video-tests]].
 - Para tareas de código en `ttchop-post_templates`, el perfil `developer` puede estar
   **rate-limited**; en ese caso `developer_ds` sí corrió. Verificar siempre el commit en `origin/main`.
 - No dejar credenciales en el wiki, en commits ni en el chat.
