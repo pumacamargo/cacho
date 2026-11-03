@@ -498,3 +498,12 @@
 - Montaje final: `02_blanket_edit.mp4` — 25 tomas, 26.615 s, 1080×1920, 30 fps, audio mono pico −1.5 dB. Comparación shot por shot contra la referencia: 24/25 pares correctos (el shot 16 es el único flojo: quedó un plano de persona donde la referencia tiene un detalle de mano).
 - **Cambio en el builder:** `collage_builder.py` pasó a usar escalado **lanczos** en el ajuste a 1080×1920 (commit `370d022`), porque el material propio es horizontal y el recorte a vertical implica 1.8× de ampliación. Coste: ~40 s por clip (25 tomas ≈ 16–18 min).
 - Documentado en el runbook: bloque «Caso verificado — 02_blanket» + la convención de nombres de clips propios; `02_blanket_recipe.json` subido al NAS como artefacto del caso. Sin publicación.
+
+## [2026-11-03] create | 02_blanket reconstruido en FilmCraft (desde el recetario, sin Firestore)
+- Arturo pidió recrear el video en FilmCraft en la PC. Variante nueva del flujo de FilmCraft: en vez del `editManifest` de un render de Firestore, se tradujo **el recetario JSON de `collage_builder`** a una secuencia.
+- Medios: 23 clips + la voz (**430 MB**) copiados del NAS a `D:\staging\filmcraft-blanket02\assets` por SMB con tamaño verificado y `source-media-manifest.json`.
+- Proyecto FilmCraft 0.9.0 por CLI: `file.newProject` + `file.newSequence` (1080×1920, **30 fps**, 48 kHz estéreo), import de 24 medios, `inspect project` para los IDs, `timeline.place` de los 25 clips en V1 (ticks: 8467200000 por frame) + la voz en A1, y `clip.fillFrame` sobre los 25 (material horizontal en secuencia vertical).
+- Export H.264 sin GPU: **799 frames = 26.632 s**, 1080×1920 a 30 fps, AAC estéreo, `offlineMedia: []`, render 56 s. Audio −17.9 dB / pico −1.5 dB **idéntico** al montaje del servidor; decode completo OK y comparación de secuencia sin diferencias.
+- Paquete en el NAS: `creators_research\edits\02_blanket\filmcraft-20261103\` (MP4 67 480 633 B + `.fcproj` 43 832 B + manifest), hashes verificados.
+- **Limitación declarada:** el `.fcproj` apunta a `D:\staging` (24 rutas locales) y **no se relinkeó a `P:`** (no hay unidad `P:` verificable desde SSH) → es un proyecto **local**, no portable; la reapertura en la GUI interactiva no se validó.
+- Documentado en [[ttchop-filmcraft-video-tests]] (nuevo «Ejemplo verificado: 02_blanket»), con las dos trampas del CLI (JSON por `exec` pierde comillas → usar JSONL con `run`; el script de `run` necesita ruta absoluta). Sin publicación.

@@ -1,7 +1,7 @@
 ---
 title: Pruebas de edición de video con FilmCraft para TTChop2
 created: 2026-10-21
-updated: 2026-10-28
+updated: 2026-11-03
 type: runbook
 tags: [runbook, pipeline, cli]
 status: draft
@@ -99,6 +99,42 @@ Este es un traspaso manual de dos etapas, **no una integración del Producer con
 4. En `--data-dir` aislado, crea un proyecto FilmCraft 0.9.0 y una secuencia 1080×1920, 24 fps, 48 kHz estéreo. Importa las fuentes y coloca los segmentos del manifiesto en orden usando `sourceStartSeconds`, `sourceEndSeconds`, `speed` y `timelineStartSeconds`; redondea a frames y registra la duración resultante. **Por defecto, distribuye los segmentos secuenciales en tres pistas de video cíclicamente por orden de timeline** (1→V1, 2→V2, 3→V3, 4→V1, etc.). Conserva el inicio y la duración; cambia solo la pista. Verifica que no haya clips contiguos ni solapados en la misma pista (`next.start > previous.start + previous.duration`). Mantén el audio master en una pista de audio separada (A1). Aplica `clip.fillFrame` solo tras revisar el recorte. Guarda y reabre el `.fcproj`; inspecciona timeline, preview y medios offline.
 5. Exporta H.264 con audio (no añadas `--no-audio` si quieres conservar el master), GPU desactivada para el modo probado: `filmcraft-cli.exe --data-dir "<data-dir>" --project "<project.fcproj>" export "<output.mp4>" --format h264 --gpu-rendering off`. Para el paquete portable, coloca en `P:\TikTok\Hamaca\edits\<producto>\assets` todos los medios referenciados por el `.fcproj`, actualiza el proyecto a esas rutas y valida sus archivos por tamaño/SHA-256. Si `P:` no está disponible y Arturo autorizó local-first, conserva el paquete en `D:\staging` como local-only y marca la entrega NAS como pendiente; no afirmes que el paquete portable está listo. Después de restablecer acceso a `P:`, transfiere, verifica y relinkea antes de limpiar staging (ver §4, paso 2). La unidad PSDrive creada por `pumassh` no se hereda a FilmCraft en SSH Session 0: la comprobación final de medios online requiere abrir el `.fcproj` en la sesión interactiva de Windows. Si esa GUI no está disponible, reporta la validación pendiente. Copia los entregables y lee de vuelta las rutas con el flujo de [[acceso-remoto-pumadeskasus]].
 6. Valida el MP4 con `ffprobe` (H.264/AAC, dimensiones, fps, frames, duración de ambas pistas), reproduce/escucha el resultado e inspecciona fotogramas representativos. No declares la reconstrucción idéntica a la salida del servidor: FilmCraft cuantiza a frames y el manifiesto contiene tiempos planeados. Mantén el render de servidor como referencia, no publiques y reporta cualquier limitación de audio.
+
+### Ejemplo verificado: 02_blanket (2026-11-03) — desde el **recetario** de `collage_builder`
+
+Variante del flujo §5 que **no** pasa por Firestore: el montaje se hizo manual con
+`collage_builder.py` (ver `operations/recrear-video-creadores-edits.md`), así que en vez del
+`editManifest` se traduce **el recetario JSON** a una secuencia FilmCraft. Verificado de punta a punta.
+
+- **Entrada:** `02_blanket_recipe.json` (25 segmentos con `trimStart`/`trimEnd`) + los clips propios
+  (`recordings/`, horizontal 1920×1080) + la voz ya generada
+  (`02_blanket_voice_1p4x_spaced.mp3`). Sin `runProducer()`, sin escritura a Firebase.
+- **Medios a la PC:** 23 clips + la voz (**430 MB**) a `D:\staging\filmcraft-blanket02\assets` por SMB
+  directo desde el NAS (credenciales por `stdin`), con tamaño verificado uno por uno y
+  `source-media-manifest.json` de salida.
+- **Proyecto:** `file.newProject` + `file.newSequence` (`width:1080, height:1920, fps:30,
+  sampleRate:48000, mix:"Stereo"`) vía JSONL; `import` de los 24 medios; `inspect project` para
+  obtener los IDs de medio (cambian por proyecto); `timeline.place` de los 25 clips en **V1** con
+  `sourceIn`/`duration` en ticks y `time` por `frame`, y la voz en **A1**.
+- **Ticks:** 254016000000 por segundo → **8467200000 por frame a 30 fps**; `duration = frames × 8467200000`.
+  Redondear la duración de cada segmento a frames (el total quedó en **799 frames = 26.632 s**).
+- **Encuadre:** `clip.fillFrame clips=[…]` sobre los 25 clips, porque el material es horizontal y la
+  secuencia vertical (sin él quedarían barras). Verificado renderizando frames con
+  `render --seconds S --out f.png`.
+- **Export:** `export <out.mp4> --format h264 --gpu-rendering off` → **799 frames**, H.264 High
+  1080×1920 a 30 fps + AAC estéreo 48 kHz, `offlineMedia: []`, 56 s de render. Audio **−17.9 dB /
+  pico −1.5 dB**, idéntico al montaje del servidor; decodificación completa OK y comparación de
+  secuencia contra el MP4 de `collage_builder` sin diferencias.
+- **Paquete en el NAS:** `creators_research\edits\02_blanket\filmcraft-20261103\` con
+  `blanket02-filmcraft.mp4` (67 480 633 B), `blanket02-filmcraft.fcproj` (43 832 B) y
+  `source-media-manifest.json`. Hashes verificados tras la copia.
+- **Limitación declarada:** el `.fcproj` apunta a **`D:\staging\filmcraft-blanket02\assets`** (24 rutas
+  locales). **No se relinkeó a `P:`** porque desde la sesión SSH no hay unidad `P:` verificable, así que
+  es un **proyecto local**, no un paquete portable: para reabrirlo hay que conservar el staging en la PC.
+  La reapertura en la GUI interactiva tampoco se validó en esta corrida.
+- **Dos trampas del CLI (costaron intentos):** (1) `exec <id> '<json>'` pierde las comillas a través de
+  las capas bash→ssh→cmd y el parser lo interpreta como `key=value`; usar **archivo JSONL con `run`**.
+  (2) El script pasado a `run` debe ir con **ruta absoluta**; la relativa no se resuelve.
 
 ### Ejemplo verificado: masajeador, 2026-10-22
 

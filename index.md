@@ -58,7 +58,7 @@
 - [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA
 - [[ttchop-video-generation]] — runbook: flujos UI/collage y traducción manual `ttchop-server` → FilmCraft con 3 pistas por defecto; Producer no usa FilmCraft
 - [[ttchop-raw-asset-manual-edit]] — edición Producer-style sin catálogo; casos Juice Discount/ELLISS y Ellis if01; tres overlays nuevos, clips IF01 01–03 y montaje continuo 01–02–03 con instrumental aprobado actualizados en Polaris
-- [[ttchop-filmcraft-video-tests]] — runbook FilmCraft (flujo local-first autorizado en `D:\staging`, transferencia a Polaris, relink/export/QA) y estado por caso: MAGINA Tagiras completado; Ellis if01 portable copiado y hash-verificado en Polaris, con reapertura GUI pendiente; no mezclar proyectos entre productos
+- [[ttchop-filmcraft-video-tests]] — runbook FilmCraft (flujo local-first autorizado en `D:\staging`, transferencia a Polaris, relink/export/QA) y estado por caso: MAGINA Tagiras completado; Ellis if01 portable copiado y hash-verificado en Polaris, con reapertura GUI pendiente; **02_blanket** reconstruido desde el recetario de `collage_builder` (799 frames, 1080×1920 a 30 fps, sin medios offline) con el `.fcproj` **local** sin relinkear a `P:`; no mezclar proyectos entre productos
 - [[ttchop-music-generation]] — runbook: canto manual con ElevenLabs Music, montaje vía `audioBase64`, QA de duración y límites de publicación
 - [[traduccion-video-pumasvoice-sincronizada]] — traducir ES→JA con TTS PumaVoice, alinear inicio/fin de voz mediante atempo/adelay, conservar imagen y medir créditos reales; no lip-sync
 
