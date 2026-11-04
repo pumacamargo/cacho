@@ -378,6 +378,32 @@ versionado.
   Todo el detalle —API de gráficos, trampa de `background_color`, relink a `P:` del paquete portable—
   está en [[ttchop-filmcraft-video-tests]].
 
+## Caso verificado — `03_suitcase` (2026-11-03/04)
+
+- **Dos productos en un mismo caso:** `recordings/cicilife/` y `recordings/other/` (ambas maletas; el
+  `cicilife` es la H1 de la ficha de TikTok Shop). Arturo confirmó a mitad del trabajo que el cicilife
+  **tampoco** tiene soporte de móvil en la manija ni freno en las ruedas — de ahí la corrección del guion.
+- Referencia: `snaptik_7690535153034202369_v3.mp4` — 31.767 s, 720×1280, 30 fps. ASR: 9 segmentos / 240
+  caracteres (con errores esperables: 「超のメラカー」→「超滑らか」, 「クック」→「フック」, 「トッパー」→
+  「ストッパー」, 「サイズでも」→「Sサイズでも」).
+- **Cortes:** 28 intervalos (umbral 0.27) → **1 falso de 0.133 s (el 11)** → **27 tomas**.
+- **Lista de shots (HTML en inglés, pedido explícito de Arturo):** 27 tomas · 6 grupos · GIFs 6 fps.
+  El toolkit trae los textos de interfaz **fijos en español**: para entregarlo en inglés se traduce
+  `shotlist.json` (grupos, `hint`, `enc`, `act`) y luego se sustituyen las cadenas de la UI al generar
+  (título, `Grouped` / `By edit order`, `shots`, `No group`…). Comprobar que no quede ninguna en español.
+- **Voz:** PumaVoice01, una toma por línea; natural 39.52 s → **`atempo 1.353` + pausas de 0.34 s =
+  31.765 s** (referencia 31.743 s). Subida a `assets/audio/`.
+- **Montaje:** `build_recipe_from_plan.py` (duraciones de la referencia) → `collage_builder.py`; 27 clips,
+  31.76 s, ~18 min por corrida (lanczos leyendo por CIFS).
+- **Captions:** 10 (uno por línea), tiempos de `silencedetect` sobre el audio final y **encadenados**;
+  etiqueta + flecha + disclaimer + `endCard` (que es el thumbnail: el último frame).
+- **Guion entregado (v3):** 10 líneas **reordenadas para que cada una caiga sobre la toma que le
+  corresponde** (ver pitfalls), sin precio ni descuento, y sin las afirmaciones no verificables de la
+  referencia («日本ブランド», «アルミ合金»).
+- **Entregado:** `03_suitcase_cicilife_final.mp4` (953 frames, 1080×1920 a 30 fps, AAC mono 44.1 kHz,
+  31.77 s, −17.7/−1.3 dB) + `03_suitcase_cicilife_endcard.png` (el thumbnail) + guion, plan, props y
+  receta finales. Sin publicar.
+
 ## Pitfalls
 
 - `pumassh` (wrapper Windows `P:`) hoy falla por memoria; no es la ruta.
@@ -389,6 +415,20 @@ versionado.
 - En FilmCraft la caja de fondo de un texto sale **negra por defecto**: si se usa `background: true` sin
   fijar `background_color`, el caption queda ilegible (letras oscuras sobre caja negra). Detalle en
   [[ttchop-filmcraft-video-tests]].
+- **El builder recorta el CENTRO de los clips horizontales** (de 1920×1080 toma los 607 px centrales y los
+  escala a 1080×1920): un sujeto en el borde **desaparece**. Revisar cada clip **con el recorte del
+  builder** (`scale=1080:1920:force_original_aspect_ratio=increase:flags=lanczos,crop=1080:1920`), no el
+  clip completo. Si el sujeto queda fuera de cuadro, **ningún `trimStart` lo arregla**: hay que **cambiar
+  el clip** (Arturo autoriza repetir una toma en otro punto, con un `trimStart` distinto al ya usado).
+- **Los captions van por LÍNEA de voz, no por plano.** Si las tomas propias no siguen el orden de la
+  referencia, el texto acaba contradiciendo la imagen (caso real: 「仕切り付き」 sobre el candado). El
+  arreglo es **reescribir/reordenar el guion** para que cada línea corresponda a lo que se ve en su ventana
+  de tiempo — no retocar los tiempos a mano.
+- **No usar `-shortest` al remuxear el audio del render de Remotion:** recorta el último frame, que es
+  justo donde va el `endCard` (el thumbnail del video). Entregar el audio en **AAC** (si se muxea el `.mp3`
+  de la voz tal cual, el MP4 queda con pista mp3).
+- **La duración de `caption-overlay` ya sale de los props** (`props.duration` o el máximo `end`; commit
+  `81d0a04`). Antes estaba fija en 834 frames (27.8 s) y **cortaba cualquier video más largo**.
 - Para tareas de código en `ttchop-post_templates`, el perfil `developer` puede estar
   **rate-limited**; en ese caso `developer_ds` sí corrió. Verificar siempre el commit en `origin/main`.
 - No dejar credenciales en el wiki, en commits ni en el chat.
