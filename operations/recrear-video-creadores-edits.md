@@ -329,6 +329,48 @@ versionado.
 - Fuente CJK disponible en vps-tools: `Noto Sans CJK JP`
   (`/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc`).
 
+## 8. Hacer una VARIACIÓN de un video ya entregado
+
+Un caso entregado se puede volver a editar (mismo material propio, guion/voz/edición nuevos) porque
+**todo queda en su carpeta del NAS**. Cada caso entregado lleva un **`<caso>_MANIFEST.md`** en la raíz
+de su carpeta con: la referencia, el material propio, **la tabla plano→clip de la receta** (con
+`trimStart`/`trimEnd`), la voz, el guion, los captions con sus tiempos, los entregables y **la cadena de
+comandos exacta** para rehacerlo. Empezar por leerlo: es el índice del caso.
+
+Piezas y dónde viven:
+
+| Pieza | Archivo | Para qué sirve en una variación |
+|---|---|---|
+| Referencia | `input/snaptik_*.mp4` (+ transcripción) | rehacer el guion o los tiempos |
+| **Receta** | `<caso>_recipe*.json` | **el mapeo plano→clip y los recortes** (pieza crítica) |
+| Material propio | `recordings/` o `assets/video/` | los clips; no se tocan |
+| Voz | `assets/audio/` (por línea + unida) | reemplazarla si cambia el guion |
+| Guion | `input/<caso>_script.md` o `script_*.json` | variar el diálogo |
+| Captions | `props*.json` (o el `.fcproj` de FilmCraft) | rehacer los subtítulos |
+| Entregables | `<caso>_final.mp4`, `*_endcard.png`, `*_cover.png` | comparar y como portada |
+
+Pasos (detalle en el manifiesto del caso):
+
+1. **Guion** → JSON de líneas → voz con el helper versionado
+   `ttchop-server/scripts/creators/tts/tts_lines.mjs` (PumaVoice01), unir con `atempo` + pausas y medir
+   (§4).
+2. **Edición** → editar `clips[]` de la receta (orden, `trimStart`/`trimEnd`, `src`) y cambiar
+   `meta.outputPath` para no pisar el render anterior.
+3. **Montaje** → `python3 scripts/collage_builder.py <receta.json>` en vps-projects, en background
+   (~18 min por corrida).
+4. **Captions** → copiar el montaje a `public/` de `ttchop-post_templates`, actualizar el `props.json` y
+   `npx remotion render index.ts caption-overlay … --props=… --crf=18` (§7).
+5. **Audio final** → remux de la voz **en AAC y sin `-shortest`** (si no, se pierde el `endCard`).
+6. **QA** → `ffprobe` + `volumedetect` + hoja de contacto + el último frame.
+
+- **No** volver a correr `build_recipe_from_plan.py` si solo se ajusta un clip: recalcula los cortes por
+  defecto y deshace el ajuste.
+- **`01_squishy01` es el caso frágil:** sus clips conservan el **nombre de cámara**
+  (`20261031_234928.mp4`…), así que **la única copia del mapeo plano→clip es la receta** (está en el NAS
+  y su SHA-256 quedó anotado en el manifiesto). No borrar ni mover ese archivo.
+- Los casos con **varios productos** (`03_suitcase`: `cicilife/` y `other/`) llevan un subdirectorio por
+  producto; el guion y los captions se ajustan a las funciones de cada uno.
+
 ## Caso verificado — `01_squishy01`
 
 - Referencia: `input/snaptik_7685601865454587154_v3.mp4` — 25.83 s, 720×1280, 30 fps, audio ja.
