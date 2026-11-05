@@ -53,6 +53,17 @@ done
 
 URL: <https://lemonsushi.com/uploads/vps2/docs/mapa-pecera.html>
 
+### Color coding
+Las **6 categorías tienen su color** y **sus proyectos usan el mismo color**, igual que las **líneas** que
+los unen; los runbooks y la plataforma van en gris/azulado neutro para que la agrupación se lea de un golpe.
+El color vive en `FAMILY` (generador), y la leyenda se genera de ahí.
+
+### Controles
+Los `OrbitControls` van enganchados al **canvas**, no a la capa de etiquetas: esa capa tiene
+`pointer-events:none` y por eso el giro no respondía fuera de los botones. Con el canvas, se **rota
+arrastrando en cualquier parte** de la página, se **panea** con botón derecho (escritorio) o **dos dedos**
+(celular) y se hace zoom con rueda/pellizco.
+
 ### Dos trampas al tocar este archivo
 1. **`CSS2DRenderer` reescribe `element.style.display` en cada frame.** Para ocultar etiquetas hay que
    usar una propiedad que él no toque: aquí es la clase `.lbl.off` (opacidad 0 + `pointer-events:none`).

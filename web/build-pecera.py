@@ -22,6 +22,14 @@ DATOS = ["estudio-creadores-fuentes-datos", "separar-videos-nas-por-cortes", "tr
 ACCESOS = ["acceso-ftps-lemon-sushi", "acceso-nas-polaris", "acceso-remoto-pumadeskasus", "diagnostico-espacio-disco-vps"]
 CLIFF_GHOSTS = ["Apex", "Papa", "Tacosdepulpo", "Chava"]
 
+# color coding: cada categoría con su color, y sus proyectos del mismo color
+FAMILY = {"backpack": "#3ddc9a", "cliff": "#ff7a90", "macanishi": "#ffb84d",
+          "moon": "#c58bff", "sandbox": "#7dd3fc", "tts": "#ffe066"}
+ICON = {"backpack": "🎒", "cliff": "🎬", "macanishi": "👨‍👩‍👧", "moon": "📈",
+        "sandbox": "🛠️", "tts": "🛒"}
+NEUTRAL_RUNBOOKS = "#7c8aa3"
+NEUTRAL_PLAT = "#94a3b8"
+
 
 def read(pid, folder):
     p = os.path.join(ROOT, folder, pid + ".md")
@@ -68,30 +76,30 @@ def add(pid, area, ring, y, r, color, label=None, pid_gh=None):
 
 
 # capa 1 (arriba, centro): Arturo
-add("arturo", "persona", "top", 10.6, 0.0, "#4da3ff")
+add("arturo", "persona", "top", 10.6, 0.0, "#ffffff")
 # capa 2: categorías
 for i, c in enumerate(CATS):
-    add(c, "categorias", "cats", 6.8, 4.9, "#c58bff")
+    add(c, "categorias", "cats", 6.8, 4.9, FAMILY[c.replace("categoria-", "")], label=ICON[c.replace("categoria-", "")] + " " + (pages[c]["title"].replace("Categoría ", "") if c in pages else c))
 # capa 3: proyectos (+ los 4 de Cliff, que aún no tienen ficha)
 projects = [p for p, d in pages.items() if p.startswith("proyecto-")]
 for p in projects:
-    add(p, "proyectos", "proj", 2.6, 7.9, "#3ddc9a")
+    add(p, "proyectos", "proj", 2.6, 7.9, FAMILY.get(pages[p]["cat"], "#3ddc9a"))
 for name in CLIFF_GHOSTS:
     nodes.append({"id": "cliff-" + name.lower(), "title": name, "desc": "Proyecto de la categoría Cliff, aún sin ficha (categoría «en veremos»).",
                   "area": "proyectos", "cat": "cliff", "tags": ["pendiente"], "status": "pendiente",
-                  "gh": "", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#ffb84d"})
+                  "gh": "", "ring": "proj", "y": 2.6, "r": 7.9, "color": FAMILY["cliff"]})
 # capa 4: runbooks
 for p in VIDEO:
-    add(p, "operaciones", "oper", -2.6, 9.6, "#ffb84d")
+    add(p, "operaciones", "oper", -2.6, 9.6, NEUTRAL_RUNBOOKS)
 for p in ACCESOS:
-    add(p, "operaciones", "oper", -2.6, 9.6, "#ff9d4d")
+    add(p, "operaciones", "oper", -2.6, 9.6, NEUTRAL_RUNBOOKS)
 for p in DATOS:
-    add(p, "operaciones", "oper", -2.6, 9.6, "#ffcf6b")
+    add(p, "operaciones", "oper", -2.6, 9.6, NEUTRAL_RUNBOOKS)
 # capa 5 (fondo): plataforma
 for p in sorted([p for p in pages if p.startswith("hardware-")]):
-    add(p, "plataforma", "plat", -7.0, 7.4, "#6ec8ff")
+    add(p, "plataforma", "plat", -7.0, 7.4, NEUTRAL_PLAT)
 for p in SISTEMAS:
-    add(p, "plataforma", "plat", -7.0, 7.4, "#6ec8ff")
+    add(p, "plataforma", "plat", -7.0, 7.4, NEUTRAL_PLAT)
 
 # reparto angular uniforme + desfase vertical => espiral dentro de la pecera
 from collections import defaultdict
@@ -99,7 +107,7 @@ import math
 byring = defaultdict(list)
 for n in nodes:
     byring[n["ring"]].append(n)
-SPREAD = {"cats": 0.0, "proj": 3.2, "oper": 2.8, "plat": 2.2}
+SPREAD = {"cats": 2.4, "proj": 3.2, "oper": 2.8, "plat": 2.2}
 for ring, items in byring.items():
     if ring == "top":
         for n in items:
@@ -120,7 +128,14 @@ for n in nodes:
     if n["area"] == "proyectos" and n["cat"]:
         parent = catindex.get(n["cat"])
         if parent:
-            edges.append([parent, n["id"]])
+            edges.append([parent, n["id"], n["color"]])
+
+LEGEND = "".join(
+    f'<div><span class="dot" style="background:{FAMILY[k]}"></span>{ICON[k]} {k}</div>'
+    for k in ["backpack", "cliff", "macanishi", "moon", "sandbox", "tts"]) + \
+    '<div style="margin-top:6px"><span class="dot" style="background:#ffffff"></span>persona</div>' \
+    f'<div><span class="dot" style="background:{NEUTRAL_RUNBOOKS}"></span>runbooks</div>' \
+    f'<div><span class="dot" style="background:{NEUTRAL_PLAT}"></span>plataforma</div>'
 
 DATA = {"nodes": nodes, "edges": edges, "today": "2026-11-05"}
 
@@ -144,6 +159,7 @@ HTML = r"""<!DOCTYPE html>
  .lbl.off{opacity:0;pointer-events:none}
  .lbl.sel{background:#27406b;border-color:var(--b);color:#fff}
  .lbl small{color:var(--dim);font-size:10px;margin-left:4px}
+ .lbl i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:middle}
  header{position:fixed;top:0;left:0;right:0;padding:10px 14px;pointer-events:none;
    background:linear-gradient(180deg,rgba(5,7,12,.92),rgba(5,7,12,0))}
  h1{font-size:16px;margin:0}
@@ -180,7 +196,7 @@ HTML = r"""<!DOCTYPE html>
   <h1>🫙 La pecera · wiki <b>cacho</b> en 3D</h1>
   <p>Gira alrededor, haz zoom y entra a la pecera. Toca un nombre para leer su ficha.<br><a href="mapa-ecosistema.html" style="color:#4da3ff">versión plana (lista completa) ↗</a> · <a href="ttchop-mapa-documentacion.html" style="color:#4da3ff">mapa de video ↗</a></p>
 </header>
-<div id="hint">arrastra para girar · pellizca para zoom · acércate y aparecen los nombres</div>
+<div id="hint">arrastra para girar · dos dedos (o botón derecho) para mover · pellizca para zoom</div>
 <div class="ui" id="tools">
   <div class="row"><input type="search" id="q" placeholder="Buscar…"></div>
   <div class="row">
@@ -197,13 +213,7 @@ HTML = r"""<!DOCTYPE html>
     <span class="btn" id="lb">Etiquetas</span>
   </div>
 </div>
-<div class="ui" id="legend">
-  <div><span class="dot" style="background:#4da3ff"></span>persona</div>
-  <div><span class="dot" style="background:#c58bff"></span>categorías</div>
-  <div><span class="dot" style="background:#3ddc9a"></span>proyectos</div>
-  <div><span class="dot" style="background:#ffb84d"></span>runbooks</div>
-  <div><span class="dot" style="background:#6ec8ff"></span>plataforma</div>
-</div>
+<div class="ui" id="legend"><!--__LEGEND__--></div>
 <div class="ui" id="panel">
   <button id="close">×</button>
   <h2 id="p-title"></h2>
@@ -237,14 +247,17 @@ labelRenderer.setSize(innerWidth, innerHeight);
 const camera = new THREE.PerspectiveCamera(48, innerWidth/innerHeight, 0.1, 400);
 camera.position.set(0, 3.5, 33);
 
-const controls = new OrbitControls(camera, labelRenderer.domElement);
+const controls = new OrbitControls(camera, canvas);   // el canvas recibe el puntero en toda la página
 controls.target.set(0, 0.5, 0);
 controls.enableDamping = true; controls.dampingFactor = 0.06;
 controls.minDistance = 3; controls.maxDistance = 70;
 controls.maxPolarAngle = Math.PI * 0.54;   // no meterse bajo el piso
 controls.minPolarAngle = Math.PI * 0.12;
 controls.autoRotate = true; controls.autoRotateSpeed = 0.35;
-controls.enablePan = false;
+controls.enablePan = true;             // panear también (arrastre con 2 dedos / botón derecho)
+controls.screenSpacePanning = true;
+controls.panSpeed = 0.8;
+controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
 
 // ── luces
 scene.add(new THREE.HemisphereLight(0x9fc8ff, 0x0a1020, 0.75));
@@ -298,7 +311,7 @@ for (const n of DATA.nodes) {
 
   const el = document.createElement('div');
   el.className = 'lbl'; el.dataset.id = n.id;
-  el.innerHTML = n.title + (n.status === 'draft' ? '<small>borrador</small>' : '');
+  el.innerHTML = '<i style="background:' + n.color + '"></i>' + n.title + (n.status === 'draft' ? '<small>borrador</small>' : '');
   el.addEventListener('click', () => select(n.id));
   n.el_shown = true;
   const L = new CSS2DObject(el); L.position.copy(m.position).y += rad + 0.55; group.add(L);
@@ -306,13 +319,13 @@ for (const n of DATA.nodes) {
 }
 // líneas categoría -> proyectos
 const pos = {};
-for (const [a, b] of DATA.edges) {
+for (const [a, b, col] of DATA.edges) {
   const ma = byId[a], mb = byId[b];
   if (!ma || !mb) continue;
   const mid = ma.position.clone().lerp(mb.position, 0.5); mid.y -= 0.6;
   const curve = new THREE.QuadraticBezierCurve3(ma.position.clone(), mid, mb.position.clone());
   const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(24)),
-    new THREE.LineBasicMaterial({color:0x2f4c78, transparent:true, opacity:0.5}));
+    new THREE.LineBasicMaterial({color:new THREE.Color(col || '#2f4c78'), transparent:true, opacity:0.6}));
   group.add(line); links.push(line);
 }
 
@@ -433,5 +446,6 @@ setTimeout(() => document.getElementById('hint').style.opacity = 0, 6000);
 """
 
 out = os.path.join(ROOT, "web", "mapa-pecera.html")
-open(out, "w", encoding="utf-8").write(HTML.replace("/*__DATA__*/", json.dumps(DATA, ensure_ascii=False)))
+open(out, "w", encoding="utf-8").write(
+    HTML.replace("/*__DATA__*/", json.dumps(DATA, ensure_ascii=False)).replace("<!--__LEGEND__-->", LEGEND))
 print(f"OK -> {out} · {len(nodes)} nodos · {len(edges)} aristas")
