@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ttchop — mapa de la documentación</title>
+<style>
+  :root{--bg:#0f1115;--card:#181b22;--card2:#1f2430;--tx:#e8eaf0;--dim:#9aa3b2;--ac:#4da3ff;--ac2:#3ddc9a;--ac3:#ffb84d;--ac4:#ff6b8b;--line:#2a3040}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:900px;margin:0 auto;padding:22px 16px 60px}
+  h1{font-size:24px;margin:0 0 4px}
+  h2{font-size:19px;margin:34px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  h3{font-size:16px;margin:18px 0 8px}
+  p,li{color:var(--tx)}
+  .sub{color:var(--dim);font-size:14px;margin:0 0 6px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0}
+  .tools{display:grid;gap:12px;grid-template-columns:1fr}
+  @media(min-width:700px){.tools{grid-template-columns:repeat(3,1fr)}}
+  .tool{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+  .tool b{display:block;font-size:15px;margin-bottom:4px}
+  .tool .repo{color:var(--dim);font-size:12.5px;font-family:ui-monospace,Menlo,monospace}
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 6px}
+  .chip{background:#222836;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:13.5px;white-space:nowrap}
+  .chip.srv{border-color:var(--ac);color:#cfe6ff}
+  .chip.rem{border-color:var(--ac2);color:#c9f6e3}
+  .chip.fc{border-color:var(--ac3);color:#ffe6bf}
+  .arrow{color:var(--dim);font-weight:700}
+  .ways{display:grid;gap:12px;grid-template-columns:1fr}
+  @media(min-width:700px){.ways{grid-template-columns:1fr 1fr}}
+  .way{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ac);border-radius:12px;padding:12px 14px}
+  .way.auto{border-left-color:var(--ac2)}
+  .way.man{border-left-color:var(--ac3)}
+  .way.fc{border-left-color:var(--ac4)}
+  .way h3{margin:0 0 4px;font-size:15px}
+  .way .tag{font-size:11.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.04em}
+  .steps{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .steps span{background:#222836;border:1px solid var(--line);border-radius:8px;padding:4px 8px;font-size:12.5px}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:13px}
+  code{background:#222836;border-radius:6px;padding:1px 5px;font-size:13px;font-family:ui-monospace,Menlo,monospace}
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:8px 0}
+  summary{cursor:pointer;font-weight:600}
+  details ul{margin:8px 0 4px 18px;padding:0}
+  details li{margin:5px 0;font-size:14px}
+  .pill{display:inline-block;background:#222836;border:1px solid var(--line);border-radius:999px;padding:2px 9px;font-size:12px;color:var(--dim)}
+  a{color:var(--ac)}
+  .foot{color:var(--dim);font-size:13px;margin-top:30px;border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>ttchop — mapa de la documentación</h1>
+  <p class="sub">Cómo se hacen los videos, con qué herramientas, y cómo está organizado el wiki (<code>cacho</code>). · 2026-11-05</p>
+
+  <h2>1 · Las 3 herramientas (y una de efectos)</h2>
+  <div class="tools">
+    <div class="tool"><b>ttchop-server</b> El <i>montaje</i>: une los clips según la receta y orquesta el Producer. <span class="repo">repo ttchop-server · FFmpeg</span></div>
+    <div class="tool"><b>Remotion</b> Los <i>captions/overlays</i>, carruseles y clips de personaje (composiciones React). <span class="repo">repos ttchop-post_templates + ttchop-post (:3001)</span></div>
+    <div class="tool"><b>FilmCraft</b> Editar <i>a mano</i> en la PC: timeline y overlays nativos. <span class="repo">app local en PumaDeskAsus</span></div>
+  </div>
+  <div class="card">
+    <b>Camino por defecto (dos en secuencia)</b>
+    <div class="flow">
+      <span class="chip">tus clips + voz</span><span class="arrow">→</span>
+      <span class="chip srv">ttchop-server · montaje</span><span class="arrow">→</span>
+      <span class="chip rem">Remotion · captions</span><span class="arrow">→</span>
+      <span class="chip">video final</span>
+    </div>
+    <div class="flow">
+      <span class="chip fc">FilmCraft</span><span class="arrow">=</span>
+      <span class="chip">reemplaza a los dos cuando editas a mano</span>
+    </div>
+    <p class="sub" style="margin-top:8px">El Producer automático usa <code>ttchop-server</code>/FFmpeg y <b>no</b> FilmCraft. <code>ttchop-effects</code> (Python) entra solo para efectos: blur de rostros/ojos y disclaimer.</p>
+  </div>
+
+  <h2>2 · Las vías para hacer un video</h2>
+  <p class="sub">Lo que cambia entre vías no es la herramienta: son los <b>pasos previos</b> y cuánto se automatiza.</p>
+  <div class="ways">
+    <div class="way auto">
+      <span class="tag">automática</span><h3>1 · Pipeline / Producer + UI</h3>
+      <p class="sub">Producción de catálogo: scout→producer en crons, o crear desde la UI de TTChop2.</p>
+      <div class="steps"><span>ningún paso previo</span><span>render automático</span></div>
+    </div>
+    <div class="way man">
+      <span class="tag">manual</span><h3>2 · Clips y trims de TTChop2</h3>
+      <p class="sub">Ya tienes los clips en el sistema y montas collage + canción.</p>
+      <div class="steps"><span>producto</span><span>clips</span><span>diálogo</span><span>canción</span><span>receta</span></div>
+    </div>
+    <div class="way man">
+      <span class="tag">manual · sin catálogo</span><h3>3b · Solo audio + videos</h3>
+      <p class="sub">No hay ficha de producto: solo tu audio y tus clips.</p>
+      <div class="steps"><span>audio</span><span>clips</span><span>receta</span></div>
+    </div>
+    <div class="way man">
+      <span class="tag">manual · cadena larga</span><h3>3 · Recrear el video de un creador</h3>
+      <p class="sub">Lo que hicimos con ASU. Incluye <b>variaciones</b> de un video ya entregado.</p>
+      <div class="steps"><span>transcripción</span><span>lista de shots</span><span>grabar</span><span>plan</span><span>receta</span><span>captions</span></div>
+    </div>
+    <div class="way fc">
+      <span class="tag">a mano</span><h3>4 · FilmCraft en la PC</h3>
+      <p class="sub">El mismo material, pero la edición final se hace a mano en la PC.</p>
+      <div class="steps"><span>lo mismo que 2/3</span><span>+ timeline manual</span><span>overlays nativos</span></div>
+    </div>
+  </div>
+
+  <h2>3 · El wiki <code>cacho</code>: cómo está organizado</h2>
+  <div class="card">
+    <table>
+      <tr><th>Archivo</th><th>Para qué sirve</th></tr>
+      <tr><td><code>index.md</code></td><td><b>El catálogo.</b> Toda página con un resumen de una línea. Es lo primero que se lee.</td></tr>
+      <tr><td><code>log.md</code></td><td><b>La bitácora.</b> Qué se hizo cada día, qué falló y qué se aprendió.</td></tr>
+      <tr><td><code>operations/</code></td><td><b>Los runbooks.</b> El paso a paso de cada cosa (video, NAS, FTP, webapps, hardware).</td></tr>
+      <tr><td><code>proyectos/</code>, <code>hardware/</code>, …</td><td>Fichas de contexto: quién es Arturo, qué proyectos hay, qué máquinas.</td></tr>
+    </table>
+    <p class="sub">Todo es markdown versionado en git: cada cambio queda con su commit (regla TTC-41).</p>
+  </div>
+
+  <h3>Los runbooks de video</h3>
+  <details open><summary>🎬 Hacer y editar videos</summary><ul>
+    <li><b>ttchop-video-paths</b> — <i>punto de entrada</i>: las vías, cuándo usar cada una y las piezas compartidas.</li>
+    <li><b>ttchop-video-generation</b> — flujos de la UI de TTChop2 y del collage manual del server.</li>
+    <li><b>recrear-video-creadores-edits</b> — recrear el video de un creador de principio a fin (+ §8 variaciones).</li>
+    <li><b>ttchop-raw-asset-manual-edit</b> — edición manual tipo Producer cuando no hay catálogo.</li>
+    <li><b>ttchop-filmcraft-video-tests</b> — FilmCraft en la PC: edición a mano, overlays nativos, paquete portable.</li>
+    <li><b>traduccion-video-pumasvoice-sincronizada</b> — traducir/doblar un video con PumaVoice y alinear tiempos.</li>
+    <li><b>ttchop-music-generation</b> — canciones con ElevenLabs Music.</li>
+    <li><b>ttchop-carousel-creation</b> — carruseles (imágenes, no video).</li>
+  </ul></details>
+  <details><summary>🛠️ Infra, accesos y datos</summary><ul>
+    <li><b>acceso-nas-polaris</b> — el NAS: cómo se lee y escribe (SMB directo).</li>
+    <li><b>acceso-ftps-lemon-sushi</b> — el FTP donde se publican las listas y páginas.</li>
+    <li><b>acceso-remoto-pumadeskasus</b> — la PC Windows: SSH por Tailscale y sus límites.</li>
+    <li><b>hardware-vps-tools / hardware-vps-projects / hardware-desktop-puma</b> — las máquinas.</li>
+    <li><b>estudio-creadores-fuentes-datos</b> — el inventario del estudio de creadores (Asu/Sora).</li>
+  </ul></details>
+  <details><summary>⚙️ Pipeline y webapps</summary><ul>
+    <li><b>ttchop-automatizaciones</b> — scheduler, pipeline scout→producer y defaults de render.</li>
+    <li><b>ttchop-webapps</b> — las webapps de ttchop/ttchop2 (dashboard, productos, video, Analytics).</li>
+    <li><b>ttchop</b> y <b>proyecto-ttchop</b> — el proyecto: web app + editor de video + bot.</li>
+  </ul></details>
+
+  <h2>4 · Para qué me pides cada cosa</h2>
+  <div class="card">
+    <table>
+      <tr><th>Si quieres…</th><th>Lo que hago</th></tr>
+      <tr><td>un video nuevo desde cero (como los de ASU)</td><td>vía 3: transcripción → lista de shots con GIFs → tú grabas → montaje → captions</td></tr>
+      <tr><td>cambiarle guion, voz o edición a un video ya hecho</td><td>§8: se lee el manifiesto del caso en el NAS y se rehace sin regrabar</td></tr>
+      <tr><td>la edición a mano en tu PC</td><td>FilmCraft: te dejo el proyecto (y el paquete portable) listo</td></tr>
+      <tr><td>saber qué pasó con la producción automática</td><td>reviso los runs del pipeline y te digo qué fase falló</td></tr>
+      <tr><td>una página para consultar en el celular</td><td>se publica en tu FTP y te mando el link (como esta)</td></tr>
+    </table>
+  </div>
+
+  <div class="foot">
+    Fuente: wiki <code>cacho</code> (markdown + git) · este mapa es un resumen de una página; cada tema tiene su runbook.
+    <br>Nada se publica en TikTok sin tu OK.
+  </div>
+</div>
+</body>
+</html>
