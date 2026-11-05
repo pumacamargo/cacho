@@ -129,7 +129,7 @@ Variante del flujo §5 que **no** pasa por Firestore: el montaje se hizo manual 
   1080×1920 a 30 fps + AAC estéreo 48 kHz, `offlineMedia: []`, 56 s de render. Audio **−17.9 dB /
   pico −1.5 dB**, idéntico al montaje del servidor; decodificación completa OK y comparación de
   secuencia contra el MP4 de `collage_builder` sin diferencias.
-- **Paquete en el NAS:** `creators_research\edits\02_blanket\filmcraft-20261103\` con el MP4 sin overlays
+- **Paquete en el NAS:** `edits\11_blanket\filmcraft-20261103\` con el MP4 sin overlays
   (`blanket02-filmcraft.mp4`, 67 480 633 B), el MP4 final **con overlays** en layout escalonado
   (`blanket02-filmcraft-overlays.mp4`, 67 714 660 B, SHA-256 `759c592b…`), los `.fcproj` y
   `source-media-manifest.json`. Hashes verificados tras la copia.
@@ -139,7 +139,7 @@ Variante del flujo §5 que **no** pasa por Firestore: el montaje se hizo manual 
   `graphics.set {props:{background_color:"#ffffff"}}` sobre los 11 captions; el MP4 del NAS ya es el
   corregido (caja blanca con texto oscuro). Ver la sección de overlays.
 - **Relink al NAS (hecho):** existe `blanket02-filmcraft-portable.fcproj`; sus **27 rutas** apuntan a
-  `P:\tiktok\hamaca\creators_research\edits\02_blanket\…` (23 clips en `recordings\`, la voz en
+  `P:\tiktok\hamaca\edits\11_blanket\…` (23 clips en `recordings\`, la voz en
   `assets\audio\`, flecha y portada en la carpeta del proyecto) y **ninguna** a `D:\staging`. Los 27
   archivos se verificaron por SMB en el NAS y el `.fcproj` abre bien en FilmCraft (29 items, secuencia
   activa). El proyecto de `D:\staging` se conserva como **local** (es el que renderiza hoy).

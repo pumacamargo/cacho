@@ -1,5 +1,5 @@
 ---
-title: Recrear un video de creador (creators_research/edits)
+title: Recrear un video de creador (tiktok/hamaca/edits)
 created: 2026-11-01
 updated: 2026-11-01
 type: runbook
@@ -9,7 +9,7 @@ confidence: high
 related: [estudio-creadores-fuentes-datos, acceso-nas-polaris, ttchop-raw-asset-manual-edit, ttchop-video-generation]
 ---
 
-# Recrear un video de creador (creators_research/edits)
+# Recrear un video de creador (tiktok/hamaca/edits)
 
 Procedimiento repetible para **recrear un video de Asu/Sora**: partir del video de
 referencia, sacar su guion y su desglose audiovisual, escribir una variación del guion,
@@ -20,7 +20,7 @@ Caso verificado de punta a punta: `01_squishy01` (2026-11-01). Ver también
 
 ## Estructura de carpetas en el NAS
 
-`\\Polaris\Projects\Tiktok\hamaca\creators_research\edits\<NN_nombre>\`
+`\\Polaris\Projects\Tiktok\hamaca\edits\<NN_nombre>\`
 
 - `input/` — el video de referencia (p. ej. `snaptik_<id>_v3.mp4`) **y** los entregables del
   análisis (transcript + desgloses), más la lista de shots (`<NN_nombre>_shots.html` + `shots/` con
@@ -337,6 +337,14 @@ de su carpeta con: la referencia, el material propio, **la tabla plano→clip de
 `trimStart`/`trimEnd`), la voz, el guion, los captions con sus tiempos, los entregables y **la cadena de
 comandos exacta** para rehacerlo. Empezar por leerlo: es el índice del caso.
 
+- **Ubicación (los 3 casos recreados se movieron el 2026-11-05):** viven en
+  **`tiktok/hamaca/edits/<NN>_<caso>/`** → **`10_squishy01`**, **`11_blanket`** y **`12_suitcase`**
+  (antes en `creators_research/edits/`). Los **archivos internos conservan su prefijo viejo**
+  (`01_squishy01_*`, `02_blanket_*`, `03_suitcase_*`), así que el manifiesto de cada uno avisa de su
+  número nuevo. **Las recetas se reescribieron a la ruta nueva** (`/mnt/polaris/tiktok/hamaca/edits/…`)
+  y sus rutas se verificaron una por una; si algún caso se vuelve a mover, reescribir
+  `ffmpegRecipe.clips[].src` y `audio.src` de la receta y volver a verificar antes de montar.
+
 Piezas y dónde viven:
 
 | Pieza | Archivo | Para qué sirve en una variación |
@@ -371,7 +379,7 @@ Pasos (detalle en el manifiesto del caso):
 - Los casos con **varios productos** (`03_suitcase`: `cicilife/` y `other/`) llevan un subdirectorio por
   producto; el guion y los captions se ajustan a las funciones de cada uno.
 
-## Caso verificado — `01_squishy01`
+## Caso verificado — `10_squishy01` (archivos `01_squishy01_*`)
 
 - Referencia: `input/snaptik_7685601865454587154_v3.mp4` — 25.83 s, 720×1280, 30 fps, audio ja.
 - Transcripción ASR (12 segmentos) → `snaptik_…_v3.transcript.txt`.
@@ -396,7 +404,7 @@ Pasos (detalle en el manifiesto del caso):
   t=4.0 s del montaje, **sin** texto ni capa oscura: eso lo añade la composición). Es el archivo que
   hay que copiar a `public/` para re-renderizar.
 
-## Caso verificado — `02_blanket` (2026-11-02/03)
+## Caso verificado — `11_blanket` (archivos `02_blanket_*`, 2026-11-02/03)
 
 - Referencia: `input/snaptik_7703402548501187847_v3.mp4` — 26.63 s, **720×1280 (vertical)**, audio ja.
 - Transcripción: **11 líneas**. Guion variado aprobado por Arturo: 11 líneas / 207 caracteres, sin
@@ -420,7 +428,7 @@ Pasos (detalle en el manifiesto del caso):
   Todo el detalle —API de gráficos, trampa de `background_color`, relink a `P:` del paquete portable—
   está en [[ttchop-filmcraft-video-tests]].
 
-## Caso verificado — `03_suitcase` (2026-11-03/04)
+## Caso verificado — `12_suitcase` (archivos `03_suitcase_*`, 2026-11-03/04)
 
 - **Dos productos en un mismo caso:** `recordings/cicilife/` y `recordings/other/` (ambas maletas; el
   `cicilife` es la H1 de la ficha de TikTok Shop). Arturo confirmó a mitad del trabajo que el cicilife
