@@ -508,8 +508,13 @@ Pasos (detalle en el manifiesto del caso):
   el caso no se reproduce. El manifiesto también registra las **páginas de revisión publicadas** (URL base,
   cada página y su para qué) y el resultado de verificarlas en vivo con `curl`.
 - Detalle reproducible completo: el **manifiesto** `13_NachoShampoo01_MANIFEST.md` (tabla plano→clip, overlays
-  con tiempos y SHA-256 de las entregas), el skill `ttchop-content-ops`
-  (`references/ai-video-generation-kie.md`) y `CASE_NOTES.md`.
+  con tiempos, SHA-256 de las entregas y una sección **«Cómo reconstruirlo o modificarlo»** con los dos
+  comandos del builder, el render de Remotion y **las trampas del entorno**), el skill `ttchop-content-ops`
+  (`references/ai-video-generation-kie.md` y `references/creators-research-video-breakdown.md`) y
+  `CASE_NOTES.md`. **Auditoría de cierre del mismo día** (a pregunta de Arturo): la receta se validó contra
+  el disco — los **15 `src` existen** (0 faltantes) ✓ y el audio de la receta es una **URL del FTP** (con
+  copia local en `assets/audio/` por si el FTP no responde ✓); y se descubrió que el montaje `/mnt/polaris`
+  de vps-projects es de **solo-lectura**, así que organizar/subir la carpeta del caso se hace por **SMB**.
 
 ## Pitfalls
 
