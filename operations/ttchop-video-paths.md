@@ -66,6 +66,14 @@ Y la diferencia entre vías son los **pasos previos al montaje**:
 - **La voz:** **PumaVoice01** (`ve7BOdejheJbgrBriBx4`) con el helper ya versionado `ttchop-server/scripts/creators/tts/tts_lines.mjs`; se ajusta el ritmo con `atempo` + pausas ([[recrear-video-creadores-edits]] §4).
 - **Para variar un video ya entregado:** el **manifiesto** de su carpeta en el NAS (`<caso>_MANIFEST.md`) tiene el mapeo plano→clip, la voz, los captions y los comandos ([[recrear-video-creadores-edits]] §8).
 
+## Clips generados con IA (opcional, para planos sin producto)
+
+Existe una vía de **generación con IA** (kie.ai) ya integrada en `ttchop-server`, útil para los planos
+**sin producto ni manos** (agua, espuma, vapor, texturas, ambientes). Dos reglas fijas: el clip debe
+**coincidir con el encuadre del shot** (se logra dando el **fotograma de la referencia como primer cuadro**)
+y la persona debe ir **siempre con ropa**. Detalle, precios y trampas en el skill `ttchop-content-ops`
+(`references/ai-video-kie.md`) y en la bitácora del 2026-11-05.
+
 ## Pasos de apoyo (se usan dentro de las vías)
 
 - **Voz / traducción de un video ya hecho** (ES→JA, alinear inicio/fin): [[traduccion-video-pumasvoice-sincronizada]]
