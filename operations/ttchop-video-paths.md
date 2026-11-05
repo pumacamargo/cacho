@@ -15,6 +15,25 @@ related: [ttchop-video-generation, recrear-video-creadores-edits, ttchop-raw-ass
 alternativo), y todas comparten piezas. Esta página dice **cuál usar, qué necesitas y dónde está el
 paso a paso**; cada vía sigue teniendo su runbook propio.
 
+## Los 2 motores (esto es lo que de verdad no cambia)
+
+Casi todo el trabajo recae en **dos motores**; lo que cambia entre vías es de dónde vienes y cuántos
+pasos previos haces, no el motor:
+
+| Motor | Qué es | Quién lo usa |
+|---|---|---|
+| **`ttchop-server` / FFmpeg** | el montaje (`scripts/collage_builder.py`) + las composiciones Remotion de `ttchop-post_templates` (captions/overlays) | **todas** las vías: el Producer automático, la UI, los manuales con clips de TTChop2, los de solo audio+video, las recreaciones de creador y sus variaciones |
+| **FilmCraft (PC)** | editor local: timeline, overlays nativos, paquete portable | solo cuando se quiere **editar a mano** (casos MAGINA Tagiras, Ellis if01, 02_blanket). **No** está integrado al Producer — «el Producer actual sigue usando `ttchop-server`/FFmpeg; no usa FilmCraft» |
+
+Y la diferencia real entre vías son los **pasos previos al montaje**:
+
+| Vía | Pasos previos | Automatización |
+|---|---|---|
+| 1 · Automática | ninguno: los crons recorren scout→producer y renderizan | total |
+| 2 / 3b · Manuales | resolver producto y clips → diálogo/canción o voz → receta | media |
+| 3 · Recrear un creador | transcripción → **lista de shots** → **grabar** → plan → receta → tiempos de captions | la cadena más larga |
+| 4 · FilmCraft | lo mismo que 2/3, pero la edición final se hace en la PC a mano | manual |
+
 ## Las vías
 
 | # | Vía | Para qué | Qué necesitas | Paso a paso |
