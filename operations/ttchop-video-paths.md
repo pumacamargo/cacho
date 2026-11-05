@@ -15,17 +15,24 @@ related: [ttchop-video-generation, recrear-video-creadores-edits, ttchop-raw-ass
 alternativo), y todas comparten piezas. Esta página dice **cuál usar, qué necesitas y dónde está el
 paso a paso**; cada vía sigue teniendo su runbook propio.
 
-## Los 2 motores (esto es lo que de verdad no cambia)
+## Las 3 herramientas (y cómo se combinan)
 
-Casi todo el trabajo recae en **dos motores**; lo que cambia entre vías es de dónde vienes y cuántos
-pasos previos haces, no el motor:
+Lo que cambia entre vías es de dónde vienes y cuántos pasos previos haces; las **herramientas** que
+hacen el video son tres (más una de efectos):
 
-| Motor | Qué es | Quién lo usa |
+| Herramienta | Qué aporta | Dónde vive |
 |---|---|---|
-| **`ttchop-server` / FFmpeg** | el montaje (`scripts/collage_builder.py`) + las composiciones Remotion de `ttchop-post_templates` (captions/overlays) | **todas** las vías: el Producer automático, la UI, los manuales con clips de TTChop2, los de solo audio+video, las recreaciones de creador y sus variaciones |
-| **FilmCraft (PC)** | editor local: timeline, overlays nativos, paquete portable | solo cuando se quiere **editar a mano** (casos MAGINA Tagiras, Ellis if01, 02_blanket). **No** está integrado al Producer — «el Producer actual sigue usando `ttchop-server`/FFmpeg; no usa FilmCraft» |
+| **`ttchop-server` (FFmpeg)** | el **montaje**: une los clips según la receta (`scripts/collage_builder.py`); además orquesta el Producer | repo `ttchop-server` (vps-projects) |
+| **Remotion** | los **captions/overlays, carruseles y clips de personaje**: composiciones React (`caption-overlay`, `CarouselSlide`, `CharacterClip`, `AutoOverlay`…) que se renderizan con `npx remotion` o a través del overlay-server | repo **`ttchop-post_templates`** (composiciones) + repo **`ttchop-post`** (`overlay-server`, :3001 — expone `/render`, `/character/render`, carruseles) |
+| **FilmCraft** | **editar a mano** en la PC: timeline, overlays nativos, paquete portable (hace de los dos anteriores) | app local en PumaDeskAsus (no es repo) |
+| *(`ttchop-effects`)* | *efectos*: blur de rostros/ojos, disclaimer (*Python, repo `ttchop-effects`*) | repo `ttchop-effects` |
 
-Y la diferencia real entre vías son los **pasos previos al montaje**:
+**El camino por defecto usa dos de ellas en secuencia:** montaje con **ttchop-server/FFmpeg** →
+captions/overlays con **Remotion**. **FilmCraft** reemplaza a las dos cuando la edición se hace a mano
+(casos MAGINA Tagiras, Ellis if01, 02_blanket) — está documentado que *«el Producer actual sigue usando
+`ttchop-server`/FFmpeg; no usa FilmCraft»*.
+
+Y la diferencia entre vías son los **pasos previos al montaje**:
 
 | Vía | Pasos previos | Automatización |
 |---|---|---|
