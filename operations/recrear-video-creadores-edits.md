@@ -9,6 +9,8 @@ confidence: high
 related: [estudio-creadores-fuentes-datos, acceso-nas-polaris, ttchop-raw-asset-manual-edit, ttchop-video-generation]
 ---
 
+> **Vía / punto de entrada:** [[ttchop-video-paths]] — cuál de las vías usar y qué comparten.
+
 # Recrear un video de creador (tiktok/hamaca/edits)
 
 Procedimiento repetible para **recrear un video de Asu/Sora**: partir del video de

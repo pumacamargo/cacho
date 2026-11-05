@@ -9,6 +9,8 @@ confidence: high
 related: [ttchop-video-generation, ttchop-music-generation, acceso-remoto-pumadeskasus]
 ---
 
+> **Vía / punto de entrada:** [[ttchop-video-paths]] — cuál de las vías usar y qué comparten.
+
 # Edición manual Producer-style con solo audio y videos
 
 Este flujo sirve cuando se cuenta con **un audio aprobado por Arturo y archivos de video originales**, pero no existe una ficha de producto ni `sessions` con metadata en Firestore. No se ejecuta `runProducer()`: se prepara un montaje manual con `ttchop-server/scripts/collage_builder.py` y se entrega el MP4. No inventes ni persistas productos, sesiones o clips de catálogo. Para leer el NAS usa el alcance temporal documentado en [[acceso-remoto-pumadeskasus]]; para los flujos de collage y música existentes consulta [[ttchop-video-generation]] y [[ttchop-music-generation]].

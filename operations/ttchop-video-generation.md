@@ -9,6 +9,8 @@ confidence: high
 related: [ttchop-webapps, ttchop-automatizaciones, ttchop-filmcraft-video-tests, ttchop-raw-asset-manual-edit]
 ---
 
+> **Vía / punto de entrada:** [[ttchop-video-paths]] — cuál de las vías usar y qué comparten.
+
 # Flujos de creación y render de video
 
 Esta página separa dos procesos distintos: la creación iniciada desde la UI de

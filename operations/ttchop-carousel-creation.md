@@ -9,6 +9,8 @@ confidence: high
 related: [ttchop-webapps, ttchop-automatizaciones]
 ---
 
+> **Vía / punto de entrada:** [[ttchop-video-paths]] — cuál de las vías usar y qué comparten.
+
 # Creación de carruseles editoriales de TTChop
 
 Runbook para historias de Reddit adaptadas a carrusel y otros carruseles

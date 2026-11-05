@@ -9,6 +9,8 @@ confidence: high
 related: [ttchop-video-generation, ttchop-automatizaciones, ttchop-webapps]
 ---
 
+> **Vía / punto de entrada:** [[ttchop-video-paths]] — cuál de las vías usar y qué comparten.
+
 # FilmCraft: muestras locales, no pipeline integrado
 
 Esta página distingue la implementación vigente del Producer, las pruebas locales de FilmCraft del 2026-10-21 y una posible integración futura. Para los otros flujos manuales y sus límites, consulta [[ttchop-video-generation]]; para scheduler y cooldowns, [[ttchop-automatizaciones]]. TTChop2 y `ttchop` son proyectos Firebase distintos: [[ttchop-webapps]]. Las exportaciones ELLISS/MAGINA no se publicaron ni se guardaron como renders en Firebase; el estado de entrega por Telegram se registra por caso. La prueba manual de aretes descrita abajo sí se guardó en Polaris y se envió como adjunto por Telegram; no se publicó ni escribió en Firebase.

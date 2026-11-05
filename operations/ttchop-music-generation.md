@@ -9,6 +9,8 @@ confidence: high
 related: [ttchop-video-generation, ttchop-automatizaciones, ttchop-webapps]
 ---
 
+> **Vía / punto de entrada:** [[ttchop-video-paths]] — cuál de las vías usar y qué comparten.
+
 # Generación manual de canciones con ElevenLabs Music
 
 Esta guía documenta la prueba de canción enviada manualmente a ElevenLabs Music

@@ -9,6 +9,8 @@ confidence: high
 related: [ttchop-video-generation, ttchop-raw-asset-manual-edit, transcripcion-curso-gerardo-santiago]
 ---
 
+> **Vía / punto de entrada:** [[ttchop-video-paths]] — cuál de las vías usar y qué comparten.
+
 # Video traducido con PumaVoice, sin ElevenLabs Dubbing
 
 Flujo aprobado por Arturo: **transcripción local → traducción del asistente → TTS con su voz existente → ajuste local del intervalo de habla → audio nuevo sobre el video original**. No intenta mover labios ni sincronizar cada fonema. No usa ElevenLabs Dubbing, Producer, Firestore ni publicación en TikTok. Para otros montajes consultar [[ttchop-raw-asset-manual-edit]] y [[ttchop-video-generation]]; el reconocimiento local compatible se documenta también en [[transcripcion-curso-gerardo-santiago]].
