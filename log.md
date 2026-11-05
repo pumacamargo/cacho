@@ -615,3 +615,32 @@
 - Se armó un **preview de 10.9 s** cortando los clips de IA con las **duraciones reales de la referencia** y poniendo **tarjetas oscuras** en los 4 planos que graba Arturo (producto, espuma, secadora, botella) → se ve el ritmo real y qué falta. Guardado en el NAS (`13_NachoShampoo01\ai-test\`).
 - **Aprendizaje de proceso:** para fijar encuadre hay que escribir en el prompt «de espaldas, la cara nunca se ve, cámara fija» (un «gira la cabeza» la volteó a cámara) y **siempre validar la sintaxis** (`node --check`) antes de lanzar un script de generación. Un clip de 5–10 s cubre **varias tomas cortas** variando el punto de entrada: no hace falta generar un clip por toma. Método completo en el skill `ttchop-content-ops` → `references/ai-video-generation-kie.md`.
 - Gasto total de la prueba: **~$2.80**. Sin publicar nada en TikTok.
+
+## [2026-11-05] docs | caso 13 `13_NachoShampoo01` — recreación completa con planos generados por IA
+
+- **Encargo:** recrear una referencia de 10.9 s (15 tomas) donde **los planos sin producto los genera la
+  IA** y los de producto/manos los graba Arturo. La referencia es 720×1280 a 30 fps y el ASR en ja detectó
+  **una sola frase de 13 caracteres** → es música con un gancho hablado al inicio, así que el guion se
+  escribió libre y la música se generó nueva (instrumental ~132 BPM, al estilo de la original).
+- **Proceso completo** (documentado paso a paso en [[recrear-video-creadores-edits]] → «Caso verificado —
+  13_NachoShampoo01»): transcripción → **shotlist HTML con GIFs** → **8 imágenes** con `nano-banana-edit`
+  (cada una recreando fielmente el fotograma de su plano) → **8 clips** con `wan/2-6-flash-image-to-video`
+  a **720p** usando la imagen aprobada como primer cuadro → **montaje** con `build_recipe_from_plan.py` +
+  `collage_builder.py` (15 piezas a 1080×1920, SAR 1:1, 30 fps) → **`caption-overlay`** para el cierre y la
+  portada → **emojis e insignias ①②③ quemados con ffmpeg** → **portada** = último fotograma.
+- **Lo que más costó** (y quedó en los pitfalls del runbook): las imágenes necesitaron **6 rondas** porque
+  al principio se le pedía a la IA «otra mujer» (inventaba una distinta por plano y el pelo cambiaba de
+  tono) y «pelo largo a la cintura» (abría el plano y rompía el recorte). Y los overlays de la referencia
+  hubo que **medirlos por color, píxel a píxel, sobre 55 fotogramas**: así se descubrió que los **emojis
+  alternan en cada corte** (impares 😢 / pares 😊), que van **centrados al 50%** y que miden **9.2% del
+  ancho** — estimarlos a ojo desde hojas reducidas provocó dos rechazos seguidos. También: **el plano 15
+  (toma horizontal de Arturo) se rota a vertical** en vez de recortarla, y así las botellas quedan paradas
+  y las etiquetas legibles.
+- **Entregado:** `13_NachoShampoo01_FINAL_v8_musica.mp4` y `_FINAL_v8_SIN_MUSICA.mp4` (11.13 s, 1080×1920,
+  audio bit-exacto −13.3 dB) + el thumbnail PNG + la música + la toma rotada, todo en el NAS y verificado
+  por hash. La versión con el **audio original** de la creadora se guardó aparte **solo para comparar**
+  (`_comparacion_interna_no_publicar/`) — no es publicable.
+- **Gasto: 321.5 créditos ≈ $1.61** (las imágenes y los 8 clips; el único video que falló por error del
+  servidor se relanzó **sin costo**). El método quedó copiado al skill `ttchop-content-ops`
+  (`references/ai-video-generation-kie.md`) y el expediente del caso en `CASE_NOTES.md`, en el NAS.
+- Sin publicar nada en TikTok (falta el OK explícito de Arturo).

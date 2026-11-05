@@ -456,6 +456,46 @@ Pasos (detalle en el manifiesto del caso):
   31.77 s, −17.7/−1.3 dB) + `03_suitcase_cicilife_endcard.png` (el thumbnail) + guion, plan, props y
   receta finales. Sin publicar.
 
+## Caso verificado — `13_NachoShampoo01` (shampoo KIROKU, 2026-11-05)
+
+- **Referencia:** 10.9 s, 720×1280, 30 fps, **15 tomas** (sin cortes falsos). El ASR en ja solo detectó
+  **1 segmento de 13 caracteres** (`おー!キロブラウディース!`) → la referencia es **música con una frase
+  suelta al inicio**, así que el guion se escribe libre (no hay narración que parafrasear) y la música
+  se generó nueva (instrumental ~132 BPM al estilo de la original).
+- **Reparto final:** **8 planos con video generado con IA** (1, 3, 5, 10, 11, 12, 13, 14) + **7 con material
+  propio o piezas ya aprobadas** (2, 4, 6, 7, 8, 9, 15). Producto: **KIROKU Shampoo + Treatment**.
+- **Cadena completa** (todas las piezas quedan guardadas en la carpeta del caso en el NAS):
+  1. Transcripción de la referencia en la PC (faster-whisper ja) — ver [[acceso-remoto-pumadeskasus]].
+  2. **Shotlist**: 15 tomas, tarjetas HTML con GIFs (grupos A-E: antes / producto / mojado / secado / botella),
+     publicada en el FTP de Lemon Sushi.
+  3. **Imágenes de los planos sin producto** (`google/nano-banana-edit`, ≈4 créditos por imagen): cada
+     generación recibe **el fotograma de la referencia de ESE plano** y el prompt pide **recrear esa misma
+     imagen con cambios mínimos** (borrar texto/emoji/insignia, el estado del pelo, la ropa). Hicieron falta
+     **6 rondas** hasta el visto bueno de Arturo — las reglas están en los pitfalls y el método completo en
+     el skill `ttchop-content-ops` → `references/ai-video-generation-kie.md`.
+  4. **Video de IA** (`wan/2-6-flash-image-to-video`, **720p** por costo, 5 s, `image_urls` = la imagen
+     aprobada como primer cuadro): 8 clips, **~20 créditos cada uno**. Uno falló con `Internal Error`
+     y **se relanzó sin costo** (las tareas fallidas no se cobran).
+  5. **Montaje**: `build_recipe_from_plan.py` (duraciones reales de la referencia) → `collage_builder.py`.
+    15 piezas normalizadas a **1080×1920 / SAR 1:1 / 30 fps**; resultado **11.13 s**.
+  6. **Overlays**: composición Remotion `caption-overlay` para el cierre (aviso legal 「個人の感想です」 y
+     portada); los **emojis y las insignias ①②③ se queman después con ffmpeg**, porque van medidos en
+     píxeles y en ventanas de tiempo por corte.
+  7. **Portada**: el **último fotograma** del render es el thumbnail (se exporta aparte en PNG 1080×1920).
+- **Sistema de overlays de la referencia (medido, no estimado):** bloque gris de aviso legal arriba a la
+  izquierda; **emojis que alternan en cada corte** — **impares 😢 / pares 😊**, centrados al **50%** del
+  cuadro y a **9.2% del ancho** (66 px de 720 → 99 px en 1080), con sombra suave para que se lean sobre el
+  pelo rubio; **insignias ①②③** (aro blanco fino + número blanco en negrita) sobre el lavado, el mechón y
+  el secado; y un caption de **precio** al final que **no se copia**.
+- **El plano 15 (toma de Arturo) está en HORIZONTAL:** se **rota 90° a vertical** (`transpose=1`) en vez de
+  recortarla → las botellas quedan **paradas** y sus etiquetas **legibles**; recortando el centro se perdían.
+  La toma rotada se guarda suelta en el NAS por si se necesita aparte.
+- **Entregado:** `13_NachoShampoo01_FINAL_v8_musica.mp4` y `..._FINAL_v8_SIN_MUSICA.mp4` (11.13 s,
+  1080×1920, audio bit-exacto −13.3 dB) + `13_NachoShampoo01_thumbnail_v8.png` + la música
+  (`audio/musica_take1.mp3`) + `_comparacion_interna_no_publicar/` (la versión con el audio original, hecha
+  solo para comparar y **no publicable**). Gasto del caso: **321.5 créditos ≈ $1.61** (saldo 1150 → 828.46).
+  Sin publicar en TikTok.
+
 ## Pitfalls
 
 - `pumassh` (wrapper Windows `P:`) hoy falla por memoria; no es la ruta.
@@ -484,3 +524,39 @@ Pasos (detalle en el manifiesto del caso):
 - Para tareas de código en `ttchop-post_templates`, el perfil `developer` puede estar
   **rate-limited**; en ese caso `developer_ds` sí corrió. Verificar siempre el commit en `origin/main`.
 - No dejar credenciales en el wiki, en commits ni en el chat.
+
+### Pitfalls de los planos generados con IA y de los overlays (caso 13)
+
+- **Recrear una referencia con IA = recrear la MISMA imagen con cambios mínimos.** Nunca pedir «otra
+  mujer» (el modelo inventa una distinta en cada plano y el pelo cambia de tono y largo, con lo que el set
+  deja de leerse como un mismo video) y **nunca describir el pelo como «largo a la cintura»** (el modelo
+  abre el plano para encuadrarlo y rompe el recorte de la referencia). Pedir en su lugar *«keep the exact
+  same crop and zoom, do not zoom out»* y **respetar la pose de la referencia**: si la creadora mira de
+  frente con parte de su cara en cuadro, la recreación también (forzar «de espaldas» fue un invento que
+  provocó rechazos).
+- **Verificar cada imagen generada ampliada** (recortes de la zona de cara y de manos) y **no deducir los
+  rótulos de la referencia desde hojas de contactos reducidas**: en este caso se «leyó» un rótulo blanco
+  que no existía, se construyó un sistema de 6 captions inventado y hubo que quitarlo; lo que sí tenía era
+  un bloque gris de aviso legal, emojis y insignias.
+- **Los overlays de la referencia se miden por color, no a ojo.** Un barrido con detector de píxeles sobre
+  ~55 fotogramas del original (buscando el amarillo saturado del emoji) da la línea de tiempo y el centro y
+  tamaño exactos: así se descubrió que los emojis **alternan en cada corte** (impares 😢 / pares 😊), que van
+  **centrados al 50%** y que miden **9.2% del ancho**. Estimarlos desde paneles reducidos costó dos rechazos
+  seguidos (descentrados al 31% y a 15% de tamaño). El emoji necesita **sombra suave** para no camuflarse
+  sobre el pelo claro.
+- **Al reemplazar una imagen ya publicada, cambiarle el nombre** (`_pair_v2`, `_v5`…) y **verificar bajando
+  la URL pública y comparando el SHA-256**, no solo que la imagen cargue: el host sirve por caché y con el
+  mismo nombre sigue entregando el archivo viejo (Arturo lo vio antes que yo: «no se actualizaron las
+  imágenes»). Lo mismo vale para páginas HTML regeneradas.
+- **Un clip horizontal del propio Arturo se ROTA a vertical, no se recorta.** El recorte del centro pierde
+  el sujeto y la etiqueta del producto; `ffmpeg -vf transpose=1` (horario) deja las botellas paradas y
+  legibles. En el caso 13 el plano 15 era horizontal y el recorte dejaba solo un pedazo de etiqueta.
+- **`build_recipe_from_plan.py` exige `--audio-duration` cuando el audio es una URL**, y si la música dura
+  más que el video calcula un `extra_al_ultimo`: el montaje sigue quedando del largo del plan porque el
+  `-shortest` del builder corta el audio, pero conviene comprobarlo.
+- **Los clips de IA traen SAR indefinido** (`10240:10239` en los fotogramas) y los clips horizontales
+  escalados por el builder también lo rompen: normalizar todas las piezas con `setsar=1` antes de subirlas
+  (el pre-paso del builder no lo corrige). Detalle en el skill `ttchop-content-ops`.
+- **La música de la referencia no se publica nunca.** Sí se puede generar una instrumental propia parecida
+  (`ttchop-music-generation`), y la versión con el audio original se guarda **solo para comparar** en
+  `_comparacion_interna_no_publicar/`.

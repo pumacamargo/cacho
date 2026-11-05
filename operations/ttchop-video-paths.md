@@ -72,7 +72,14 @@ Existe una vía de **generación con IA** (kie.ai) ya integrada en `ttchop-serve
 **sin producto ni manos** (agua, espuma, vapor, texturas, ambientes). Dos reglas fijas: el clip debe
 **coincidir con el encuadre del shot** (se logra dando el **fotograma de la referencia como primer cuadro**)
 y la persona debe ir **siempre con ropa**. Detalle, precios y trampas en el skill `ttchop-content-ops`
-(`references/ai-video-kie.md`) y en la bitácora del 2026-11-05.
+(`references/ai-video-generation-kie.md`) y en la bitácora del 2026-11-05.
+
+**Flujo verificado de punta a punta (caso 13, `13_NachoShampoo01`):** los planos de persona se generan
+**primero como imagen** (`google/nano-banana-edit`, cada una recreando **fielmente** el fotograma de su
+propio plano — ver los pitfalls del runbook) → Arturo las aprueba → **solo entonces** se animan
+(`wan/2-6-flash-image-to-video`, 720p o 1080p, 5 s, usando la imagen aprobada como primer cuadro) → montaje
+normal. Documentado paso a paso en [[recrear-video-creadores-edits]] → «Caso verificado —
+13_NachoShampoo01».
 
 ## Pasos de apoyo (se usan dentro de las vías)
 
