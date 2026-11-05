@@ -490,11 +490,21 @@ Pasos (detalle en el manifiesto del caso):
 - **El plano 15 (toma de Arturo) está en HORIZONTAL:** se **rota 90° a vertical** (`transpose=1`) en vez de
   recortarla → las botellas quedan **paradas** y sus etiquetas **legibles**; recortando el centro se perdían.
   La toma rotada se guarda suelta en el NAS por si se necesita aparte.
-- **Entregado:** `13_NachoShampoo01_FINAL_v8_musica.mp4` y `..._FINAL_v8_SIN_MUSICA.mp4` (11.13 s,
-  1080×1920, audio bit-exacto −13.3 dB) + `13_NachoShampoo01_thumbnail_v8.png` + la música
-  (`audio/musica_take1.mp3`) + `_comparacion_interna_no_publicar/` (la versión con el audio original, hecha
-  solo para comparar y **no publicable**). Gasto del caso: **321.5 créditos ≈ $1.61** (saldo 1150 → 828.46).
-  Sin publicar en TikTok.
+- **Entregado:** `13_NachoShampoo01_final_musica.mp4` y `13_NachoShampoo01_final_sin_musica.mp4` (11.13 s,
+  1080×1920, audio bit-exacto −13.3 dB) + `13_NachoShampoo01_thumbnail.png` + la música
+  (`assets/audio/musica_take1.mp3`) + `_comparacion_interna_no_publicar/` (la versión con el audio original,
+  hecha solo para comparar y **no publicable**). Gasto del caso: **321.5 créditos ≈ $1.61** (saldo 1150 →
+  828.46). Sin publicar en TikTok.
+- **Carpeta del caso ordenada al estilo de las anteriores** (2026-11-05, a petición de Arturo): la entrega y
+  los documentos clave en la raíz (`13_NachoShampoo01_final_musica.mp4`, `..._final_sin_musica.mp4`,
+  `13_NachoShampoo01_thumbnail.png`, el manifiesto, `CASE_NOTES.md`, `plan_final.json`, `props_caso13.json`,
+  `recipe_final.json`, `script_jp_draft.md`) y el material en subcarpetas: `input/` (+`shots/`),
+  `recordings/{arturo,ia,piezas_v1}/`, `final_pieces/`, `assets/audio/`, `shotlist/`, `thumbnails/`,
+  `_revision/`, `_versiones_anteriores/`, `_comparacion_interna_no_publicar/` y `ai-test/`. Las versiones
+  viejas del montaje **no se borran**: se guardan en `_versiones_anteriores/`.
+- Detalle reproducible completo: el **manifiesto** `13_NachoShampoo01_MANIFEST.md` (tabla plano→clip, overlays
+  con tiempos y SHA-256 de las entregas), el skill `ttchop-content-ops`
+  (`references/ai-video-generation-kie.md`) y `CASE_NOTES.md`.
 
 ## Pitfalls
 
