@@ -502,6 +502,11 @@ Pasos (detalle en el manifiesto del caso):
   `recordings/{arturo,ia,piezas_v1}/`, `final_pieces/`, `assets/audio/`, `shotlist/`, `thumbnails/`,
   `_revision/`, `_versiones_anteriores/`, `_comparacion_interna_no_publicar/` y `ai-test/`. Las versiones
   viejas del montaje **no se borran**: se guardan en `_versiones_anteriores/`.
+  El `tools/` que **no existía y se añadió al cerrar el caso** (2026-11-05): los **29 scripts con los que se
+  construyó** (spikes de kie.ai, lotes de imágenes y video, música, publicación/subida al NAS, transcriptores
+  y armadores de shotlist). Vivían solo en la caché del agente, **que se autolimpia a las 24 h** — sin ellos
+  el caso no se reproduce. El manifiesto también registra las **páginas de revisión publicadas** (URL base,
+  cada página y su para qué) y el resultado de verificarlas en vivo con `curl`.
 - Detalle reproducible completo: el **manifiesto** `13_NachoShampoo01_MANIFEST.md` (tabla plano→clip, overlays
   con tiempos y SHA-256 de las entregas), el skill `ttchop-content-ops`
   (`references/ai-video-generation-kie.md`) y `CASE_NOTES.md`.
