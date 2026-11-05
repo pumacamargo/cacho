@@ -644,3 +644,13 @@
   servidor se relanzó **sin costo**). El método quedó copiado al skill `ttchop-content-ops`
   (`references/ai-video-generation-kie.md`) y el expediente del caso en `CASE_NOTES.md`, en el NAS.
 - Sin publicar nada en TikTok (falta el OK explícito de Arturo).
+- **Cierre del caso (misma fecha):** carpeta del NAS **reorganizada** al estilo de las anteriores — la
+  entrega y los documentos clave quedan en la raíz, el material en subcarpetas (`input/`+`shots/`,
+  `recordings/{arturo,ia,piezas_v1}/`, `final_pieces/`, `assets/audio/`, `shotlist/`, `thumbnails/`,
+  `_revision/`, `_versiones_anteriores/`, `_comparacion_interna_no_publicar/`, `ai-test/`) y **sin borrar
+  nada**: las versiones previas del montaje pasaron a `_versiones_anteriores/`. Se escribió el
+  **`13_NachoShampoo01_MANIFEST.md`** (tabla plano→clip con la duración real de cada toma, overlays con
+  tiempos, SHA-256 de las entregas y el título/hashtags del post) y las entregas se renombraron a
+  `13_NachoShampoo01_final_musica.mp4` / `_final_sin_musica.mp4`. Todo verificado por hash tras mover.
+  La receta conserva un detalle a vigilar: registra el `s15` con 4.657 s por el absorbedor del builder,
+  pero **la duración montada real es 0.733 s**.
