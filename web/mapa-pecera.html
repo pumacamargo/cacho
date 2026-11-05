@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>La pecera — wiki cacho en 3D</title>
+<style>
+ :root{--bg:#05070c;--tx:#e9ecf3;--dim:#93a0b4;--line:#28303f;--b:#4da3ff;--g:#3ddc9a;--o:#ffb84d}
+ *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+ html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--tx);
+   font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+ #c{position:fixed;inset:0;display:block}
+ #labels{position:fixed;inset:0;pointer-events:none}
+ .lbl{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;cursor:pointer;max-width:170px;overflow:hidden;text-overflow:ellipsis;
+   font-size:11.5px;padding:2px 7px;border-radius:999px;white-space:nowrap;
+   background:rgba(8,11,17,.62);border:1px solid rgba(120,140,180,.28);color:#dce6f5;
+   transition:opacity .2s, background .2s, border-color .2s;backdrop-filter:blur(3px)}
+ .lbl:hover{background:#1d2b45;border-color:var(--b)}
+ .lbl.dim{opacity:.16}
+ .lbl.off{opacity:0;pointer-events:none}
+ .lbl.sel{background:#27406b;border-color:var(--b);color:#fff}
+ .lbl small{color:var(--dim);font-size:10px;margin-left:4px}
+ header{position:fixed;top:0;left:0;right:0;padding:10px 14px;pointer-events:none;
+   background:linear-gradient(180deg,rgba(5,7,12,.92),rgba(5,7,12,0))}
+ h1{font-size:16px;margin:0}
+ header p{margin:2px 0 0;font-size:12px;color:var(--dim)}
+ .ui{position:fixed;pointer-events:auto}
+ #tools{left:12px;bottom:12px;display:flex;flex-direction:column;gap:8px;max-width:calc(100% - 24px)}
+ .row{display:flex;gap:6px;flex-wrap:wrap}
+ .btn{background:rgba(16,20,28,.9);border:1px solid var(--line);color:#dce6f5;border-radius:999px;
+   padding:7px 12px;font-size:13px;cursor:pointer}
+ .btn:hover{border-color:var(--b)}
+ .btn.on{background:#27406b;border-color:var(--b);color:#fff}
+ input[type=search]{background:rgba(16,20,28,.92);border:1px solid var(--line);color:var(--tx);
+   border-radius:999px;padding:8px 12px;font-size:14px;width:190px;max-width:60vw}
+ #legend{right:12px;bottom:12px;font-size:12px;color:var(--dim);text-align:right;line-height:1.7}
+ .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+ #panel{left:0;right:0;bottom:0;background:rgba(12,16,23,.97);border-top:1px solid var(--line);
+   padding:14px 16px calc(14px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .25s}
+ #panel.on{transform:none}
+ @media(min-width:760px){#panel{left:auto;right:14px;bottom:14px;width:400px;border:1px solid var(--line);border-radius:14px}}
+ #panel h2{margin:0 0 4px;font-size:16px}
+ #panel .badge{display:inline-block;font-size:11px;color:var(--dim);border:1px solid var(--line);
+   border-radius:999px;padding:1px 8px;margin:0 4px 6px 0}
+ #panel p{margin:6px 0;font-size:14px;color:#dbe2ee}
+ #panel .path{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:var(--dim)}
+ #panel a{color:var(--b)}
+ #close{position:absolute;top:10px;right:12px;background:none;border:0;color:var(--dim);font-size:20px;cursor:pointer}
+ #hint{position:fixed;left:50%;bottom:70px;transform:translateX(-50%);font-size:12.5px;color:var(--dim);
+   background:rgba(8,11,17,.8);padding:6px 12px;border-radius:999px;border:1px solid var(--line);
+   transition:opacity .4s;pointer-events:none}
+</style>
+</head><body>
+<canvas id="c"></canvas><div id="labels"></div>
+<header>
+  <h1>🫙 La pecera · wiki <b>cacho</b> en 3D</h1>
+  <p>Gira alrededor, haz zoom y entra a la pecera. Toca un nombre para leer su ficha.<br><a href="mapa-ecosistema.html" style="color:#4da3ff">versión plana (lista completa) ↗</a> · <a href="ttchop-mapa-documentacion.html" style="color:#4da3ff">mapa de video ↗</a></p>
+</header>
+<div id="hint">arrastra para girar · pellizca para zoom · acércate y aparecen los nombres</div>
+<div class="ui" id="tools">
+  <div class="row"><input type="search" id="q" placeholder="Buscar…"></div>
+  <div class="row">
+    <span class="btn on" data-f="">Todo</span>
+    <span class="btn" data-f="persona">Persona</span>
+    <span class="btn" data-f="categorias">Categorías</span>
+    <span class="btn" data-f="proyectos">Proyectos</span>
+    <span class="btn" data-f="operaciones">Runbooks</span>
+    <span class="btn" data-f="plataforma">Plataforma</span>
+  </div>
+  <div class="row">
+    <span class="btn" id="dive">⬇ Entrar a la pecera</span>
+    <span class="btn on" id="spin">⟳ Girar solo</span>
+    <span class="btn" id="lb">Etiquetas</span>
+  </div>
+</div>
+<div class="ui" id="legend">
+  <div><span class="dot" style="background:#4da3ff"></span>persona</div>
+  <div><span class="dot" style="background:#c58bff"></span>categorías</div>
+  <div><span class="dot" style="background:#3ddc9a"></span>proyectos</div>
+  <div><span class="dot" style="background:#ffb84d"></span>runbooks</div>
+  <div><span class="dot" style="background:#6ec8ff"></span>plataforma</div>
+</div>
+<div class="ui" id="panel">
+  <button id="close">×</button>
+  <h2 id="p-title"></h2>
+  <div id="p-badges"></div>
+  <p id="p-desc"></p>
+  <p id="p-link"></p>
+</div>
+
+<script type="importmap">
+{"imports":{"three":"./lib/three.module.js","three/addons/":"./lib/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/OrbitControls.js';
+import { CSS2DRenderer, CSS2DObject } from 'three/addons/CSS2DRenderer.js';
+
+const DATA = {"nodes": [{"id": "arturo", "title": "Arturo", "desc": "Perfil de Arturo, dueño y operador de este ecosistema de IA. Toda IA que trabaje", "area": "persona", "cat": "", "tags": ["persona", "biografia", "ubicacion", "arte", "idioma", "negocio"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/arturo.md", "ring": "top", "y": 10.6, "r": 0.0, "color": "#4da3ff", "ang": 0, "dy": 0}, {"id": "categoria-backpack", "title": "Categoría Backpack", "desc": "Categoría de proyectos de estudio / aprendizaje / práctica de Arturo.", "area": "categorias", "cat": "", "tags": ["proyecto", "personal", "arte"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/categoria-backpack.md", "ring": "cats", "y": 6.8, "r": 4.9, "color": "#c58bff", "ang": 0.0, "dy": 0}, {"id": "categoria-cliff", "title": "Categoría Cliff", "desc": "Categoría de proyectos de creación de contenido. Varios están \"en veremos\"", "area": "categorias", "cat": "", "tags": ["proyecto", "monetizacion"], "status": "draft", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/categoria-cliff.md", "ring": "cats", "y": 6.8, "r": 4.9, "color": "#c58bff", "ang": 1.0471975511965976, "dy": 0}, {"id": "categoria-macanishi", "title": "Categoría Macanishi", "desc": "Categoría de proyectos que Arturo hace con su familia.", "area": "categorias", "cat": "", "tags": ["proyecto", "familia", "negocio"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/categoria-macanishi.md", "ring": "cats", "y": 6.8, "r": 4.9, "color": "#c58bff", "ang": 2.0943951023931953, "dy": 0}, {"id": "categoria-moon", "title": "Categoría Moon", "desc": "Categoría de proyectos financieros de Arturo.", "area": "categorias", "cat": "", "tags": ["proyecto", "negocio", "capital", "ingresos"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/categoria-moon.md", "ring": "cats", "y": 6.8, "r": 4.9, "color": "#c58bff", "ang": 3.141592653589793, "dy": 0}, {"id": "categoria-sandbox", "title": "Categoría Sandbox", "desc": "Categoría de proyectos de development de Arturo.", "area": "categorias", "cat": "", "tags": ["proyecto", "desarrollo"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/categoria-sandbox.md", "ring": "cats", "y": 6.8, "r": 4.9, "color": "#c58bff", "ang": 4.1887902047863905, "dy": 0}, {"id": "categoria-tts", "title": "Categoría TT's (TikTok Shop)", "desc": "Categoría de proyectos dentro de TikTok Shop.", "area": "categorias", "cat": "", "tags": ["proyecto", "negocio", "monetizacion"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/categoria-tts.md", "ring": "cats", "y": 6.8, "r": 4.9, "color": "#c58bff", "ang": 5.235987755982988, "dy": 0}, {"id": "proyecto-app-development", "title": "Proyecto App Development", "desc": "Proyecto de desarrollo (categoría categoria-sandbox): desarrollo de apps.", "area": "proyectos", "cat": "sandbox", "tags": ["proyecto", "desarrollo"], "status": "draft", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-app-development.md", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#3ddc9a", "ang": 4.435189628597355, "dy": 0.8}, {"id": "proyecto-draw", "title": "Proyecto Draw", "desc": "Proyecto de práctica (categoría categoria-backpack): dibujo.", "area": "proyectos", "cat": "backpack", "tags": ["proyecto", "personal", "arte"], "status": "draft", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-draw.md", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#3ddc9a", "ang": 0.0, "dy": -1.6}, {"id": "proyecto-drums", "title": "Proyecto Drums", "desc": "Proyecto de práctica (categoría categoria-backpack): batería.", "area": "proyectos", "cat": "backpack", "tags": ["proyecto", "personal", "arte"], "status": "draft", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-drums.md", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#3ddc9a", "ang": 0.36959913571644626, "dy": -1.4000000000000001}, {"id": "proyecto-farmers", "title": "Proyecto Farmers", "desc": "Proyecto familiar (categoría categoria-macanishi): booth de tacos para", "area": "proyectos", "cat": "macanishi", "tags": ["proyecto", "negocio", "familia"], "status": "draft", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-farmers.md", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#3ddc9a", "ang": 2.95679308573157, "dy": 0.0}, {"id": "proyecto-game-development", "title": "Proyecto Game Development", "desc": "Proyecto de desarrollo (categoría categoria-sandbox): desarrollo de", "area": "proyectos", "cat": "sandbox", "tags": ["proyecto", "desarrollo", "videojuego"], "status": "draft", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-game-development.md", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#3ddc9a", "ang": 4.804788764313801, "dy": 1.0}, {"id": "proyecto-japanese", "title": "Proyecto Japanese", "desc": "Proyecto de aprendizaje (categoría categoria-backpack): estudiar japonés.", "area": "proyectos", "cat": "backpack", "tags": ["proyecto", "personal", "biografia", "idioma"], "status": "draft", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-japanese.md", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#3ddc9a", "ang": 0.7391982714328925, "dy": -1.2000000000000002}, {"id": "proyecto-lemon-sushi", "title": "Proyecto Lemon Sushi", "desc": "Proyecto TikTok Shop seller (categoría categoria-tts): vender playeras", "area": "proyectos", "cat": "tts", "tags": ["proyecto", "negocio", "monetizacion"], "status": "draft", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-lemon-sushi.md", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#3ddc9a", "ang": 5.543987035746694, "dy": 1.4000000000000001}, {"id": "proyecto-moon-fut", "title": "Proyecto Moon FUT", "desc": "Proyecto financiero (categoría categoria-moon): daytrading de futuros.", "area": "proyectos", "cat": "moon", "tags": ["proyecto", "negocio", "capital", "ingresos"], "status": "draft", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-moon-fut.md", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#3ddc9a", "ang": 3.6959913571644627, "dy": 0.4}, {"id": "proyecto-moon-sto", "title": "Proyecto Moon STO", "desc": "Proyecto financiero (categoría categoria-moon): portafolio de inversiones.", "area": "proyectos", "cat": "moon", "tags": ["proyecto", "negocio", "capital", "ingresos"], "status": "draft", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-moon-sto.md", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#3ddc9a", "ang": 4.065590492880909, "dy": 0.6000000000000001}, {"id": "proyecto-shortfilm-development", "title": "Proyecto Shortfilm Development", "desc": "Proyecto de desarrollo (categoría categoria-sandbox): desarrollo de", "area": "proyectos", "cat": "sandbox", "tags": ["proyecto", "desarrollo", "videojuego"], "status": "draft", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-shortfilm-development.md", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#3ddc9a", "ang": 5.174387900030248, "dy": 1.2000000000000002}, {"id": "proyecto-singing", "title": "Proyecto Singing", "desc": "Proyecto de práctica (categoría categoria-backpack): canto.", "area": "proyectos", "cat": "backpack", "tags": ["proyecto", "personal", "arte"], "status": "draft", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-singing.md", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#3ddc9a", "ang": 1.1087974071493387, "dy": -1.0}, {"id": "proyecto-travel", "title": "Proyecto Travel", "desc": "Proyecto familiar (categoría categoria-macanishi): automatización para hacer", "area": "proyectos", "cat": "macanishi", "tags": ["proyecto", "automatizacion", "familia"], "status": "draft", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-travel.md", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#3ddc9a", "ang": 3.326392221448016, "dy": 0.2}, {"id": "proyecto-ttchop", "title": "ttchop (proyecto)", "desc": "Proyecto de creación automatizada de contenido (comerciales) para TikTok Shop", "area": "proyectos", "cat": "tts", "tags": ["proyecto", "negocio", "monetizacion", "sistema", "pipeline"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-ttchop.md", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#3ddc9a", "ang": 5.91358617146314, "dy": 1.6}, {"id": "cliff-apex", "title": "Apex", "desc": "Proyecto de la categoría Cliff, aún sin ficha (categoría «en veremos»).", "area": "proyectos", "cat": "cliff", "tags": ["pendiente"], "status": "pendiente", "gh": "", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#ffb84d", "ang": 1.478396542865785, "dy": -0.8}, {"id": "cliff-papa", "title": "Papa", "desc": "Proyecto de la categoría Cliff, aún sin ficha (categoría «en veremos»).", "area": "proyectos", "cat": "cliff", "tags": ["pendiente"], "status": "pendiente", "gh": "", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#ffb84d", "ang": 2.2175948142986774, "dy": -0.4}, {"id": "cliff-tacosdepulpo", "title": "Tacosdepulpo", "desc": "Proyecto de la categoría Cliff, aún sin ficha (categoría «en veremos»).", "area": "proyectos", "cat": "cliff", "tags": ["pendiente"], "status": "pendiente", "gh": "", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#ffb84d", "ang": 2.587193950015124, "dy": -0.2}, {"id": "cliff-chava", "title": "Chava", "desc": "Proyecto de la categoría Cliff, aún sin ficha (categoría «en veremos»).", "area": "proyectos", "cat": "cliff", "tags": ["pendiente"], "status": "pendiente", "gh": "", "ring": "proj", "y": 2.6, "r": 7.9, "color": "#ffb84d", "ang": 1.8479956785822313, "dy": -0.6000000000000001}, {"id": "ttchop-video-paths", "title": "Vías para hacer un video (punto de entrada)", "desc": "Empezar por aquí. Hay 3 vías distintas para producir un video (más 1 sub-caso y 1 entorno", "area": "operaciones", "cat": "", "tags": ["sistema", "runbook", "video", "indice"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/operations/ttchop-video-paths.md", "ring": "oper", "y": -2.6, "r": 9.6, "color": "#ffb84d", "ang": 5.864306286700947, "dy": 1.4}, {"id": "ttchop-video-generation", "title": "Generación de videos en TTChop2", "desc": "Esta página separa dos procesos distintos: la creación iniciada desde la UI de", "area": "operaciones", "cat": "", "tags": ["sistema", "runbook", "pipeline"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/operations/ttchop-video-generation.md", "ring": "oper", "y": -2.6, "r": 9.6, "color": "#ffb84d", "ang": 2.9321531433504733, "dy": 0.0}, {"id": "recrear-video-creadores-edits", "title": "Recrear un video de creador (tiktok/hamaca/edits)", "desc": "Procedimiento repetible para recrear un video de Asu/Sora: partir del video de", "area": "operaciones", "cat": "", "tags": ["runbook", "almacen", "red", "tailscale", "pipeline"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/operations/recrear-video-creadores-edits.md", "ring": "oper", "y": -2.6, "r": 9.6, "color": "#ffb84d", "ang": 4.1887902047863905, "dy": 0.6}, {"id": "ttchop-raw-asset-manual-edit", "title": "Edición manual Producer-style con solo audio y videos", "desc": "Este flujo sirve cuando se cuenta con un audio aprobado por Arturo y archivos de video originales, pero no existe una ficha de producto ni sessions con metadata en Firestore. No se ejecuta runProducer(): se prepara un montaje manual con ttc", "area": "operaciones", "cat": "", "tags": ["sistema", "runbook", "pipeline"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/operations/ttchop-raw-asset-manual-edit.md", "ring": "oper", "y": -2.6, "r": 9.6, "color": "#ffb84d", "ang": 2.0943951023931953, "dy": -0.39999999999999997}, {"id": "ttchop-filmcraft-video-tests", "title": "Pruebas de edición de video con FilmCraft para TTChop2", "desc": "Esta página distingue la implementación vigente del Producer, las pruebas locales de FilmCraft del 2026-10-21 y una posible integración futura. Para los otros flujos manuales y sus límites, consulta ttchop-video-generation; para scheduler y", "area": "operaciones", "cat": "", "tags": ["runbook", "pipeline", "cli"], "status": "draft", "gh": "https://github.com/pumacamargo/cacho/blob/main/operations/ttchop-filmcraft-video-tests.md", "ring": "oper", "y": -2.6, "r": 9.6, "color": "#ffb84d", "ang": 3.7699111843077517, "dy": 0.39999999999999997}, {"id": "traduccion-video-pumasvoice-sincronizada", "title": "Traducir un video con PumaVoice y alinear inicio y fin de voz", "desc": "Flujo aprobado por Arturo: transcripción local → traducción del asistente → TTS con su voz existente → ajuste local del intervalo de habla → audio nuevo sobre el video original. No intenta mover labios ni sincronizar cada fonema. No usa Ele", "area": "operaciones", "cat": "", "tags": ["runbook", "pipeline", "cli"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/operations/traduccion-video-pumasvoice-sincronizada.md", "ring": "oper", "y": -2.6, "r": 9.6, "color": "#ffb84d", "ang": 5.026548245743669, "dy": 0.9999999999999999}, {"id": "ttchop-music-generation", "title": "Generación manual de canciones con ElevenLabs Music", "desc": "Esta guía documenta la prueba de canción enviada manualmente a ElevenLabs Music", "area": "operaciones", "cat": "", "tags": ["sistema", "runbook", "pipeline"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/operations/ttchop-music-generation.md", "ring": "oper", "y": -2.6, "r": 9.6, "color": "#ffb84d", "ang": 3.3510321638291125, "dy": 0.19999999999999998}, {"id": "ttchop-carousel-creation", "title": "Creación de carruseles editoriales de TTChop", "desc": "Runbook para historias de Reddit adaptadas a carrusel y otros carruseles", "area": "operaciones", "cat": "", "tags": ["sistema", "runbook", "api"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/operations/ttchop-carousel-creation.md", "ring": "oper", "y": -2.6, "r": 9.6, "color": "#ffb84d", "ang": 1.2566370614359172, "dy": -0.7999999999999999}, {"id": "acceso-ftps-lemon-sushi", "title": "Acceso FTPS y publicaciones web Lemon Sushi", "desc": "Configuración de acceso desde hardware-vps-tools al hosting de proyecto-lemon-sushi. No confundir este destino con Polaris/NAS ni con la carpeta web del NAS suspendida para otros trabajos.", "area": "operaciones", "cat": "", "tags": ["runbook", "red", "almacen", "vps"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/operations/acceso-ftps-lemon-sushi.md", "ring": "oper", "y": -2.6, "r": 9.6, "color": "#ff9d4d", "ang": 0.0, "dy": -1.4}, {"id": "acceso-nas-polaris", "title": "Acceso a Polaris desde el VPS y orden de alternativas", "desc": "Arturo pidió conservar los métodos anteriores y actualizar su prioridad. Para operar sobre archivos de Projects, probar primero SMB directo VPS→NAS por Tailscale. Windows no es intermediario obligatorio. La unidad P: pertenece a Windows; no", "area": "operaciones", "cat": "", "tags": ["runbook", "almacen", "tailscale", "cli"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/operations/acceso-nas-polaris.md", "ring": "oper", "y": -2.6, "r": 9.6, "color": "#ff9d4d", "ang": 0.8377580409572781, "dy": -0.9999999999999999}, {"id": "acceso-remoto-pumadeskasus", "title": "Acceso SSH a PumaDeskAsus", "desc": "Orden vigente para archivos del NAS (2026-10-28): primero SMB directo VPS→Polaris con las credenciales protegidas existentes; después Windows por SSH con IP/FQDN si el trabajo requiere Windows; conservar el wrapper por nombre corto como alt", "area": "operaciones", "cat": "", "tags": ["infra", "tailscale", "runbook"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/operations/acceso-remoto-pumadeskasus.md", "ring": "oper", "y": -2.6, "r": 9.6, "color": "#ff9d4d", "ang": 0.41887902047863906, "dy": -1.2}, {"id": "diagnostico-espacio-disco-vps", "title": "Diagnóstico de espacio en disco en vps-tools", "desc": "Auditoría de solo lectura del disco de hardware-vps-tools tras la alerta de poco espacio. Complementa la operación de hermes-agent y el inventario de hardware-inventario. No se ejecutó ninguna limpieza ni borrado en esta tarea.", "area": "operaciones", "cat": "", "tags": ["runbook", "docker", "vps", "almacen", "hermes"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/operations/diagnostico-espacio-disco-vps.md", "ring": "oper", "y": -2.6, "r": 9.6, "color": "#ff9d4d", "ang": 1.6755160819145563, "dy": -0.6}, {"id": "estudio-creadores-fuentes-datos", "title": "Estudio de creadores — fuentes, datos y versiones", "desc": "Inventario de todo el material generado al estudiar a los dos creadores japoneses de TikTok Shop (Asu y Sora) para proyecto-ttchop: videos, transcripciones, reportes y datos de medición, con sus rutas y enlaces verificados. Sirve para respo", "area": "operaciones", "cat": "", "tags": ["runbook", "almacen", "vps", "red", "decision"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/operations/estudio-creadores-fuentes-datos.md", "ring": "oper", "y": -2.6, "r": 9.6, "color": "#ffcf6b", "ang": 2.5132741228718345, "dy": -0.19999999999999998}, {"id": "separar-videos-nas-por-cortes", "title": "Separar videos del NAS por cortes visuales", "desc": "Procedimiento usado el 2026-10-26 para dividir Juice.mp4 y EllisWhite.mp4 en clips independientes, preservando audio, dimensiones y originales. No fue un pipeline de Producer ni una función de OBS: se usaron FFmpeg/ffprobe, Python y revisió", "area": "operaciones", "cat": "", "tags": ["runbook", "pipeline", "almacen", "cli"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/operations/separar-videos-nas-por-cortes.md", "ring": "oper", "y": -2.6, "r": 9.6, "color": "#ffcf6b", "ang": 4.607669225265029, "dy": 0.7999999999999999}, {"id": "transcripcion-curso-gerardo-santiago", "title": "Transcripción del curso Gerardo Santiago", "desc": "Estado al 2026-10-31: el curso está transcrito por completo. Los 20 videos de P:\\TikTok\\Learning\\gerardoSantiago_course\\videos tienen su TXT en la carpeta hermana transcripts\\: 20 MP4 y 20 TXT, emparejados uno a uno por nombre base, sin fal", "area": "operaciones", "cat": "", "tags": ["runbook", "pipeline", "almacen"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/operations/transcripcion-curso-gerardo-santiago.md", "ring": "oper", "y": -2.6, "r": 9.6, "color": "#ffcf6b", "ang": 5.445427266222308, "dy": 1.2}, {"id": "hardware-celular-android", "title": "Celular Android", "desc": "Celular Android de Arturo, parte del inventario para proyectos.", "area": "plataforma", "cat": "", "tags": ["infra"], "status": "draft", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/hardware-celular-android.md", "ring": "plat", "y": -7.0, "r": 7.4, "color": "#6ec8ff", "ang": 0.5235987755982988, "dy": -0.9}, {"id": "hardware-desktop-puma", "title": "Desktop Puma (PumaDeskAsus, Windows)", "desc": "Desktop (Windows) de Arturo, disponible para proyectos.", "area": "plataforma", "cat": "", "tags": ["infra"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/hardware-desktop-puma.md", "ring": "plat", "y": -7.0, "r": 7.4, "color": "#6ec8ff", "ang": 1.0471975511965976, "dy": -0.7000000000000001}, {"id": "hardware-inventario", "title": "Hardware (inventario)", "desc": "Total del hardware de Arturo para proyectos, todo conectado vía Tailscale", "area": "plataforma", "cat": "", "tags": ["infra", "red", "vps", "docker"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/hardware-inventario.md", "ring": "plat", "y": -7.0, "r": 7.4, "color": "#6ec8ff", "ang": 1.5707963267948966, "dy": -0.5}, {"id": "hardware-raspberry-pi5", "title": "Raspberry Pi 5", "desc": "Raspberry Pi 5 de Arturo, en la red Tailscale como nodo pi5puma01.", "area": "plataforma", "cat": "", "tags": ["infra"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/hardware-raspberry-pi5.md", "ring": "plat", "y": -7.0, "r": 7.4, "color": "#6ec8ff", "ang": 4.1887902047863905, "dy": 0.5}, {"id": "hardware-vps-projects", "title": "Hardware VPS Proyectos", "desc": "Segundo VPS de Arturo, dedicado a proyectos. Confirmado en la red Tailscale,", "area": "plataforma", "cat": "", "tags": ["infra", "vps"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/hardware-vps-projects.md", "ring": "plat", "y": -7.0, "r": 7.4, "color": "#6ec8ff", "ang": 2.0943951023931953, "dy": -0.30000000000000004}, {"id": "hardware-vps-tools", "title": "Hardware VPS Tools", "desc": "VPS principal de Arturo, este host donde corre Hermes. Alojado en Contabo.", "area": "plataforma", "cat": "", "tags": ["infra", "vps", "docker"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/hardware-vps-tools.md", "ring": "plat", "y": -7.0, "r": 7.4, "color": "#6ec8ff", "ang": 2.617993877991494, "dy": -0.1}, {"id": "hermes-agent", "title": "Hermes Agent", "desc": "Agente de IA de Nous Research, instalado y operando en el VPS principal de", "area": "plataforma", "cat": "", "tags": ["sistema", "infra", "rol-agente"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/hermes-agent.md", "ring": "plat", "y": -7.0, "r": 7.4, "color": "#6ec8ff", "ang": 3.141592653589793, "dy": 0.1}, {"id": "hermes-agentes", "title": "Hermes — Agentes persistentes (research, developer, jr_developer, ttchop_robot)", "desc": "Bot Mode de hermes-agent: cada Bot es un perfil de Hermes con su propio", "area": "plataforma", "cat": "", "tags": ["sistema", "papel-agente", "rol-agente", "personal"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/hermes-agentes.md", "ring": "plat", "y": -7.0, "r": 7.4, "color": "#6ec8ff", "ang": 3.665191429188092, "dy": 0.30000000000000004}, {"id": "cacho", "title": "Cacho (repositorio)", "desc": "Repositorio central de documentación de Arturo, en GitHub", "area": "plataforma", "cat": "", "tags": ["empresa", "proyecto", "integracion"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/cacho.md", "ring": "plat", "y": -7.0, "r": 7.4, "color": "#6ec8ff", "ang": 0.0, "dy": -1.1}, {"id": "ttchop", "title": "ttchop (empresa y pipeline)", "desc": "Empresa con pipelines diarios de automatización (scout → producer).", "area": "plataforma", "cat": "", "tags": ["empresa", "proceso", "pipeline", "cron"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/ttchop.md", "ring": "plat", "y": -7.0, "r": 7.4, "color": "#6ec8ff", "ang": 4.71238898038469, "dy": 0.7000000000000001}, {"id": "ttchop-automatizaciones", "title": "ttchop automatizaciones", "desc": "Detalle de las automatizaciones internas de ttchop-bot (ver proyecto-ttchop).", "area": "plataforma", "cat": "tts", "tags": ["proceso", "pipeline", "cron", "automatizacion"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/ttchop-automatizaciones.md", "ring": "plat", "y": -7.0, "r": 7.4, "color": "#6ec8ff", "ang": 5.235987755982988, "dy": 0.9}, {"id": "ttchop-webapps", "title": "ttchop webapps (ttchop / ttchop2)", "desc": "Las aplicaciones web del proyecto ttchop (ver proyecto-ttchop). Componente #1:", "area": "plataforma", "cat": "tts", "tags": ["sistema", "proyecto", "negocio"], "status": "active", "gh": "https://github.com/pumacamargo/cacho/blob/main/entities/ttchop-webapps.md", "ring": "plat", "y": -7.0, "r": 7.4, "color": "#6ec8ff", "ang": 5.759586531581287, "dy": 1.1}], "edges": [["categoria-sandbox", "proyecto-app-development"], ["categoria-backpack", "proyecto-draw"], ["categoria-backpack", "proyecto-drums"], ["categoria-macanishi", "proyecto-farmers"], ["categoria-sandbox", "proyecto-game-development"], ["categoria-backpack", "proyecto-japanese"], ["categoria-tts", "proyecto-lemon-sushi"], ["categoria-moon", "proyecto-moon-fut"], ["categoria-moon", "proyecto-moon-sto"], ["categoria-sandbox", "proyecto-shortfilm-development"], ["categoria-backpack", "proyecto-singing"], ["categoria-macanishi", "proyecto-travel"], ["categoria-tts", "proyecto-ttchop"], ["categoria-cliff", "cliff-apex"], ["categoria-cliff", "cliff-papa"], ["categoria-cliff", "cliff-tacosdepulpo"], ["categoria-cliff", "cliff-chava"]], "today": "2026-11-05"};
+const R = 11.0, TANK_H = 27, WATER_Y = -1.2;
+
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:false});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x05070c);
+scene.fog = new THREE.Fog(0x05070c, 34, 92);
+
+const labelRenderer = new CSS2DRenderer({element: document.getElementById('labels')});
+labelRenderer.setSize(innerWidth, innerHeight);
+
+const camera = new THREE.PerspectiveCamera(48, innerWidth/innerHeight, 0.1, 400);
+camera.position.set(0, 3.5, 33);
+
+const controls = new OrbitControls(camera, labelRenderer.domElement);
+controls.target.set(0, 0.5, 0);
+controls.enableDamping = true; controls.dampingFactor = 0.06;
+controls.minDistance = 3; controls.maxDistance = 70;
+controls.maxPolarAngle = Math.PI * 0.54;   // no meterse bajo el piso
+controls.minPolarAngle = Math.PI * 0.12;
+controls.autoRotate = true; controls.autoRotateSpeed = 0.35;
+controls.enablePan = false;
+
+// ── luces
+scene.add(new THREE.HemisphereLight(0x9fc8ff, 0x0a1020, 0.75));
+const key = new THREE.PointLight(0xffffff, 60, 90); key.position.set(16, 22, 16); scene.add(key);
+const rim = new THREE.PointLight(0x59a6ff, 40, 90); rim.position.set(-18, 8, -14); scene.add(rim);
+const glow = new THREE.PointLight(0x6ec8ff, 18, 60); glow.position.set(0, -6, 0); scene.add(glow);
+
+// ── cuarto y piso
+const floor = new THREE.Mesh(
+  new THREE.CircleGeometry(70, 72),
+  new THREE.MeshStandardMaterial({color:0x0b1018, roughness:0.95, metalness:0.1}));
+floor.rotation.x = -Math.PI/2; floor.position.y = -TANK_H/2 - 1.4; scene.add(floor);
+const grid = new THREE.GridHelper(140, 70, 0x1b2740, 0x121b2c);
+grid.position.y = floor.position.y + 0.02; scene.add(grid);
+
+// ── la pecera (cristal)
+const glassMat = new THREE.MeshPhysicalMaterial({color:0xbfe4ff, metalness:0, roughness:0.08,
+  transparent:true, opacity:0.10, side:THREE.DoubleSide, transmission:0.0, clearcoat:1, clearcoatRoughness:0.05});
+const glass = new THREE.Mesh(new THREE.CylinderGeometry(R, R, TANK_H, 72, 1, true), glassMat);
+scene.add(glass);
+const water = new THREE.Mesh(new THREE.CylinderGeometry(R-0.25, R-0.25, TANK_H*0.86, 64, 1, true),
+  new THREE.MeshPhysicalMaterial({color:0x2f7bff, transparent:true, opacity:0.07, side:THREE.DoubleSide,
+    roughness:0.25, metalness:0}));
+water.position.y = WATER_Y - 0.6; scene.add(water);
+const surf = new THREE.Mesh(new THREE.CircleGeometry(R-0.3, 64),
+  new THREE.MeshPhysicalMaterial({color:0x8fd0ff, transparent:true, opacity:0.16, side:THREE.DoubleSide}));
+surf.rotation.x = -Math.PI/2; surf.position.y = WATER_Y + TANK_H*0.43; scene.add(surf);
+// aros y base
+const ringMat = new THREE.MeshStandardMaterial({color:0x8fa8c8, metalness:0.9, roughness:0.35});
+for (const y of [TANK_H/2, WATER_Y + TANK_H*0.43, -TANK_H/2]) {
+  const t = new THREE.Mesh(new THREE.TorusGeometry(R, 0.09, 8, 72), ringMat);
+  t.rotation.x = Math.PI/2; t.position.y = y; scene.add(t);
+}
+const base = new THREE.Mesh(new THREE.CylinderGeometry(R+1.1, R+1.6, 1.7, 64),
+  new THREE.MeshStandardMaterial({color:0x161c26, metalness:0.6, roughness:0.5}));
+base.position.y = -TANK_H/2 - 0.85; scene.add(base);
+
+// ── nodos
+const group = new THREE.Group(); scene.add(group);
+const meshes = [], links = [];
+const byId = {};
+for (const n of DATA.nodes) {
+  const rad = n.ring === 'top' ? 0.42 : (n.area === 'operaciones' ? 0.26 : 0.33);
+  const geo = new THREE.SphereGeometry(rad, 20, 16);
+  const col = new THREE.Color(n.color);
+  const m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({
+    color: col, emissive: col.clone().multiplyScalar(0.45), roughness:0.35, metalness:0.2}));
+  const a = n.ang || 0;
+  m.position.set(Math.cos(a)*n.r, n.y + (n.dy||0), Math.sin(a)*n.r);
+  m.userData.id = n.id; group.add(m); meshes.push(m); byId[n.id] = m;
+
+  const el = document.createElement('div');
+  el.className = 'lbl'; el.dataset.id = n.id;
+  el.innerHTML = n.title + (n.status === 'draft' ? '<small>borrador</small>' : '');
+  el.addEventListener('click', () => select(n.id));
+  n.el_shown = true;
+  const L = new CSS2DObject(el); L.position.copy(m.position).y += rad + 0.55; group.add(L);
+  n.el = el;
+}
+// líneas categoría -> proyectos
+const pos = {};
+for (const [a, b] of DATA.edges) {
+  const ma = byId[a], mb = byId[b];
+  if (!ma || !mb) continue;
+  const mid = ma.position.clone().lerp(mb.position, 0.5); mid.y -= 0.6;
+  const curve = new THREE.QuadraticBezierCurve3(ma.position.clone(), mid, mb.position.clone());
+  const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(24)),
+    new THREE.LineBasicMaterial({color:0x2f4c78, transparent:true, opacity:0.5}));
+  group.add(line); links.push(line);
+}
+
+// ── selección
+const panel = document.getElementById('panel');
+let sel = null;
+function select(id) {
+  const n = DATA.nodes.find(x => x.id === id); if (!n) return;
+  sel = id;
+  document.querySelectorAll('.lbl').forEach(e => { e.classList.toggle('sel', e.dataset.id === id); if (e.dataset.id === id) e.classList.remove('off'); });
+  document.getElementById('p-title').textContent = n.title;
+  const badges = [n.area, n.cat, n.status].filter(Boolean)
+    .map(t => '<span class="badge">' + t + '</span>').join('');
+  document.getElementById('p-badges').innerHTML = badges;
+  document.getElementById('p-desc').textContent = n.desc || '';
+  document.getElementById('p-link').innerHTML = n.gh
+    ? '<a href="' + n.gh + '" target="_blank" rel="noopener">ver ficha completa ↗</a><br><span class="path">' + n.gh.split('/blob/main/')[1] + '</span>'
+    : '<span class="path">sin ficha todavía</span>';
+  panel.classList.add('on');
+  // centrar la cámara en el nodo
+  controls.target.lerp(byId[id].position, 0.85);
+}
+document.getElementById('close').onclick = () => { panel.classList.remove('on'); sel = null;
+  document.querySelectorAll('.lbl').forEach(e => e.classList.remove('sel')); };
+
+// ── filtros
+let area = '', q = '';
+function applyFilter() {
+  const s = q.trim().toLowerCase();
+  for (const n of DATA.nodes) {
+    const ok = (!area || n.area === area) &&
+      (!s || (n.title + ' ' + n.desc + ' ' + (n.tags||[]).join(' ')).toLowerCase().includes(s));
+    const m = byId[n.id];
+    m.visible = ok; n.el.classList.toggle('dim', !ok);
+    m.material.opacity = 1;
+  }
+  for (const l of links) l.visible = (!area || area === 'proyectos' || area === 'categorias') && !s;
+}
+document.getElementById('q').addEventListener('input', e => { q = e.target.value; applyFilter(); });
+document.querySelectorAll('.btn[data-f]').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.btn[data-f]').forEach(x => x.classList.remove('on'));
+  b.classList.add('on'); area = b.dataset.f; applyFilter();
+});
+
+// ── entrar a la pecera
+let tween = null;
+function flyTo(to, target) { tween = {from: camera.position.clone(), to, tf: controls.target.clone(), tt: target, t: 0}; }
+document.getElementById('dive').onclick = () => {
+  controls.autoRotate = false; document.getElementById('spin').classList.remove('on');
+  flyTo(new THREE.Vector3(0, -1.5, 6.5), new THREE.Vector3(0, 0.5, 0));
+  document.getElementById('dive').classList.add('on');
+  setTimeout(() => { controls.maxDistance = 26; controls.minDistance = 1.2; }, 900);
+};
+document.getElementById('spin').onclick = e => {
+  controls.autoRotate = !controls.autoRotate; e.target.classList.toggle('on', controls.autoRotate);
+  if (controls.autoRotate) { document.getElementById('dive').classList.remove('on');
+    controls.maxDistance = 70; flyTo(new THREE.Vector3(0, 4, 34), new THREE.Vector3(0, 0.5, 0)); }
+};
+document.getElementById('lb').onclick = e => {
+  const on = document.getElementById('labels').style.display !== 'none';
+  document.getElementById('labels').style.display = on ? 'none' : '';
+  e.target.classList.toggle('on', !on);
+};
+
+// ── picking
+const ray = new THREE.Raycaster(), pt = new THREE.Vector2();
+let down = null;
+canvas.addEventListener('pointerdown', e => down = {x:e.clientX, y:e.clientY});
+canvas.addEventListener('pointerup', e => {
+  if (!down || Math.hypot(e.clientX-down.x, e.clientY-down.y) > 6) return;   // fue arrastre
+  pt.set((e.clientX/innerWidth)*2-1, -(e.clientY/innerHeight)*2+1);
+  ray.setFromCamera(pt, camera);
+  const hit = ray.intersectObjects(meshes.filter(m => m.visible))[0];
+  if (hit) select(hit.object.userData.id);
+});
+
+addEventListener('resize', () => {
+  camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight); labelRenderer.setSize(innerWidth, innerHeight);
+});
+setTimeout(() => document.getElementById('hint').style.opacity = 0, 6000);
+
+(function loop() {
+  requestAnimationFrame(loop);
+  if (tween) {
+    try {
+      tween.t = Math.min(1, tween.t + 0.028);
+      const e2 = tween.t < 0.5 ? 2*tween.t*tween.t : 1-Math.pow(-2*tween.t+2, 2)/2;
+      camera.position.lerpVectors(tween.from, tween.to, e2);
+      controls.target.lerpVectors(tween.tf, tween.tt, e2);
+      if (tween.t >= 1) tween = null;
+    } catch (err) { console.warn('tween', err); tween = null; }
+  }
+  // etiquetas: solo el lado de la cámara, y por niveles según qué tan cerca estés
+  const dist = camera.position.distanceTo(controls.target);
+  const level = dist > 30 ? 0 : (dist > 20 ? 1 : 2);   // 0: solo persona+categorías · 1: +proyectos · 2: todo
+  const cambDir = camera.position.clone().setY(0);
+  const inside = camera.position.length() < R*1.15;
+  const okLevel = n => level === 0 ? (n.ring === 'top' || n.ring === 'cats')
+                      : level === 1 ? (n.ring !== 'oper' && n.ring !== 'plat') : true;
+  if (inside || cambDir.lengthSq() < 0.01) {
+    for (const n of DATA.nodes) if (n.el) n.el.classList.toggle('off', !okLevel(n));
+  } else {
+    cambDir.normalize();
+    for (const n of DATA.nodes) {
+      const m = byId[n.id]; if (!m || !n.el) continue;
+      const p = m.position.clone().setY(0).normalize();
+      const near = m.position.length() < 0.01 || cambDir.dot(p) > -0.12;
+      n.el.classList.toggle('off', !(near && okLevel(n)));
+    }
+  }
+  controls.update();
+  renderer.render(scene, camera);
+  labelRenderer.render(scene, camera);
+})();
+</script>
+</body></html>

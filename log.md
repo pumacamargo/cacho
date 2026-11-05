@@ -586,3 +586,11 @@
 - Ambos publicados en el FTP (`/uploads/vps2/docs/`), verificados por HTTP 200 y probados en el navegador en viewport de celular (sin scroll horizontal; filtros y desplegables funcionando).
 - **Para saberlo:** al añadir fichas nuevas al wiki hay que volver a correr `web/build-mapa.py` y, si son proyectos o runbooks, añadir su id a las listas del generador. El de video, en cambio, es de edición manual (es un resumen curado).
 - Sin publicar nada en TikTok.
+
+## [2026-11-05] docs | la pecera 3D: el wiki navegable en tres dimensiones
+- Arturo pidió una versión **visual en 3D** («una pecera gigante en medio de un cuarto, moverte alrededor, ver dentro en 360, zoom in/out»). Se hizo tal cual: un **cilindro de cristal** en un cuarto oscuro con el contenido del wiki flotando en capas — **Arturo arriba**, luego **categorías** (con líneas a sus proyectos), **proyectos**, **runbooks** y **plataforma** al fondo, en espiral para que se lean.
+- **`web/mapa-pecera.html`** generado por **`web/build-pecera.py`** desde las fichas reales (51 nodos: 13 proyectos + los 4 de Cliff sin ficha + 15 runbooks + 12 de plataforma + 6 categorías + la persona). Se **gira alrededor** con arrastre, se hace **zoom** con pellizco/rueda y hay un botón **«Entrar a la pecera»** con animación de cámara hasta dentro. Al tocar un nombre se abre su ficha con el enlace a GitHub.
+- **Librería vendorizada** en `web/lib/` (three.js 0.160.0 + OrbitControls + CSS2DRenderer): la página es **autónoma, sin CDN**. Al publicar hay que subir la página **y** los 3 archivos (`docs/` + `docs/lib/`).
+- **Dos lecciones técnicas** (documentadas en `web/README.md`): (1) **`CSS2DRenderer` reescribe `element.style.display` en cada frame**, así que las etiquetas se ocultan con una clase de opacidad, no con `display` — con `display` parece funcionar y no funciona; (2) **una pestaña en segundo plano pausa `requestAnimationFrame`**, así que al probar animaciones en un navegador automatizado hay que forzar la visibilidad o se concluye un bug que no existe (perdí un rato con eso).
+- Los tres mapas quedan enlazados entre sí: la pecera (3D), el mapa del ecosistema (plano) y el de video. Verificado en navegador: WebGL 2.0, las etiquetas por nivel (5 → 29 → 51 al acercarse), la ficha al tocar, la animación de entrada y la vuelta a girar.
+- Sin publicar nada en TikTok.

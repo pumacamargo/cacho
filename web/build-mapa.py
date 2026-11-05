@@ -185,7 +185,7 @@ HTML = f"""<!DOCTYPE html>
 </style></head><body><div class="wrap">
 <h1>Mapa del ecosistema</h1>
 <p class="sub">Todo el wiki <b>cacho</b> en una página: {total} fichas — proyectos, plataforma y runbooks. · {stamp}</p>
-<p class="sub">Este es el mapa <b>general</b>. El de <b>videos</b> es otro documento: <a href="ttchop-mapa-documentacion.html">mapa de documentación de video ↗</a></p>
+<p class="sub">Este es el mapa <b>general</b>. El de <b>videos</b> es otro documento: <a href="ttchop-mapa-documentacion.html">mapa de documentación de video ↗</a> · versión <b>3D</b> navegable: <a href="mapa-pecera.html">🫙 la pecera ↗</a></p>
 
 <div class="bar">
   <input type="search" id="q" placeholder="Buscar: proyecto, hardware, video, ftp…">

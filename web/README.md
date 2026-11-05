@@ -32,3 +32,31 @@ URL: <https://lemonsushi.com/uploads/vps2/docs/mapa-ecosistema.html>
 
 > Al añadir una ficha nueva al wiki, volver a correr el generador: si es un proyecto o un runbook,
 > también hay que añadir su id a las listas de `build-mapa.py` (categorías, `SISTEMAS`, `OPER_GROUPS`).
+
+## `mapa-pecera.html` — la pecera 3D (navegable)
+
+El mismo wiki, pero en 3D: un **cilindro de cristal** en medio de un cuarto donde el contenido
+flota en capas (persona arriba, categorías, proyectos, runbooks y plataforma al fondo). Se puede
+**girar alrededor**, hacer **zoom** y **entrar** a la pecera; al tocar un nombre se abre su ficha
+con el enlace a GitHub.
+
+- Se genera con `python3 web/build-pecera.py` (lee las fichas reales; mismas reglas que el mapa plano).
+- **Necesita la librería local** `web/lib/` (three.js 0.160.0 vendorizado: `three.module.js`,
+  `OrbitControls.js`, `CSS2DRenderer.js`) — no usa CDN. Al publicar hay que subir **la página y los 3 archivos**:
+
+```bash
+python3 scripts/creators/shotlist/publish_ftp.py put web/mapa-pecera.html docs
+for f in three.module.js OrbitControls.js CSS2DRenderer.js; do
+  python3 scripts/creators/shotlist/publish_ftp.py put web/lib/$f docs/lib
+done
+```
+
+URL: <https://lemonsushi.com/uploads/vps2/docs/mapa-pecera.html>
+
+### Dos trampas al tocar este archivo
+1. **`CSS2DRenderer` reescribe `element.style.display` en cada frame.** Para ocultar etiquetas hay que
+   usar una propiedad que él no toque: aquí es la clase `.lbl.off` (opacidad 0 + `pointer-events:none`).
+   Con `display` parece funcionar y no funciona.
+2. **Las etiquetas se filtran por nivel y por lado.** De lejos solo se ven las capas grandes
+   (persona y categorías); al acercarte aparecen proyectos y luego todo. Además solo se muestran las
+   del lado donde está la cámara (así se lee al girar). El umbral está en la constante `level` del loop.
