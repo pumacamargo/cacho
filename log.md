@@ -578,3 +578,11 @@
 - Creado **`operations/ttchop-video-paths.md`**: tabla de las vías (para qué / qué necesitas / paso a paso / skill), guía de elección, **piezas compartidas** (`collage_builder`, composición `caption-overlay`, PumaVoice + el helper de TTS ya versionado, manifiestos por caso), pasos de apoyo (voz/traducción, música, carruseles, segmentar) y las reglas que aplican a todas.
 - Enlazado desde el **índice** y con una línea de cabecera en los **7 runbooks** relacionados; añadido también un puntero en el skill `ttchop-content-ops`.
 - **No se tocó el contenido** de los runbooks existentes (solo el enlace de entrada). Sin publicar.
+
+## [2026-11-05] docs | mapas publicados en el FTP (video y ecosistema completo)
+- Arturo pidió poder **visualizar la documentación** cómodamente: un diagrama de flujo de la parte de video y, después, un **mapa completo interactivo de todo** (no solo ttchop), como documento aparte.
+- Creado **`web/ttchop-mapa-documentacion.html`** (el de video): las 3 herramientas con el camino por defecto (ttchop-server → Remotion, FilmCraft como reemplazo manual), las vías con sus pasos previos, cómo está organizado el wiki y una tabla «si quieres X → esto hago».
+- Creado **`web/mapa-ecosistema.html`** + **`web/build-mapa.py`**: el mapa **completo**. **Se genera desde las fichas reales** del wiki (títulos, descripciones y tags leídos de `entities/` y `operations/`), así que no se desincroniza y cubre las **48 fichas** (persona, 6 categorías con sus proyectos —incluida Cliff, que sigue «en veremos»—, hardware, sistemas y los 15 runbooks). Trae **buscador**, filtros por área y fichas desplegables, y **cada ficha enlaza a su página en GitHub** (el repo es público).
+- Ambos publicados en el FTP (`/uploads/vps2/docs/`), verificados por HTTP 200 y probados en el navegador en viewport de celular (sin scroll horizontal; filtros y desplegables funcionando).
+- **Para saberlo:** al añadir fichas nuevas al wiki hay que volver a correr `web/build-mapa.py` y, si son proyectos o runbooks, añadir su id a las listas del generador. El de video, en cambio, es de edición manual (es un resumen curado).
+- Sin publicar nada en TikTok.

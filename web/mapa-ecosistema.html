@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa del ecosistema — wiki cacho</title>
+<style>
+ :root{--bg:#0c0e13;--card:#161a22;--card2:#1c212c;--tx:#e9ecf3;--dim:#93a0b4;--line:#28303f;
+ --b:#4da3ff;--g:#3ddc9a;--o:#ffb84d;--p:#c58bff;--r:#ff7a90}
+ *{box-sizing:border-box}
+ body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+ .wrap{max-width:1000px;margin:0 auto;padding:20px 14px 70px}
+ h1{font-size:23px;margin:0 0 4px}
+ h2{font-size:19px;margin:36px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+ h3.gsub{font-size:15px;margin:20px 0 8px;color:var(--dim);text-transform:uppercase;letter-spacing:.04em}
+ .sub{color:var(--dim);font-size:14px;margin:2px 0}
+ .bar{position:sticky;top:0;z-index:5;background:rgba(12,14,19,.96);border-bottom:1px solid var(--line);padding:10px 0;margin:14px 0}
+ input[type=search]{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--tx);font-size:15px}
+ .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+ .fchip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:13px;color:var(--dim);cursor:pointer}
+ .fchip.on{background:#22314a;border-color:var(--b);color:#cfe6ff}
+ .count{font-size:12.5px;color:var(--dim);margin-top:6px}
+ .flowbox{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:10px 0}
+ .arow{display:flex;flex-direction:column;align-items:center;gap:6px}
+ .node{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:9px 14px;font-weight:600;font-size:14.5px}
+ .node.me{border-color:var(--b);color:#cfe6ff}
+ .node.plat{border-color:var(--g);color:#c9f6e3}
+ .arrow{color:var(--dim);font-size:15px}
+ .fcats{display:grid;gap:10px;grid-template-columns:1fr}
+ @media(min-width:680px){.fcats{grid-template-columns:1fr 1fr}}
+ @media(min-width:920px){.fcats{grid-template-columns:repeat(3,1fr)}}
+ .fcat{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+ .fcat-t{font-size:13.5px;font-weight:600;margin-bottom:7px}
+ .fchips{display:flex;flex-wrap:wrap;gap:5px}
+ .pchip{background:#232a37;border:1px solid var(--line);border-radius:8px;padding:3px 8px;font-size:12.5px;color:var(--tx)}
+ .wip{color:var(--o);font-size:11px;margin-left:6px;font-weight:400}
+ .legendband{display:grid;gap:10px;grid-template-columns:repeat(3,1fr);text-align:center;font-size:13px;color:var(--dim)}
+ .grid{display:grid;gap:10px;grid-template-columns:1fr}
+ @media(min-width:760px){.grid{grid-template-columns:1fr 1fr}}
+ .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 13px;margin:0}
+ .card[open]{border-color:#33405a}
+ summary{cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:7px;font-size:15px;list-style:none}
+ summary::-webkit-details-marker{display:none}
+ summary::before{content:"▸";color:var(--dim);font-size:12px}
+ .card[open] summary::before{content:"▾"}
+ .badge{background:#232a37;border:1px solid var(--line);border-radius:999px;padding:1px 8px;font-size:11px;color:var(--dim)}
+ .st{font-size:11px;border-radius:999px;padding:1px 8px;border:1px solid var(--line)}
+ .st-active{color:var(--g)} .st-draft{color:var(--o)} .st-archived{color:var(--dim)}
+ .desc{font-size:14px;color:var(--tx);margin:8px 0 6px}
+ .meta{font-size:12.5px;color:var(--dim);margin:0}
+ .path{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;opacity:.75;margin-left:6px}
+ a{color:var(--b)}
+ .note{border-style:dashed}
+ .foot{color:var(--dim);font-size:13px;margin-top:34px;border-top:1px solid var(--line);padding-top:12px}
+</style></head><body><div class="wrap">
+<h1>Mapa del ecosistema</h1>
+<p class="sub">Todo el wiki <b>cacho</b> en una página: 48 fichas — proyectos, plataforma y runbooks. · 2026-11-05</p>
+<p class="sub">Este es el mapa <b>general</b>. El de <b>videos</b> es otro documento: <a href="ttchop-mapa-documentacion.html">mapa de documentación de video ↗</a></p>
+
+<div class="bar">
+  <input type="search" id="q" placeholder="Buscar: proyecto, hardware, video, ftp…">
+  <div class="chips">
+    <span class="fchip on" data-f="">Todo</span>
+    <span class="fchip" data-f="persona">Persona</span>
+    <span class="fchip" data-f="categorias">Categorías</span>
+    <span class="fchip" data-f="proyectos">Proyectos</span>
+    <span class="fchip" data-f="plataforma">Plataforma</span>
+    <span class="fchip" data-f="operaciones">Runbooks</span>
+  </div>
+  <div class="count" id="count"></div>
+</div>
+
+<h2>1 · El flujo</h2>
+<div class="flowbox">
+  <div class="arow"><div class="node me">👤 Arturo</div><details class="card" data-area="persona" data-text="arturo perfil de arturo, dueño y operador de este ecosistema de ia. toda ia que trabaje persona · biografia · ubicacion · arte arturo">
+<summary><b>Arturo</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">Perfil de Arturo, dueño y operador de este ecosistema de IA. Toda IA que trabaje</p>
+<p class="meta">persona · biografia · ubicacion · arte<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/arturo.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/arturo.md</span></p>
+</details><div class="arrow">▼</div>
+    <div class="node">6 categorías de proyectos</div><div class="arrow">▼</div></div>
+  <div class="fcats"><div class="fcat"><div class="fcat-t">🎒 Backpack</div><div class="fchips"><span class="pchip">Proyecto Draw</span><span class="pchip">Proyecto Drums</span><span class="pchip">Proyecto Japanese</span><span class="pchip">Proyecto Singing</span></div></div><div class="fcat"><div class="fcat-t">🎬 Cliff <span class="wip">en veremos</span></div><div class="fchips"><span class="pchip">Apex</span><span class="pchip">Papa</span><span class="pchip">Tacosdepulpo</span><span class="pchip">Chava</span></div></div><div class="fcat"><div class="fcat-t">👨‍👩‍👧 Macanishi</div><div class="fchips"><span class="pchip">Proyecto Farmers</span><span class="pchip">Proyecto Travel</span></div></div><div class="fcat"><div class="fcat-t">📈 Moon</div><div class="fchips"><span class="pchip">Proyecto Moon FUT</span><span class="pchip">Proyecto Moon STO</span></div></div><div class="fcat"><div class="fcat-t">🛠️ Sandbox</div><div class="fchips"><span class="pchip">Proyecto App Development</span><span class="pchip">Proyecto Game Development</span><span class="pchip">Proyecto Shortfilm Development</span></div></div><div class="fcat"><div class="fcat-t">🛒 TT&#x27;s (TikTok Shop)</div><div class="fchips"><span class="pchip">Proyecto Lemon Sushi</span><span class="pchip">ttchop (proyecto)</span></div></div></div>
+  <div class="arow" style="margin-top:14px"><div class="arrow">▼ &nbsp;todo corre sobre&nbsp; ▼</div>
+    <div class="legendband">
+      <div class="node plat">Hardware</div><div class="node plat">Sistemas</div><div class="node plat">Operaciones</div>
+    </div>
+  </div>
+</div>
+
+<h2>2 · Categorías y proyectos</h2>
+<details class="card" data-area="categorias" data-text="categorías de proyectos taxonomía de los 6 grupos principales de proyectos de arturo. cada categoría proyecto · decision · negocio · personal categorias-proyectos">
+<summary><b>Categorías de Proyectos</b><span class="badge">concept</span><span class="st st-active">active</span></summary>
+<p class="desc">Taxonomía de los 6 grupos principales de proyectos de Arturo. Cada categoría</p>
+<p class="meta">proyecto · decision · negocio · personal<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/categorias-proyectos.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/categorias-proyectos.md</span></p>
+</details><h3 class="gsub">🎒 Categoría Backpack</h3><div class="grid"><details class="card" data-area="categorias" data-text="categoría backpack categoría de proyectos de estudio / aprendizaje / práctica de arturo. proyecto · personal · arte categoria-backpack">
+<summary><b>Categoría Backpack</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">Categoría de proyectos de estudio / aprendizaje / práctica de Arturo.</p>
+<p class="meta">proyecto · personal · arte<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/categoria-backpack.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/categoria-backpack.md</span></p>
+</details><details class="card" data-area="proyectos" data-text="proyecto draw proyecto de práctica (categoría categoria-backpack): dibujo. proyecto · personal · arte proyecto-draw">
+<summary><b>Proyecto Draw</b><span class="badge">ficha</span><span class="st st-draft">draft</span></summary>
+<p class="desc">Proyecto de práctica (categoría categoria-backpack): dibujo.</p>
+<p class="meta">proyecto · personal · arte<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-draw.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/proyecto-draw.md</span></p>
+</details><details class="card" data-area="proyectos" data-text="proyecto drums proyecto de práctica (categoría categoria-backpack): batería. proyecto · personal · arte proyecto-drums">
+<summary><b>Proyecto Drums</b><span class="badge">ficha</span><span class="st st-draft">draft</span></summary>
+<p class="desc">Proyecto de práctica (categoría categoria-backpack): batería.</p>
+<p class="meta">proyecto · personal · arte<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-drums.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/proyecto-drums.md</span></p>
+</details><details class="card" data-area="proyectos" data-text="proyecto japanese proyecto de aprendizaje (categoría categoria-backpack): estudiar japonés. proyecto · personal · biografia · idioma proyecto-japanese">
+<summary><b>Proyecto Japanese</b><span class="badge">ficha</span><span class="st st-draft">draft</span></summary>
+<p class="desc">Proyecto de aprendizaje (categoría categoria-backpack): estudiar japonés.</p>
+<p class="meta">proyecto · personal · biografia · idioma<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-japanese.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/proyecto-japanese.md</span></p>
+</details><details class="card" data-area="proyectos" data-text="proyecto singing proyecto de práctica (categoría categoria-backpack): canto. proyecto · personal · arte proyecto-singing">
+<summary><b>Proyecto Singing</b><span class="badge">ficha</span><span class="st st-draft">draft</span></summary>
+<p class="desc">Proyecto de práctica (categoría categoria-backpack): canto.</p>
+<p class="meta">proyecto · personal · arte<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-singing.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/proyecto-singing.md</span></p>
+</details></div><h3 class="gsub">🎬 Categoría Cliff</h3><div class="grid"><details class="card" data-area="categorias" data-text="categoría cliff categoría de proyectos de creación de contenido. varios están &quot;en veremos&quot; proyecto · monetizacion categoria-cliff">
+<summary><b>Categoría Cliff</b><span class="badge">ficha</span><span class="st st-draft">draft</span></summary>
+<p class="desc">Categoría de proyectos de creación de contenido. Varios están &quot;en veremos&quot;</p>
+<p class="meta">proyecto · monetizacion<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/categoria-cliff.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/categoria-cliff.md</span></p>
+</details><div class="card note"><b>Proyectos aún sin ficha</b><p class="desc">Apex · Papa · Tacosdepulpo · Chava — la categoría está «en veremos».</p></div></div><h3 class="gsub">👨‍👩‍👧 Categoría Macanishi</h3><div class="grid"><details class="card" data-area="categorias" data-text="categoría macanishi categoría de proyectos que arturo hace con su familia. proyecto · familia · negocio categoria-macanishi">
+<summary><b>Categoría Macanishi</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">Categoría de proyectos que Arturo hace con su familia.</p>
+<p class="meta">proyecto · familia · negocio<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/categoria-macanishi.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/categoria-macanishi.md</span></p>
+</details><details class="card" data-area="proyectos" data-text="proyecto farmers proyecto familiar (categoría categoria-macanishi): booth de tacos para proyecto · negocio · familia proyecto-farmers">
+<summary><b>Proyecto Farmers</b><span class="badge">ficha</span><span class="st st-draft">draft</span></summary>
+<p class="desc">Proyecto familiar (categoría categoria-macanishi): booth de tacos para</p>
+<p class="meta">proyecto · negocio · familia<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-farmers.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/proyecto-farmers.md</span></p>
+</details><details class="card" data-area="proyectos" data-text="proyecto travel proyecto familiar (categoría categoria-macanishi): automatización para hacer proyecto · automatizacion · familia proyecto-travel">
+<summary><b>Proyecto Travel</b><span class="badge">ficha</span><span class="st st-draft">draft</span></summary>
+<p class="desc">Proyecto familiar (categoría categoria-macanishi): automatización para hacer</p>
+<p class="meta">proyecto · automatizacion · familia<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-travel.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/proyecto-travel.md</span></p>
+</details></div><h3 class="gsub">📈 Categoría Moon</h3><div class="grid"><details class="card" data-area="categorias" data-text="categoría moon categoría de proyectos financieros de arturo. proyecto · negocio · capital · ingresos categoria-moon">
+<summary><b>Categoría Moon</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">Categoría de proyectos financieros de Arturo.</p>
+<p class="meta">proyecto · negocio · capital · ingresos<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/categoria-moon.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/categoria-moon.md</span></p>
+</details><details class="card" data-area="proyectos" data-text="proyecto moon fut proyecto financiero (categoría categoria-moon): daytrading de futuros. proyecto · negocio · capital · ingresos proyecto-moon-fut">
+<summary><b>Proyecto Moon FUT</b><span class="badge">ficha</span><span class="st st-draft">draft</span></summary>
+<p class="desc">Proyecto financiero (categoría categoria-moon): daytrading de futuros.</p>
+<p class="meta">proyecto · negocio · capital · ingresos<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-moon-fut.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/proyecto-moon-fut.md</span></p>
+</details><details class="card" data-area="proyectos" data-text="proyecto moon sto proyecto financiero (categoría categoria-moon): portafolio de inversiones. proyecto · negocio · capital · ingresos proyecto-moon-sto">
+<summary><b>Proyecto Moon STO</b><span class="badge">ficha</span><span class="st st-draft">draft</span></summary>
+<p class="desc">Proyecto financiero (categoría categoria-moon): portafolio de inversiones.</p>
+<p class="meta">proyecto · negocio · capital · ingresos<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-moon-sto.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/proyecto-moon-sto.md</span></p>
+</details></div><h3 class="gsub">🛠️ Categoría Sandbox</h3><div class="grid"><details class="card" data-area="categorias" data-text="categoría sandbox categoría de proyectos de development de arturo. proyecto · desarrollo categoria-sandbox">
+<summary><b>Categoría Sandbox</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">Categoría de proyectos de development de Arturo.</p>
+<p class="meta">proyecto · desarrollo<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/categoria-sandbox.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/categoria-sandbox.md</span></p>
+</details><details class="card" data-area="proyectos" data-text="proyecto app development proyecto de desarrollo (categoría categoria-sandbox): desarrollo de apps. proyecto · desarrollo proyecto-app-development">
+<summary><b>Proyecto App Development</b><span class="badge">ficha</span><span class="st st-draft">draft</span></summary>
+<p class="desc">Proyecto de desarrollo (categoría categoria-sandbox): desarrollo de apps.</p>
+<p class="meta">proyecto · desarrollo<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-app-development.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/proyecto-app-development.md</span></p>
+</details><details class="card" data-area="proyectos" data-text="proyecto game development proyecto de desarrollo (categoría categoria-sandbox): desarrollo de proyecto · desarrollo · videojuego proyecto-game-development">
+<summary><b>Proyecto Game Development</b><span class="badge">ficha</span><span class="st st-draft">draft</span></summary>
+<p class="desc">Proyecto de desarrollo (categoría categoria-sandbox): desarrollo de</p>
+<p class="meta">proyecto · desarrollo · videojuego<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-game-development.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/proyecto-game-development.md</span></p>
+</details><details class="card" data-area="proyectos" data-text="proyecto shortfilm development proyecto de desarrollo (categoría categoria-sandbox): desarrollo de proyecto · desarrollo · videojuego proyecto-shortfilm-development">
+<summary><b>Proyecto Shortfilm Development</b><span class="badge">ficha</span><span class="st st-draft">draft</span></summary>
+<p class="desc">Proyecto de desarrollo (categoría categoria-sandbox): desarrollo de</p>
+<p class="meta">proyecto · desarrollo · videojuego<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-shortfilm-development.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/proyecto-shortfilm-development.md</span></p>
+</details></div><h3 class="gsub">🛒 Categoría TT&#x27;s (TikTok Shop)</h3><div class="grid"><details class="card" data-area="categorias" data-text="categoría tt&#x27;s (tiktok shop) categoría de proyectos dentro de tiktok shop. proyecto · negocio · monetizacion categoria-tts">
+<summary><b>Categoría TT&#x27;s (TikTok Shop)</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">Categoría de proyectos dentro de TikTok Shop.</p>
+<p class="meta">proyecto · negocio · monetizacion<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/categoria-tts.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/categoria-tts.md</span></p>
+</details><details class="card" data-area="proyectos" data-text="proyecto lemon sushi proyecto tiktok shop seller (categoría categoria-tts): vender playeras proyecto · negocio · monetizacion proyecto-lemon-sushi">
+<summary><b>Proyecto Lemon Sushi</b><span class="badge">ficha</span><span class="st st-draft">draft</span></summary>
+<p class="desc">Proyecto TikTok Shop seller (categoría categoria-tts): vender playeras</p>
+<p class="meta">proyecto · negocio · monetizacion<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-lemon-sushi.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/proyecto-lemon-sushi.md</span></p>
+</details><details class="card" data-area="proyectos" data-text="ttchop (proyecto) proyecto de creación automatizada de contenido (comerciales) para tiktok shop proyecto · negocio · monetizacion · sistema proyecto-ttchop">
+<summary><b>ttchop (proyecto)</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">Proyecto de creación automatizada de contenido (comerciales) para TikTok Shop</p>
+<p class="meta">proyecto · negocio · monetizacion · sistema<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/proyecto-ttchop.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/proyecto-ttchop.md</span></p>
+</details></div>
+
+<h2>3 · La plataforma</h2>
+<h3 class="gsub">🖥️ Hardware (todo en Tailscale)</h3>
+<div class="grid"><details class="card" data-area="plataforma" data-text="celular android celular android de arturo, parte del inventario para proyectos. infra hardware-celular-android">
+<summary><b>Celular Android</b><span class="badge">ficha</span><span class="st st-draft">draft</span></summary>
+<p class="desc">Celular Android de Arturo, parte del inventario para proyectos.</p>
+<p class="meta">infra<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/hardware-celular-android.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/hardware-celular-android.md</span></p>
+</details><details class="card" data-area="plataforma" data-text="desktop puma (pumadeskasus, windows) desktop (windows) de arturo, disponible para proyectos. infra hardware-desktop-puma">
+<summary><b>Desktop Puma (PumaDeskAsus, Windows)</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">Desktop (Windows) de Arturo, disponible para proyectos.</p>
+<p class="meta">infra<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/hardware-desktop-puma.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/hardware-desktop-puma.md</span></p>
+</details><details class="card" data-area="plataforma" data-text="hardware (inventario) total del hardware de arturo para proyectos, todo conectado vía tailscale infra · red · vps · docker hardware-inventario">
+<summary><b>Hardware (inventario)</b><span class="badge">concept</span><span class="st st-active">active</span></summary>
+<p class="desc">Total del hardware de Arturo para proyectos, todo conectado vía Tailscale</p>
+<p class="meta">infra · red · vps · docker<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/hardware-inventario.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/hardware-inventario.md</span></p>
+</details><details class="card" data-area="plataforma" data-text="raspberry pi 5 raspberry pi 5 de arturo, en la red tailscale como nodo pi5puma01. infra hardware-raspberry-pi5">
+<summary><b>Raspberry Pi 5</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">Raspberry Pi 5 de Arturo, en la red Tailscale como nodo pi5puma01.</p>
+<p class="meta">infra<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/hardware-raspberry-pi5.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/hardware-raspberry-pi5.md</span></p>
+</details><details class="card" data-area="plataforma" data-text="hardware vps proyectos segundo vps de arturo, dedicado a proyectos. confirmado en la red tailscale, infra · vps hardware-vps-projects">
+<summary><b>Hardware VPS Proyectos</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">Segundo VPS de Arturo, dedicado a proyectos. Confirmado en la red Tailscale,</p>
+<p class="meta">infra · vps<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/hardware-vps-projects.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/hardware-vps-projects.md</span></p>
+</details><details class="card" data-area="plataforma" data-text="hardware vps tools vps principal de arturo, este host donde corre hermes. alojado en contabo. infra · vps · docker hardware-vps-tools">
+<summary><b>Hardware VPS Tools</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">VPS principal de Arturo, este host donde corre Hermes. Alojado en Contabo.</p>
+<p class="meta">infra · vps · docker<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/hardware-vps-tools.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/hardware-vps-tools.md</span></p>
+</details></div>
+<h3 class="gsub">⚙️ Sistemas y repositorios</h3>
+<div class="grid"><details class="card" data-area="plataforma" data-text="hermes agent agente de ia de nous research, instalado y operando en el vps principal de sistema · infra · rol-agente hermes-agent">
+<summary><b>Hermes Agent</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">Agente de IA de Nous Research, instalado y operando en el VPS principal de</p>
+<p class="meta">sistema · infra · rol-agente<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/hermes-agent.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/hermes-agent.md</span></p>
+</details><details class="card" data-area="plataforma" data-text="hermes — agentes persistentes (research, developer, jr_developer, ttchop_robot) bot mode de hermes-agent: cada bot es un perfil de hermes con su propio sistema · papel-agente · rol-agente · personal hermes-agentes">
+<summary><b>Hermes — Agentes persistentes (research, developer, jr_developer, ttchop_robot)</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">Bot Mode de hermes-agent: cada Bot es un perfil de Hermes con su propio</p>
+<p class="meta">sistema · papel-agente · rol-agente · personal<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/hermes-agentes.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/hermes-agentes.md</span></p>
+</details><details class="card" data-area="plataforma" data-text="cacho (repositorio) repositorio central de documentación de arturo, en github empresa · proyecto · integracion cacho">
+<summary><b>Cacho (repositorio)</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">Repositorio central de documentación de Arturo, en GitHub</p>
+<p class="meta">empresa · proyecto · integracion<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/cacho.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/cacho.md</span></p>
+</details><details class="card" data-area="plataforma" data-text="ttchop (empresa y pipeline) empresa con pipelines diarios de automatización (scout → producer). empresa · proceso · pipeline · cron ttchop">
+<summary><b>ttchop (empresa y pipeline)</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">Empresa con pipelines diarios de automatización (scout → producer).</p>
+<p class="meta">empresa · proceso · pipeline · cron<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/ttchop.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/ttchop.md</span></p>
+</details><details class="card" data-area="plataforma" data-text="ttchop automatizaciones detalle de las automatizaciones internas de ttchop-bot (ver proyecto-ttchop). proceso · pipeline · cron · automatizacion ttchop-automatizaciones">
+<summary><b>ttchop automatizaciones</b><span class="badge">concept</span><span class="st st-active">active</span></summary>
+<p class="desc">Detalle de las automatizaciones internas de ttchop-bot (ver proyecto-ttchop).</p>
+<p class="meta">proceso · pipeline · cron · automatizacion<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/ttchop-automatizaciones.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/ttchop-automatizaciones.md</span></p>
+</details><details class="card" data-area="plataforma" data-text="ttchop webapps (ttchop / ttchop2) las aplicaciones web del proyecto ttchop (ver proyecto-ttchop). componente #1: sistema · proyecto · negocio ttchop-webapps">
+<summary><b>ttchop webapps (ttchop / ttchop2)</b><span class="badge">ficha</span><span class="st st-active">active</span></summary>
+<p class="desc">Las aplicaciones web del proyecto ttchop (ver proyecto-ttchop). Componente #1:</p>
+<p class="meta">sistema · proyecto · negocio<br><a href="https://github.com/pumacamargo/cacho/blob/main/entities/ttchop-webapps.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">entities/ttchop-webapps.md</span></p>
+</details></div>
+
+<h2>4 · Operaciones (runbooks)</h2>
+<h3 class="gsub">Publicar, accesos y máquinas</h3><div class="grid"><details class="card" data-area="operaciones" data-text="acceso ftps y publicaciones web lemon sushi configuración de acceso desde hardware-vps-tools al hosting de proyecto-lemon-sushi. no confundir este destino con polaris/nas ni con la carpeta web del nas suspendida para otros trabajos. runbook · red · almacen · vps acceso-ftps-lemon-sushi">
+<summary><b>Acceso FTPS y publicaciones web Lemon Sushi</b><span class="badge">runbook</span><span class="st st-active">active</span></summary>
+<p class="desc">Configuración de acceso desde hardware-vps-tools al hosting de proyecto-lemon-sushi. No confundir este destino con Polaris/NAS ni con la carpeta web del NAS suspendida para otros trabajos.</p>
+<p class="meta">runbook · red · almacen · vps<br><a href="https://github.com/pumacamargo/cacho/blob/main/operations/acceso-ftps-lemon-sushi.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">operations/acceso-ftps-lemon-sushi.md</span></p>
+</details><details class="card" data-area="operaciones" data-text="acceso a polaris desde el vps y orden de alternativas arturo pidió conservar los métodos anteriores y actualizar su prioridad. para operar sobre archivos de projects, probar primero smb directo vps→nas por tailscale. windows no es intermediario obligatorio. la unidad p: pertenece a w runbook · almacen · tailscale · cli acceso-nas-polaris">
+<summary><b>Acceso a Polaris desde el VPS y orden de alternativas</b><span class="badge">runbook</span><span class="st st-active">active</span></summary>
+<p class="desc">Arturo pidió conservar los métodos anteriores y actualizar su prioridad. Para operar sobre archivos de Projects, probar primero SMB directo VPS→NAS por Tailscale. Windows no es intermediario obligatorio. La unidad P: pertenece a W</p>
+<p class="meta">runbook · almacen · tailscale · cli<br><a href="https://github.com/pumacamargo/cacho/blob/main/operations/acceso-nas-polaris.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">operations/acceso-nas-polaris.md</span></p>
+</details><details class="card" data-area="operaciones" data-text="acceso ssh a pumadeskasus orden vigente para archivos del nas (2026-10-28): primero smb directo vps→polaris con las credenciales protegidas existentes; después windows por ssh con ip/fqdn si el trabajo requiere windows; conservar el wrapper por nombre cort infra · tailscale · runbook acceso-remoto-pumadeskasus">
+<summary><b>Acceso SSH a PumaDeskAsus</b><span class="badge">runbook</span><span class="st st-active">active</span></summary>
+<p class="desc">Orden vigente para archivos del NAS (2026-10-28): primero SMB directo VPS→Polaris con las credenciales protegidas existentes; después Windows por SSH con IP/FQDN si el trabajo requiere Windows; conservar el wrapper por nombre cort</p>
+<p class="meta">infra · tailscale · runbook<br><a href="https://github.com/pumacamargo/cacho/blob/main/operations/acceso-remoto-pumadeskasus.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">operations/acceso-remoto-pumadeskasus.md</span></p>
+</details><details class="card" data-area="operaciones" data-text="diagnóstico de espacio en disco en vps-tools auditoría de solo lectura del disco de hardware-vps-tools tras la alerta de poco espacio. complementa la operación de hermes-agent y el inventario de hardware-inventario. no se ejecutó ninguna limpieza ni borrado en esta tarea. runbook · docker · vps · almacen diagnostico-espacio-disco-vps">
+<summary><b>Diagnóstico de espacio en disco en vps-tools</b><span class="badge">runbook</span><span class="st st-active">active</span></summary>
+<p class="desc">Auditoría de solo lectura del disco de hardware-vps-tools tras la alerta de poco espacio. Complementa la operación de hermes-agent y el inventario de hardware-inventario. No se ejecutó ninguna limpieza ni borrado en esta tarea.</p>
+<p class="meta">runbook · docker · vps · almacen<br><a href="https://github.com/pumacamargo/cacho/blob/main/operations/diagnostico-espacio-disco-vps.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">operations/diagnostico-espacio-disco-vps.md</span></p>
+</details></div><h3 class="gsub">Hacer y editar videos</h3><div class="grid"><details class="card" data-area="operaciones" data-text="vías para hacer un video (punto de entrada) empezar por aquí. hay 3 vías distintas para producir un video (más 1 sub-caso y 1 entorno sistema · runbook · video · indice ttchop-video-paths">
+<summary><b>Vías para hacer un video (punto de entrada)</b><span class="badge">runbook</span><span class="st st-active">active</span></summary>
+<p class="desc">Empezar por aquí. Hay 3 vías distintas para producir un video (más 1 sub-caso y 1 entorno</p>
+<p class="meta">sistema · runbook · video · indice<br><a href="https://github.com/pumacamargo/cacho/blob/main/operations/ttchop-video-paths.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">operations/ttchop-video-paths.md</span></p>
+</details><details class="card" data-area="operaciones" data-text="generación de videos en ttchop2 esta página separa dos procesos distintos: la creación iniciada desde la ui de sistema · runbook · pipeline ttchop-video-generation">
+<summary><b>Generación de videos en TTChop2</b><span class="badge">runbook</span><span class="st st-active">active</span></summary>
+<p class="desc">Esta página separa dos procesos distintos: la creación iniciada desde la UI de</p>
+<p class="meta">sistema · runbook · pipeline<br><a href="https://github.com/pumacamargo/cacho/blob/main/operations/ttchop-video-generation.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">operations/ttchop-video-generation.md</span></p>
+</details><details class="card" data-area="operaciones" data-text="recrear un video de creador (tiktok/hamaca/edits) procedimiento repetible para recrear un video de asu/sora: partir del video de runbook · almacen · red · tailscale recrear-video-creadores-edits">
+<summary><b>Recrear un video de creador (tiktok/hamaca/edits)</b><span class="badge">runbook</span><span class="st st-active">active</span></summary>
+<p class="desc">Procedimiento repetible para recrear un video de Asu/Sora: partir del video de</p>
+<p class="meta">runbook · almacen · red · tailscale<br><a href="https://github.com/pumacamargo/cacho/blob/main/operations/recrear-video-creadores-edits.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">operations/recrear-video-creadores-edits.md</span></p>
+</details><details class="card" data-area="operaciones" data-text="edición manual producer-style con solo audio y videos este flujo sirve cuando se cuenta con un audio aprobado por arturo y archivos de video originales, pero no existe una ficha de producto ni sessions con metadata en firestore. no se ejecuta runproducer(): se prepara un montaje manu sistema · runbook · pipeline ttchop-raw-asset-manual-edit">
+<summary><b>Edición manual Producer-style con solo audio y videos</b><span class="badge">runbook</span><span class="st st-active">active</span></summary>
+<p class="desc">Este flujo sirve cuando se cuenta con un audio aprobado por Arturo y archivos de video originales, pero no existe una ficha de producto ni sessions con metadata en Firestore. No se ejecuta runProducer(): se prepara un montaje manu</p>
+<p class="meta">sistema · runbook · pipeline<br><a href="https://github.com/pumacamargo/cacho/blob/main/operations/ttchop-raw-asset-manual-edit.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">operations/ttchop-raw-asset-manual-edit.md</span></p>
+</details><details class="card" data-area="operaciones" data-text="pruebas de edición de video con filmcraft para ttchop2 esta página distingue la implementación vigente del producer, las pruebas locales de filmcraft del 2026-10-21 y una posible integración futura. para los otros flujos manuales y sus límites, consulta ttchop-video-generation; para s runbook · pipeline · cli ttchop-filmcraft-video-tests">
+<summary><b>Pruebas de edición de video con FilmCraft para TTChop2</b><span class="badge">runbook</span><span class="st st-draft">draft</span></summary>
+<p class="desc">Esta página distingue la implementación vigente del Producer, las pruebas locales de FilmCraft del 2026-10-21 y una posible integración futura. Para los otros flujos manuales y sus límites, consulta ttchop-video-generation; para s</p>
+<p class="meta">runbook · pipeline · cli<br><a href="https://github.com/pumacamargo/cacho/blob/main/operations/ttchop-filmcraft-video-tests.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">operations/ttchop-filmcraft-video-tests.md</span></p>
+</details><details class="card" data-area="operaciones" data-text="traducir un video con pumavoice y alinear inicio y fin de voz flujo aprobado por arturo: transcripción local → traducción del asistente → tts con su voz existente → ajuste local del intervalo de habla → audio nuevo sobre el video original. no intenta mover labios ni sincronizar cada fonema.  runbook · pipeline · cli traduccion-video-pumasvoice-sincronizada">
+<summary><b>Traducir un video con PumaVoice y alinear inicio y fin de voz</b><span class="badge">runbook</span><span class="st st-active">active</span></summary>
+<p class="desc">Flujo aprobado por Arturo: transcripción local → traducción del asistente → TTS con su voz existente → ajuste local del intervalo de habla → audio nuevo sobre el video original. No intenta mover labios ni sincronizar cada fonema. </p>
+<p class="meta">runbook · pipeline · cli<br><a href="https://github.com/pumacamargo/cacho/blob/main/operations/traduccion-video-pumasvoice-sincronizada.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">operations/traduccion-video-pumasvoice-sincronizada.md</span></p>
+</details><details class="card" data-area="operaciones" data-text="generación manual de canciones con elevenlabs music esta guía documenta la prueba de canción enviada manualmente a elevenlabs music sistema · runbook · pipeline ttchop-music-generation">
+<summary><b>Generación manual de canciones con ElevenLabs Music</b><span class="badge">runbook</span><span class="st st-active">active</span></summary>
+<p class="desc">Esta guía documenta la prueba de canción enviada manualmente a ElevenLabs Music</p>
+<p class="meta">sistema · runbook · pipeline<br><a href="https://github.com/pumacamargo/cacho/blob/main/operations/ttchop-music-generation.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">operations/ttchop-music-generation.md</span></p>
+</details><details class="card" data-area="operaciones" data-text="creación de carruseles editoriales de ttchop runbook para historias de reddit adaptadas a carrusel y otros carruseles sistema · runbook · api ttchop-carousel-creation">
+<summary><b>Creación de carruseles editoriales de TTChop</b><span class="badge">runbook</span><span class="st st-active">active</span></summary>
+<p class="desc">Runbook para historias de Reddit adaptadas a carrusel y otros carruseles</p>
+<p class="meta">sistema · runbook · api<br><a href="https://github.com/pumacamargo/cacho/blob/main/operations/ttchop-carousel-creation.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">operations/ttchop-carousel-creation.md</span></p>
+</details></div><h3 class="gsub">Datos y estudio</h3><div class="grid"><details class="card" data-area="operaciones" data-text="estudio de creadores — fuentes, datos y versiones inventario de todo el material generado al estudiar a los dos creadores japoneses de tiktok shop (asu y sora) para proyecto-ttchop: videos, transcripciones, reportes y datos de medición, con sus rutas y enlaces verificados. sirve  runbook · almacen · vps · red estudio-creadores-fuentes-datos">
+<summary><b>Estudio de creadores — fuentes, datos y versiones</b><span class="badge">runbook</span><span class="st st-active">active</span></summary>
+<p class="desc">Inventario de todo el material generado al estudiar a los dos creadores japoneses de TikTok Shop (Asu y Sora) para proyecto-ttchop: videos, transcripciones, reportes y datos de medición, con sus rutas y enlaces verificados. Sirve </p>
+<p class="meta">runbook · almacen · vps · red<br><a href="https://github.com/pumacamargo/cacho/blob/main/operations/estudio-creadores-fuentes-datos.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">operations/estudio-creadores-fuentes-datos.md</span></p>
+</details><details class="card" data-area="operaciones" data-text="separar videos del nas por cortes visuales procedimiento usado el 2026-10-26 para dividir juice.mp4 y elliswhite.mp4 en clips independientes, preservando audio, dimensiones y originales. no fue un pipeline de producer ni una función de obs: se usaron ffmpeg/ffprobe, python runbook · pipeline · almacen · cli separar-videos-nas-por-cortes">
+<summary><b>Separar videos del NAS por cortes visuales</b><span class="badge">runbook</span><span class="st st-active">active</span></summary>
+<p class="desc">Procedimiento usado el 2026-10-26 para dividir Juice.mp4 y EllisWhite.mp4 en clips independientes, preservando audio, dimensiones y originales. No fue un pipeline de Producer ni una función de OBS: se usaron FFmpeg/ffprobe, Python</p>
+<p class="meta">runbook · pipeline · almacen · cli<br><a href="https://github.com/pumacamargo/cacho/blob/main/operations/separar-videos-nas-por-cortes.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">operations/separar-videos-nas-por-cortes.md</span></p>
+</details><details class="card" data-area="operaciones" data-text="transcripción del curso gerardo santiago estado al 2026-10-31: el curso está transcrito por completo. los 20 videos de p:\tiktok\learning\gerardosantiago_course\videos tienen su txt en la carpeta hermana transcripts\: 20 mp4 y 20 txt, emparejados uno a uno por nombre bas runbook · pipeline · almacen transcripcion-curso-gerardo-santiago">
+<summary><b>Transcripción del curso Gerardo Santiago</b><span class="badge">runbook</span><span class="st st-active">active</span></summary>
+<p class="desc">Estado al 2026-10-31: el curso está transcrito por completo. Los 20 videos de P:\TikTok\Learning\gerardoSantiago_course\videos tienen su TXT en la carpeta hermana transcripts\: 20 MP4 y 20 TXT, emparejados uno a uno por nombre bas</p>
+<p class="meta">runbook · pipeline · almacen<br><a href="https://github.com/pumacamargo/cacho/blob/main/operations/transcripcion-curso-gerardo-santiago.md" target="_blank" rel="noopener">ver ficha completa ↗</a> <span class="path">operations/transcripcion-curso-gerardo-santiago.md</span></p>
+</details></div>
+
+<h2>5 · El repositorio</h2>
+<div class="grid">
+ <div class="card"><b>index.md — el catálogo</b><p class="desc">Toda página con un resumen de una línea. Es lo primero que se lee.</p></div>
+ <div class="card"><b>log.md — la bitácora</b><p class="desc">Qué se hizo cada día, qué falló y qué se aprendió.</p></div>
+ <div class="card"><b>Cómo se mantiene</b><p class="desc">Markdown versionado en git (repo público <code>pumacamargo/cacho</code>); cada cambio queda commiteado y pusheado (regla TTC-41).</p></div>
+ <div class="card"><b>Para consultarlo completo</b><p class="desc">Ábrelo en Obsidian en la PC (los enlaces <code>[[…]]</code> funcionan) o pulsa cualquier ficha de este mapa para leerla en GitHub.</p></div>
+</div>
+
+<div class="foot">Generado desde el propio wiki (<code>web/build-mapa.py</code>) · las descripciones salen de cada ficha, no de un resumen a mano · nada se publica en TikTok sin el OK de Arturo.</div>
+</div>
+<script>
+const q=document.getElementById('q'), chips=[...document.querySelectorAll('.fchip')], cnt=document.getElementById('count');
+let area='';
+function apply(){
+  const s=q.value.trim().toLowerCase(); let shown=0, all=0;
+  document.querySelectorAll('.card[data-area]').forEach(c=>{
+    all++;
+    const ok=(!area||c.dataset.area===area) && (!s||c.dataset.text.includes(s));
+    c.style.display=ok?'':'none'; if(ok) shown++;
+    const g=c.closest('.grid'); if(g) g.style.display=[...g.children].some(x=>x.style.display!=='none')?'':'none';
+  });
+  document.querySelectorAll('h3.gsub').forEach(h=>{
+    const g=h.nextElementSibling; if(g&&g.classList.contains('grid')) h.style.display=g.style.display==='none'?'none':'';
+  });
+  cnt.textContent=shown+' de '+all+' fichas visibles'+(area?' · área: '+area:'');
+}
+q.addEventListener('input',apply);
+chips.forEach(c=>c.addEventListener('click',()=>{chips.forEach(x=>x.classList.remove('on'));c.classList.add('on');area=c.dataset.f;apply();}));
+apply();
+</script></body></html>
