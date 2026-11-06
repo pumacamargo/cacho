@@ -654,3 +654,11 @@
   `13_NachoShampoo01_final_musica.mp4` / `_final_sin_musica.mp4`. Todo verificado por hash tras mover.
   La receta conserva un detalle a vigilar: registra el `s15` con 4.657 s por el absorbedor del builder,
   pero **la duración montada real es 0.733 s**.
+
+## [2026-11-06] docs | caso 14 Enchenal — comercial de libro pop-up y entrega v3 fixed
+
+- A petición de Arturo, creado [[ttchop-popup-book-commercial]]: flujo manual Lemo-Opuscar / Paper Pop-up Book con Three.js + Canvas2D, Chromium y FFmpeg; separado de EffectCraft/FilmCraft y del Producer.
+- Documentados referencia/fotos de TTChop2, guion japonés/PumaVoice01 y 1.5×, eliminación de las dos escenas técnicas y su audio, continuidad del viejito/montaña, seis páginas, jerarquía foreground/background, storyboard aprobado v5, cámaras suaves y barrido de barba final.
+- Registrada la única generación de poses Kie (`nano-banana-2`, 18 créditos, task ID y limitaciones reales), sin confundir ese cargo con TTS ni uso del modelo Hermes.
+- Identificada la entrega canónica **`enchenal_book_camera_v3_fixed.mp4`**: 34.5 s, 1080×1920/30 fps, 1035 frames; SHA-256 verificado contra NAS. El v3 sin fixed conserva el rótulo defectuoso y no es el final. Incluidos paquete `sourcepackage_fixed.tar.gz`, comandos de reconstrucción, QA, recibos y respaldo persistente.
+- Enlace añadido al hub [[ttchop-video-paths]] y al índice; inventario contado: 49 páginas. Solo documentación; sin nueva generación, cambios de aplicaciones, despliegues o publicación en TikTok.

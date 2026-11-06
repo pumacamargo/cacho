@@ -1,7 +1,7 @@
 ---
 title: Vías para hacer un video (punto de entrada)
 created: 2026-11-05
-updated: 2026-11-05
+updated: 2026-11-06
 type: runbook
 tags: [sistema, runbook, video, indice]
 status: active
@@ -80,6 +80,10 @@ propio plano — ver los pitfalls del runbook) → Arturo las aprueba → **solo
 (`wan/2-6-flash-image-to-video`, 720p o 1080p, 5 s, usando la imagen aprobada como primer cuadro) → montaje
 normal. Documentado paso a paso en [[recrear-video-creadores-edits]] → «Caso verificado —
 13_NachoShampoo01».
+
+## Animación programada con libro pop-up (flujo manual adicional)
+
+Para un comercial ilustrado, en lugar de montar clips: **[[ttchop-popup-book-commercial]]** documenta el caso Enchenal `14_shaverAfter`, con Lemo-Opuscar / Paper Pop-up Book, Three.js + Canvas2D, poses aprobadas, voz japonesa, storyboard, cámara y entrega reproducible. Es un flujo manual adicional, **fuera de EffectCraft/FilmCraft y no integrado al Producer**; no cambia las herramientas ni el camino por defecto descritos arriba. El runbook identifica el MP4 final `enchenal_book_camera_v3_fixed.mp4` y su paquete fuente en el NAS.
 
 ## Pasos de apoyo (se usan dentro de las vías)
 

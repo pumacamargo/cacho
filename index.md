@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-11-05 | Total pages: 48
+> Last updated: 2026-11-06 | Total pages: 49
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -56,6 +56,7 @@
 - [[transcripcion-curso-gerardo-santiago]] — ocho videos originales del curso: transcripción NAS→TXT, hashes, reanudación y límites STT
 - [[separar-videos-nas-por-cortes]] — FFmpeg y revisión visual para segmentar Juice/EllisWhite, cuatro partes iguales y QA de entrega al NAS; entregas Tagilas/Shampoo registradas en log.md el 2026-10-27
 - [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA
+- [[ttchop-popup-book-commercial]] — comercial Enchenal con Lemo-Opuscar/Three.js: cuento continuo, poses Kie en una generación, voz japonesa a 1.5×, storyboard, cámara sutil y reconstrucción de la entrega final `v3_fixed`
 - [[ttchop-video-paths]] — **punto de entrada**: las 3 vías (más 1 sub-caso y 1 entorno alternativo) para hacer un video, cuándo usar cada una, qué necesitas y las piezas compartidas (`collage_builder`, `caption-overlay`, PumaVoice, manifiestos por caso)
 - [[ttchop-video-generation]] — runbook: flujos UI/collage y traducción manual `ttchop-server` → FilmCraft con 3 pistas por defecto; Producer no usa FilmCraft
 - [[ttchop-raw-asset-manual-edit]] — edición Producer-style sin catálogo; casos Juice Discount/ELLISS y Ellis if01; tres overlays nuevos, clips IF01 01–03 y montaje continuo 01–02–03 con instrumental aprobado actualizados en Polaris
