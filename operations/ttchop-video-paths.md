@@ -1,7 +1,7 @@
 ---
 title: Vías para hacer un video (punto de entrada)
 created: 2026-11-05
-updated: 2026-11-06
+updated: 2026-11-09
 type: runbook
 tags: [sistema, runbook, video, indice]
 status: active
@@ -84,6 +84,10 @@ normal. Documentado paso a paso en [[recrear-video-creadores-edits]] → «Caso 
 ## Animación programada con libro pop-up (flujo manual adicional)
 
 Para un comercial ilustrado, en lugar de montar clips: **[[ttchop-popup-book-commercial]]** documenta el caso Enchenal `14_shaverAfter`, con Lemo-Opuscar / Paper Pop-up Book, Three.js + Canvas2D, poses aprobadas, voz japonesa, storyboard, cámara y entrega reproducible. Es un flujo manual adicional, **fuera de EffectCraft/FilmCraft y no integrado al Producer**; no cambia las herramientas ni el camino por defecto descritos arriba. El runbook identifica el MP4 final `enchenal_book_camera_v3_fixed.mp4` y su paquete fuente en el NAS.
+
+## Collage editorial VOX (flujo manual adicional)
+
+**[[ttchop-vox-collage-commercial]]** documenta la otra recreación de `14_shaverAfter`: ocho escenas sobre negro, HyperFrames/GSAP y el kit Vox Collage, narración Announcer JP e integración de imágenes distintas aprobadas. No usa el libro ni EffectCraft y no está conectado al Producer. Su entrega final es `vox_shaver_full_announcer_images_v2.mp4`; el runbook identifica fuentes, NAS, coste de la generación única y reconstrucción offline. No intercambiar su voz completa de 47.4 s con el Book recortado de 34.5 s.
 
 ## Pasos de apoyo (se usan dentro de las vías)
 

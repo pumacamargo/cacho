@@ -662,3 +662,10 @@
 - Registrada la única generación de poses Kie (`nano-banana-2`, 18 créditos, task ID y limitaciones reales), sin confundir ese cargo con TTS ni uso del modelo Hermes.
 - Identificada la entrega canónica **`enchenal_book_camera_v3_fixed.mp4`**: 34.5 s, 1080×1920/30 fps, 1035 frames; SHA-256 verificado contra NAS. El v3 sin fixed conserva el rótulo defectuoso y no es el final. Incluidos paquete `sourcepackage_fixed.tar.gz`, comandos de reconstrucción, QA, recibos y respaldo persistente.
 - Enlace añadido al hub [[ttchop-video-paths]] y al índice; inventario contado: 49 páginas. Solo documentación; sin nueva generación, cambios de aplicaciones, despliegues o publicación en TikTok.
+
+## [2026-11-09] docs | build VOX Enchenal con Announcer e imágenes distintas
+
+- Añadido [[ttchop-vox-collage-commercial]], separado del Book: kit Vox Collage/HyperFrames, referencia original de ocho escenas, guion propio japonés, voz Announcer a 1.5× y 45 estados de caption.
+- Registrado el archivo final **`vox_shaver_full_announcer_images_v2.mp4`** (47.4 s, 1080×1920/30 fps, 1422 frames), SHA-256, respaldo persistente, destino NAS y `sourcepackage.tar.gz` con comando `sh reproduce_images_v2.sh` leído del paquete real.
+- Documentada una generación de ocho piezas con `nano-banana-2` (task `43434461cc8c7dcfaaab397c60299f33`, 18 créditos), aprobación de Arturo, extracción alfa, mapa de activos realmente sustituidos y límites. El audio/animación no cambiaron al integrar imágenes; no confundir ese cargo con las poses del Book, TTS o uso del modelo Hermes.
+- Índice y hub de vías actualizados; 50 páginas contadas. Documentación y fuentes verificadas; sin generar/renderizar medios nuevos ni cambiar aplicaciones/servicios.
