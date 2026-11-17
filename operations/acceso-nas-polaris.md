@@ -31,6 +31,16 @@ No cambiar DNS, credenciales, mappings, servicios o firewall para elegir una alt
 
 El venv y el adaptador viven en **scratch sujeto a limpieza**, no son herramientas persistentes desplegadas para todos los agentes. Verificar existencia, dependencias y host real antes de delegar. Clonar Cacho no instala nada automáticamente. Para nuevas instalaciones aisladas, revisar compatibilidad y dependencias; no modificar Python global ni los entornos de transcripción ya usados en [[transcripcion-curso-gerardo-santiago]].
 
+**Actualización 2026-11-17 — usar el entorno persistente.** La limpieza automática de `/root/.hermes/cache/scratch/` **borró** el venv de SMB (`nas-direct-smb-venv`) y otros directorios de trabajo, y un agente se detuvo porque el entorno ya no existía. El entorno vigente vive **fuera de scratch**:
+
+```
+/root/.hermes/tools/course-stt-venv/bin/python   # smbclient (smbprotocol) + faster-whisper 1.2.1
+```
+
+No volver a crear entornos de trabajo dentro de `scratch`; ahí solo van archivos temporales. Si se necesita otro entorno, crearlo bajo `/root/.hermes/tools/`.
+
+Para transcribir en la **PC con GPU** (lo recomendado con audio largo) hay un procedimiento propio con sus trampas: [[transcripcion-gpu-pumadeskasus]].
+
 ## Reproducir lectura sin revelar credenciales
 
 Esta receta lee el archivo privado solo internamente, nunca lo imprime ni coloca usuario/contraseña en argumentos. Requiere ejecutar con el Python del venv anterior. Las rutas de destino deben estar dentro del alcance autorizado.

@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-11-09 | Total pages: 50
+> Last updated: 2026-11-17 | Total pages: 51
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -54,6 +54,7 @@
 - [[estudio-creadores-fuentes-datos]] — inventario del estudio de Asu y Sora: 43 videos y transcripciones en el NAS, 13 reportes publicados, historial de 11 versiones del estudio y dónde vive cada medición
 - [[recrear-video-creadores-edits]] — runbook: recrear un video de creador paso a paso (transcripción en la PC, desglose script/recordings/editing, **lista de shots para grabar en HTML con GIFs** y publicación por FTPS, variación de guion, TTS, montaje con `ttchop-server` leyendo el NAS por CIFS y subtítulos/overlays con la composición Remotion `caption-overlay`); casos verificados **`10_squishy01`**, **`11_blanket`** y **`12_suitcase`** (los tres reubicados el 2026-11-05 en `tiktok/hamaca/edits/`, con los archivos internos bajo su prefijo viejo `01_/02_/03_`; el último trae **dos productos**: `cicilife` y `other`); **§8 «hacer una variación»** y cada caso entregado lleva un **`<caso>_MANIFEST.md`** en el NAS con el mapeo plano→clip, la voz, los captions y la cadena de comandos para rehacerlo (la **segunda parte** de 02_blanket — overlays y montaje dentro de FilmCraft — se documenta en [[ttchop-filmcraft-video-tests]])
 - [[transcripcion-curso-gerardo-santiago]] — ocho videos originales del curso: transcripción NAS→TXT, hashes, reanudación y límites STT
+- [[transcripcion-gpu-pumadeskasus]] — runbook: transcribir en la PC con GPU leyendo el NAS por SMB; las tres trampas (parche spnego/ntlm, credenciales multilínea por stdin, mapeo imposible por SSH) y por qué el VPS muere con audio largo
 - [[separar-videos-nas-por-cortes]] — FFmpeg y revisión visual para segmentar Juice/EllisWhite, cuatro partes iguales y QA de entrega al NAS; entregas Tagilas/Shampoo registradas en log.md el 2026-10-27
 - [[ttchop-carousel-creation]] — runbook: Kie.ai local, composición de carruseles, créditos, autenticación y QA
 - [[ttchop-popup-book-commercial]] — comercial Enchenal con Lemo-Opuscar/Three.js: cuento continuo, poses Kie en una generación, voz japonesa a 1.5×, storyboard, cámara sutil y reconstrucción de la entrega final `v3_fixed`

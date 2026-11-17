@@ -1,21 +1,26 @@
 ---
 title: Transcripción del curso Gerardo Santiago
 created: 2026-10-27
-updated: 2026-10-31
+updated: 2026-11-17
 type: runbook
 tags: [runbook, pipeline, almacen]
 status: active
 confidence: high
-related: [acceso-remoto-pumadeskasus, hermes-agentes, acceso-nas-polaris]
+related: [acceso-remoto-pumadeskasus, hermes-agentes, acceso-nas-polaris, transcripcion-gpu-pumadeskasus]
 ---
 
 # Transcripción del curso Gerardo Santiago
 
-**Estado al 2026-10-31: el curso está transcrito por completo.** Los 20 videos de `P:\TikTok\Learning\gerardoSantiago_course\videos` tienen su TXT en la carpeta hermana `transcripts\`: 20 MP4 y 20 TXT, emparejados uno a uno por nombre base, sin faltantes ni sobrantes y sin procesos activos. No hay trabajo pendiente de transcripción; no relanzar por rutina.
+**Estado al 2026-11-17: el curso creció y faltan 2 videos.** Arturo subió más material: ahora hay **24 MP4** en `videos\` y **22 TXT** en `transcripts\`. Los dos pendientes son `06ElCreadorTop_01ConvierteteEnUnCreadorTop.mp4` (1,93 GB) y `06ElCreadorTop_02Masterclass.mp4` (1,01 GB), y se están transcribiendo **en la PC con GPU**, no en el VPS (ver el motivo abajo y [[transcripcion-gpu-pumadeskasus]]).
 
-Los 20 TXT se leyeron de nuevo del NAS y su SHA-256 coincide con el hash registrado en la corrida que los produjo (16 contra `progress.json` de los lotes, 3 contra `verification.json` del lote del Manual del Creador y 1 contra el `pipeline.log` del video de Fitness). La copia local de esta verificación está en `/root/.hermes/cache/scratch/curso-estado/estado-curso.private.json`.
+Historial de esta ampliación:
 
-Los MP4 originales se conservan intactos (20 en `videos\`, mismos tamaños que en los manifiestos).
+- 2026-11-16: se lanzó el lote en el VPS. Publicó bien los dos del Manual del Creador (`05ManualDelCreador_04ComoEvitarYApelarInfracciones.txt` 5 571 B y `05ManualDelCreador_05ComoIngresarTuRFC.txt` 3 172 B), pero **murió por falta de memoria** al transcribir el video de 1,93 GB: el kernel registró `Memory cgroup out of memory: Killed process (python) anon-rss: 1891760kB`. Whisper cargaba los 70 minutos de audio completos en una máquina de 3,9 GB.
+- 2026-11-17: el trabajo se movió a **PumaDeskAsus** con `device='cuda'`, reutilizando el runner del curso que ya existía en la PC. La descarga del VPS quedó sin usar; los TXT publicados son los mismos archivos del NAS.
+
+**Regla que sale de esto:** para audio largo, transcribir en la PC con GPU; en el VPS solo con el audio **cortado en trozos de ~5 minutos**.
+
+Los 22 TXT están verificados por lectura directa del NAS con SHA-256. Los MP4 originales se conservan intactos.
 
 ## Inventario verificado
 
@@ -68,6 +73,8 @@ La primera corrida documentada cubrió **ocho** MP4 (módulos 01TiktokShop, 02Su
 - Publicación: fragmentos de 3072 bytes a un temporal, verificación de tamaño y SHA-256, movimiento sin sobrescribir y relectura del destino; estado con reemplazo atómico en `progress.json` y `flock` en `pipeline.lock` para evitar dos instancias.
 
 ## Inspección segura (no relanzar por rutina)
+
+Para los pendientes de 2026-11-17, la ruta es **la PC con GPU** ([[transcripcion-gpu-pumadeskasus]]): el runner vive en `D:\staging\hermes-transcription-course\runner.py` y deja eventos en `events.jsonl` / `events2.jsonl`. Lo de abajo documenta el pipeline histórico del VPS.
 
 ```bash
 # 1) Cualquier proceso activo
