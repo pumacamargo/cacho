@@ -24,6 +24,8 @@ Cómo correr una transcripción **en la PC de Arturo** (no en el VPS) leyendo el
 | Estado y eventos del curso | `…\hermes-transcription-course\{manifest.json, events.jsonl, *.segments.json}` |
 | GPU | RTX 2060 SUPER, 8 GB |
 
+Rendimiento medido el 2026-11-17 con `small`/`int8_float16`: **~13× el tiempo real** de transcripción (70 min de audio en 239,5 s) y **~37 MB/s** de descarga NAS→PC (1,93 GB en 52 s).
+
 Paquetes: `faster-whisper` 1.2.1, `ctranslate2` 4.8.4, `smbprotocol` 1.15.0, `pyspnego` 0.12.4.
 
 ## Tres trampas que cuestan una hora si no se saben

@@ -11,18 +11,20 @@ related: [acceso-remoto-pumadeskasus, hermes-agentes, acceso-nas-polaris, transc
 
 # Transcripción del curso Gerardo Santiago
 
-**Estado al 2026-11-17: el curso creció y faltan 2 videos.** Arturo subió más material: ahora hay **24 MP4** en `videos\` y **22 TXT** en `transcripts\`. Los dos pendientes son `06ElCreadorTop_01ConvierteteEnUnCreadorTop.mp4` (1,93 GB) y `06ElCreadorTop_02Masterclass.mp4` (1,01 GB), y se están transcribiendo **en la PC con GPU**, no en el VPS (ver el motivo abajo y [[transcripcion-gpu-pumadeskasus]]).
+**Estado al 2026-11-17: el curso está transcrito por completo (24 de 24).** Tras la ampliación de Arturo hay **24 MP4** en `videos\` y **24 TXT** en `transcripts\`, emparejados uno a uno, sin faltantes. Los dos últimos se hicieron **en la PC con GPU** ([[transcripcion-gpu-pumadeskasus]]): 239,5 s y 111,0 s de cómputo respectivamente.
 
 Historial de esta ampliación:
 
-- 2026-11-16: se lanzó el lote en el VPS. Publicó bien los dos del Manual del Creador (`05ManualDelCreador_04ComoEvitarYApelarInfracciones.txt` 5 571 B y `05ManualDelCreador_05ComoIngresarTuRFC.txt` 3 172 B), pero **murió por falta de memoria** al transcribir el video de 1,93 GB: el kernel registró `Memory cgroup out of memory: Killed process (python) anon-rss: 1891760kB`. Whisper cargaba los 70 minutos de audio completos en una máquina de 3,9 GB.
-- 2026-11-17: el trabajo se movió a **PumaDeskAsus** con `device='cuda'`, reutilizando el runner del curso que ya existía en la PC. La descarga del VPS quedó sin usar; los TXT publicados son los mismos archivos del NAS.
+- 2026-11-16: primer intento en el VPS. Publicó los dos del Manual del Creador (`05ManualDelCreador_04ComoEvitarYApelarInfracciones.txt` 5 571 B y `05ManualDelCreador_05ComoIngresarTuRFC.txt` 3 172 B), pero **murió por falta de memoria** con el video de 1,93 GB: el kernel registró `Memory cgroup out of memory: Killed process (python) anon-rss: 1891760kB`. Whisper cargaba los 70 minutos de audio completos en una máquina de 3,9 GB.
+- 2026-11-17: los dos `06ElCreadorTop` se transcribieron en **PumaDeskAsus** con `device='cuda'`, reutilizando el runner del curso que ya existía ahí. Descarga a ~37 MB/s y transcripción a ~13× el tiempo real. Verificado por lectura directa del NAS con SHA-256, y los 22 TXT preexistentes revalidados antes y después para demostrar que no se tocaron.
 
 **Regla que sale de esto:** para audio largo, transcribir en la PC con GPU; en el VPS solo con el audio **cortado en trozos de ~5 minutos**.
 
 Los 22 TXT están verificados por lectura directa del NAS con SHA-256. Los MP4 originales se conservan intactos.
 
 ## Inventario verificado
+
+Las 22 filas anteriores se verificaron el 2026-10-31; las dos últimas (`06ElCreadorTop`) el 2026-11-17.
 
 | Video (MP4 en `videos\`) | Bytes MP4 | TXT en `transcripts\` | Bytes TXT | SHA-256 del TXT |
 | --- | ---: | --- | ---: | --- |
@@ -46,6 +48,8 @@ Los 22 TXT están verificados por lectura directa del NAS con SHA-256. Los MP4 o
 | `05ManualDelCreador_01OrganizaTuTrabajo.mp4` | 1 265 730 163 | `05ManualDelCreador_01OrganizaTuTrabajo.txt` | 49 313 | `8f2b399def8decc4e8401d6c90b3562d127e7e81a3d021701ec605583a6e0a80` = |
 | `05ManualDelCreador_02ManualParaCreadoresDeContenido.mp4` | 412 965 104 | `05ManualDelCreador_02ManualParaCreadoresDeContenido.txt` | 35 068 | `429caa46cf037b4dec51d44959145bf4d531b1c76cd2d7ee9cbafc9b0324ebe2` = |
 | `05ManualDelCreador_03EstrategiaParaGanerEnTiktok.mp4` | 259 424 420 | `05ManualDelCreador_03EstrategiaParaGanerEnTiktok.txt` | 19 939 | `462fa567e141fbb35a44d9446ae0060c6d11939e77cba30428c137715d875429` = |
+| `06ElCreadorTop_01ConvierteteEnUnCreadorTop.mp4` | 1 933 075 596 | `06ElCreadorTop_01ConvierteteEnUnCreadorTop.txt` | 54 177 | `d98e0fa7b44770f6aa6984ca621a62d6dbadfaec2dfa092a3082c4d00443ef06` |
+| `06ElCreadorTop_02Masterclass.mp4` | 1 007 219 844 | `06ElCreadorTop_02Masterclass.txt` | 40 345 | `2150f1332316d6f1083b01d42727c715b3d1ebc2b2ad82a4c84e82c398b3f681` |
 
 ## Cómo se llegó ahí
 
