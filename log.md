@@ -683,3 +683,11 @@
 - Rendimiento medido y documentado en [[transcripcion-gpu-pumadeskasus]]: **~13× el tiempo real** en GPU y **~37 MB/s** de descarga NAS→PC.
 - Averiguado y documentado en el camino: `net use` muestra **P: como *Unavailable*** porque apunta a `\\Polaris\Projects` y el **nombre corto no resuelve** (el FQDN `polaris.tail639785.ts.net` sí → 100.91.254.118); y el proceso lanzado con `Start-Process` **muere al cerrarse la sesión SSH**, así que el trabajo hay que lanzarlo manteniendo la sesión abierta o con el Programador de tareas.
 - Actualizada [[transcripcion-curso-gerardo-santiago]] (estado 24/24 e inventario con las dos filas nuevas).
+
+## [2026-11-18] update | 18_shaver — entrega clon japonés v7
+- Entrega v7 verificada en `P:\\Tiktok\\hamaca\\edits\\18_shaver\\production\\v7\\`: `shaver18_ja_clone_final_v7.mp4`, 70 115 425 bytes, SHA-256 `aa708f5ec253d48a17d45c5e212eb9a9103b109f2630fc147ba077a35c51beff`; H.264 1080×1920, SAR 1:1, 30 fps, 1801 frames (60.033 s). Lectura de vuelta NAS verificada para 57 archivos; evidencia en `FINAL_DELIVERY_RECEIPT.json` y `NAS_RECEIPT.json` del scratch de ttchop_robot.
+- Único cambio respecto a v6: inicio del primer rótulo 0.8→0.5 s (cuadro 15); final permanece en 2.0 s. Las tres tarjetas son estáticas; la tercera conserva `y=1390` y el cruce momentáneo de la mano aceptado. Flecha inferior izquierda conservada. Audio no regenerado: 2586 paquetes idénticos a v6; `cover.png` es idéntica a v6 y corresponde al último cuadro.
+- También entregados `shaver18_ja_clone_final_v7_chat.mp4` (22 273 383 bytes) y `shaver18_overlays_v7_patch.zip` (SHA-256 `0c7e7e8193c0fbb4ddb21bf4523ca848e0056a2bb93c02feffac408d29d9a6a5`). README del parche documenta reconstrucción desde fuentes v3 + parche.
+- Título de tienda: `買う前に確認したい、シェーバー選びの3つのポイント。\n#TikTokShopこれ買い #電動シェーバー #シェーバー #メンズケア #Enchenal`.
+- Estadísticas en captura de origen: 5.5K ventas, 4.2/283 reseñas; no son verificación del listado actual. Afirmaciones heredadas de voz/texto sobre titanio, piel, falsificaciones y escasez no verificadas independientemente; no tratarlas como hechos clínicos o comprobados. Sin precio ni porcentaje de descuento.
+- Guardado/entregado, no publicado; no consta aprobación explícita del MP4 como final. Sin cambios de apps, TTS, APIs pagadas ni Firebase.
