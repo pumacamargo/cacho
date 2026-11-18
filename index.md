@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-11-17 | Total pages: 51
+> Last updated: 2026-11-18 | Total pages: 52
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -51,6 +51,7 @@
 - [[acceso-nas-polaris]] — orden de acceso: SMB directo VPS→NAS primero; 5 MP4s y 3 PNGs escritos y verificados con hash de vuelta; Windows por IP/FQDN si se necesita; wrapper corto histórico conservado
 - [[acceso-remoto-pumadeskasus]] — alternativa Windows: SSH por Tailscale, encendido/apagado y PowerShell a Polaris/P: con pumassh; mantiene historial y límites, no habilita acceso nativo global
 - [[diagnostico-espacio-disco-vps]] — auditoría de solo lectura del disco: 96 % usado; Docker (~48 GB), caché npm (11 GB) y logs de contenedores sin rotación; 35–45 GB liberables, limpieza pendiente de autorización
+- [[estandar-thumbnail-video]] — **estándar fijo de portada/thumbnail**: 1080×1920, último fotograma, ≤2 líneas JP, KeinannMaruPOPjp Regular 400, fontSize 80 / lineHeight 1.15 / #ffffff + contorno #101010 (6), texto **siempre centrado (x=540) con centro del bloque en y=378** (19.7 %) vía `endCard` prop-driven; incluye mediciones reales de `17_carpet` y `18_shaver` y su estado pendiente de OK
 - [[estudio-creadores-fuentes-datos]] — inventario del estudio de Asu y Sora: 43 videos y transcripciones en el NAS, 13 reportes publicados, historial de 11 versiones del estudio y dónde vive cada medición
 - [[recrear-video-creadores-edits]] — runbook: recrear un video de creador paso a paso (transcripción en la PC, desglose script/recordings/editing, **lista de shots para grabar en HTML con GIFs** y publicación por FTPS, variación de guion, TTS, montaje con `ttchop-server` leyendo el NAS por CIFS y subtítulos/overlays con la composición Remotion `caption-overlay`); casos verificados **`10_squishy01`**, **`11_blanket`** y **`12_suitcase`** (los tres reubicados el 2026-11-05 en `tiktok/hamaca/edits/`, con los archivos internos bajo su prefijo viejo `01_/02_/03_`; el último trae **dos productos**: `cicilife` y `other`); **§8 «hacer una variación»** y cada caso entregado lleva un **`<caso>_MANIFEST.md`** en el NAS con el mapeo plano→clip, la voz, los captions y la cadena de comandos para rehacerlo (la **segunda parte** de 02_blanket — overlays y montaje dentro de FilmCraft — se documenta en [[ttchop-filmcraft-video-tests]])
 - [[transcripcion-curso-gerardo-santiago]] — ocho videos originales del curso: transcripción NAS→TXT, hashes, reanudación y límites STT

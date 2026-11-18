@@ -63,6 +63,7 @@ Y la diferencia entre vías son los **pasos previos al montaje**:
 
 - **El montaje:** `ttchop-server/scripts/collage_builder.py` — recibe una **receta** (`ffmpegRecipe`) con los clips y sus recortes. Para armarla desde un plan de duraciones: `scripts/creators/build_recipe_from_plan.py`.
 - **Subtítulos/overlays:** la composición Remotion **`caption-overlay`** en `ttchop-post_templates` (prop-driven: captions, tag, flecha, disclaimer, endCard). Detalle en [[recrear-video-creadores-edits]] §7.
+- **Portada/thumbnail:** el estándar fijo (posición, tipografía, tamaño y mecanismo) vive en [[estandar-thumbnail-video]]; se implementa con el prop `endCard` de `caption-overlay` (`frames: 1`, el último frame) y se exporta el PNG final como `cover.png`.
 - **La voz:** **PumaVoice01** (`ve7BOdejheJbgrBriBx4`) con el helper ya versionado `ttchop-server/scripts/creators/tts/tts_lines.mjs`; se ajusta el ritmo con `atempo` + pausas ([[recrear-video-creadores-edits]] §4).
 - **Para variar un video ya entregado:** el **manifiesto** de su carpeta en el NAS (`<caso>_MANIFEST.md`) tiene el mapeo plano→clip, la voz, los captions y los comandos ([[recrear-video-creadores-edits]] §8).
 

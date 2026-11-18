@@ -321,6 +321,12 @@ en la zona media-alta.
 - Para sacar la portada suelta: extraer el último frame del render a PNG
   (`ffmpeg -i final.mp4 -vf "select='eq(n,833)'" -frames:v 1 cover.png`).
 
+- **Estándar fijo de portada:** la posición, tipografía, tamaño, colores y mecanismo de la portada
+  están fijados en [[estandar-thumbnail-video]] — **`fontSize 80`, `lineHeight 1.15`, `#ffffff` +
+  contorno `#101010` (6), bloque centrado en `x=540` con centro en `y=378` (19.7 %), `frames: 1`**.
+  Este ejemplo usa `centerY: 700` por ser el primer caso; a partir del estándar, `centerY` va en
+  **378**.
+
 ### Alternativa one-off: PIL + ffmpeg
 
 Stickers PNG generados con PIL (caja redondeada + texto oscuro) y superpuestos con
