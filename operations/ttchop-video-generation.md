@@ -1,7 +1,7 @@
 ---
 title: Generación de videos en TTChop2
 created: 2026-10-19
-updated: 2026-10-29
+updated: 2026-11-18
 type: runbook
 tags: [sistema, runbook, pipeline]
 status: active
@@ -156,8 +156,7 @@ recortó la canción y el resultado no se publicó.
    inspecciona fotogramas representativos y reproduce el archivo.
 3. Compara el empaque y la marca visibles con la ficha del catálogo; señala
    cualquier discrepancia en vez de darla por correcta.
-4. Entrega el MP4 como adjunto e indica que no se publicó. Publicar en TikTok es
-   una acción separada y requiere autorización explícita de Arturo.
+4. Entrega el MP4 por el canal solicitado e indica que quedó entregado/guardado, no publicado. **ttchop_robot nunca publica en TikTok**, aunque haya aprobación del video o autorización excepcional; Arturo publica manualmente y solo su confirmación permite registrar el estado «publicado».
 
 ## C. Montaje manual con FilmCraft (no integrado al Producer)
 
@@ -177,8 +176,7 @@ Cuando traduzcas un render de `ttchop-server` a FilmCraft, usa **tres pistas de 
   `D:\staging\<id>` en Windows para FilmCraft; al final copia MP4, proyecto y audios a
   la carpeta de edición usando el wrapper. Verifica hashes/rutas y las limitaciones
   de reapertura del proyecto portable en [[acceso-remoto-pumadeskasus]].
-- Revisa imagen y audio, adjunta el MP4 e indica que no se publicó. No escribas en
-  Firebase ni publiques en TikTok sin autorización específica.
+- Revisa imagen y audio, entrega el MP4 y registra «entregado»/«guardado», no «publicado». **ttchop_robot nunca publica en TikTok**, aunque el video esté aprobado o exista autorización excepcional; Arturo publica manualmente y confirma si lo hizo.
 
 ### Del render de `ttchop-server` a FilmCraft
 

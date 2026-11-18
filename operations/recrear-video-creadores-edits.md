@@ -1,7 +1,7 @@
 ---
 title: Recrear un video de creador (tiktok/hamaca/edits)
 created: 2026-11-01
-updated: 2026-11-01
+updated: 2026-11-18
 type: runbook
 tags: [runbook, almacen, red, tailscale, pipeline]
 status: active
@@ -19,6 +19,8 @@ generar los audios y montar el video con el pipeline de `ttchop-server`.
 Caso verificado de punta a punta: `01_squishy01` (2026-11-01). Ver también
 [[estudio-creadores-fuentes-datos]], [[acceso-nas-polaris]] y
 [[ttchop-raw-asset-manual-edit]].
+
+**Publicación:** ttchop_robot termina al crear, verificar y entregar los archivos (NAS/chat) y, si corresponde, el título; nunca publica el video en TikTok, aunque Arturo haya aprobado el archivo o dado autorización excepcional. Arturo siempre publica manualmente. Registra «entregado»/«guardado» y solo «publicado» si Arturo confirma que él mismo lo publicó. Publicar la lista HTML/GIFs de revisión por FTPS cuando se solicita sí está permitido y no es publicación en TikTok.
 
 ## Estructura de carpetas en el NAS
 
@@ -220,8 +222,7 @@ garantiza que el plano coincida con el de la referencia.
 - `ffprobe` de ambos streams, decodificación completa, `volumedetect` (pico sin clipping),
   hoja de contacto y comparación de secuencia contra el original.
 - Dejar el MP4 en la raíz de la carpeta del caso en el NAS y verificar el hash de vuelta.
-- Es un **artefacto del builder directo**, no un render de Firestore. **No publicar** sin
-  autorización explícita de Arturo.
+- Es un **artefacto del builder directo**, no un render de Firestore. El caso se entregó sin publicar; la regla vigente es que ttchop_robot nunca publica en TikTok y Arturo siempre lo hace manualmente.
 
 ## 7. Subtítulos y overlays
 

@@ -1,7 +1,7 @@
 ---
 title: Creación de carruseles editoriales de TTChop
 created: 2026-10-17
-updated: 2026-10-17
+updated: 2026-11-18
 type: runbook
 tags: [sistema, runbook, api]
 status: active
@@ -112,9 +112,9 @@ lo ya aprobado.
      japoneses, continuidad de edad/rostro/ropa, causalidad de escenas y ausencia
      de letras/logos accidentales en el fondo. Regenera solo los slots defectuosos
      y con autorización para el gasto adicional.
-   - Envía los PNG individuales en orden; el ZIP es opcional, no sustituye los
-     PNGs. Indica si es borrador local o si quedó guardado en TTChop2. No publiques
-     sin autorización explícita.
+   - Envía los PNG individuales en orden; el ZIP es opcional, no sustituye los PNGs. Indica si es borrador local o si quedó guardado en TTChop2.
+
+**Publicación en TikTok:** ttchop_robot nunca publica carruseles. Arturo siempre publica manualmente; la aprobación del carrusel o una autorización excepcional no delega la publicación. Registra «entregado»/«guardado» y solo «publicado» si Arturo confirma que él mismo lo publicó. Publicar HTML/GIFs de revisión por FTPS cuando se solicita sí está permitido y no es publicar en TikTok.
 
 ## Costos y límites registrados
 

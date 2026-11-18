@@ -1,7 +1,7 @@
 ---
 title: Pruebas de edición de video con FilmCraft para TTChop2
 created: 2026-10-21
-updated: 2026-11-03
+updated: 2026-11-18
 type: runbook
 tags: [runbook, pipeline, cli]
 status: draft
@@ -93,7 +93,7 @@ En el `.fcproj` portable de esta prueba, se cambiaron las rutas de los siete med
 
 ## 5. Flujo verificado: render de `ttchop-server` → reconstrucción en FilmCraft
 
-Este es un traspaso manual de dos etapas, **no una integración del Producer con FilmCraft**. La primera etapa crea el MP4 y manifiesto con `ttchop-server`; la segunda traduce el `editManifest` a un proyecto FilmCraft nuevo. Para crear el render del servidor, usa el flujo manual y la aprobación de guion de [[ttchop-video-generation]]. No ejecutes `runProducer()` para sustituir un pedido manual ni publiques el resultado sin autorización.
+Este es un traspaso manual de dos etapas, **no una integración del Producer con FilmCraft**. La primera etapa crea el MP4 y manifiesto con `ttchop-server`; la segunda traduce el `editManifest` a un proyecto FilmCraft nuevo. Para crear el render del servidor, usa el flujo manual y la aprobación de guion de [[ttchop-video-generation]]. No ejecutes `runProducer()` para sustituir un pedido manual. **ttchop_robot nunca publica el resultado en TikTok**, aunque el MP4 esté aprobado o exista autorización excepcional; Arturo publica manualmente.
 
 1. En el proyecto Firebase correcto, prepara producto, sesión, clips, plantilla y diálogo aprobado; crea un render nuevo con `projectId` explícito y espera `renders/{renderId}.status == done` y `videoUrl`. Descarga el MP4 final. Verifica que el render guarde `inputs.collage.editManifest`; el manifiesto documenta IDs de fuente, intervalos de entrada/salida, velocidad y offsets previstos del timeline. No reconstruyas cortes exactos desde el MP4 si falta el manifiesto. Los offsets son planeados por el builder: pueden diferir de los tiempos medidos por segmento y de la duración cuantizada a frames.
 2. Resuelve en Storage los clips indicados por `sessionId` y `sourceClipId`. Descarga esos medios, conserva un `source-media-manifest.json` con procedencia, nombres y SHA-256, y verifica los hashes antes de editar. Trabaja en scratch y en un directorio Windows temporal nuevo; incluye el MP4 original como referencia. **No uses el contenido de un proyecto FilmCraft antiguo como fuente.**
@@ -210,7 +210,7 @@ Producer→FilmCraft sigue sin integrarse. El ejemplo manual de aretes confirma 
 
 Si Arturo autoriza desarrollo posterior, separar el pedido manual del Producer diario: resolver assets autorizados, transportar clips a un worker temporal de PumaDeskAsus, traducir una receta aprobada a una secuencia FilmCraft, crear el `.fcproj`, exportar y validar MP4/proyecto, devolver archivos y enviarlos al chat de origen. Diseñar estado durable, reintentos e idempotencia antes de conectar producción. Probar en sandbox y obtener aprobación antes de tocar el Producer, desplegar, reiniciar servicios o gastar créditos. La cola en memoria de `ttchop-server` y el `sendVideo` del bot no prueban por sí solos una entrega confiable de Hermes.
 
-No ejecutes `runProducer()` para una petición manual. No publiques en TikTok ni escribas a Firebase/Storage sin autorización específica. Nunca copies al wiki URLs de Storage que incluyan tokens.
+No ejecutes `runProducer()` para una petición manual. **ttchop_robot nunca publica videos ni carruseles en TikTok**: Arturo siempre publica manualmente; aprobación del archivo o autorización excepcional no delega la publicación. Registra «entregado»/«guardado» y solo «publicado» cuando Arturo confirma que él publicó. Publicar HTML/GIFs de revisión por FTPS cuando se solicita sí está permitido y es distinto de TikTok. Nunca copies al wiki URLs de Storage que incluyan tokens.
 
 ## Procedencia
 

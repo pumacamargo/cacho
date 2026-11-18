@@ -1,7 +1,7 @@
 ---
 title: ttchop webapps (ttchop / ttchop2)
 created: 2026-10-10
-updated: 2026-10-19
+updated: 2026-11-18
 type: entity
 tags: [sistema, proyecto, negocio]
 status: active
@@ -38,7 +38,7 @@ ventas reales de la tienda contra los videos publicados** para saber qué funcio
 - **Templates** — plantillas de guion, voz y prompt de IA.
 - **Create Video** — flujo de UI confirmado: guion → voz → render. No equivale al flujo de collage del Producer; ver [[ttchop-video-generation]].
 - **Calendario** — agenda de publicaciones con estrategia en texto y propuesta
-  automática.
+  automática; la publicación efectiva en TikTok la realiza Arturo manualmente.
 - **Analytics** — importación de reportes `.xlsx` de TikTok Shop crusados con renders.
 - **Brand Concept** — moodboard, paleta, tipografías, descripción del canal.
 - **Reports** — reportes generados por LLM sobre qué está funcionando.
@@ -75,6 +75,8 @@ públicas de producto en `/p/:id`, y páginas legales `/terms` y `/privacy`.
 - **Cloud Functions**: `productPage` (SSR de `/p/**`), `tiktokExchange`,
   `tiktokAccounts`, `tiktokDisconnect`, `tiktokUpload`. Los tokens de TikTok viven
   **solo** server-side en `tiktok_accounts`.
+
+La existencia de UI/endpoints/capacidades de upload no delega publicación al agente: **ttchop_robot nunca publica videos ni carruseles en TikTok**. Arturo siempre publica manualmente; aprobar un archivo o dar autorización excepcional no cambia este límite. Registra «entregado»/«guardado» y solo «publicado» si Arturo confirma que él mismo publicó.
 
 ## Firestore (colecciones)
 

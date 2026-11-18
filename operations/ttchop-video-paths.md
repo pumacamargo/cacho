@@ -1,7 +1,7 @@
 ---
 title: Vías para hacer un video (punto de entrada)
 created: 2026-11-05
-updated: 2026-11-09
+updated: 2026-11-18
 type: runbook
 tags: [sistema, runbook, video, indice]
 status: active
@@ -98,7 +98,7 @@ Para un comercial ilustrado, en lugar de montar clips: **[[ttchop-popup-book-com
 
 ## Reglas que aplican a todas las vías
 
-- **No se publica nada en TikTok sin el OK de Arturo.** Los videos de creadores no se modifican ni se publican.
+- **Regla de publicación:** ttchop_robot nunca publica videos ni carruseles en TikTok; Arturo siempre realiza la publicación manualmente. La aprobación de un video/carrusel o una autorización excepcional no delega esa acción. El agente termina al crear, verificar y entregar los archivos (NAS/chat) y, cuando corresponda, el título. El estado es «entregado»/«guardado»; solo se registra «publicado» si Arturo confirma que él mismo lo publicó. La publicación de HTML/GIFs de revisión en FTPS sí puede ejecutarse cuando se solicita y es distinta de TikTok.
 - **Sin precio, sin % inventado** y sin afirmaciones que la ficha del producto no respalde (los claims del habla del creador no están verificados).
 - **Verificar en vivo** lo entregado (`ffprobe`/`volumedetect`/decode + hoja de contacto + el último frame) y reportar lo que falte.
 - Los cambios de código en repos van **committeados y pusheados** (regla TTC-41) y verificados por cuenta propia.
