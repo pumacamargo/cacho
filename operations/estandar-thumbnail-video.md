@@ -34,6 +34,14 @@ Se probaron las dos posiciones reales sobre los dos materiales: la de `y ≈ 378
 en los dos**; la de `y = 650` **tapa el producto del shaver**. Por eso la posición válida es
 **FIJA ARRIBA (`y = 378`)**.
 
+**Regla del fondo:** la **imagen de fondo de la portada SIEMPRE debe incluir el producto**. El
+fotograma elegido tiene que mostrar el **producto protagonista visible y reconocible** — no una
+escena sin producto, ni solo habitación/textura/persona. Si el último fotograma del video no lo
+muestra bien, se elige el fotograma final que **sí** lo muestre o se recompone la portada con el
+producto visible, **manteniendo intacta la posición del texto** (`y = 378`, `x = 540`). Esto
+complementa la regla existente de «producto protagonista»: ahora es explícito que aplica al **fondo
+de la portada** y no solo al encuadre.
+
 ## Valores exactos
 
 | # | Campo | Valor | Notas |
@@ -49,6 +57,7 @@ en los dos**; la de `y = 650` **tapa el producto del shaver**. Por eso la posici
 | 5 | Posición | centro horizontal del bloque **x = 540 px (50 % del ancho)**; centro vertical del bloque **y = 378 px (19.7 % del alto)** | equivale al bbox medido `y 262–494` |
 | 6 | `scrim` (si se usa) | `color #000000`, `opacity` **0.22–0.35** | solo para contraste |
 | 7 | `frames` del `endCard` | **1** (solo el último fotograma) | |
+| 8 | Fondo | **el fotograma de fondo SIEMPRE incluye el producto** visible y reconocible | no escena sin producto (ni solo habitación/textura/persona); si el último frame no lo muestra, usar otro fotograma final que sí o recomponer, **sin mover el texto** |
 
 **Prohibido en la portada (punto 6 del estándar):** flecha, botón/etiqueta CTA, precio,
 %/descuento numérico, escasez/inventario, claims no verificados, marca redundante si el frame ya la
@@ -79,6 +88,7 @@ muestra.
 |---|---|---|
 | Dimensiones | 1080×1920 | `PIL` / `ffprobe` del PNG |
 | Fotograma | es el **último** del video | comparar con `-frames:v 1` del final del MP4 |
+| Fondo con producto visible | el producto protagonista se ve claro y reconocible en el fondo | revisión visual del PNG de portada |
 | Nº de líneas | ≤ 2 | inspección / props |
 | Familia y peso | `KeinannMaruPOPjp`, `fontWeight 400` | props; **sin faux bold** |
 | `fontSize` / `lineHeight` | 80 / 1.15 | props |
@@ -106,6 +116,7 @@ Medición hecha sobre las **portadas reales** a 1080×1920 (PIL, píxeles) y re-
 | Centro horizontal | **50.1 %** ✅ | **45.2 %** ❌ (no centrado) | **50 %** (x = 540) |
 | Centro vertical del bloque | **≈651 px = 33.9 %** ❌ (abajo) | **≈378 px = 19.7 %** ✅ | **378 px (19.7 %)** |
 | Líneas | 2 | 2 | ≤ 2 |
+| Fondo con producto | **✅** muestra la alfombra (producto) en el suelo de la habitación | **✅** muestra la afeitadora (producto) en estudio | fondo siempre con el producto visible |
 | Tipografía / peso | `fontSize 80`, `fontWeight 400` ✅ | horneada en el PNG | 80 px / Regular 400 |
 | `lineHeight` / contorno | 1.15 / `#101010`, ancho 6 ✅ | horneada | 1.15 / `#101010`, 6 |
 | Color de texto | `#ffffff` ✅ | horneada | `#ffffff` |
