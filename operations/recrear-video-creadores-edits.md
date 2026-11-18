@@ -117,8 +117,23 @@ Mismo formato que el estudio (ver [[estudio-creadores-fuentes-datos]] y el works
 
 ## 3. Escribir la variación del guion
 
-- Misma estructura, mismas cifras, **palabras cambiadas**. Una línea por idea, en el idioma del
-  original (japonés), con traducción al español para revisión.
+### 3a. ¿Clonar o variar? Depende del idioma del original
+
+Regla de Arturo (2026-11-18), aplicada al escribir el guion:
+
+- **El original viene en español** (México, mercado mexicano): **se puede clonar**. Misma
+  estructura, mismos beats y mismo orden, en español y sobre el producto propio. No hay que
+  hacerlo más único.
+- **El original viene en japonés**: **hay que variarlo** para que quede un poco más único. No es
+  un clon palabra por palabra; se conserva la estructura pero se cambia la redacción y se ajusta
+  el orden cuando haga falta.
+
+El idioma de la referencia no es el idioma del video. Cuando el original es japonés, el guion
+sigue en japonés con una variación propia; cuando la referencia es mexicana, se clona tal cual
+en español. Si el producto se vende en Japón y la referencia es mexicana, se traduce el clon
+en vez de variarlo.
+
+- Una línea por idea, en japonés, con traducción al español para revisión.
 - Sustituir lo que no se puede sostener: quitar testimonios personales no verificados
   (p. ej. “lo compré 4 veces”) y **no inventar porcentajes de descuento** — dejar la oferta
   genérica (“muy buena oferta”) o usar el % real de la campaña vigente.

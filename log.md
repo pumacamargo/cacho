@@ -715,3 +715,12 @@
 - Documentada como punto **8** de los valores exactos, en la sección de reglas y como fila **«fondo con producto visible»** en la tabla de comprobación. Complementa la regla previa de «producto protagonista»: ahora es explícito que aplica al **fondo de la portada**, no solo al encuadre.
 - Las dos portadas reales **cumplen** esta regla: `17_carpet` muestra la alfombra (producto) en el suelo de la habitación y `18_shaver` v7 muestra la afeitadora (producto) en estudio (fila añadida a su tabla de desviaciones). Sin afirmar cambios nuevos en las portadas.
 - Solo documentación (página + log + una palabra en el hub). Sigue **pendiente el OK de Arturo** para aplicar el estándar a los dos videos entregados; no se tocó código, medios, NAS ni Remotion.
+
+## [2026-11-18] update | clonar o variar según el idioma del original
+
+- Regla de Arturo añadida a [[recrear-video-creadores-edits]] §3a: **el idioma del original decide el tratamiento**.
+  - **Original en español** (mercado de México): **se puede clonar** tal cual. No hay que forzar que quede más único.
+  - **Original en japonés**: **hay que variar** (estructura igual, redacción y orden propios) para que no sea una copia literal.
+- Motivo: en el mercado mexicano el material en español se trabaja como clon; el material japonés se traduce y se adapta para que el resultado no sea idéntico al original.
+- No cambia el criterio de sostener lo verificable: cifras, reseñas y vendedor se toman del producto propio, no del original; se quitan claims no respaldados.
+- Solo documentación. Sin cambios en videos, código, NAS ni medios.
