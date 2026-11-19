@@ -53,6 +53,16 @@ Camino probado con Python: `ftplib.FTP_TLS(context=ssl.create_default_context())
 
 Cuando se solicite una subida, validar la subcarpeta autorizada y verificar el archivo final mediante lectura de vuelta y hash; comprobar la URL por separado antes de afirmar que está disponible en la web.
 
+## Índice de desmenuzados (dashboard)
+
+Página publicada que reúne **todos los desmenuzados** (listas de tomas con GIFs) alojados en este hosting:
+
+- **URL:** https://lemonsushi.com/uploads/vps2/creators-research/ (también `/desmenuzados.html`)
+- Agrupa por **fecha** (vista por defecto) o por **idioma**, con buscador; cada tarjeta enlaza directo a su HTML y a sus páginas auxiliares (tablero, vista por clip, pasos de caption, storyboards, versiones anteriores).
+- Se regenera solo con el inventario real del FTP: `/root/desmenuzados/build_dashboard.py` en vps-tools (usa la misma credencial, no imprime secretos, sube `index.html` y `desmenuzados.html` y verifica SHA-256 releyendo el remoto). Datos: `/root/desmenuzados/dashboard_data.json`.
+- El script toma de cada página publicada el número de tomas y la duración reales (bloque `const SHOTS`), así que el dashboard no arrastra cifras escritas a mano.
+- Al publicar un desmenuzado nuevo, basta con volver a ejecutarlo para que aparezca.
+
 ## Relacionado
 
 - [[hardware-vps-tools]] — host que conserva la configuración local y ejecuta el acceso.
