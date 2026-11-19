@@ -226,6 +226,11 @@ Es **lento** cuando lee por CIFS; lanzarlo siempre en segundo plano. Con el esca
 **lanczos** (que el builder usa hoy para el ajuste a 1080×1920, commit `370d022`) tarda del
 orden de **40 s por clip**: 25 tomas ≈ **16–18 min**.
 
+**Alternativa ~20× más rápida (verificada 2026-11-19):** el mismo builder en **la PC**
+(PumaDeskAsus), que lee el NAS en segundos en lugar de los ~0,12 MB/s del CIFS del VPS. Misma
+receta y misma salida (SSIM 0.987 entre ambas). Requisitos, montador adaptado y trampas en
+[[montaje-video-en-pc]].
+
 **Nombres de los clips propios.** Arturo suele **numerar sus grabaciones por el número de shot**
 de la lista (`1A`, `1B`, `2A`… `25A`). Cuando lo haga, el recetario es directo: **shot N → `<N>A.mp4`**;
 si algún número no tiene archivo, se reutiliza el clip más parecido (él autoriza repetir tomas).

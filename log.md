@@ -724,3 +724,10 @@
 - Motivo: en el mercado mexicano el material en español se trabaja como clon; el material japonés se traduce y se adapta para que el resultado no sea idéntico al original.
 - No cambia el criterio de sostener lo verificable: cifras, reseñas y vendedor se toman del producto propio, no del original; se quitan claims no respaldados.
 - Solo documentación. Sin cambios en videos, código, NAS ni medios.
+
+## [2026-11-19] create | montar videos en la PC (≈20× más rápido que el VPS)
+
+- Arturo pidió probar el montaje en la PC. Se midió el cuello de botella real: **no es la CPU del VPS, es la lectura del NAS** — el CIFS de `vps-projects` sobre `/mnt/polaris` rinde **~0,12 MB/s** (un clip de 23 MB tardó **197 s**) por los **243 ms de latencia** del enlace Tailscale, y el VPS (4 vCPU EPYC, 7 GB, **sin GPU**) está además limitado a x264 por software.
+- **A/B con el mismo montador y la misma receta** (4 segmentos de `20_dualshaver` con la voz real del caso, 10.4 s): **PC 10.4 s** (6.0 s recortes + 4.2 s unión) vs **VPS 213 s**. Salidas equivalentes: misma duración, 4.96 vs 4.98 MB, SSIM 0.987 / PSNR 44.5 dB. Prueba aparte con grafos crudos: x264 5.2 s/5.34 MB vs **NVENC 2.2 s/12.48 MB** (`-cq 23`) con SSIM 0.987 / PSNR 45.2 dB.
+- **Montador adaptado** (`collage_builder_win.py`): mismos filtros, recortes, unión y encode final; solo rutas/ejecutables por entorno, timing y `COLLAGE_KEEP_TEMP`. Ya no hay que instalar nada en la PC: tiene **Python 3.11.9** real (`D:\staging\hermes-transcription\venv`) y ffmpeg con NVENC en `D:\staging\creator-av-audit\bin`. El repo compartido y el pipeline **no** se tocaron.
+- Creada la página [[montaje-video-en-pc]] (procedimiento, requisitos, trampas: `ErrorActionPreference='Stop'` que aborta con stderr nativo, ffmpeg en el `PATH` también para la unión final, `/mnt/polaris` de solo lectura) y enlazada desde `index.md` y desde [[recrear-video-creadores-edits]] §5. Pendiente: decidir si el wrapper Windows se versiona en `ttchop-server/scripts/`.
