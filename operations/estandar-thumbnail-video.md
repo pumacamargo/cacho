@@ -129,6 +129,14 @@ Diferencia real de origen, en una frase: **`18_shaver` tenía el texto arriba y 
 **la posición de arriba del shaver, pero centrada al 50 % del carpet y con el mecanismo prop-driven
 del carpet**.
 
+## Trampa al extraer el último fotograma (verificada 2026-11-19)
+
+Con `endCard` de **un solo cuadro**, el comando `ffmpeg -sseof -1 … -frames:v 1` que se usaba como
+atajo devuelve un fotograma **~0.5 s antes del final** y **pierde la portada** (sale el video sin el
+texto). En `20_dualshaver` la portada se extrajo por **número de cuadro**
+(`-vf "select=eq(n,1066)"`, último cuadro real del render) y se verificó con PIL que el bloque de
+texto queda centrado en `x=540` / `y=380`.
+
 ## Registro por caso
 
 Anotar en el **manifiesto del caso** en el NAS (`<caso>_MANIFEST.md`, ver

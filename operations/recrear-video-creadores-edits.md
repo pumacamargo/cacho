@@ -572,6 +572,14 @@ Pasos (detalle en el manifiesto del caso):
   **rate-limited**; en ese caso `developer_ds` sí corrió. Verificar siempre el commit en `origin/main`.
 - No dejar credenciales en el wiki, en commits ni en el chat.
 
+### Pitfall: clips "horizontales" que en realidad son verticales por metadata
+
+Al medir el material propio, un MP4 puede reportar `1920x1080` en el contenedor y traer
+**`rotation=90` en la metadata** de la pista de video: al autorrotar es **1080x1920 (9:16)**. En
+`20_dualshaver` el mapa de clips lo dio por horizontal y el montaje concluyó lo contrario, así que no
+hizo falta recorte lateral. Antes de recortar o pedir tomas nuevas, comprobar
+`ffprobe -show_streams` (campo `side_data` / `rotation`) **y** mirar un fotograma de verdad.
+
 ### Pitfalls de los planos generados con IA y de los overlays (caso 13)
 
 - **Recrear una referencia con IA = recrear la MISMA imagen con cambios mínimos.** Nunca pedir «otra
