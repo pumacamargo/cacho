@@ -1,7 +1,7 @@
 ---
 title: Vías para hacer un video (punto de entrada)
 created: 2026-11-05
-updated: 2026-11-18
+updated: 2026-11-19
 type: runbook
 tags: [sistema, runbook, video, indice]
 status: active
@@ -59,9 +59,22 @@ Y la diferencia entre vías son los **pasos previos al montaje**:
 - ¿Partes del **video de un creador** que quieres recrear? → **3**; si ya existe y quieres **cambiarle guion/voz/edición**, su **§8** (y su manifiesto en el NAS)
 - ¿Quieres **tocar el timeline o los overlays a mano** (o el paquete portable)? → **4**, sobre el material de la 2 o la 3
 
+## Dónde montar el video (VPS o PC)
+
+El **montaje** (el paso de `collage_builder`) puede correr en **dos sitios con la misma receta y el mismo
+resultado** — es una elección de entorno, no una vía nueva:
+
+- **VPS (`vps-projects`)** — el camino original: lee el NAS por **CIFS** y es **lento** (~0,12 MB/s por los
+  ~243 ms de latencia Tailscale; del orden de **18 min** por corrida).
+- **PC (`PumaDeskAsus`)** — lee el NAS en segundos (**~20× más rápido**, verificado 2026-11-19, SSIM 0.987
+  entre ambas). **Usarlo cuando el cuello de botella del CIFS del VPS domine el tiempo** (muchos clips o
+  material pesado). Requisitos, montador adaptado y trampas en **[[montaje-video-en-pc]]**.
+
+Las demás etapas (transcripción, captions con Remotion, FilmCraft) no cambian con esto.
+
 ## Piezas compartidas (no reinventarlas)
 
-- **El montaje:** `ttchop-server/scripts/collage_builder.py` — recibe una **receta** (`ffmpegRecipe`) con los clips y sus recortes. Para armarla desde un plan de duraciones: `scripts/creators/build_recipe_from_plan.py`.
+- **El montaje:** `ttchop-server/scripts/collage_builder.py` — recibe una **receta** (`ffmpegRecipe`) con los clips y sus recortes. Para armarla desde un plan de duraciones: `scripts/creators/build_recipe_from_plan.py`. **Dónde correrlo:** en el **VPS** (por CIFS, lento) o en la **PC** (~20× más rápido) — ver [[montaje-video-en-pc]].
 - **Subtítulos/overlays:** la composición Remotion **`caption-overlay`** en `ttchop-post_templates` (prop-driven: captions, tag, flecha, disclaimer, endCard). Detalle en [[recrear-video-creadores-edits]] §7.
 - **Portada/thumbnail:** el estándar fijo (posición, tipografía, tamaño, mecanismo y **fondo con el producto visible**) vive en [[estandar-thumbnail-video]]; se implementa con el prop `endCard` de `caption-overlay` (`frames: 1`, el último frame) y se exporta el PNG final como `cover.png`.
 - **La voz:** **PumaVoice01** (`ve7BOdejheJbgrBriBx4`) con el helper ya versionado `ttchop-server/scripts/creators/tts/tts_lines.mjs`; se ajusta el ritmo con `atempo` + pausas ([[recrear-video-creadores-edits]] §4).

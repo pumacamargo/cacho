@@ -1,7 +1,7 @@
 ---
 title: Comercial VOX Enchenal — Announcer y variación de imágenes
 created: 2026-11-09
-updated: 2026-11-09
+updated: 2026-11-19
 type: runbook
 tags: [runbook, pipeline, cli, arte, api]
 status: active
@@ -76,7 +76,7 @@ Tiempos de la versión Announcer, en segundos redondeados; usar timeline/alineac
 
 Son **45 estados de caption japonés**, no 45 shots. Fondo `#030508`, recortes y objetos por capas, nieve y movimientos de cámara/cues. No pasar la estructura del Book (montaña/personaje permanentes, pesca/oso y barrido de barba) a este video por confundir el caso.
 
-Producto real TTChop2 **`products/prod_5k79pno`**, Enchenal Lab: cuerpo blanco alargado, banda central rose-gold, trimmer rectangular y foil circular en extremos opuestos, USB-C en la banda. Las 19 fotos originales y demostraciones reales del producto se conservaron. Diagramas esquemáticos, no ingeniería propietaria verificada; sin inmersión ni promesa de impermeabilidad.
+Producto real TTChop2 **`products/prod_5k79pno`**, Enchenal Lab: cuerpo blanco alargado, banda central rose-gold, trimmer rectangular y foil circular en extremos opuestos, USB-C en la banda. Las 19 fotos originales y demostraciones reales del producto se conservaron. Diagramas esquemáticos, no ingeniería propietaria verificada; sin inmersión ni promesa de impermeabilidad (auditoría del agua y su aplicación a los casos 19/20 en [[recrear-video-creadores-edits]]).
 
 ## 5. Generación única de imágenes y aprobación
 

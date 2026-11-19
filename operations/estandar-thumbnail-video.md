@@ -1,7 +1,7 @@
 ---
 title: Estándar de portada/thumbnail de video
 created: 2026-11-18
-updated: 2026-11-18
+updated: 2026-11-19
 type: runbook
 tags: [runbook, decision, arte]
 status: active
@@ -145,10 +145,22 @@ que cumplen este estándar, para que la próxima reconstrucción salga idéntica
 
 ## Estado
 
-**PENDIENTE de OK de Arturo:** aplicar el estándar a los dos videos ya entregados (`18_shaver` v7 y
-`17_carpet` final v1) **no está hecho**. Este documento solo fija y guarda la especificación; no se
-regeneraron portadas, no se tocó código de la app/Remotion, colas, medios ni el NAS. La decisión de
-rehacer/mantener las portadas entregadas la toma Arturo después.
+**Resuelto (2026-11-19).** Arturo decidió que los dos videos ya entregados (`17_carpet` final v1 y
+`18_shaver` v7) **se quedan como están**: **no** se regeneran sus portadas. Este documento solo fija y
+guarda la especificación; no se regeneraron portadas, no se tocó código de la app/Remotion, colas, medios
+ni el NAS.
+
+El estándar **aplica a las entregas nuevas**, y las dos más recientes lo **cumplen** (medido con PIL sobre
+las portadas reales a 1080×1920 y revisado visualmente el 2026-11-19):
+
+| Caso | Archivo | bbox de texto (medido) | Centro del bloque | ¿Cumple? |
+|---|---|---|---|---|
+| **19_dualshaver** v1 | `dualshaver19-final-v1/19_dualshaver_ja_v1_cover.png` | x 207–873, y 301–459 | **x 540.0 · y 380.0** | **Sí** (`x=540`, `y≈378`; fondo con el producto visible) |
+| **20_dualshaver** v1 / v2 | `dualshaver20-final-v2/20_dualshaver_ja_v2_cover.png` | x 207–873, y 301–459 | **x 540.0 · y 380.0** | **Sí** (`x=540`, `y≈378`; fondo con el producto visible) |
+
+En ambos el `endCard` prop-driven usa `centerY 378`; el centro medido cae en `y≈380`, dentro de la
+tolerancia ±4 px. El producto (la afeitadora blanca sostenida en mano) se ve claro en el fondo de las dos
+portadas, y ninguna lleva flecha, CTA ni precio.
 
 ## Ver también
 

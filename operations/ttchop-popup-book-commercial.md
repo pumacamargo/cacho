@@ -2,7 +2,7 @@
 title: Comerciales con libro pop-up — Lemo-Opuscar y caso Enchenal
 author: ttchop_robot
 created: 2026-11-06
-updated: 2026-11-06
+updated: 2026-11-19
 type: runbook
 tags: [runbook, pipeline, cli, arte, api]
 status: active
@@ -53,7 +53,7 @@ Caso: `14_shaverAfter`. Referencia: `input/snaptik_7703511557459823880_v3.mp4`, 
 
 Producto **`ttchop2/products/prod_5k79pno`**, Enchenal Lab, con 19 entradas `modelSheetUrls`. Las fotos, diagramas e instrucciones se descargaron y revisaron: cuerpo alargado blanco, banda central rosado/dorada, trimmer rectangular y malla circular en extremos opuestos, puerto USB-C en la banda central. No inventar cabezales intercambiables ni ubicación del puerto. No exponer URLs tokenizadas o credenciales al documentar/archivar.
 
-Arturo confirmó dos cabezales y USB-C. Las instrucciones indican trimmer primero y malla para acabado. El título comercial y las advertencias discrepan sobre agua; se eligió uso seco, sin inmersión ni promesa de impermeabilidad. Cifras de ventas, precio, porcentajes y garantías de irritación no pasaron al comercial. La historia de Alaska se narra como «se cuenta», no como hecho histórico comprobado.
+Arturo confirmó dos cabezales y USB-C. Las instrucciones indican trimmer primero y malla para acabado. El título comercial y las advertencias discrepan sobre agua; se eligió uso seco, sin inmersión ni promesa de impermeabilidad (auditoría del agua del producto y su aplicación a los casos 19/20 en [[recrear-video-creadores-edits]]). Cifras de ventas, precio, porcentajes y garantías de irritación no pasaron al comercial. La historia de Alaska se narra como «se cuenta», no como hecho histórico comprobado.
 
 ## 4. Guion, voz y recorte final
 

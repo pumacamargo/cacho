@@ -1,7 +1,7 @@
 ---
 title: Pruebas de edición de video con FilmCraft para TTChop2
 created: 2026-10-21
-updated: 2026-11-18
+updated: 2026-11-19
 type: runbook
 tags: [runbook, pipeline, cli]
 status: draft
@@ -34,6 +34,25 @@ Cada producto/carpeta tiene su propio `.fcproj`; un proyecto FilmCraft existente
 - El staging `D:\staging\filmcraft-ellis-if01-20261027` se conserva con el `.fcproj` original (SHA-256 `90369d3f98f03758a72e8bfc54aa224228dab2e68941924cdaea75de8e86b6b9`), la variante portable y 14 medios. La exportación/inspección CLI local no sustituye abrir el proyecto final en la GUI: esa reapertura sigue pendiente. No publicado.
 
 Antes de afirmar que un video ya está en FilmCraft, confirma el `.fcproj` de ese mismo caso, su ruta y la verificación correspondiente. El nombre o la existencia de otro proyecto FilmCraft no basta.
+
+### `19_dualshaver` y `20_dualshaver` — reconstrucciones FilmCraft (2026-11-19)
+
+Dos reconstrucciones nuevas (misma metodología que 02_blanket: **proyecto local** con medios en `D:\staging` + **portable relinkeado a `P:`** autocontenido), en `\\100.91.254.118\Projects\Tiktok\hamaca\edits\<caso>\filmcraft-20261119\`. Las dos llevan `README.md`, `source-media-manifest.json` (procedencia + SHA-256 de cada medio) y el **MP4 de verificación** del export.
+
+- **`19_dualshaver`** — reproduce la entrega `19_dualshaver_ja_v1.mp4` (1080×1920, 30 fps, 1334 frames, 44.467 s) de forma editable: los **12 cortes** del montaje en **3 pistas** (4/4/4) + la voz, los **10 rótulos** (texto nativo), la banda roja de aviso, las **3 imágenes de producto**, el panel de reseñas, el panel del vendedor, el tag CTA, la flecha, el descargo y la portada del último fotograma → **13 pistas de video + 1 de audio**. Ticks 254 016 000 000/s. `19_dualshaver_ja_v1.fcproj` (local, `D:\staging\filmcraft-dualshaver19`) + `19_dualshaver_ja_v1_portable.fcproj` (relinkeado a `P:`; **18 rutas `P:`, 0 `D:`**). Export de verificación `19_dualshaver_ja_v1_filmcraft.mp4` (112 705 722 B · `A43A7FD2…`): **1334 frames · 44.4667 s**, H.264 1080×1920@30, AAC 48 kHz estéreo, `offlineMedia: []`. 16 medios en `assets/`.
+  - **Overlays de los shots 3/4/5 (trabajo adicional, 2026-11-19):** se añadió una **copia** del proyecto con la **tarjeta de producto** (11.9–15.1 s), el **panel de reseñas** (15.1–20.4) y el **panel del vendedor** (20.4–22.933) en la pista Video 9 (mismos datos verificados de NUESTRA ficha: 3.8 / 130 / 4,300 / Enchenal Lab PersonalCare). El proyecto original y su portable **no se tocaron** (mismo SHA-256). Archivos: `19_dualshaver_ja_v1_overlays345(.fcproj|_portable.fcproj)`, `NOTA_overlays_345.md`, 3 cuadros + 6 de frontera, y el export corto `overlays345_verify_11.5-15.4s.mp4` (3.904 s, `301B68F5…`). Render de comprobación: 1335 frames, 44.501 s.
+- **`20_dualshaver`** — reproduce la entrega `20_dualshaver_ja_v2.mp4` (1080×1920, 30 fps, 1067 frames, 35.567 s): **10 cortes** en 3 pistas (4/3/3) + voz, **8 rótulos**, tag CTA, descargo, flecha, **3 insertos de imagen** y portada → **9 pistas de video + 1 de audio**. `20_dualshaver_ja_v2.fcproj` (local, `D:\staging\filmcraft-dualshaver20`) + `20_dualshaver_ja_v2_portable.fcproj` (**15 rutas `P:`, 0 `D:`**). Export de verificación `20_dualshaver_ja_v2_filmcraft.mp4` (89 720 117 B · `93468E61…`): **1067 frames · 35.5667 s**, H.264 1080×1920@30, AAC 48 kHz estéreo, `offlineMedia: []`. 13 medios en `assets/`.
+  - **Edición de Arturo (posterior):** Arturo editó **su propia** versión (velocidades/duraciones/puntos de entrada) y se exportó (`20_dualshaver_ja_v2_arturo_export.mp4`, 1068 frames, 35.605 s). Después, **a petición suya**, se le **reemplazó la voz** por la corregida (**mismo nombre de archivo → sin relink**) y se **intercambiaron los dos rótulos** para que texto y voz coincidan. Respaldos en la carpeta: `20_dualshaver_ja_v2_backup_20261119.fcproj` y `assets/voice_final_backup_20261119.mp3`. Render final: `20_dualshaver_ja_v2_arturo_v3_FINAL.mp4`.
+
+**Diferencia real (no es idéntica):** FilmCraft cuantiza a frames los trims en coma flotante del montaje → desfase de hasta ~4–6 frames (0.13–0.2 s) hacia el final (el total coincide); el audio del export es **AAC 48 kHz estéreo** (re-codificado) frente al **44.1 kHz mono** de la entrega; y los paneles / badge 「公式」 van como **texto nativo** (no PNG idéntico). La portada (último frame) sí sale **idéntica** (PSNR 44.3 / 43.0 dB).
+
+**Validación pendiente (GUI):** los portables se relinkearon a `P:` y cada ruta se verificó en el NAS, pero **la comprobación de «medios online» la hace Arturo abriendo el `.fcproj` en la sesión interactiva con `P:` montado**: **desde SSH `P:` no existe** y los medios saldrían como *missing*. El export local (`D:`) sí salió con `offlineMedia: []`.
+
+#### Pitfalls nuevos (2026-11-19)
+
+- **(a) El export de FilmCraft agrega un cuadro negro al final.** La portada (`endCard` de 1 frame) queda como **penúltimo** cuadro y el último sale negro. En las **copias de chat** se recorta ese cuadro con `ffmpeg -i in.mp4 -frames:v N-1 -c copy out.mp4` (N = frames del export). Evidencia: los exports de reconstrucción traen la cola de 1 frame (con el harness `--end` exacto el exporter añade 1 frame y da 1335 / 1068 en vez de 1334 / 1067).
+- **(b) Reemplazar un medio por otro con el MISMO nombre de archivo evita el relink.** Así se aplicó la **voz corregida** del 20: se sobrescribió `assets/voice_final.mp3` (mismo nombre) y el `.fcproj` siguió apuntando a él sin relinkear. **Antes de sobrescribir** se respaldó el archivo (`voice_final_backup_20261119.mp3`) **y** el `.fcproj` (`20_dualshaver_ja_v2_backup_20261119.fcproj`). Es un atajo útil y también un riesgo: un reemplazo silencioso no avisa de que cambió el medio.
+- **(c) Los rótulos nativos del proyecto se editan SIN re-render del video.** Son **texto nativo** (no PNG): en el 20 se **intercambiaron dos textos** para que coincidieran con la voz corregida, y en el 19 se **añadieron** paneles/tarjeta **sobre una copia** del proyecto y luego se aplicaron al **proyecto real con respaldo previo** (originales intactos, mismo SHA-256). Editar el texto no obliga a re-encodear los clips.
 
 ## 1. Producer vigente (referencia; no ejecutar para un pedido manual)
 

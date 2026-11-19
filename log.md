@@ -763,3 +763,16 @@
 - **Reemplazar un medio por otro con el mismo nombre de archivo evita el relink** en FilmCraft (así se aplicó la voz corregida, con respaldo previo).
 - **Fix de solo audio:** muxear con `-c:v copy` y **verificar el md5 del stream de video** contra la versión anterior para demostrar que la imagen no cambió.
 
+## [2026-11-19] docs | cierre de documentación de 17/18/19/20
+
+Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). **Solo wiki** (`/root/cacho`); no se tocó código, medios, el NAS ni Firestore.
+
+- **Fichas de caso nuevas** en [[recrear-video-creadores-edits]]: `17_carpet`, `18_shaver` (v7), `19_dualshaver` y `20_dualshaver` (v1→v3), con referencia, material propio, mapeo toma→clip con ventanas, voz (atempo/duración), rótulos/overlays con tiempos, portada, entrega (rutas + hashes) y cadena de comandos; más la **auditoría del agua** del producto `prod_5k79pno` (sección propia, con cross-ref desde [[ttchop-popup-book-commercial]] y [[ttchop-vox-collage-commercial]]).
+- **[[ttchop-filmcraft-video-tests]]:** reconstrucciones FilmCraft de `19_dualshaver` y `20_dualshaver` en `…\<caso>\filmcraft-20261119\` (proyecto local `D:\staging` + portable relinkeado a `P:`, README, `source-media-manifest.json` y MP4 de verificación) y **3 pitfalls nuevos**: (a) el export de FilmCraft añade un cuadro negro al final (la portada queda de penúltimo; se recorta con `-frames:v N-1 -c copy`); (b) reemplazar un medio con el **mismo nombre de archivo** evita el relink (así se aplicó la voz corregida del 20, con respaldos previos); (c) los **rótulos nativos se editan sin re-render** (intercambio de 2 textos en el 20; paneles/tarjeta añadidos en el 19 sobre una copia y luego al proyecto real con respaldo). La validación de "medios online" en la GUI la hace Arturo (desde SSH `P:` no existe).
+- **[[ttchop-video-paths]]:** añadida la opción de **montar en la PC** (≈20× más rápido que el CIFS del VPS), enlazando [[montaje-video-en-pc]], tanto en el hub como en la lista de piezas compartidas.
+- **[[estandar-thumbnail-video]]:** el estándar **aplica a las entregas nuevas**; se verificó con PIL sobre las portadas reales que **19 y 20 lo cumplen** (texto centrado en `x=540` / `y≈380` y producto visible).
+
+**Decisiones de Arturo registradas explícitamente:**
+1. Los dos videos (`17_carpet` y `18_shaver`) **quedan como entregados** — no consta publicación (Arturo publica manualmente); además se quedan con sus portadas actuales.
+2. El **19 conserva la mención del agua del original** (audio y rótulo) — **desviación conocida y aceptada**; en el 20 sí se retiró 「防水」 del audio.
+
