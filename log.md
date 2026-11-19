@@ -731,3 +731,35 @@
 - **A/B con el mismo montador y la misma receta** (4 segmentos de `20_dualshaver` con la voz real del caso, 10.4 s): **PC 10.4 s** (6.0 s recortes + 4.2 s unión) vs **VPS 213 s**. Salidas equivalentes: misma duración, 4.96 vs 4.98 MB, SSIM 0.987 / PSNR 44.5 dB. Prueba aparte con grafos crudos: x264 5.2 s/5.34 MB vs **NVENC 2.2 s/12.48 MB** (`-cq 23`) con SSIM 0.987 / PSNR 45.2 dB.
 - **Montador adaptado** (`collage_builder_win.py`): mismos filtros, recortes, unión y encode final; solo rutas/ejecutables por entorno, timing y `COLLAGE_KEEP_TEMP`. Ya no hay que instalar nada en la PC: tiene **Python 3.11.9** real (`D:\staging\hermes-transcription\venv`) y ffmpeg con NVENC en `D:\staging\creator-av-audit\bin`. El repo compartido y el pipeline **no** se tocaron.
 - Creada la página [[montaje-video-en-pc]] (procedimiento, requisitos, trampas: `ErrorActionPreference='Stop'` que aborta con stderr nativo, ffmpeg en el `PATH` también para la unión final, `/mnt/polaris` de solo lectura) y enlazada desde `index.md` y desde [[recrear-video-creadores-edits]] §5. Pendiente: decidir si el wrapper Windows se versiona en `ttchop-server/scripts/`.
+## [2026-11-19] entregas | casos `19_dualshaver` y `20_dualshaver` (clones en japonés, mismo producto)
+
+**Producto (los dos videos):** `ttchop2/prod_5k79pno` — Enchenal Lab 電動シェーバー 男女兼用 多機能トリマー (2in1: red + recortadora), vendedor Enchenal Lab PersonalCare, https://shop.tiktok.com/jp/pdp/1735290027543529248 . Datos verificados usados en los videos: la ficha del 6-nov daba 4.3K vendidos · 3.8 ★ · 130 reseñas; **re-verificado en vivo el 19-nov: 3.8 ★ · 137 reseñas · 4.4K vendidos** (precio de lista 4,319 ¥ y 3,239 ¥ con −25 %; el video no usa cifras de precio).
+
+### `20_dualshaver` — clon de un original mexicano (35.524 s, 7 tomas, audio español)
+- **Entregado:** `P:\Tiktok\hamaca\edits\20_dualshaver\production\` — **v1** (12.96 MB), **v2** (con los 3 insertos de imagen, 28.4 MB) y **v3** (solo audio corregido, 28.95 MB). v3: 1067 frames, 35.571 s, 1080×1920 a 30 fps.
+- **Guion:** 8 líneas en japonés, clon del original con los datos propios. Voz PumaVoice01 en una sola toma continua (`atempo` 1.16524). Rótulos japoneses 8 + tag CTA + flecha + descargo. Portada con el estándar (x=540 / y=380) y producto visible.
+- **Insertos del primer bloque:** los 3 que tenía el original se generaron con **Kie.ai/seedream-v4 en una sola tarea (15 créditos)** — fotos de piel con irritación/granitos/vello — y se colocaron en los tiempos y cajas medidos en la referencia (1.100–1.967 / 3.200–4.033 / 5.467–6.867 s).
+- **Fix v3 (solo audio):** la frase del baño se movió al tramo del **vaso de agua** (20.21–23.52 s) y se retiró la palabra 「防水」; el video quedó **idéntico byte por byte** (md5 del stream de video `5f295a13be218ce883d2f499db1d241a` en v2 y v3). Detalle en la sección de la auditoría del agua.
+- **FilmCraft:** `filmcraft-20261119\` con proyecto local (medios en `D:\staging`) y **portable relinkeado a `P:`**, README y `source-media-manifest.json`. Arturo editó su propia versión (velocidades/duraciones/puntos de entrada); se exportó (1068 frames, 35.605 s). Después, **a petición suya**, se le reemplazó **la voz** por la corregida (mismo nombre de archivo → sin relink) y se **intercambiaron los dos rótulos** para que texto y voz coincidan; respaldos: `20_dualshaver_ja_v2_backup_20261119.fcproj` y `voice_final_backup_20261119.mp3`.
+
+### `19_dualshaver` — clon de un original mexicano (44.467 s, 10 tomas, audio español)
+- **Entregado:** `P:\Tiktok\hamaca\edits\19_dualshaver\production\v1\` — 18 archivos con lectura de vuelta SHA-256 OK. Video: 1334 frames, 44.478 s, 1080×1920, AAC 44.1 kHz mono, 17.31 MB.
+- **Guion:** 10 líneas en japonés (clon) con **cifras propias verificadas** (más de 4,300 vendidos · 3.8 · más de 130 reseñas) en lugar de las del original (82.4K/4.6/7,569). Voz PumaVoice01, `atempo` 1.133538.
+- **Overlays (los del original, adaptados):** banda roja 「偽物に注意」, **tres imágenes de producto** escalonadas (del propio listado: aparato, cabezal, caja), **panel de reseñas** (3.8 · 130件のレビュー), **panel del vendedor** (Enchenal Lab PersonalCare ・ 公式), tag CTA + flecha + descargo y portada estándar.
+- **Montaje en la PC (primer video con el camino nuevo):** **58.8 s** de trabajo (36.3 s recortes + 22.5 s unión) y ~2 min 30 s el paso completo incluyendo subida al NAS ([[montaje-video-en-pc]]).
+- **FilmCraft:** `filmcraft-20261119\` con proyecto local + portable. Después se le agregaron, sobre **su** proyecto (con respaldo previo), los overlays de los shots 3-5 que la referencia sí tiene y el proyecto no cubría: **tarjeta de producto** en T3 (★3.8 ・ 130件のレビュー ・ 4,300件販売), **panel de reseñas** en T4 y **panel del vendedor** en T5, con nota `NOTA_overlays_345.md` y 3 cuadros de verificación. Render de comprobación: 1335 frames, 44.501 s.
+- **Entregados también los títulos y hashtags** de los dos videos, listos para copiar.
+
+### Auditoría del agua (los dos casos) — NO se puede afirmar impermeabilidad
+- La **descripción** del listado (PDP en vivo y el scrape de ttchop2) **no menciona agua ni 「防水」**; habla de 2in1, doble 3D flotante, 113 g/155 mm, Type-C (1.5 h → 90 min) y garantía de 1 año.
+- Una **reseña de comprador verificado** (2026-06-28) pregunta si se puede mojar y señala que la información del producto dice **「水洗い不可」** mientras otros anuncios dicen lo contrario; sigue sin respuesta.
+- La única mención de 「防水」 en el scrape corresponde a **otro producto** de la misma marca (shaver de hombre 3in1).
+- El **título** del vendedor sí incluye **「お風呂剃り」**, en contradicción con su propia descripción.
+- **Decisión aplicada:** se retiró 「防水」 del audio; la idea del baño se conserva solo apoyada en el título del vendedor. Las **fichas de caso** (`input\catalog\catalog_facts.json` en 19 y 20) quedaron actualizadas con la auditoría y los datos en vivo. Precedente ya documentado del mismo producto en [[ttchop-popup-book-commercial]] y [[ttchop-vox-collage-commercial]] («sin inmersión ni promesa de impermeabilidad»).
+
+### Lecciones/pitfalls nuevos
+- **Grabaciones verticales con `rotation=90` en metadata:** el contenedor dice 1920×1080 pero son 1080×1920; el mapa de clips las dio por horizontales y el montaje concluyó lo contrario. Comprobar `ffprobe` **y** un fotograma antes de recortar (ya anotado en [[recrear-video-creadores-edits]]).
+- **El export de FilmCraft agrega un cuadro negro al final** (la portada queda como penúltimo); en las copias de chat se recorta ese cuadro.
+- **Reemplazar un medio por otro con el mismo nombre de archivo evita el relink** en FilmCraft (así se aplicó la voz corregida, con respaldo previo).
+- **Fix de solo audio:** muxear con `-c:v copy` y **verificar el md5 del stream de video** contra la versión anterior para demostrar que la imagen no cambió.
+
