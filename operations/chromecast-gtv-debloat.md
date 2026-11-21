@@ -109,7 +109,7 @@ Con **solo** la lista que conserva casting, el traspaso **falla y se revierte so
 
 - **El casting desde el teléfono se rompe tras reiniciar la TV**: el receptor de Cast lee sus credenciales de fábrica de un proveedor dentro de `setupwraith`; sin él, el teléfono responde *“Untrusted device… couldn't be verified”*. Mientras la TV no se reinicie, la credencial vive en memoria y puede seguir funcionando. El repo documenta un remedio frágil (reactivar `setupwraith` tras cada arranque, esperar a `ClientAuthSigner` y volver a desactivarlo).
 - **Antes de desactivar `setupwraith` hay que verificar quién creó la red Wi-Fi**: `adb shell "dumpsys wifi | grep -o 'cname=[^ ]*'"`. Si dice `com.google.android.tungsten.setupwraith`, desactivarlo **borra esa red** y la TV se queda sin Wi-Fi ni adb. En esta TV dice `android.uid.system:1000` → seguro.
-- **Se pierde el salvapantallas ambiente** (fotos + Spotify): viene de `dreamx` y `backdrop`, que la lista completa desactiva. Se puede volver a encender con `pm enable` si se extraña.
+- **El salvapantallas ambiente** (fotos + tarjeta de Spotify) viene de `dreamx` y `backdrop`, que la lista completa desactiva. **Arturo pidió recuperarlo**: se reactivaron ambos (`pm enable`) y quedó verificado que la TV apunta al ambiente de Google (`screensaver_enabled=1`, `screensaver_components=com.google.android.apps.tv.dreamx/.service.Backdrop`, `sleep_timeout=1800000`). No se puede forzar a mano — Android reserva `BIND_DREAM_SERVICE` al sistema — así que aparece cuando la TV queda inactiva (30 min) o al apagarse la pantalla. **Consecuencia**: `check.py` ahora reporta esos dos paquetes como *drift* contra la lista completa; es intencional.
 
 ### Verificación del resultado
 
