@@ -107,9 +107,30 @@ Con **solo** la lista que conserva casting, el traspaso **falla y se revierte so
 
 ### Intercambios aceptados
 
-- **El casting desde el teléfono se rompe tras reiniciar la TV**: el receptor de Cast lee sus credenciales de fábrica de un proveedor dentro de `setupwraith`; sin él, el teléfono responde *“Untrusted device… couldn't be verified”*. Mientras la TV no se reinicie, la credencial vive en memoria y puede seguir funcionando. El repo documenta un remedio frágil (reactivar `setupwraith` tras cada arranque, esperar a `ClientAuthSigner` y volver a desactivarlo).
+- **El casting desde el teléfono se rompe tras reiniciar la TV**: el receptor de Cast lee sus credenciales de fábrica de un proveedor dentro de `setupwraith`; sin él, el teléfono responde *“Untrusted device… couldn't be verified”* (**confirmado en esta TV**, 2026-11-21). **Se repone con el parche de memoria de abajo**, que da las dos cosas hasta el próximo arranque.
+- **Encender `setupwraith` roba el Home aunque el lanzador esté declarado predeterminado**: medido en esta TV — con `com.gathin.tvhome` ya fijado con `set-home-activity`, al reactivar el asistente el Home resolvió a `…setupwraith/.RecoveryActivity`. Por eso el parche **termina volviendo a fijar** `set-home-activity com.gathin.tvhome/.MainActivity`. En la ventana de ~1 minuto **no** volvió a activar `launcherx` (que el repo avisa que puede hacer).
 - **Antes de desactivar `setupwraith` hay que verificar quién creó la red Wi-Fi**: `adb shell "dumpsys wifi | grep -o 'cname=[^ ]*'"`. Si dice `com.google.android.tungsten.setupwraith`, desactivarlo **borra esa red** y la TV se queda sin Wi-Fi ni adb. En esta TV dice `android.uid.system:1000` → seguro.
 - **El salvapantallas ambiente** (fotos + tarjeta de Spotify) viene de `dreamx` y `backdrop`, que la lista completa desactiva. **Arturo pidió recuperarlo**: se reactivaron ambos (`pm enable`) y quedó verificado que la TV apunta al ambiente de Google (`screensaver_enabled=1`, `screensaver_components=com.google.android.apps.tv.dreamx/.service.Backdrop`, `sleep_timeout=1800000`). No se puede forzar a mano — Android reserva `BIND_DREAM_SERVICE` al sistema — así que aparece cuando la TV queda inactiva (30 min) o al apagarse la pantalla. **Consecuencia**: `check.py` ahora reporta esos dos paquetes como *drift* contra la lista completa; es intencional.
+
+### Reponer el casting tras un reinicio (parche de memoria)
+
+La depuración inalámbrica **se apaga sola** en cada reinicio y **el puerto cambia**, así que primero hay que reconectar:
+
+1. En la TV: Opciones de desarrollador → **Depuración inalámbrica** → activar (no hay que emparejar de nuevo).
+2. Encontrar el puerto. **`adb mdns services` puede volver vacío aunque la depuración esté encendida** (pasó aquí, 2026-11-21): el camino que funciona es escanear —
+   ```bash
+   nmap -Pn -p 30000-50000 --open 192.168.0.14      # salen 4 puertos; el de adb es el que da "device"
+   for p in <puertos>; do adb connect 192.168.0.14:$p; done
+   adb devices        # el que diga "device product:sabrina_prod_stable" es el bueno
+   ```
+   Ojo: `adb devices` deja los puertos fallidos como `offline` **primero en la lista**; hay que elegir el que dice `device`, no el primero.
+3. Correr el parche (deja el asistente apagado y el Home en el lanzador nuevo):
+   ```bash
+   TV_HOST=192.168.0.14:<puerto> bash /root/cleanyourtv/tools/reponer-cast.sh
+   ```
+   Hace: enciende `setupwraith` → espera `ClientAuthSigner` en el logcat → lo apaga → **vuelve a fijar** `set-home-activity com.gathin.tvhome/.MainActivity` → muestra el Home resultante.
+
+Verificado el 2026-11-21: el teléfono volvió a mandar a la TV sin problema. **Dura hasta el próximo reinicio de la TV.**
 
 ### Verificación del resultado
 
