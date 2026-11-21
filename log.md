@@ -808,3 +808,13 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - **Corregido el método para encontrar el puerto**: `adb mdns services` volvió **vacío** aunque la depuración estaba encendida. Lo que funciona es `nmap -Pn -p 30000-50000 --open 192.168.0.14` + `adb connect` a cada puerto, y elegir en `adb devices` el que dice `device` (los fallidos quedan como `offline` y aparecen primero en la lista). Puerto de esta sesión: `43567`.
 - **La depuración inalámbrica se apaga sola en cada reinicio** (y el puerto cambia) → ninguna revisión automática puede funcionar sin que alguien la active en la TV. Por eso la revisión del debloat queda **manual**.
 - Skill `android-tv-debloat` actualizada con ambas correcciones.
+
+## [2026-11-21] create | Escritorio de la PC en la Chromecast: Moonlight + Sunshine (y por qué no el de Google)
+- Arturo preguntó si se podía instalar el escritorio remoto de Google en la TV (no le aparecía en la tienda). Investigado y verificado **en su propia TV**:
+  - **Chrome Remote Desktop**: Google no publica versión para Android TV; la app actual es un **envoltorio web (TWA)** que necesita Chrome (la TV no lo tiene) y es táctil → se puede instalar a mano pero probablemente no sirva. **Descartado.**
+  - **Microsoft Windows App (RDP)**: la ficha existe pero la TV dice **“Your device isn't compatible with this version”**; además RDP exige **Windows Pro** y su PC es **Home** (`EditionID=Core`). **Descartado.**
+  - **Moonlight**: está en la tienda de la TV con botón INSTALL (capturado) → **elegido**. Arturo dio luz verde.
+- **Instalado y funcionando**: Moonlight 12.2 en la TV (se pulsó INSTALL por adb, buscando el botón con uiautomator) y **Sunshine v2026.914.233613** en la PC por MSI en silencio (servicio `SunshineService` Running). Emparejado con PIN: cliente “TV Moonlight”. Transmitiendo con **`hevc_nvenc`** (RTX 2060 SUPER), 1920x1080.
+- Credenciales de la web de Sunshine: usuario `admin`, contraseña en `/root/.config/sunshine/sunshine.txt` del VPS (600).
+- **Trampas**: `screencap` devuelve negro para la capa de video por hardware (las capturas negras NO significan fallo: se confirma con `dumpsys SurfaceFlinger` y con el log de Sunshine); el repo de Sunshine se mudó a **`SunshineStream/Sunshine`**; la API de GitHub sin `User-Agent` devuelve JSON de redirección.
+- Documentado en [[moonlight-sunshine-tv]]. Pendiente: confirmar la imagen en la TV y, para el cursor, un mouse Bluetooth.
