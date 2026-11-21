@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-11-19 | Total pages: 52
+> Last updated: 2026-11-21 | Total pages: 54
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -41,6 +41,7 @@
 - [[hardware-raspberry-pi5]] — Raspberry Pi 5 (pi5puma01)
 - [[hardware-desktop-puma]] — desktop Windows (PumaDeskAsus)
 - [[hardware-celular-android]] — celular Android (draft)
+- [[chromecast-gtv-debloat]] — runbook: limpiar la Chromecast con Google TV 4K (CleanYourTV); acceso por depuración inalámbrica, respaldo previo y regreso con una línea
 
 ## Sistemas
 - [[hermes-agent]] — agente Hermes en vps-tools; voz local Vosk aislada y TTS es-MX
