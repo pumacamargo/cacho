@@ -791,3 +791,14 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - Entorno montado **en el Pi** (no en la PC, para no instalar nada): repo en `/root/cleanyourtv`, venv con dependencias, y `TV_ADB_BINARY`/`TV_HOST` apuntando a la conexión emparejada.
 - **Respaldo hecho, sin modificar la TV**: dos registros en `~/.cleanyourtv/` del Pi (lista que conserva casting = 14 paquetes; lista completa = 17), copia en `/root/.config/cleanyourtv/` del VPS. Todos los paquetes `enabled`; Home era `com.google.android.apps.tv.launcherx`. Documentado en [[chromecast-gtv-debloat]].
 - Pendiente de decisión de Arturo: aplicar la lista que conserva casting (recomendada) o la completa con lanzador propio. Nada se ha desactivado todavía.
+
+## [2026-11-21] apply | Chromecast: lista completa aplicada, lanzador propio como Home y hora corregida
+- Se aplicó la **lista que conserva casting** (12 paquetes) y se verificó con `check.py`: *nothing drifted*, Home intacto, casting (8008/8009) abierto. Nota: aparecen 14 desactivados porque `cast2class` y `tvrecommendations` ya venían desactivados de fábrica y no están en la lista.
+- Después, por decisión de Arturo (**“quiero el lanzador nuevo como default”**), se aplicó la **lista completa** (añade `dreamx`, `backdrop` y `tungsten.setupwraith`) y se instaló el **lanzador propio** `com.gathin.tvhome` como Home por defecto; el de fábrica quedó desactivado.
+- **Trampa documentada**: con solo la lista de casting, el traspaso **falla y se revierte solo** porque `setupwraith` también reclama el Home (`…setupwraith/.RecoveryActivity`). Hay que aplicar la lista completa primero.
+- **Compilar Android en ARM no se puede**: `aapt2` solo existe para x86-64; el build en el Pi muere con *Aapt2Daemon startup failed*. Se compiló en el **VPS** (JDK 17 + SDK 34) y el APK (575 KB) se pasó al Pi. Script de traspaso con `SKIP_BUILD=1`.
+- **Hora**: la TV estaba en `America/Vancouver` (7 h atrasada). Corregida a `Asia/Tokyo` con `cmd alarm set-timezone` + `auto_time`/`auto_time_zone`; verificado `Sat Nov 21 18:56 JST`.
+- Verificado el botón Inicio del control: `input keyevent KEYCODE_HOME` → `mCurrentFocus=com.gathin.tvhome/.MainActivity`.
+- **Intercambios aceptados**: el casting desde el teléfono se rompe tras reiniciar la TV (credencial de fábrica dentro de `setupwraith`) y se pierde el salvapantallas ambiente (`dreamx`/`backdrop`). Antes de desactivar `setupwraith` se comprobó que la red Wi-Fi es de `android.uid.system:1000`, así que no se borra.
+- Pendientes: reservar la IP en el router (MAC `DC:E5:5B:49:8F:1E` → `192.168.0.14`) y decidir si la revisión semanal del debloat queda automática (depuración encendida) o manual.
+- Documentado en [[chromecast-gtv-debloat]].
