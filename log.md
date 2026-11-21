@@ -776,3 +776,10 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 1. Los dos videos (`17_carpet` y `18_shaver`) **quedan como entregados** — no consta publicación (Arturo publica manualmente); además se quedan con sus portadas actuales.
 2. El **19 conserva la mención del agua del original** (audio y rótulo) — **desviación conocida y aceptada**; en el 20 sí se retiró 「防水」 del audio.
 
+
+## [2026-11-21] fix | por qué se caía el SSH de PumaDeskAsus y corrección verificada
+- Síntoma: `connection refused` en el 22 con la PC encendida y Tailscale activo. Causa: **el servicio `sshd` se caía**, no la red.
+- Raíz: `ListenAddress` atado **solo a la IP de Tailscale** sin dependencia del servicio `Tailscale` (competían al arrancar, fallaba el bind) + **cero acciones de recuperación** (7034 sin reinicio) + la PC se reinicia sola por inactividad (Kernel-Power 578). Además `LogLevel DEBUG3` con un log de **330 MB**.
+- Aplicado y verificado: `sc config sshd depend= Tailscale`, `sc failure sshd reset= 86400 actions= restart/5000/restart/10000/restart/30000`, `LogLevel DEBUG3 → INFO` (respaldo `sshd_config.bak-hermes`, validado con `sshd -t`, log rotado a `sshd.log.old-20261121-143956`).
+- **Prueba real**: se mató el proceso del 22 y Windows lo reinició solo a los 10 s (evento 7031), reconectando sin intervención.
+- Documentado en [[acceso-remoto-pumadeskasus]] con las causas, los comandos y cómo revisarlo si vuelve a pasar. Ojo: desde la LAN el 22 no aparece porque sshd escucha solo en la IP de Tailscale — falso negativo, no un fallo.

@@ -1,7 +1,7 @@
 ---
 title: Acceso SSH a PumaDeskAsus
 created: 2026-10-20
-updated: 2026-10-28
+updated: 2026-11-21
 type: runbook
 tags: [infra, tailscale, runbook]
 status: active
@@ -34,6 +34,41 @@ es `SHA256:SzDDMv1kz9aiv7XiB2tZ0q1toyDJ0Bwg4sJrTD8wDt0`.
 
 El acceso SSH es por Tailscale, TCP/22; `OpenSSH-Server-In-TCP` permanece
 desactivada y no se abrió ningún puerto del router.
+
+## Por qué se caía el servicio SSH (diagnosticado y corregido el 2026-11-21)
+
+Síntoma: de pronto el puerto 22 respondía *connection refused*, aunque la PC seguía encendida y con Tailscale activo (`tailscale ping` contestaba). No era red: **el servicio `sshd` estaba caído**.
+
+Causas encontradas en los registros de Windows:
+
+1. **`ListenAddress 100.126.157.51` en `sshd_config`**: sshd escucha *solo* en la IP de Tailscale. El servicio **no tenía dependencia** de `Tailscale`, así que en cada arranque competía con él; si el adaptador aún no tenía la IP, el *bind* fallaba y el proceso moría. Las caídas (evento 7034 "terminated unexpectedly") coincidían con reinicios: `2026-11-14 00:01-00:03` y `2026-11-20 17:29-17:30`.
+2. **Sin acciones de recuperación** (`sc qfailure` vacío): cuando el proceso moría, Windows no lo levantaba. Por eso tras un reinicio quedaba apagado hasta que alguien lo arrancaba a mano.
+3. La PC **se reinicia sola cuando está inactiva** (Windows Update; evento Kernel-Power 578 "system initiated reboot from Sleeping (Idle)"), lo que multiplica la ocasión de caer.
+4. Aparte, **`LogLevel DEBUG3`**: el log `C:\ProgramData\ssh\logs\sshd.log` había llegado a **330 MB**.
+
+Correcciones aplicadas (verificadas):
+
+```powershell
+sc.exe config sshd depend= Tailscale
+sc.exe failure sshd reset= 86400 actions= restart/5000/restart/10000/restart/30000
+# sshd_config: LogLevel DEBUG3 -> INFO (respaldo en sshd_config.bak-hermes, validado con `sshd -t`)
+```
+
+- El log viejo se rotó a `sshd.log.old-20261121-143956` (315 MB; se puede borrar).
+- **Prueba real de recuperación:** se mató el proceso que escuchaba en el 22 y Windows lo reinició solo a los 10 s (evento 7031: *"corrective action will be taken in 10000 milliseconds: Restart the service"*), reconectando sin intervención.
+- Al volver a arrancar, si Tailscale tarda, ahora sshd espera a esa dependencia en vez de morir.
+
+**Cómo revisarlo si vuelve a fallar:**
+
+```powershell
+Get-Service sshd | Select Status,StartType
+Get-WinEvent -LogName System -MaxEvents 300 | Where-Object { $_.Message -match 'OpenSSH' } | Select -First 5
+Select-String "$env:ProgramData\ssh\sshd_config" -Pattern 'ListenAddress|LogLevel'
+```
+
+**Alternativa independiente:** `tailscale up --ssh` habilita el SSH de Tailscale, que no depende del servicio de OpenSSH; útil si se quiere una segunda vía de acceso.
+
+**Nota de diagnóstico:** desde la LAN el puerto 22 no aparece, y es correcto: sshd está atado solo a la IP de Tailscale. Comprobarlo desde otra máquina de la red local da un falso negativo.
 
 ## Acceder a Polaris como P: desde SSH
 
