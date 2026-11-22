@@ -841,3 +841,8 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - Arturo aclaró el límite: **decoración de fondo sí se puede improvisar** (planta, toalla doblada, luz de ventana), pero **un componente del producto no se inventa**. En el plan de dadawoca había dos tomas imposibles: quitar un plástico protector que el producto no trae y meter el producto en un estuche que no existe. La ficha no menciona ninguno de los dos.
 - Añadido al runbook [[planes-de-video-nuevos]] el bloque «Dos categorías que no se mezclan» y el pitfall correspondiente: antes de escribir una acción que toca el producto, confirmar qué incluye la caja (estuche, película, precinto, accesorios). Ojo con «新旧タイプ混在発送».
 - Misma regla añadida a la skill `ttchop-shotlist-storyboard`.
+
+## [2026-11-22] create | Carpeta de caso 21_nanoglass en el NAS
+- Creada `\\Polaris\Projects\tiktok\hamaca\edits\21_nanoglass` con `input/`, `plan/` y `production/` para el video de dadawoca ナノガラス ムダ毛ケア.
+- `plan/` lleva el plan publicado (`index27.html`), `plan27.py`, `build_html27.py`, las 27 imágenes IA (`ai27/`) y el animatic ES. En la raíz, `21_nanoglass_MANIFEST.md` con el estado (PLAN, no filmado), la agrupación, las restricciones de la ficha y el aviso de props.
+- El montaje `/mnt/polaris` del VPS está en solo lectura; la escritura se hizo por SMB directo con `/root/.hermes/tools/course-stt-venv/bin/python` y lectura de vuelta SHA-256 de cada archivo.
