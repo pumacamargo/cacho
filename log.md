@@ -831,3 +831,8 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - 27/27 imágenes IA generadas con kie.ai. Revisión una por una: 2 tomas con perfil de cara asomando (4 y 26) y 2 ángulos que no son cenital estricto (21 y 22); marcadas en el HTML.
 - Publicado y verificado por MD5: `https://lemonsushi.com/uploads/vps2/creators-research/dermau-plan27/index.html` (200, 1.986.497 bytes). Dashboard actualizado con la segunda tarjeta en la pestaña Planes.
 - Animatic ES: la voz no cabe en el molde (37.25 s contra 31.77 s) → se estiró la imagen ×1.204 y el MP4 quedó en 38.3 s. Lección añadida al changelog del runbook.
+
+## [2026-11-22] update | Regla de props en los planes de video (retroalimentación de Arturo)
+- Arturo corrigió el plan de dadawoca ナノガラス: usaba props que no existen (bolsa de papel, planta, taburete, paño, rastrillo, tubo de crema) y tuvo que sustituir cosas en plena grabación.
+- Añadido al runbook [[planes-de-video-nuevos]] el **Paso 0b — Inventario de props: solo lo que existe**: listar props por toma, confirmar que existen, cambiar la acción si falta el prop y entregar la lista consolidada en el HTML. Lo garantizado por defecto es producto, persona y baño.
+- Añadido a puertas de calidad y pitfalls, y a la skill `ttchop-shotlist-storyboard`.

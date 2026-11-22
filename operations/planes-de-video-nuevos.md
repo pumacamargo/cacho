@@ -110,6 +110,26 @@ En **una sola** llamada de `clarify`: idioma de la voz, duración (o "igual que 
 referencias"), si el material es nuevo o reutilizado, y formato del storyboard.
 Preguntarlo antes evita rehacer el entregable completo.
 
+### Paso 0b — Inventario de props: solo lo que existe
+**Regla dura, aprendida en el caso `nanoglass-plan27`:** no se inventan props. El plan
+de dadawoca pedía bolsa de papel, planta, taburete, paño, rastrillo y tubo de crema;
+Arturo no los tenía y tuvo que sustituir cosas en plena grabación. Un plan con props
+inexistentes no es un plan, es un problema para el que filma.
+
+Antes de escribir las acciones:
+1. **Listar los props que cada toma necesita** (objetos que no son el producto ni la
+   persona ni el baño). Anotarlos en el propio `SHOTS`/`HOW` de la toma.
+2. **Confirmar que existen**: en la ficha, en el kit del producto o preguntando a
+   Arturo. Lo que no esté confirmado no entra.
+3. **Si un prop no existe, cambiar la acción**, no el prop: rehacer la toma con
+   producto + persona + baño. Nunca poner «trae una toalla» como si fuera gratis.
+4. **Entregar la lista consolidada de props** en el HTML (una sección «Props por
+   setup»), para que el rodaje se prepare antes y no improvise.
+
+Por defecto, lo único garantizado es: **el producto, la persona y el baño**. Todo lo
+demás (toalla, planta, taburete, paño, peine, bolsa, rastrillo, crema) es prop y hay
+que confirmarlo.
+
 ### Paso 1 — Extraer los SHOTS del molde
 Regex `const SHOTS\s*=\s*(\[.*?\]);` + `json.loads`, e imprimir `n, dur, enc, act`
 (sin `img`).
@@ -204,6 +224,7 @@ Plantillas reutilizables ya instaladas en la skill `ttchop-shotlist-storyboard`:
 - [ ] Cada toma tiene acción + 「Cómo se graba」 + línea de voz (si le toca).
 - [ ] Las 3 vistas cambian de contenido al pulsar (comprobado en el navegador).
 - [ ] Imágenes revisadas una por una; discrepancias marcadas en rojo.
+- [ ] **Props:** cada prop de cada toma existe y está confirmado; la lista consolidada va en el HTML.
 - [ ] Restricciones de la ficha respetadas en imágenes **y** en la voz.
 - [ ] Etiqueta PLAN + "aún no filmado" + aviso de que las imágenes son referencias.
 - [ ] Publicado: 200, tamaño y MD5 iguales al local.
@@ -211,6 +232,10 @@ Plantillas reutilizables ya instaladas en la skill `ttchop-shotlist-storyboard`:
 
 ## 6. Pitfalls aprendidos
 
+- **Props inventados = el error que más caro sale en el rodaje** (caso `nanoglass-plan27`):
+  el plan daba por hechos bolsa de papel, planta, taburete, paño, rastrillo y tubo de
+  crema; Arturo no los tenía y tuvo que sustituir cosas en el momento. Escribir acciones
+  solo con lo que existe: producto, persona y baño. Lo demás se confirma antes.
 - **No mezclar referencias**: meter el desmenuzado propio del producto o moldes extra
   cambia la estructura pedida y el usuario lo rechaza.
 - **`publish_ftp.py put` conserva el nombre del archivo LOCAL**: para publicar como
@@ -256,6 +281,7 @@ Este runbook es **vivo**. Reglas para que siga creciendo sin degradarse:
 | Fecha | Plan | Producto | Tomas / s | Qué se aprendió |
 |---|---|---|---|---|
 | 2026-11-22 | `nanoglass-plan27` | dadawoca ナノガラス ムダ毛ケア | 27 / 31.77 | Agrupar por similitud **mirando las imágenes**, no por guion; marcar discrepancias en rojo; el guion sale de Asu, no del desmenuzado. |
+| 2026-11-22 | `nanoglass-plan27` (corrección) | dadawoca ナノガラス ムダ毛ケア | — | Retroalimentación de Arturo: el plan usaba **props que no existen** (bolsa, planta, taburete, paño, rastrillo, tubo) y tuvo que sustituir cosas al grabar. Nueva regla: inventario de props confirmado y lista consolidada en el HTML. |
 | 2026-11-22 | `dermau-plan27` | Derma:U シャンプー&トリートメント セット | 27 / 31.77 | Mismo molde y misma receta para un producto de cabello. El guion ES no cabe en el molde (37.25 s de voz contra 31.77 s): el animatic se escala ×1.204 y dura 38.3 s, mientras el plan HTML conserva los tiempos del molde. Los prompts IA con «sin cara» no siempre se cumplen: 2 de 27 tomas asomaron perfil. |
 
 ## 8. Referencias
