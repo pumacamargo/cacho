@@ -818,3 +818,9 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - Credenciales de la web de Sunshine: usuario `admin`, contraseña en `/root/.config/sunshine/sunshine.txt` del VPS (600).
 - **Trampas**: `screencap` devuelve negro para la capa de video por hardware (las capturas negras NO significan fallo: se confirma con `dumpsys SurfaceFlinger` y con el log de Sunshine); el repo de Sunshine se mudó a **`SunshineStream/Sunshine`**; la API de GitHub sin `User-Agent` devuelve JSON de redirección.
 - Documentado en [[moonlight-sunshine-tv]]. Pendiente: confirmar la imagen en la TV y, para el cursor, un mouse Bluetooth.
+
+## [2026-11-22] create | Planes de video nuevo: runbook para productos futuros
+- Arturo pidió documentar cómo se hacen planes nuevos para productos futuros, usando la información de los desmenuzados pasados pero **sobre todo la documentación de Asu**, y que el documento pueda seguir creciendo.
+- Creado [[planes-de-video-nuevos]] (runbook): qué se copia de cada fuente (estructura y tiempos del desmenuzado; guion de Asu; contenido y claims de la ficha), las fuentes de verdad con rutas reales (guía publicada de Asu, reporte de ~50 KB en el workspace de developer, `references/asu-script-formula.md`), los 8 pasos con los artefactos del caso 27, las puertas de calidad y los pitfalls aprendidos.
+- Caso verificado: `nanoglass-plan27` — 27 tomas / 31.77 s, publicado y verificado por MD5. La lección principal: **agrupar por similitud mirando las imágenes, no por el guion** (la primera agrupación se rechazó por eso).
+- El runbook trae una sección «Cómo crece este documento» con reglas y un changelog: cada plan nuevo agrega una fila y solo se apunta lo verificado.
