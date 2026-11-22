@@ -824,3 +824,10 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - Creado [[planes-de-video-nuevos]] (runbook): qué se copia de cada fuente (estructura y tiempos del desmenuzado; guion de Asu; contenido y claims de la ficha), las fuentes de verdad con rutas reales (guía publicada de Asu, reporte de ~50 KB en el workspace de developer, `references/asu-script-formula.md`), los 8 pasos con los artefactos del caso 27, las puertas de calidad y los pitfalls aprendidos.
 - Caso verificado: `nanoglass-plan27` — 27 tomas / 31.77 s, publicado y verificado por MD5. La lección principal: **agrupar por similitud mirando las imágenes, no por el guion** (la primera agrupación se rechazó por eso).
 - El runbook trae una sección «Cómo crece este documento» con reglas y un changelog: cada plan nuevo agrega una fila y solo se apunta lo verificado.
+
+## [2026-11-22] create | Segundo plan de video nuevo: Derma:U シャンプー&トリートメント
+- Arturo pidió otro plan para `prod_5obts4n` (Derma:U シャンプー&トリートメント セット) con el mismo estilo de Asu. Se aplicó el runbook [[planes-de-video-nuevos]] por segunda vez.
+- Molde: `03_suitcase` (27 tomas / 31.77 s). Guion: fórmula de Asu, apertura **offer-led** (la ficha está en oferta), sin cifras en la voz para no dejar un precio obsoleto en un plan que se graba después.
+- 27/27 imágenes IA generadas con kie.ai. Revisión una por una: 2 tomas con perfil de cara asomando (4 y 26) y 2 ángulos que no son cenital estricto (21 y 22); marcadas en el HTML.
+- Publicado y verificado por MD5: `https://lemonsushi.com/uploads/vps2/creators-research/dermau-plan27/index.html` (200, 1.986.497 bytes). Dashboard actualizado con la segunda tarjeta en la pestaña Planes.
+- Animatic ES: la voz no cabe en el molde (37.25 s contra 31.77 s) → se estiró la imagen ×1.204 y el MP4 quedó en 38.3 s. Lección añadida al changelog del runbook.

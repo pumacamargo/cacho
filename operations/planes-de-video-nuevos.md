@@ -24,7 +24,9 @@ de rodaje, no material filmado.
 **Caso verificado de punta a punta:** `dadawoca ナノガラス ムダ毛ケア` (`prod_c2xwdrb`),
 plan de 27 tomas / 31.77 s publicado en
 `https://lemonsushi.com/uploads/vps2/creators-research/nanoglass-plan27/index.html`
-(2026-11-22). Todo lo de abajo sale de ese caso; el documento crece con cada plan nuevo.
+(2026-11-22) y, con el mismo molde y la misma receta, el de `Derma:U シャンプー&トリートメント セット`
+(`https://lemonsushi.com/uploads/vps2/creators-research/dermau-plan27/index.html`, 2026-11-22).
+Todo lo de abajo sale de esos casos; el documento crece con cada plan nuevo.
 
 ## 1. Regla de oro: qué se copia y qué no
 
@@ -254,6 +256,7 @@ Este runbook es **vivo**. Reglas para que siga creciendo sin degradarse:
 | Fecha | Plan | Producto | Tomas / s | Qué se aprendió |
 |---|---|---|---|---|
 | 2026-11-22 | `nanoglass-plan27` | dadawoca ナノガラス ムダ毛ケア | 27 / 31.77 | Agrupar por similitud **mirando las imágenes**, no por guion; marcar discrepancias en rojo; el guion sale de Asu, no del desmenuzado. |
+| 2026-11-22 | `dermau-plan27` | Derma:U シャンプー&トリートメント セット | 27 / 31.77 | Mismo molde y misma receta para un producto de cabello. El guion ES no cabe en el molde (37.25 s de voz contra 31.77 s): el animatic se escala ×1.204 y dura 38.3 s, mientras el plan HTML conserva los tiempos del molde. Los prompts IA con «sin cara» no siempre se cumplen: 2 de 27 tomas asomaron perfil. |
 
 ## 8. Referencias
 
