@@ -836,3 +836,8 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - Arturo corrigió el plan de dadawoca ナノガラス: usaba props que no existen (bolsa de papel, planta, taburete, paño, rastrillo, tubo de crema) y tuvo que sustituir cosas en plena grabación.
 - Añadido al runbook [[planes-de-video-nuevos]] el **Paso 0b — Inventario de props: solo lo que existe**: listar props por toma, confirmar que existen, cambiar la acción si falta el prop y entregar la lista consolidada en el HTML. Lo garantizado por defecto es producto, persona y baño.
 - Añadido a puertas de calidad y pitfalls, y a la skill `ttchop-shotlist-storyboard`.
+
+## [2026-11-22] update | Componentes del producto vs decoración de fondo (2ª retroalimentación)
+- Arturo aclaró el límite: **decoración de fondo sí se puede improvisar** (planta, toalla doblada, luz de ventana), pero **un componente del producto no se inventa**. En el plan de dadawoca había dos tomas imposibles: quitar un plástico protector que el producto no trae y meter el producto en un estuche que no existe. La ficha no menciona ninguno de los dos.
+- Añadido al runbook [[planes-de-video-nuevos]] el bloque «Dos categorías que no se mezclan» y el pitfall correspondiente: antes de escribir una acción que toca el producto, confirmar qué incluye la caja (estuche, película, precinto, accesorios). Ojo con «新旧タイプ混在発送».
+- Misma regla añadida a la skill `ttchop-shotlist-storyboard`.

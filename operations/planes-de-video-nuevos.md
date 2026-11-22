@@ -130,6 +130,22 @@ Por defecto, lo único garantizado es: **el producto, la persona y el baño**. T
 demás (toalla, planta, taburete, paño, peine, bolsa, rastrillo, crema) es prop y hay
 que confirmarlo.
 
+**Dos categorías que no se mezclan:**
+
+- **Decoración de fondo** (permitida): planta, toalla doblada, jabonera, luz de ventana.
+  Da ambiente y no cambia la acción. Arturo la autoriza explícitamente: «si puedes poner
+  decoración de fondo eso sí».
+- **Props de acción / componentes del producto** (prohibido inventar): si la toma depende
+  del objeto, el objeto tiene que existir. El caso caro: el plan de dadawoca pedía
+  **quitar un plástico protector que no existe** y **meter el producto en un estuche que
+  tampoco existe**. Esos dos gestos no se pueden rodar con nada.
+
+**Antes de escribir una acción que toca el producto, verificar qué incluye de verdad:**
+leer la ficha y las fotos del producto, y confirmar con Arturo si trae estuche, caja,
+película, precinto, cuchara o accesorios. Si la ficha no lo menciona, **no existe**.
+Ojo con fichas que dicen «新旧タイプ混在発送» (tipos viejo y nuevo mezclados): el envase
+puede cambiar entre unidades, así que no se escribe una toma que dependa de él.
+
 ### Paso 1 — Extraer los SHOTS del molde
 Regex `const SHOTS\s*=\s*(\[.*?\]);` + `json.loads`, e imprimir `n, dur, enc, act`
 (sin `img`).
@@ -236,6 +252,11 @@ Plantillas reutilizables ya instaladas en la skill `ttchop-shotlist-storyboard`:
   el plan daba por hechos bolsa de papel, planta, taburete, paño, rastrillo y tubo de
   crema; Arturo no los tenía y tuvo que sustituir cosas en el momento. Escribir acciones
   solo con lo que existe: producto, persona y baño. Lo demás se confirma antes.
+- **Componentes del producto inventados: peor que los props.** Dos tomas del plan de
+  dadawoca eran imposibles de rodar: quitar un **plástico protector** que el producto no
+  trae y meter el producto en un **estuche** que no existe. La ficha nunca los menciona.
+  La decoración de fondo sí se puede improvisar; un gesto sobre un componente que no
+  existe, no. Antes de escribir la acción, confirmar qué incluye la caja.
 - **No mezclar referencias**: meter el desmenuzado propio del producto o moldes extra
   cambia la estructura pedida y el usuario lo rechaza.
 - **`publish_ftp.py put` conserva el nombre del archivo LOCAL**: para publicar como
@@ -282,6 +303,7 @@ Este runbook es **vivo**. Reglas para que siga creciendo sin degradarse:
 |---|---|---|---|---|
 | 2026-11-22 | `nanoglass-plan27` | dadawoca ナノガラス ムダ毛ケア | 27 / 31.77 | Agrupar por similitud **mirando las imágenes**, no por guion; marcar discrepancias en rojo; el guion sale de Asu, no del desmenuzado. |
 | 2026-11-22 | `nanoglass-plan27` (corrección) | dadawoca ナノガラス ムダ毛ケア | — | Retroalimentación de Arturo: el plan usaba **props que no existen** (bolsa, planta, taburete, paño, rastrillo, tubo) y tuvo que sustituir cosas al grabar. Nueva regla: inventario de props confirmado y lista consolidada en el HTML. |
+| 2026-11-22 | `nanoglass-plan27` (corrección 2) | dadawoca ナノガラス ムダ毛ケア | — | Segunda retroalimentación: dos tomas dependían de **componentes que el producto no trae** — quitar un plástico protector y meter el producto en un estuche. La ficha no menciona ninguno. Regla nueva: decoración de fondo sí se improvisa; componentes del producto se confirman en la ficha o con Arturo antes de escribir la acción. |
 | 2026-11-22 | `dermau-plan27` | Derma:U シャンプー&トリートメント セット | 27 / 31.77 | Mismo molde y misma receta para un producto de cabello. El guion ES no cabe en el molde (37.25 s de voz contra 31.77 s): el animatic se escala ×1.204 y dura 38.3 s, mientras el plan HTML conserva los tiempos del molde. Los prompts IA con «sin cara» no siempre se cumplen: 2 de 27 tomas asomaron perfil. |
 
 ## 8. Referencias
