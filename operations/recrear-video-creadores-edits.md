@@ -408,6 +408,82 @@ Pasos (detalle en el manifiesto del caso):
 - Los casos con **varios productos** (`03_suitcase`: `cicilife/` y `other/`) llevan un subdirectorio por
   producto; el guion y los captions se ajustan a las funciones de cada uno.
 
+### 8a. La base correcta: el render que Arturo TERMINÓ manda (FilmCraft)
+
+Un mismo caso puede tener **dos renders del mismo video**: el del pipeline (`production\vN\<caso>.mp4`) y
+el de **FilmCraft** (`filmcraft-<fecha>\…`). **No son la misma edición**, y Arturo termina los videos en
+FilmCraft: **ese es *su* video y la base de todo lo que derives** (voz nueva, paneo, hook, portadas).
+Derivar sobre el render del pipeline produce algo que él rechaza — literal: «no coincide lo que apunta la
+mano con las imágenes» (caso 19/20, 2026-11-23).
+
+Cómo distinguirlos antes de tocar nada (medido en 19/20):
+
+- **mtime:** en la carpeta de FilmCraft, el **último modificado** es su versión vigente (p. ej.
+  `20_dualshaver_ja_v2_arturo_v3_FINAL.mp4` por encima de `…_render.mp4` / `…_export.mp4`).
+- **Audio:** los renders de **FilmCraft salen 48 kHz estéreo**; los del **pipeline, 44,1 kHz mono**. Es la
+  señal más rápida.
+- **Duración/cuadros:** pueden diferir (19: **1335 vs 1334** cuadros, **44,501 vs 44,477 s**). El proyecto
+  de FilmCraft aplica **velocidades por clip del recipe** (en el 20: `02A` al **71,43 %** y `5A` al
+  **80 %**) y su reconstrucción **deriva hasta ~6 cuadros (0,2 s)** hacia el final; también mide distinto los
+  rótulos. El `README.md` del proyecto FilmCraft del caso lo documenta — **leerlo**, no prometer «idéntico».
+- **Cortes:** detectarlos **en su archivo** (`ffmpeg -i <suyo> -vf "scdet=s=1:t=5" -f null -`, picos
+  `scd.score ≥6`). No reutilizar los del pipeline: con las velocidades cambiadas el primer bloque dura
+  **8,067 s** en su render contra 7,367 s en el del pipeline.
+- Su render **no se modifica**: la derivada va con **nombre nuevo** junto al suyo, y su nota dice **sobre
+  qué archivo** se construyó.
+
+### 8b. Variación con guion nuevo y reorden de tomas (sobre su render)
+
+Pedido típico: «cambia el diálogo y **un poco el orden de los shots**, todos menos en shot 1». Se hace
+**cortando su render por las fronteras de toma** y rearmándolo — así se conservan sus rótulos nativos, su
+nivel y su portada. Verificado en 19/20 el 2026-11-23.
+
+1. **Fronteras exactas:** `scdet` (ver 8a) y comprobar que cada tiempo × fps da **entero** (`<t>*30`), para
+   cortar por cuadro con `trim=start_frame/end_frame`.
+2. **Qué muestra cada toma:** un cuadro del centro de cada tramo en una hoja de contactos
+   (`scale=220:-1` + `hstack`/`vstack`) y **leerla con visión**, anotando el rótulo japonés quemado de cada
+   toma. Esa tabla (toma → rótulo → contenido) decide el reorden y el guion: no se inventa.
+3. **Reorden:** dejar el **primer bloque intacto** («todos menos en shot 1») y el **último** también si es
+   el que lleva CTA/flecha/portada; reordenar solo tomas intermedias (p. ej. el agua antes del vello denso;
+   en los 3 chequeos del 19, reseñas antes de ventas).
+4. **Guion:** un renglón por toma, escrito para **el rótulo que viaja con esa toma** (los rótulos van
+   quemados: se mueven con su segmento). La línea del shot 1 se conserva **literal**; las cifras y claims
+   verificados no cambian.
+5. **Audio por tramos:** `tts_lines.mjs` (una línea por renglón → `line_01..NN.mp3`), un `atempo` por línea
+   para que quepa en su tramo (techo práctico **≈1,45×**; si sale más, **acortar el renglón**, no
+   acelerarlo) y cada línea colocada al inicio de su tramo con `adelay`, mezclada sobre un `anullsrc` de la
+   duración total (`amix=inputs=N:normalize=0:duration=first`). Salida **48 kHz estéreo** (el formato de sus
+   renders).
+6. **Video:** `trim=start_frame=A:end_frame=B,setpts=PTS-STARTPTS` por segmento en el orden nuevo +
+   `concat=n=K:v=1:a=0` (recodifica: cortar en fronteras no-keyframe no permite `-c copy`) y mux final
+   `-map 0:v -map 1:a -c copy` con `-an` en el paso del video.
+7. **Verificación:** mismos cuadros y duración que su render; **md5 del stream de audio** del máster igual al
+   de la pista armada; el orden confirmado **viendo** la hoja de la versión nueva; y
+   `silencedetect=n=-40dB:d=1.0` sobre el máster: los únicos silencios ≥1 s deben ser el final (un hueco
+   grande = una línea corta para su tramo → **regenerar esa línea más larga** y rearmar solo el audio con
+   remux `-c copy`, sin recodificar el video).
+8. **Nota junto al archivo** (`*_nota.json`): sobre qué render se construyó, cortes en segundos, orden
+   original → nuevo, guion usado y verificación. Es lo que hace auditable la variación.
+
+### 8c. Hook visual al inicio (prepend)
+
+El hook va **antes** del comercial, no reemplazando cuadros: es un **JOIN, no una re-edición** (no se
+re-monta el cuerpo, no se re-renderiza el comercial). Receta, trampas y verificación en
+[[hooks-para-inicio-de-video]] §«Empalmar el hook». Lo esencial: audio **en una sola pasada de filtro**,
+**medir el offset por mínimo del RMS de la diferencia** (no por onset ni correlación cruda, que dan falsos
++36/+50 ms) y fijar el audio del comercial con **`adelay` exacto** en vez de confiar en el `concat`.
+
+### 8d. Portada de una variación
+
+- **La portada de una variación tiene que ser una variación: otro cuadro y otro texto.** Copiar el último
+  cuadro de un render que ya trae la portada horneada **repite la original** — Arturo lo rechaza
+  (2026-11-23: «debería ser una variación, no el mismo, diferente imagen diferente texto»).
+- **Mismo formato obligatorio:** fuente **`KeinannMaruPOPjp`** (no el *fallback* Noto: sale recto y delgado
+  y rompe el formato), `fontSize 80`, `lineHeight 1.15`, `#ffffff` + contorno `#101010` (6), bloque
+  centrado en **x=540** con centro en **y=378**, scrim 0.22. Detalle y medición: [[estandar-thumbnail-video]].
+- Elegir un cuadro **con el producto visible y sin flecha ni CTA**; si el último cuadro sale **negro** (caso
+  19: el `endCard` del proyecto quedó vacío, y también en su render original), usar otro fotograma final.
+
 ## Caso verificado — `10_squishy01` (archivos `01_squishy01_*`)
 
 - Referencia: `input/snaptik_7685601865454587154_v3.mp4` — 25.83 s, 720×1280, 30 fps, audio ja.
@@ -582,6 +658,16 @@ Pasos (detalle en el manifiesto del caso):
 - **Overlays nuevos del 19 (aplicados el 2026-11-19 primero a una copia del proyecto FilmCraft y luego al proyecto real con respaldo previo):** **tarjeta de producto** (11.9–15.1 s: `Enchenal Lab 電動シェーバー 男女兼用` + `★3.8 ・ 130件のレビュー ・ 4,300件販売`), **panel de reseñas** (15.1–20.4) y **panel del vendedor** (20.4–22.933). Ver [[ttchop-filmcraft-video-tests]].
 - **Entrega (NAS `…\19_dualshaver\production\v1\`, 18 archivos con readback SHA-256 OK):** `19_dualshaver_ja_v1.mp4` (17.31 MB · `568f818d…`, 1334 frames · 44.478 s · AAC 44.1 kHz mono), `19_dualshaver_ja_v1_cover.png` (`1437b591…`), `guion.md`, `plan.json`, `recipe.json`, `props.json`, `audio/…_voice_raw.mp3` y `…_voice_final.mp3`, `assets/d19_img_*.png`, `tools_align_lines.py`, `qa/`. **Entregado, sin publicar.**
 - **Cadena de comandos:** voz con `ttchop-server/scripts/creators/tts/tts_lines.mjs` → montaje en la **PC** (`collage_builder_win.py recipe_pc.json`, ver [[montaje-video-en-pc]]) → `npx remotion compositions index.ts --props=props19.json` (1334 frames) → render `caption-overlay` + **remux `-c copy` del audio original del base, sin `-shortest`** → portada por número de cuadro `select=eq(n,1333)`.
+- **Base vigente = el render de FilmCraft (2026-11-23):** `filmcraft-20261119\19_dualshaver_ja_v1_overlays345_render.mp4` — **1335 cuadros · 44,501 s · AAC 48 kHz estéreo** (el v1 de `production\` es 44,1 kHz mono y 1334 cuadros: **no es la misma edición**, ver §8a). Todo lo de abajo se construyó sobre **ese** archivo, sin modificarlo.
+- **Derivadas (2026-11-23, todas con su `SHA256SUMS.txt` y su nota junto al archivo):**
+  - `production\v3_pumavoice\19_dualshaver_ja_v3_pumavoice.mp4` — **guion reescrito** (10 líneas, 283 car.) con **PumaVoice01**; y `…_v3_pumavoice_drift.mp4` (36 840 678 B · 16 946 737 B de chat) con **paneo** (1,10×) — el paneo se retiró del shot 1 (respaldo `…_v1_paneo_completo.mp4`).
+  - `production\v4_hook\19_dualshaver_ja_v4_hook.mp4` — **hook `hook02_gorila`** (ventana 1,4–3,2 s) al inicio, 46,267 s / 1388 cuadros (54 del hook + 1334).
+  - `filmcraft-20261119\19_dualshaver_ja_v1_overlays345_paneo.mp4` (47 489 586 B) — paneo sobre **su** render con el **shot 1 intacto** (150 cuadros, sin recorte); el shot 1 de la versión anterior quedaba recortado ~10 % y se comía el borde donde está el producto.
+  - `…_var_orden.mp4` (47 542 193 B) — **guion nuevo + reorden de tomas** (1-2-3-**5-4**-6-7-**9-8**-10-11, los rótulos viajan con su toma), una línea de TTS por tramo (atempo 1,00–1,40) colocada con `adelay`; cuadros y duración idénticos a su render.
+  - `…_var_orden_hook.mp4` (46 428 550 B) — **+ hook `hook02_gorila` 1,800 s** al inicio; offset del audio del comercial **0 ms** medido por mínimo del RMS de la diferencia.
+  - `…_var_orden_hook_cover.png` (916 689 B) — **portada de la variación**: otro cuadro (t=35,5 s, producto junto a la cara) y otro texto (「本物はどれ？」 / 「3つのポイントで見分ける」); bloque medido en **x=540,0 · y=377,5** (su `endCard` original llevaba 「1台2役で全身ケア / 顔・ワキ・腕・脚・VIO」).
+  - Notas: `…_paneo_nota.json`, `…_var_orden_nota.json`, `…_var_orden_hook_hook.json`, `…_var_orden_hook_cover.json`.
+- **Aviso pendiente:** el `endCard` del proyecto de FilmCraft del 19 sale en **cuadro negro** (también en su render), por eso su portada no puede ser el último cuadro; la vía limpia sería arreglar el `endCard` y re-exportar (decisión de Arturo).
 
 ## Caso verificado — `20_dualshaver` (v1 → v2 → v3, 2026-11-19)
 
@@ -596,6 +682,15 @@ Pasos (detalle en el manifiesto del caso):
 - **Portada:** `endCard` `frames:1` (frame 1066), 「1台2役で全身ケア / 顔・ワキ・腕・脚・VIO」, x=540 / y=378, scrim 0.28. `cover.png` (1 424 811 B · `86d0048e…`). Medido con PIL: **cx 540.0 / cy 380.0** → **cumple**; producto visible.
 - **Entrega (NAS `…\20_dualshaver\production\`):** **v1** (`…_v1.mp4` 12.96 MB · `16c66057…`), **v2** (`…_v2.mp4` 28.4 MB · `144fae65…` + `overlay_recipe.json` + `assets/skin_*.jpeg`), **v3** (`…_v3.mp4` 28.95 MB · `751b720c…` + `audio/…voice_v3.mp3` + `build.json` + QA). Cada versión con su `SHA256SUMS.txt`. **Entregado, sin publicar.**
 - **Cadena de comandos:** voz `tts_lines.mjs` → montaje `collage_builder_win.py` (PC) → `caption-overlay` + remux sin `-shortest` → **v2** overlay FFmpeg de los 3 insertos → **v3** `ffmpeg -y -i v2.mp4 -i audio_nuevo -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -movflags +faststart v3.mp4`.
+- **Base vigente = el render de FilmCraft (2026-11-23):** `filmcraft-20261119\20_dualshaver_ja_v2_arturo_v3_FINAL.mp4` — **1067 cuadros · 35,5667 s · AAC 48 kHz estéreo** (el v3 de `production\` es 44,1 kHz mono). **No son la misma edición**: el proyecto de FilmCraft lleva `02A` al 71,43 % y `5A` al 80 %, deriva hasta ~6 cuadros hacia el final y su primer bloque dura 8,067 s (ver §8a). Todo lo de abajo se construyó sobre **ese** archivo, sin modificarlo.
+- **Derivadas (2026-11-23, todas con su `SHA256SUMS.txt` y su nota junto al archivo):**
+  - `production\v5_pumavoice\20_dualshaver_ja_v5_pumavoice.mp4` — **guion reescrito** (8 líneas, 271 car.) con **PumaVoice01**; y `…_v5_pumavoice_drift.mp4` (29 509 054 B · 13 097 511 B de chat) con **paneo** — retirado del shot 1 (respaldo `…_v1_paneo_completo.mp4`).
+  - `production\v6_hook\20_dualshaver_ja_v6_hook.mp4` — **hook `hook11_tobogan_agua`** (ventana 2,6–4,4 s) al inicio, 37,367 s / 1121 cuadros (54 + 1067).
+  - `filmcraft-20261119\20_dualshaver_ja_v2_arturo_FINAL_paneo.mp4` (39 366 663 B) — paneo sobre **su** render con el **shot 1 intacto** (242 cuadros = 8,067 s).
+  - `…_var_orden.mp4` (38 066 220 B) — **guion nuevo + reorden de tomas** (1-2-3-**5-4**-6-7; el agua antes del vello denso), una línea de TTS por tramo (atempo 1,00–1,44) con `adelay`; cuadros y duración idénticos a su render.
+  - `…_var_orden_hook.mp4` (36 950 075 B) — **+ hook `hook11_tobogan_agua` 1,800 s**; offset del audio del comercial **0 ms**.
+  - `…_var_orden_hook_cover.png` (1 265 900 B) — **portada de la variación**: otro cuadro (t=11,0 s, primer plano del cabezal) y otro texto (「剃るたび肌が荒れる人へ」 / 「電動1台で全身お手入れ」); bloque medido en **x=540,0 · y=378,0**. Su `endCard` original (el último cuadro de su render) lleva 「1台2役で全身ケア / 顔・ワキ・腕・脚・VIO」 — **copiarlo no es una variación** (§8d).
+  - Notas: `…_paneo_nota.json`, `…_var_orden_nota.json`, `…_var_orden_hook_hook.json`, `…_var_orden_hook_cover.json`.
 
 ### Auditoría del agua del producto `prod_5k79pno` (casos 19 y 20)
 
