@@ -166,7 +166,65 @@ Ejemplo llenado con dadawoca ナノグラス ムダ毛ケア (producto JP; solo 
   cuerpo o la oferta y se deja el hook ganador.
 - Con la biblioteca y esta matriz, la producción se ordena como: 1 producto → 3 aperturas → 1 cuerpo.
 
+## 10. Empalmar el hook al inicio de un comercial (prepend)
+
+El hook va **antes** del comercial, no reemplazando cuadros: la duración sube el largo del hook
+(**54 cuadros = 1,800 s** a 30 fps) y los rótulos/captions del comercial **no se mueven**. Recortar los
+primeros cuadros del comercial para meter el hook encima pierde las tarjetas y la banda de aviso de esos
+primeros segundos.
+
+**Es un JOIN, no una re-edición:** el pedido es unir dos archivos ya terminados — no se re-monta el cuerpo,
+no se re-renderiza el comercial y no se reabre el proyecto. Salida con **nombre nuevo** y el render original
+intacto; que todo el comercial arranque después del hook es lo esperado, no «algo que se movió».
+
+Receta verificada (variaciones del 19/20, 2026-11-23):
+
+1. **Hook a 1080×1920** (`scale=1080:1920,setsar=1,fps=30`), **mismo canal y frecuencia que el comercial**, con
+   su audio al **35 %** y recortado a **1,800 s exactos**: `volume=0.35,afade=t=out:st=1.45:d=0.35,atrim=0:1.8`.
+2. **Audio en UNA sola pasada de filtro**, forzando en las dos entradas el canal del comercial y colocando el
+   audio del comercial con **`adelay` exacto**:
+   ```
+   [0:a]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo,volume=0.35,
+       afade=t=out:st=1.45:d=0.35,atrim=0:1.8[h];
+   [1:a]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo,adelay=1800|1800[m];
+   [h][m]amix=inputs=2:normalize=0:duration=longest[a]
+   ```
+3. **Video por filtro** (`[0:v][1:v]concat=n=2:v=1:a=0`), recodificado; mux final `-c copy`.
+
+**Trampas (cada una costó una iteración):**
+
+- **Unir audio AAC por copia NO es fiable y desplaza el empalme.** El *padding* del AAC del hook empujó el
+  audio del comercial **+42 ms** (1,25 cuadros) aunque el `format=duration` del contenedor se viera correcto.
+  Por eso el audio va **en una sola pasada** y con `adelay` exacto.
+- **Mide el offset por el mínimo del RMS de la DIFERENCIA, no por onset ni correlación cruda.** Comparar
+  «primer transitorio» o correlacionar valores absolutos dio **falsos +36/+50 ms** (engancha la cola del hook
+  o un pico espurio); el método fiable es barrer el offset en ms y quedarse con el que **minimiza el RMS de
+  (resultado − original)** sobre ~6 s — con eso, builds que «medían +50 ms» dieron **0 ms**.
+- **`-t` antes de un `-i` es opción de ESE input:** `-ss 1.4 -i hook.mp4 -t 1.8 -i comercial.m4a` limita el
+  **comercial** a 1,8 s (salida de 3,6 s, con silencio a media pista). El orden correcto es
+  `-ss 1.4 -t 1.8 -i hook.mp4 -i comercial.m4a`.
+- **Sin `-vn`** en un concat de audio, ffmpeg mapea el video del primer archivo e intenta meterlo en el `.m4a`
+  (avalancha de `h264 … No start code is found`).
+- **El demuxer `concat` con `-c copy` no sirve mezclando `.mp4` y `.m4a`**: conserva solo el audio del primer
+  archivo y el comercial queda **mudo** (el contenedor sigue reportando el largo completo → hay que medir el
+  audio **decodificado**).
+- **El canal y la frecuencia se LEEN del comercial, no se asumen:** los renders de **FilmCraft salen 48 kHz
+  estéreo** y los del **pipeline 44,1 kHz mono** ([[recrear-video-creadores-edits]] §8a); un comercial mono +
+  hook estéreo degrada ~3 dB o rompe el empalme.
+- **El video no se concatena con `-c:v copy`** entre dos codificaciones distintas: va por filtro y recodificado.
+
+**Verificación:** `nb_read_frames` = cuadros del hook + cuadros del comercial (**1121** = 54+1067 y **1389** =
+54+1335); offset de audio **0 ms** (método del RMS); y perfil de audio por tramos de 2 s (el hook atenuado en
+el primero, los picos del comercial después). La derivada lleva su `*_hook.json` con el clip, la ventana
+usada, el nivel y la nota de que se usó **con permiso de Arturo** (los clips de terceros siguen sin ser
+publicables, §4).
+
 ## Changelog
+
+- **2026-11-23 — §10 Empalmar el hook (prepend).** Receta y trampas medidas al pegar el hook a las variaciones
+  del `19_dualshaver` y `20_dualshaver`: audio en una sola pasada con `adelay` exacto, medición del offset por
+  mínimo del RMS de la diferencia (los métodos por onset/correlación daban falsos +36/+50 ms) y el orden de
+  `-t` en las entradas.
 
 - **2026-11-23 — creación.** Guía + mapeo de los 12 hooks de referencia + shot list de 12 estilos propios
   + matriz de 3 variantes. Fuentes citadas en §1 y §2; los 12 clips quedaron en

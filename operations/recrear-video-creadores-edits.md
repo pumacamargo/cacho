@@ -1,7 +1,7 @@
 ---
 title: Recrear un video de creador (tiktok/hamaca/edits)
 created: 2026-11-01
-updated: 2026-11-19
+updated: 2026-11-23
 type: runbook
 tags: [runbook, almacen, red, tailscale, pipeline]
 status: active
@@ -186,6 +186,12 @@ Pitfalls:
 
 - Voz **PumaVoice01** (`ve7BOdejheJbgrBriBx4`) y los **defaults del server**
   (`eleven_v3`, `mp3_44100_128`, `speed 0.5`), una toma por línea.
+- **La otra voz del catálogo es la Announcer JP**: `gU0LNdkMOQCOrPrwtbee` (modelo `eleven_v3`) — la que
+  llevan las versiones de `21_nanoglass` (`atempo=1.5`) y las variaciones del `19/20_dualshaver`. El helper
+  acepta el id como tercer argumento: `node scripts/creators/tts/tts_lines.mjs <lines.json> <dir> <voiceId>`.
+  **La voz es un parámetro, no una decisión de quien monta**: si Arturo pide una u otra se regenera con el
+  mismo guion y el mismo criterio de atempo, y cada voz queda en su carpeta (`vN_announcer` / `vN_pumavoice`)
+  sin pisar la anterior.
 - Subir por línea (`line_NN.mp3`) y un unido, a `assets/audio/`.
 - El default sale lento; para acercarse al ritmo del creador se acelera por línea con
   **`atempo`** (preserva el tono) y se une:
@@ -668,6 +674,7 @@ re-monta el cuerpo, no se re-renderiza el comercial). Receta, trampas y verifica
   - `…_var_orden_hook_cover.png` (916 689 B) — **portada de la variación**: otro cuadro (t=35,5 s, producto junto a la cara) y otro texto (「本物はどれ？」 / 「3つのポイントで見分ける」); bloque medido en **x=540,0 · y=377,5** (su `endCard` original llevaba 「1台2役で全身ケア / 顔・ワキ・腕・脚・VIO」).
   - Notas: `…_paneo_nota.json`, `…_var_orden_nota.json`, `…_var_orden_hook_hook.json`, `…_var_orden_hook_cover.json`.
 - **Aviso pendiente:** el `endCard` del proyecto de FilmCraft del 19 sale en **cuadro negro** (también en su render), por eso su portada no puede ser el último cuadro; la vía limpia sería arreglar el `endCard` y re-exportar (decisión de Arturo).
+- **Título/hashtags entregados (2026-11-23):** 「それ、偽物かも。買う前にチェックしたい3つのポイント」 + `#電動シェーバー` `#偽物注意` `#買う前にチェック` `#TikTokショップ`.
 
 ## Caso verificado — `20_dualshaver` (v1 → v2 → v3, 2026-11-19)
 
@@ -691,6 +698,7 @@ re-monta el cuerpo, no se re-renderiza el comercial). Receta, trampas y verifica
   - `…_var_orden_hook.mp4` (36 950 075 B) — **+ hook `hook11_tobogan_agua` 1,800 s**; offset del audio del comercial **0 ms**.
   - `…_var_orden_hook_cover.png` (1 265 900 B) — **portada de la variación**: otro cuadro (t=11,0 s, primer plano del cabezal) y otro texto (「剃るたび肌が荒れる人へ」 / 「電動1台で全身お手入れ」); bloque medido en **x=540,0 · y=378,0**. Su `endCard` original (el último cuadro de su render) lleva 「1台2役で全身ケア / 顔・ワキ・腕・脚・VIO」 — **copiarlo no es una variación** (§8d).
   - Notas: `…_paneo_nota.json`, `…_var_orden_nota.json`, `…_var_orden_hook_hook.json`, `…_var_orden_hook_cover.json`.
+- **Título/hashtags entregados (2026-11-23):** 「剃るたびに肌が荒れてた人へ。これ1台で全身ツルツルお手入れ」 + `#電動シェーバー` `#全身ケア` `#ムダ毛処理` `#TikTokショップ`.
 
 ### Auditoría del agua del producto `prod_5k79pno` (casos 19 y 20)
 
