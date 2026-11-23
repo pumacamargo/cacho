@@ -1,7 +1,7 @@
 ---
 title: Estándar de portada/thumbnail de video
 created: 2026-11-18
-updated: 2026-11-19
+updated: 2026-11-23
 type: runbook
 tags: [runbook, decision, arte]
 status: active
@@ -82,6 +82,54 @@ muestra.
   (o por número de cuadro: `ffmpeg -i final.mp4 -vf "select='eq(n,1832)'" -frames:v 1 cover.png`).
 - Detalle del prop, fuentes y pitfalls: [[recrear-video-creadores-edits]] §7.
 
+## Recomponer la portada a mano (cuando el último cuadro no sirve)
+
+Si el último cuadro sale **negro** o no muestra el producto, el estándar manda tomar **otro fotograma
+final que sí lo muestre** —un tramo con el producto en primer plano y **sin flecha ni etiqueta CTA**— y
+mantener **intacta** la posición del texto.
+
+- **Fuente: `KeinannMaruPOPjp`, NO el *fallback*.** El `Noto Sans CJK JP` del punto 3 vale como reserva
+  si la familia no está instalada, pero **no para recomponer una portada que tiene que convivir con las
+  horneadas por FilmCraft**: sale recto y delgado y el formato deja de coincidir — Arturo lo rechazó el
+  2026-11-23 con «no siguen el mismo formato». El `.ttf` está en
+  `vps-projects:/root/blanket-announcer-variation-v1/filmcraft/KeinannMaruPOPjp.ttf` (copia también en
+  `blanket-announcer-15/assets/` y en `blanket-announcer-variation-v1/filmcraft/assets/`); `fc-query` lo
+  reporta como familia `KeinannMaruPOPjp, けいなん丸ポップ体JP`, estilo **Regular**. Peso Regular real,
+  **sin negrita sintética**, igual que la horneada.
+- **Receta de 2 líneas (ffmpeg):**
+  ```
+  -vf "drawbox=x=0:y=0:w=iw:h=ih:color=black@0.22:t=fill,
+       drawtext=fontfile=<KeinannMaruPOPjp.ttf>:text='<línea1>':fontsize=80:fontcolor=white:
+         borderw=6:bordercolor=0x101010:x=(w-text_w)/2+5:y=<Y1>,
+       drawtext=…:text='<línea2>':…:y=<Y2>"
+  ```
+  Arranca en `Y1=286`, `Y2=378` (interlineado 92 = 80×1.15); el `y` de `drawtext` es el **borde
+  superior** de la línea y el `+5` en `x` compensa el centrado asimétrico de los glifos japoneses.
+- **Medir y corregir, no entregar «a ojo»:** cuenta los píxeles casi blancos (`R,G,B>230`) con **PIL**
+  restringidos a `y<600` (así el producto, la flecha y el rótulo quemado no contaminan la cuenta) y
+  **desplaza las dos líneas** por la diferencia hasta que el centro del bloque dé `(540, 378)` ±4 px.
+  Es una iteración, no un cálculo único. Con Keinann a 80 px el alto del bloque queda en **≈158–160 px**,
+  igual que el horneado de referencia.
+- Entrega las portadas como **PNG individuales** en el chat (no solo un ZIP) y en el NAS junto al video,
+  con un `*_cover.json` que registre mecanismo, fotograma usado, texto, posición y la medición del bbox.
+
+Verificado el 2026-11-23: `19_dualshaver` (fotograma t=35,5 s; bloque en x=540,0 · y=377,5) y
+`20_dualshaver` (fotograma t=11,0 s; x=540,0 · y=378,0).
+
+## Portada de una VARIACIÓN
+
+**La portada de una variación tiene que ser una variación: otro cuadro y otro texto.** Repetir el
+fotograma que ya trae la portada horneada —o su mismo texto— **repite la original**; Arturo lo rechazó el
+2026-11-23: «debería ser una variación, no el mismo, diferente imagen diferente texto».
+
+- Elige **otro** fotograma final con el producto visible y sin flecha ni CTA, y **otro** texto de ≤2
+  líneas que no repita el de la original. El formato y la posición **no cambian** (eso es lo que las hace
+  coherentes entre sí).
+- Referencia: las portadas originales del 19 y del 20 llevaban las dos `1台2役で全身ケア / 顔・ワキ・腕・脚・VIO`;
+  las variaciones llevan `本物はどれ？ / 3つのポイントで見分ける` (19) y `剃るたび肌が荒れる人へ / 電動1台で全身お手入れ` (20).
+- El **video** de la variación puede seguir terminando en el cuadro horneado original (eso viene del
+  render de Arturo y no se toca): la portada de publicación es un **PNG aparte**.
+
 ## Tabla de comprobación (antes de entregar)
 
 | Comprobación | Requerido | Cómo se verifica |
@@ -137,6 +185,12 @@ texto). En `20_dualshaver` la portada se extrajo por **número de cuadro**
 (`-vf "select=eq(n,1066)"`, último cuadro real del render) y se verificó con PIL que el bloque de
 texto queda centrado en `x=540` / `y=380`.
 
+**El último cuadro puede venir EN NEGRO** (verificado 2026-11-23 en `19_dualshaver`): si el `endCard`
+del proyecto quedó vacío, ese fotograma sale negro **también en el render original de Arturo** — no es
+un fallo de tu derivada. Pista barata: extrae el último cuadro de cada versión y **compara tamaños**;
+un cuadro uniforme pesa unos **cientos de bytes** frente a **~10 KB** de uno con contenido. Cuando
+pasa, la portada se **recompone** con otro fotograma (siguiente sección) — nunca moviendo el texto.
+
 ## Registro por caso
 
 Anotar en el **manifiesto del caso** en el NAS (`<caso>_MANIFEST.md`, ver
@@ -161,6 +215,11 @@ las portadas reales a 1080×1920 y revisado visualmente el 2026-11-19):
 En ambos el `endCard` prop-driven usa `centerY 378`; el centro medido cae en `y≈380`, dentro de la
 tolerancia ±4 px. El producto (la afeitadora blanca sostenida en mano) se ve claro en el fondo de las dos
 portadas, y ninguna lleva flecha, CTA ni precio.
+
+**Actualización (2026-11-23):** se añadieron la **trampa del último cuadro en negro**, el método para
+**recomponer** una portada a mano (con **`KeinannMaruPOPjp`**, no el *fallback* Noto) y la regla de **la
+portada de una variación** (otro cuadro y otro texto). Verificado en las variaciones del `19_dualshaver` y
+del `20_dualshaver`.
 
 ## Ver también
 
