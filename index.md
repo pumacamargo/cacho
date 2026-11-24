@@ -50,7 +50,7 @@
 
 ## Operaciones
 - [[acceso-ftps-lemon-sushi]] — FTPS verificado al hosting; raíz /public_html/uploads/vps2, subcarpetas obligatorias, URL base y límites de privacidad pública
-- [[dashboards-hosting]] — tableros publicados en el hosting Lemon Sushi: dashboard central (4 grupos), desmenuzados, estudio integrado con los 3 creadores (Asu/Sora/Taku), estudios por creador y mapas; con sus generadores y reglas
+- [[dashboards-hosting]] — tableros publicados en el hosting Lemon Sushi: dashboard central (5 grupos, incluye **Tareas/ttJapan**), desmenuzados, estudio integrado con los 3 creadores (Asu/Sora/Taku), estudios por creador y mapas; con sus generadores y reglas
 - [[acceso-nas-polaris]] — orden de acceso: SMB directo VPS→NAS primero; 5 MP4s y 3 PNGs escritos y verificados con hash de vuelta; Windows por IP/FQDN si se necesita; wrapper corto histórico conservado
 - [[acceso-remoto-pumadeskasus]] — alternativa Windows: SSH por Tailscale, encendido/apagado y PowerShell a Polaris/P: con pumassh; mantiene historial y límites, no habilita acceso nativo global
 - [[diagnostico-espacio-disco-vps]] — auditoría de solo lectura del disco: 96 % usado; Docker (~48 GB), caché npm (11 GB) y logs de contenedores sin rotación; 35–45 GB liberables, limpieza pendiente de autorización

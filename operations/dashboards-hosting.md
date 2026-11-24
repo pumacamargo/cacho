@@ -16,10 +16,17 @@ related: [acceso-ftps-lemon-sushi, estudio-creadores-fuentes-datos, ttchop-webap
 ## Dashboard central (índice de todo el hosting)
 
 - **URL:** https://lemonsushi.com/uploads/vps2/central/
-- Página con **4 botones** (grupos colapsables): *Tableros y mapas* · *Estudios de creadores* · *Planes de video nuevo* · *Desmenuzados de video*. Dentro de cada grupo los documentos son enlaces (no botones); el enlace principal de un desmenuzado abre el desmenuzado real y lo demás queda anidado. Abajo lleva un índice plano de respaldo con **todos** los HTML.
+- Página con **5 botones** (grupos colapsables): *Tareas* · *Tableros y mapas* · *Estudios de creadores* · *Planes de video nuevo* · *Desmenuzados de video*. Dentro de cada grupo los documentos son enlaces (no botones); el enlace principal de un desmenuzado abre el desmenuzado real y lo demás queda anidado. Abajo lleva un índice plano de respaldo con **todos** los HTML.
 - **Generador:** `/root/central/build_central.py` (vps-tools). **Auto-descubre** los HTML del FTP, agrupa por creador / producto / caso y publica en `/central/index.html` verificando por lectura de vuelta + SHA-256. Se re-ejecuta para refrescar.
 - Vive en subcarpeta porque la política del hosting no admite archivos sueltos en la raíz de `vps2`.
 - Ubicación del archivo local: `/root/central/index.html`.
+
+## Grupo de tareas (ttJapan)
+
+- **URL:** https://lemonsushi.com/uploads/vps2/tareas/ttjapan.html
+- Página de **tareas diarias** de Arturo, como checklist: 1) Request Samples de Asu, Sora y Taku; 2) Record 3 videos diarios; 3) Editar 3 videos diarios; 4) 1 video para cuenta nueva. El estado de cada casilla se guarda en el navegador (localStorage) y **se reinicia cada día**; hay un botón «Reiniciar el día».
+- Vive en el **grupo «Tareas»** del dashboard central (primer botón), en su propia subcarpeta `/tareas/` (la raíz de `vps2` no admite archivos sueltos).
+- **Generador:** `/root/central/build_ttjapan.py` (vps-tools): publica la página por FTPS y verifica por lectura de vuelta + SHA-256. El central lo excluye de «Otros» y lo pone en su propio grupo.
 
 ## Dashboard de desmenuzados
 

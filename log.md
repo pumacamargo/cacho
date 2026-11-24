@@ -883,3 +883,8 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 ## [2026-11-24] fix | index.md: listar moonlight-sunshine-tv y limpiar archivo basura
 - `operations/moonlight-sunshine-tv.md` existía pero **no estaba listado en `index.md`** (página huérfana). Añadido bajo **Hardware** (junto a [[chromecast-gtv-debloat]], temáticamente afín) con su resumen de una línea; `Total pages` 55 → 56.
 - Eliminado el archivo basura `/root/cacho/ | head -40` (44 B, contenido `=: command not found`), residuo de un comando mal redirigido.
+
+## [2026-11-24] create | dashboard central: grupo «Tareas» con la página ttJapan
+- Añadido al dashboard central un grupo **«Tareas»** (primer botón) con la página **ttJapan**: checklist de tareas diarias de Arturo — 1) Request Samples de Asu, Sora y Taku; 2) Record 3 videos diarios; 3) Editar 3 videos diarios; 4) 1 video para cuenta nueva. El estado de cada casilla se guarda en el navegador (localStorage) y **se reinicia cada día**; incluye botón «Reiniciar el día».
+- Página en `https://lemonsushi.com/uploads/vps2/tareas/ttjapan.html` (subcarpeta `/tareas/`); generador nuevo `/root/central/build_ttjapan.py` (vps-tools), que publica por FTPS y verifica por lectura de vuelta + SHA-256.
+- `build_central.py` actualizado: excluye la carpeta `tareas` de «Otros» y la muestra en su grupo propio. El central pasa de 4 a **5 grupos**; verificado HTTP 200 + hash y revisado en navegador. Documentado en [[dashboards-hosting]].
