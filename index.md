@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-11-24 | Total pages: 55
+> Last updated: 2026-11-24 | Total pages: 56
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -42,6 +42,7 @@
 - [[hardware-desktop-puma]] — desktop Windows (PumaDeskAsus)
 - [[hardware-celular-android]] — celular Android (draft)
 - [[chromecast-gtv-debloat]] — runbook: limpiar la Chromecast con Google TV 4K (CleanYourTV); acceso por depuración inalámbrica, respaldo previo y regreso con una línea
+- [[moonlight-sunshine-tv]] — runbook: poner el escritorio de la PC en la Chromecast con Moonlight (TV) + Sunshine (PC); por qué se descartaron Chrome Remote Desktop y RDP, instalación, emparejado y verificación NVENC
 
 ## Sistemas
 - [[hermes-agent]] — agente Hermes en vps-tools; voz local Vosk aislada y TTS es-MX
