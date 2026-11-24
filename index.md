@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-11-24 | Total pages: 56
+> Last updated: 2026-11-24 | Total pages: 57
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -49,6 +49,7 @@
 - [[hermes-agentes]] — agentes persistentes de Hermes (research, developer, jr_developer, ttchop_robot)
 
 ## Operaciones
+- [[tareas-diarias-ttchop]] — rutina diaria del proyecto TikTok Shop: Request Samples de Asu/Sora/Taku, grabar 3 videos, editar 3 videos, 1 video para cuenta nueva; checklist publicado en el hosting
 - [[acceso-ftps-lemon-sushi]] — FTPS verificado al hosting; raíz /public_html/uploads/vps2, subcarpetas obligatorias, URL base y límites de privacidad pública
 - [[dashboards-hosting]] — tableros publicados en el hosting Lemon Sushi: dashboard central (5 grupos, incluye **Tareas/ttJapan**), desmenuzados, estudio integrado con los 3 creadores (Asu/Sora/Taku), estudios por creador y mapas; con sus generadores y reglas
 - [[acceso-nas-polaris]] — orden de acceso: SMB directo VPS→NAS primero; 5 MP4s y 3 PNGs escritos y verificados con hash de vuelta; Windows por IP/FQDN si se necesita; wrapper corto histórico conservado

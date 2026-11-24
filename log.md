@@ -888,3 +888,7 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - Añadido al dashboard central un grupo **«Tareas»** (primer botón) con la página **ttJapan**: checklist de tareas diarias de Arturo — 1) Request Samples de Asu, Sora y Taku; 2) Record 3 videos diarios; 3) Editar 3 videos diarios; 4) 1 video para cuenta nueva. El estado de cada casilla se guarda en el navegador (localStorage) y **se reinicia cada día**; incluye botón «Reiniciar el día».
 - Página en `https://lemonsushi.com/uploads/vps2/tareas/ttjapan.html` (subcarpeta `/tareas/`); generador nuevo `/root/central/build_ttjapan.py` (vps-tools), que publica por FTPS y verifica por lectura de vuelta + SHA-256.
 - `build_central.py` actualizado: excluye la carpeta `tareas` de «Otros» y la muestra en su grupo propio. El central pasa de 4 a **5 grupos**; verificado HTTP 200 + hash y revisado en navegador. Documentado en [[dashboards-hosting]].
+
+## [2026-11-24] create | Tareas diarias del proyecto TikTok Shop (ttchop)
+- Creada [[tareas-diarias-ttchop]] con la rutina diaria de Arturo para el proyecto TikTok Shop: 1) Request Samples de Asu, Sora y Taku; 2) Record 3 videos diarios; 3) Editar 3 videos diarios; 4) 1 video para cuenta nueva. Enlaza al checklist publicado (grupo «Tareas» → ttJapan) y a los creadores de referencia.
+- Añadida al `index.md` (Operaciones); `Total pages` 56 → 57.
