@@ -1,7 +1,7 @@
 ---
 title: Estándar de portada/thumbnail de video
 created: 2026-11-18
-updated: 2026-11-23
+updated: 2026-11-24
 type: runbook
 tags: [runbook, decision, arte]
 status: active
@@ -117,6 +117,10 @@ Verificado el 2026-11-23: `19_dualshaver` (fotograma t=35,5 s; bloque en x=540,0
 `20_dualshaver` (fotograma t=11,0 s; x=540,0 · y=378,0).
 
 ## Portada de una VARIACIÓN
+
+**Regla general (Arturo, 2026-11-24): TODO video y TODA variación llevan una portada NUEVA — nunca se
+reutiliza la de otro video ni la de la versión anterior.** Aunque el resto del material se derive del
+mismo caso, la portada se rehace (otro cuadro y otro texto).
 
 **La portada de una variación tiene que ser una variación: otro cuadro y otro texto.** Repetir el
 fotograma que ya trae la portada horneada —o su mismo texto— **repite la original**; Arturo lo rechazó el

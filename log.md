@@ -893,6 +893,16 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - Creada [[tareas-diarias-ttchop]] con la rutina diaria de Arturo para el proyecto TikTok Shop: 1) Request Samples de Asu, Sora y Taku; 2) Record 3 videos diarios; 3) Editar 3 videos diarios; 4) 1 video para cuenta nueva. Enlaza al checklist publicado (grupo «Tareas» → ttJapan) y a los creadores de referencia.
 - Añadida al `index.md` (Operaciones); `Total pages` 56 → 57.
 
+## [2026-11-24] create | Variación de 18_shaver: producto nuevo (prod_c6ftp5t) + PumaVoice + portada nueva + hook
+- Arturo pidió una **variación** del video `18_shaver` cambiando el producto por uno parecido de la misma marca: `prod_c6ftp5t` (Enchenal Lab ボディシェーバー メンズ). Mismo caso, **no** un caso nuevo; los originales v1–v7 no se tocan.
+- **Voz:** PumaVoice01 (`ve7BOdejheJbgrBriBx4`), guion **v2 adaptado** al producto nuevo (datos reales de la ficha: **2.9K** ventas · **4.3★** · **124** reseñas; vendedor Enchenal Lab PersonalCare; características 極小ヘッド / 銀イオン抗菌メッシュ刃 / VIO). Natural 82.96 s → `atempo=1.3819` → **60.04 s**. (Antes se generó una toma de prueba con **Charon** —Gemini en kie— que Arturo descartó: 1.75 créditos; Charon sigue siendo la Opción 1 general, PumaVoice se usa cuando él lo especifica.)
+- **Overlays nuevos:** `hook_card1/2/3` con fotos del producto **A8** (recortes de la ficha), `sales` → **2.9K** + nombre, `reviews` → **4.3 / 124**; el resto (headline, seller, claims, conditions, cta) se mantiene. Aplicados con FFmpeg PNG sobre el **base limpio** (`v3/inputs/clean_base_v2_audio.mp4`).
+- **Portada NUEVA** (regla de Arturo: **cada video y cada variación llevan thumbnail nuevo**):「全身これ1台 / 電動ボディシェーバー」, **KeinannMaruPOPjp** 80 px, centrada `x=540 / y=377.5` (medida con PIL), ≤2 líneas, con el producto visible. Distinta cuadro y distinto texto de la original.
+- **Hook visual al inicio:** `hook05_gym_battle_rope` (54 cuadros = 1.8 s) empalmado por **JOIN** (audio en una pasada, `adelay=1800` exacto, hook al 35 %). Total **1855 cuadros · 61.84 s**. Clip de **terceros** (referencia/mood, **no publicable**).
+- **QA:** frames por visión en cada ventana; `ffprobe` (1855 frames / 1080×1920 / 44.1 kHz mono); `volumedetect` (hook −42 dB, comercial −18.5 dB).
+- **Archivos (local, vps-tools):** `/root/shaver18-v3-prodc6ftp5t/` (máster, con-hook, audio, assets, guion, render, QA). SHA-256: máster `a769c4a1…8a8a87`, con hook `5bdc9e1a…d2edb7c0`. **Pendiente:** subir al NAS como variación (`18_shaver\production\v8_prod_c6ftp5t\`).
+- Registrado el procedimiento en la skill `ttchop-content-ops` → `references/variacion-cambiar-producto.md`; actualizado [[estandar-thumbnail-video]] con la regla de portada nueva.
+
 ## [2026-11-24] create | Voz de personaje con Gemini TTS en kie: Charon elegida y lineamientos de emoción
 - Arturo probó varias voces y se quedó con **Charon** (`google/gemini-3-8-flash-tts` en kie.ai), tras comparar Fenrir, Autonoe, Sadachbia y Charon con la misma frase y el mismo `style`.
 - **Probado y descartado**: Puck, Zephyr, Riko, Achird (salían afeminadas con un prompt de tono agudo — error mío: pedir "high-pitched/squeaky" a voces masculinas las lleva al falsete). También se comparó **ElevenLabs V3** (Jessica) y Arturo prefirió Gemini.
