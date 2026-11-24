@@ -1,7 +1,7 @@
 ---
 title: Estudio de creadores — fuentes, datos y versiones
 created: 2026-10-31
-updated: 2026-11-01
+updated: 2026-11-24
 type: runbook
 tags: [runbook, almacen, vps, red, decision]
 status: active
@@ -10,13 +10,14 @@ confidence: high
 
 # Estudio de creadores — fuentes, datos y versiones
 
-Inventario de todo el material generado al estudiar a los dos creadores japoneses de TikTok Shop (Asu y Sora) para [[proyecto-ttchop]]: videos, transcripciones, reportes y datos de medición, con sus rutas y enlaces verificados. Sirve para responder cualquier duda sobre una cifra de la guía revisando la fuente original. El acceso al NAS se documenta en [[acceso-nas-polaris]] y el hosting en [[acceso-ftps-lemon-sushi]].
+Inventario de todo el material generado al estudiar a los creadores japoneses de TikTok Shop (Asu, Sora y, desde el 2026-11-24, Taku `taku_takkun_`) para [[proyecto-ttchop]]: videos, transcripciones, reportes y datos de medición, con sus rutas y enlaces verificados. Sirve para responder cualquier duda sobre una cifra de la guía revisando la fuente original. El acceso al NAS se documenta en [[acceso-nas-polaris]] y el hosting en [[acceso-ftps-lemon-sushi]].
 
 Para **recrear** un video de esos creadores paso a paso (transcripción en la PC, desglose script/recordings/editing, variación de guion, TTS y montaje con `ttchop-server`), ver [[recrear-video-creadores-edits]].
 
-## Videos fuente (43)
+## Videos fuente (43 + 19)
 
 - 20 de Asu y 23 de Sora. Son los videos que mide la guía.
+- 19 de Taku (`taku_takkun_`), añadidos el 2026-11-24 (ver la sección del tercer creador más abajo).
 - NAS: `\\Polaris\Projects\Tiktok\hamaca\creators_research\<creador>\videos` (por IP: `\\100.91.254.118\Projects\...`; requiere red local o Tailscale).
 - Los 43 se midieron por código en la computadora con NAS directo; **no se copiaron al VPS**.
 
@@ -38,13 +39,26 @@ En `Projects\Tiktok\hamaca\creators_research\`:
 | `sora_no_kurashi3\audiovisual-audit.html` | Auditoría audiovisual de Sora | 10 192 783 B |
 | `creator-study-*.html` | Una copia por versión del estudio (10 archivos, de 247 KB a 9.3 MB) | — |
 
-## Reportes publicados (5 enlaces, verificados HTTP 200)
+## Reportes publicados (7 enlaces, verificados HTTP 200)
 
 Base: `https://lemonsushi.com/uploads/vps2/creators-research/`
 
 - Guía de estructura de guion (inglés) de Asu: `asu_kurashi/index.html` (47 494 B) y su auditoría audiovisual `asu_kurashi/audiovisual-audit.html` (9 408 129 B).
 - Guía de estructura de guion (inglés) de Sora: `sora_no_kurashi3/index.html` (42 268 B) y su auditoría audiovisual `sora_no_kurashi3/audiovisual-audit.html` (10 192 783 B).
-- Los 5 enlaces se comprobaron con HTTP 200 y hash exacto el 2026-10-31. **Los reportes por creador se conservan en el hosting.**
+- Taku (`taku_takkun_`, añadidos el 2026-11-24): guía de estructura de guion `taku_takkun_/index.html` (18 771 B, SHA-256 `347d2495…9140`) y auditoría audiovisual `taku_takkun_/audiovisual-audit.html` (10 276 121 B, SHA-256 `9424c9d5…0e4f`); ambos verificados HTTP 200 con hash exacto.
+- Los enlaces de Asu/Sora se comprobaron con HTTP 200 y hash exacto el 2026-10-31. **Los reportes por creador se conservan en el hosting.**
+
+## Tercer creador: `taku_takkun_` (2026-11-24)
+
+Extensión del estudio con un tercer creador, corriendo el mismo pipeline ya parametrizado.
+
+- **19 videos** (720×1280 H.264+AAC, 42–71 s) en el NAS: `Projects\Tiktok\hamaca\creators_research\taku_takkun_\videos`.
+- **Copia privada del estudio** en el NAS: `Projects\Tiktok\hamaca\creators_research\taku_takkun_\creator-av-audit-taku-v1\` (`results/`, `transcripts/`, `semantic-*`, `final-reports/`, `aggregate.json`, inventario + lock).
+- **Medición por código:** 19/19 COMPLETE. **Transcripción GPU:** 19/19. **Revisión visual con IA:** 3 videos (3 llamadas, 72 imágenes, 150 590 tokens, bajo la puerta semántica del estudio).
+- **Publicado** (verificado HTTP 200 + hash): `https://lemonsushi.com/uploads/vps2/creators-research/taku_takkun_/index.html` y `…/taku_takkun_/audiovisual-audit.html`.
+- **Preservación:** Asu y Sora sin cambios (20 completos / 468 candidatos y 23 / 705; 4 881 hashes legacy verificados en Windows; 551 archivos protegidos del coordinador intactos).
+- **Código:** capa de creadores parametrizada (`runner.py`, `assemble_reports.py`, `creator_reports.py`, `initialize_task.py`, `semantic_*`, `publish_final_reports.py`, etc.) manteniendo los conteos 20/23 por defecto. Repo del estudio con remoto `github.com/pumacamargo/creator-av-audit` (privado).
+- Límite: solo medición por código; la sincronización corte‑voz permanece **UNKNOWN**, sin alineación forzada.
 
 ## Versiones del estudio y su historial
 
@@ -83,6 +97,7 @@ El hosting conserva **solo la última versión**; las anteriores se borraron del
 - **Mediciones automáticas de los 43 videos** (tomas/cortes candidatos, movimiento, iluminación, texto, audio, integridad): `~/.hermes/profiles/developer/workspace/creator-av-audit/verification/results` (20 Asu + 23 Sora).
 - **Muestras revisadas visualmente**: 6 videos (3 por creador) con observaciones guardadas, frames exactos y tiempos: `creator-av-audit/semantic-results` y `semantic-evidence`.
 - **Construcción de la guía activa** (datos, pruebas y publicación): `~/.hermes/profiles/developer/workspace/creator-standardize`.
+- **Estudio de Taku (2026-11-24):** entregables en `~/.hermes/profiles/developer/workspace/creator-av-audit/taku-run/` (índice privado `DELIVERABLES.json` con 128 archivos y su ruta/tamaño/SHA-256) y copia en el NAS (ver la sección del tercer creador).
 - Regla vigente: la interpretación visual con IA se limitó a 3 videos por creador; medir por código sí se hizo sobre los 43.
 
 ## Reglas y límites registrados
