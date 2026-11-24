@@ -1,7 +1,7 @@
 ---
 title: Acceso FTPS y publicaciones web Lemon Sushi
 created: 2026-10-30
-updated: 2026-10-30
+updated: 2026-11-24
 type: runbook
 tags: [runbook, red, almacen, vps]
 status: active
@@ -65,6 +65,7 @@ Página publicada que reúne **todos los desmenuzados** (listas de tomas con GIF
 
 ## Relacionado
 
+- [[dashboards-hosting]] — los tableros publicados en este hosting (central, desmenuzados, estudio de creadores) y sus generadores.
 - [[hardware-vps-tools]] — host que conserva la configuración local y ejecuta el acceso.
 - [[proyecto-lemon-sushi]] — contexto del proyecto Lemon Sushi.
 - [[acceso-nas-polaris]] — almacenamiento privado del NAS, independiente de este hosting público.
