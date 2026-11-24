@@ -892,3 +892,11 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 ## [2026-11-24] create | Tareas diarias del proyecto TikTok Shop (ttchop)
 - Creada [[tareas-diarias-ttchop]] con la rutina diaria de Arturo para el proyecto TikTok Shop: 1) Request Samples de Asu, Sora y Taku; 2) Record 3 videos diarios; 3) Editar 3 videos diarios; 4) 1 video para cuenta nueva. Enlaza al checklist publicado (grupo «Tareas» → ttJapan) y a los creadores de referencia.
 - Añadida al `index.md` (Operaciones); `Total pages` 56 → 57.
+
+## [2026-11-24] create | Voz de personaje con Gemini TTS en kie: Charon elegida y lineamientos de emoción
+- Arturo probó varias voces y se quedó con **Charon** (`google/gemini-3-8-flash-tts` en kie.ai), tras comparar Fenrir, Autonoe, Sadachbia y Charon con la misma frase y el mismo `style`.
+- **Probado y descartado**: Puck, Zephyr, Riko, Achird (salían afeminadas con un prompt de tono agudo — error mío: pedir "high-pitched/squeaky" a voces masculinas las lleva al falsete). También se comparó **ElevenLabs V3** (Jessica) y Arturo prefirió Gemini.
+- **Aprendido**: el campo `style` dirige la actuación pero **no cambia el timbre**; "amigable" y "exagerado" se suman, no se sustituyen; el contraste (una línea susurrada entre exclamaciones) es lo que hace sonar exagerado; la puntuación es dirección de actuación; y un prompt de diseño de ~1,100 caracteres en `style` funciona peor que una versión de actuación de ~450.
+- **Costo medido**: ~0.03 créditos por segundo de audio (frase de 9 s ≈ 0.30). ElevenLabs vía kie ≈ 3× más caro. Regla confirmada: **no generar sin "sí" explícito de Arturo** (hubo un gasto de 0.97 por adelantarme; no se repite).
+- **No se puede**: usar IDs tipo `voice_pl1zhbthxsj7` en kie (solo 71 nombres fijos), ni diseñar/guardar un timbre nuevo en kie.
+- Documentado en [[voz-personaje-kie]] con la receta exacta, el `style` aprobado, las etiquetas y la tabla de costos. Skill `kie-audio-voice` actualizada.
