@@ -58,6 +58,15 @@ Están en el **`README.md` de ttchop-server**, sección *“Voice IDs de ElevenL
 
 Conclusión práctica: **para que un video nuevo suene como los demás, hay que usar la misma voz y el mismo tratamiento (velocidad + pausas)**, no solo el mismo texto.
 
+## Orden de preferencia (definido por Arturo, 2026-11-24)
+
+1. **OPCIÓN 1 — `Charon`** (Gemini 3.8 Flash TTS vía **kie.ai**). Es la voz elegida para el personaje: cálida, masculina, con presencia de comercial. Receta exacta en la sección de arriba.
+2. **PLAN B — `Announcer`** (ElevenLabs, mercado JP) — `gU0LNdkMOQCOrPrwtbee`. La que usan hoy los videos japoneses.
+3. **PLAN B — `Jessica`** (ElevenLabs, mercado MX) — `cgSgspJ2msm6clMCkdW9`.
+4. **PLAN B — `PumaVoice01`** (ElevenLabs, clonada) — `ve7BOdejheJbgrBriBx4`. Para traducciones con la voz de Arturo.
+
+**Aviso técnico:** Charon vive en **kie**, y el pipeline actual de TTChop solo sabe hablar con **ElevenLabs** (`pipeline/elevenlabs.js`). Poner Charon como default automático **no es cambiar un ID**: requiere añadir una rama de TTS por kie en `ttchop-server` (submit a `createTask`, sondeo de `recordInfo`, descarga del MP3 temporal, y el mismo tratamiento de velocidad/pausas con FFmpeg). Mientras eso no se haga, Charon se usa **a mano** con la receta de esta página.
+
 ## Lineamientos de emoción (lo aprendido en las pruebas)
 
 1. **El `style` no cambia la garganta, solo la actuación.** Si una voz suena femenina o plana, no se arregla con más adjetivos: se cambia la voz base.
