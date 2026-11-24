@@ -42,6 +42,22 @@ Receta para generar el diálogo del personaje (locutor carismático, amigable, c
 
 Sondear el resultado: `GET /api/v1/jobs/recordInfo?taskId=<id>` → `data.state` (`success`/`fail`), `data.resultJson` con `resultUrls[]` (**temporales: descargar de inmediato**) y `data.creditsConsumed` (costo real por tarea). Saldo: `GET /api/v1/chat/credit`.
 
+## Las voces que YA usan los videos de TTChop (definidas)
+
+Están en el **`README.md` de ttchop-server**, sección *“Voice IDs de ElevenLabs”*:
+
+| Mercado | Voz | ID | Notas |
+|---|---|---|---|
+| 🇯🇵 JP | **Announcer** (masculino) | `gU0LNdkMOQCOrPrwtbee` | **La default de los videos japoneses** |
+| 🇲🇽 MX | **Jessica** (femenino) | `cgSgspJ2msm6clMCkdW9` | La default de los videos mexicanos |
+| — | **PumaVoice01** (clonada) | `ve7BOdejheJbgrBriBx4` | Traducciones y videos con la voz de Arturo |
+
+- El `scheduler` **no tiene la voz en el código**: la lee de una **plantilla de voz en Firestore** (`voiceId`) y falla con *“No voiceId found (check voice template)”* si no existe. Por eso siempre se oye la misma voz: la plantilla la fija.
+- **Ajustes fijos del pipeline** (`pipeline/elevenlabs.js`): `eleven_v3`, `stability: 0`, `style: 0`, `similarity_boost: 0`, `speed: 0.5` (por debajo del mínimo documentado de 0.7 — ya anotado como duda en el archivo).
+- **Convención de velocidad**: el ritmo no se pide a ElevenLabs, se ajusta **después con FFmpeg** `atempo` a **1.4×–1.5×**, más pausas de **0.3–0.34 s** entre líneas (patrón usado en los videos aprobados).
+
+Conclusión práctica: **para que un video nuevo suene como los demás, hay que usar la misma voz y el mismo tratamiento (velocidad + pausas)**, no solo el mismo texto.
+
 ## Lineamientos de emoción (lo aprendido en las pruebas)
 
 1. **El `style` no cambia la garganta, solo la actuación.** Si una voz suena femenina o plana, no se arregla con más adjetivos: se cambia la voz base.
