@@ -222,8 +222,16 @@ audio del render, medido por tramos, es **idéntico** al del render original (mi
 La derivada lleva su `*_hook.json` con el clip, su largo y la nota de que se usó **con permiso de Arturo**
 (los clips de terceros siguen sin ser publicables, §4).
 
+## 11. Título listo para copiar
+
+> **Regla (Arturo, 2026-11-25):** cuando pida **un título**, se entrega **UNO solo y listo para copiar** —
+> **un solo bloque** (título + hashtags), sin alternativas, sin viñetas, sin comentarios ni explicación.
+> Es para pegar en TikTok tal cual. Abre con el dolor/duda del espectador y la palabra clave del producto;
+> sin precio y sin promesas que la ficha no respalde.
+
 ## Changelog
 
+- **2026-11-25 — §11 Título listo para copiar.** Regla: un título, un bloque, sin alternativas.
 - **2026-11-25 — §10 reescrita (regla de Arturo).** Agregar un visual hook es **unir 2 archivos** (hook + render):
   concat directo, sin `amix`/`adelay`/`atrim`/atenuar el hook. La receta anterior (mezcla al 35 %) es ahora el
   **anti-patrón**, porque altera la pista del render y se percibe como «se movió el audio/overlays».
