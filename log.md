@@ -921,3 +921,10 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - **Charon en kie**: el modelo `google/gemini-3-8-flash-tts` devolvía **524** (timeout del proveedor, **sin costo**); su variante **`gemini-3-8-flash-lite-tts`** sí funcionó (misma voz). Costos medidos: 0.43 + 0.39 créditos.
 - **Archivos locales (vps-tools)**: `/root/.hermes/profiles/ttchop_robot/media/…` + scratch. **No publicado.**
 - Pendiente: subir al NAS la variación del `18_shaver` y estos dos videos (aún locales).
+
+## [2026-11-25] create | Tercer collage (`prod_v2y1zfp`) + overlays + visual hook
+- **Video — `prod_v2y1zfp`** (pen borrador de etiquetas térmicas + cuchilla, jp; sesión `sess_xna6p84`, 6 clips): diálogo casual-creator con hook exagerado, voz **Charon** a **1.5×** (17.76 s → 11.85 s) inyectada como `audioBase64`. Render `render_mwvj5nfj_v2y1zfp_1p5x` → 1080×1920 · **60 fps** · 11.82 s; audio 11.85 s.
+  - **Falla del primer intento** (`render_mwvj3qzd`): el LLM metió una **expresión aritmética** en el recetario (`"trimStart": 6.456056274193548 - 0.5`) → `callLLMJson: Expected ',' or '}' ... at position 390`. Es intermitente y recurrente (también 10/10, 14/10, 22/10). El reintento pasó.
+- **Overlays** (`caption-overlay`, opción a) sobre el collage: captions 伝票そのまま捨ててない？ / 住所も名前も丸見え / なぞるだけで消せる / 箱もこれで開けられる + tag 「リンクは/画面下」 + flecha + descargo + **portada nueva**「なぞるだけで / 個人情報を隠せる」. Remux de audio del base: idéntico (−16.9 / 0.0 dB). Salida 1080×1920 · 30 fps · 356 frames · 11.87 s.
+- **Visual hook** al inicio: `hook07_ejercicio_casa` (3.51 s) por **concat directo** (JOIN de 2 archivos, sin `amix`/`adelay`/`atrim`) → 461 frames (105+356) · 15.37 s. **Regla corregida y documentada en [[hooks-para-inicio-de-video]] §10**: agregar un hook = unir 2 videos; **no** se re-edita ni se re-renderiza el render, y no se toca su audio/overlays.
+- Archivos locales en `media/`; **no publicado**. Hooks ya usados: `hook05`, `hook09`, `hook07`.
