@@ -928,3 +928,11 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - **Overlays** (`caption-overlay`, opción a) sobre el collage: captions 伝票そのまま捨ててない？ / 住所も名前も丸見え / なぞるだけで消せる / 箱もこれで開けられる + tag 「リンクは/画面下」 + flecha + descargo + **portada nueva**「なぞるだけで / 個人情報を隠せる」. Remux de audio del base: idéntico (−16.9 / 0.0 dB). Salida 1080×1920 · 30 fps · 356 frames · 11.87 s.
 - **Visual hook** al inicio: `hook07_ejercicio_casa` (3.51 s) por **concat directo** (JOIN de 2 archivos, sin `amix`/`adelay`/`atrim`) → 461 frames (105+356) · 15.37 s. **Regla corregida y documentada en [[hooks-para-inicio-de-video]] §10**: agregar un hook = unir 2 videos; **no** se re-edita ni se re-renderiza el render, y no se toca su audio/overlays.
 - Archivos locales en `media/`; **no publicado**. Hooks ya usados: `hook05`, `hook09`, `hook07`.
+
+## [2026-11-25] create | Cuarto collage (`prod_yrikq4i`) con **Plan B (Announcer)** + overlays + hook
+- **Voz:** Charon (kie) quedó **caído** todo el día — `524 generate task timeout` en **13 intentos** (dos modelos, incluso con texto mínimo; **sin costo**). Arturo autorizó el **Plan B**: **Announcer** (ElevenLabs JP, `gU0LNdkMOQCOrPrwtbee`), que sí vive en el pipeline.
+- **Audio:** generado con la API de ElevenLabs (mismo `eleven_v3` + `voice_settings` del pipeline, speed 0.5) y pasado a **1.5×** con `atempo` (18.80 s → 12.53 s), inyectado como `audioBase64`.
+- **Video — `prod_yrikq4i`** (pouch 3-way botella+smartphone, jp; sesión `sess_5187cbp`, 5 clips): render `render_mwvr3xak_yrikq4i_1p5x` → 1080×1920 · 30 fps · 12.50 s; audio 12.53 s.
+- **Overlays** (`caption-overlay`): captions スマホも水筒も手で持ってる？ / 両手ふさがって不便だった / 肩にかけるだけで全部すっきり / 雨の日も中身は濡れない + tag/flecha/descargo + **portada nueva**「肩にかけるだけ / 両手が空く」. Audio idéntico al base (−15.5 / −0.8 dB).
+- **Visual hook:** `hook10_caida_comedia` (2.32 s) por **concat directo** → 445 frames (69+376) · 14.85 s. **Regla §10 aplicada tal cual** (JOIN de 2 archivos).
+- Hooks ya usados: `hook05`, `hook07`, `hook09`, `hook10`. Archivos locales; **no publicado**.
