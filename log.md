@@ -963,6 +963,15 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - **Formato para el chat:** 720×1280 · H.264 baseline · AAC mono (~2 MB); los másters 1080×1920 se conservan aparte.
 - **Regla:** si el video importa, se manda por el script y se reporta el `message_id`; el tag `MEDIA:` no es garantía.
 
+## [2026-11-26] create | Séptimo collage (`prod_0lyigbp`, scrubber eléctrico) con **Charon energético 1.25×**
+- **Producto:** Electric Spin Scrubber (inalámbrico, display LED, 7 cepillos; baño/piso/auto/tile) — `jp`, 4.1★, 18.5K vendidos; sesión `sess_y21dfje` (8 clips).
+- **kie revivió** ese día: el test mínimo (`gemini-3-8-flash-lite-tts`) pasó y Charon se generó, pero **los 524 siguen siendo intermitentes** (falló 1 de cada 2 intentos).
+- **Energía de voz:** Arturo pidió más energía → se cambió el `style` de «comercial carismático» a **explosivo/rapid-fire** (oleadas de entusiasmo, caídas conspiratorias, urgente y juguetón, cálido y sin falsete). Misma frase para poder comparar.
+- **Velocidad:** se probaron las tres y Arturo eligió **1.25×** (18.16 s → 14.53 s). Las otras quedaron medidas: 1.0× = 18.16 s, 1.5× = 12.11 s.
+- **Render:** `render_mwxdaoaa_scrub_energy125` · `done` al **2º intento** (el 1º, `render_mwxd9vxi`, cayó por el bug del recetario: `"trimStart": 5.146… - 1.0`). 1080×1920 · 30 fps · 14.53 s.
+- **Entrega:** por `sendVideo` verificado (`message_id 5282`); audio por `sendAudio` verificado (`5261` 1.5×, `5265` 1.0×, `5269` 1.25×).
+- **Pendiente sugerido:** endurecer `callLLMJson` (delegar al `developer`) — el bug de la aritmética ya tumbó **3 renders** en dos días.
+
 ## [2026-11-26] create | Cuentas de TikTok Shop affiliate y research de nicho para hamaca azul
 - Arturo pidió un apartado de **cuentas de TikTok Shop affiliate**: **hamaca shop** es la principal y **todo el contenido hasta hoy es exclusivo de ella**; está creando **hamaca azul** como **cuenta secundaria nueva**, con objetivo de **subir seguidores primero** y después vender affiliate. Documentado en [[cuentas-tiktok-shop-affiliate]], con la regla de que el contenido no se recicla entre cuentas.
 - **Extracción de un video** (23.5 s, Creator Search Insights, pestaña *Photo posts*): 23 cuadros, OCR con tesseract (jpn+eng) + lectura cuadro por cuadro de 15 fotogramas → **56 temas** (40 en japonés, 16 en inglés) con vistas y crecimiento. Crudos guardados en `raw/creator-search-insights-2026-11-26.csv` y `.md`.
