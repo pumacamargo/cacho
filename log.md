@@ -1037,3 +1037,10 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Método y caso documentados** en [[desmenuzado-carrusel]]: ficha técnica **medida** (fondo **idéntico en los 10 slides** — diferencia de fondo ≈0,2/255; texto blanco **#ffffff** centrado sin caja con sombra; gothic/rounded sans; cuerpo ≈48 px de tinta e interlineado ≈83 px a 960 de ancho; atribución fija 「アドラー心理学」; bloque centrado verticalmente a **≈53 %**), más los 10 slides con **JP original + traducción ES** y el **arco narrativo** (hook → … → cierre).
 - **Artefacto:** nuevo store **separado** `/root/desmenuzados-carrusel/C01_adler-psicologia/` (`desmenuzado.md` + `slides/01..10.jpg` + `11_CTA_Motto_IGNORADO.jpg`), verificado por SHA-256. **No** en `/root/desmenuzados` (índice de video) ni en el dashboard `creators-research`.
 - **Pendiente (Fase 2):** tema/temática de las frases, imagen de fondo (propia vs. reutilizada), y título/hashtags. Sin arrancar.
+
+## [2026-11-26] create | Recreación del carrusel C01 (Adler) — Fase 2 montada
+- Arturo mandó la imagen de fondo (`chmc-dubai.com/…/Alfred-Adler.jpg`, 432×553) y pidió: **cambiar el estilo del diseño (la fuente)**, **agregar un número de orden** y **blanco y negro** (no sepia). Fondo = misma imagen, diseño distinto.
+- **Diseño elegido:** tipografía **`Noto Sans CJK JP` Bold** (gothic) 64 px / interlineado 98; texto blanco centrado con sombra; atribución 「アドラー心理学」; **número «N / 10» abajo**; bloque centrado a ≈53 %. Fondo B/N escalado a 1080×1440 con viñeta.
+- **Fuentes disponibles vistas** (solo 3 familias JP reales en los hosts + mono): `KeinannMaruPOPjp` (redondeada, estándar de portadas ttchop, `/root/dualshaver-announcer/`), `Noto Sans CJK JP`, `Noto Serif CJK JP`. Se previsualizaron las 3; Arturo eligió la **sans**.
+- **Entregado:** `final/01..10.png` (1080×1440, PNG, individuales) en `/root/desmenuzados-carrusel/C01_adler-psicologia/`; script `build_slides.py`. **Sin publicar** (publica Arturo).
+- **Aviso dado:** el texto sigue siendo el **mismo** de la referencia (solo cambió el diseño); pendiente decidir si se reescriben las frases y el título/hashtags.

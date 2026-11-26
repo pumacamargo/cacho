@@ -82,7 +82,13 @@ Primer caso. Cuenta japonesa de frases con retrato vintage en B/N.
   gastar tu tiempo) → compasión (pobre persona) → cierre (concéntrate en lo tuyo).
 - **Artefacto:** `/root/desmenuzados-carrusel/C01_adler-psicologia/` (`desmenuzado.md`
   + `slides/01..10.jpg` y `11_CTA_Motto_IGNORADO.jpg`), verificado por SHA-256.
-- **Pendiente:** Fase 2 (tema, fondo propio, título/hashtags) — sin arrancar.
+- **Recreación (Fase 2, 2026-11-26):** montada con el **mismo contenido y diseño cambiado**
+  (pedido de Arturo). Fondo = la imagen de Adler que mandó (`chmc-dubai.com/…/Alfred-Adler.jpg`,
+  432×553) en **blanco y negro** (no sepia), escalada a 1080×1440 con viñeta; tipografía
+  **`Noto Sans CJK JP` Bold 64 px**, blanco centrado con sombra, atribución 「アドラー心理学», y
+  **número de orden «N / 10» abajo**. Salida `final/01..10.png` (1080×1440), script `build_slides.py`.
+- **Pendiente:** el texto es aún el mismo de la referencia (decidir si se **reescriben las frases**
+  para contenido único) y **título/hashtags**.
 
 ## Pitfalls
 
