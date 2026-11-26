@@ -13,6 +13,8 @@ related: [cuentas-tiktok-shop-affiliate, hooks-para-inicio-de-video, ttchop-vide
 
 Objetivo de la cuenta nueva: **subir seguidores primero**, y con base de seguidores vender TikTok Shop affiliate (ver [[cuentas-tiktok-shop-affiliate]]). Este research busca el nicho con más potencial de crecimiento para esa fase.
 
+**Formato del contenido: carruseles de imágenes** (no video). Encaja con el dato de origen, que sale de la pestaña **Photo posts** de la herramienta — o sea, la demanda medida es de carruseles.
+
 ## De dónde salen los datos
 
 - **Fuente**: video de 23.5 s (596×1280) grabado desplazándose por **Creator Search Insights** de TikTok, pestaña **Photo posts**. Enviado por Arturo el **2026-11-26**.
@@ -83,6 +85,31 @@ No “cuidado del cabello” en general (dominado por marcas y con productos dif
 **Plan B con datos reales:** **bolsos y accesorios de uso diario** (319K, 4 de 6 temas por encima del piso) — menos demanda, mucha menos competencia, igual de comprable. Y **organización del hogar** (199K, solo 3 temas en esta vista).
 
 **Descartado con estos datos:** tecnología (11 temas, todos en el piso 99–400) y belleza/skincare (4 temas, todos en el piso salvo uno).
+
+## Los 3 temas a trabajar (con el japonés para buscar)
+
+Los tres que sostienen el nicho. **Ojo con el idioma original de cada uno**: dos aparecieron **en japonés** en la herramienta y uno **en inglés** — por eso este último lleva traducción al japonés para buscarlo.
+
+### 1. Pinzas de cabello suaves — vistas 293K · crecimiento **▲1,000 %+**
+
+- **Apareció en inglés** en la herramienta: `Show your favorite soft hair clips`
+- **Japonés (traducción, para buscar):** お気に入りのやわらかいヘアクリップを見せて
+- **Términos de búsqueda:** `ヘアクリップ` · `柔らかいヘアクリップ` · `痛くないヘアクリップ` · `跡がつかないヘアクリップ`
+- **Por qué vale:** es el tema de mayor crecimiento de la lista y el producto es barato, fotografiable y de afiliado directo.
+
+### 2. Rutina para cabello ondulado/rizado — vistas 221K · crecimiento **▲1,000 %+**
+
+- **Apareció en japonés** (original de la herramienta): `くせ毛さんに◎おすすめのヘアケアルーティン`
+- **Términos de búsqueda:** `くせ毛` · `くせ毛 ヘアアレンジ` · `くせ毛 ヘアケア` · `くせ毛 ルーティン` · `くせ毛 縮毛矯正`
+- **Nota de traducción:** `くせ毛` es cabello **con onda o rizado natural** (no “rizado con plancha”); `◎` marca “muy recomendado”.
+
+### 3. Artículos para estilizar — vistas 344K · crecimiento **▲85.4 %**
+
+- **Apareció en japonés** (original de la herramienta): `ヘアスタイリングにおすすめのアイテム`
+- **Términos de búsqueda:** `ヘアスタイリング` · `スタイリング剤` · `ヘアアレンジ アイテム` · `ヘアアイテム`
+- **Por qué vale:** es el de más vistas de los tres, y el más amplio — da para muchas variantes de carrusel (planchas, cepillos, rizadores, ceras, espumas).
+
+**Cómo usarlos al buscar los posts:** en TikTok, pegar el término japonés en la búsqueda y mirar **cuántos resultados y de qué fecha** salen. Eso es la competencia, que es el dato que este research **no** trae.
 
 ## Advertencias (leer antes de comprometerse)
 
