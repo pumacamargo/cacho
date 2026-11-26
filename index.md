@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-11-26 | Total pages: 60
+> Last updated: 2026-11-26 | Total pages: 63
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -75,6 +75,7 @@
 - [[ttchop-filmcraft-video-tests]] — runbook FilmCraft (flujo local-first autorizado en `D:\staging`, transferencia a Polaris, relink/export/QA) y estado por caso: MAGINA Tagiras completado; Ellis if01 portable copiado y hash-verificado en Polaris, con reapertura GUI pendiente; **02_blanket** reconstruido desde el recetario de `collage_builder` (799 frames, 1080×1920 a 30 fps, sin medios offline) con **overlays de texto nativos dentro de FilmCraft**, **layout escalonado en 3 pistas** y el **portable relinkeado a `P:` y validado en la GUI**; **`19_dualshaver`** y **`20_dualshaver`** reconstruidos en `filmcraft-20261119` (proyecto local + portable a `P:`) con 3 pitfalls nuevos; no mezclar proyectos entre productos
 - [[ttchop-music-generation]] — runbook: canto manual con ElevenLabs Music, montaje vía `audioBase64`, QA de duración y límites de publicación
 - [[traduccion-video-pumasvoice-sincronizada]] — traducir ES→JA con TTS PumaVoice, alinear inicio/fin de voz mediante atempo/adelay, conservar imagen y medir créditos reales; no lip-sync
+- [[voz-personaje-kie]] — voz **Charon** con Gemini TTS en kie.ai: receta exacta (`createTask` + sondeo + descarga), el `style` aprobado, jerarquía de voces (Charon → Announcer/Jessica/PumaVoice01) y reglas de gasto
 - [[entrega-de-videos-telegram]] — por qué a veces «no llega el video»: el tag `MEDIA:` puede no llegar al texto despachado; entrega verificable por `sendVideo` de la Bot API (`scripts/tg_send_video.py`), logs del gateway **por perfil** y formato ligero para el chat
 
 ## Repositorio
