@@ -1030,3 +1030,10 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Desplegado:** reinicio autorizado por Arturo y aplicado — `ttchop-server` `online`, health **200**, el
   path JSON del módulo desplegado devuelve objeto con números (verificado en vivo). Respaldo del archivo viejo
   en `/root/llm.js.bak-*` (vps-projects).
+
+## [2026-11-26] create | Desmenuzado de carrusel (método + caso 01: frases de Adler)
+- Arturo pidió empezar a **generar carruseles de imágenes** (no video) para la cuenta nueva, y **recrear uno**: primero **desmenuzarlo**, luego **crearlo con variación** para hacer contenido único. Regla que fijó: **el desmenuzado de carrusel NO se mezcla con el de video** (procedimientos y artefactos distintos).
+- **Entrada:** 11 imágenes (960×1280, 3:4) de una cuenta JP de frases (アドラー心理学), mandadas el 26-nov. **10 son contenido**; la **#11 es un anuncio de la app Motto** que Arturo pidió **ignorar**.
+- **Método y caso documentados** en [[desmenuzado-carrusel]]: ficha técnica **medida** (fondo **idéntico en los 10 slides** — diferencia de fondo ≈0,2/255; texto blanco **#ffffff** centrado sin caja con sombra; gothic/rounded sans; cuerpo ≈48 px de tinta e interlineado ≈83 px a 960 de ancho; atribución fija 「アドラー心理学」; bloque centrado verticalmente a **≈53 %**), más los 10 slides con **JP original + traducción ES** y el **arco narrativo** (hook → … → cierre).
+- **Artefacto:** nuevo store **separado** `/root/desmenuzados-carrusel/C01_adler-psicologia/` (`desmenuzado.md` + `slides/01..10.jpg` + `11_CTA_Motto_IGNORADO.jpg`), verificado por SHA-256. **No** en `/root/desmenuzados` (índice de video) ni en el dashboard `creators-research`.
+- **Pendiente (Fase 2):** tema/temática de las frases, imagen de fondo (propia vs. reutilizada), y título/hashtags. Sin arrancar.

@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-11-26 | Total pages: 63
+> Last updated: 2026-11-26 | Total pages: 64
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -51,6 +51,7 @@
 ## Operaciones
 - [[cuentas-tiktok-shop-affiliate]] — las cuentas de TikTok Shop affiliate: **hamaca shop** (principal; **todo el contenido hasta el 2026-11-26 es exclusivo de ella**) y **hamaca azul** (secundaria, **nueva**, arranca desde cero con objetivo de **crecer seguidores primero** y vender después)
 - [[nicho-cabello-tiktok]] — research de nicho para hamaca azul: extracción y agrupación de **56 temas** de Creator Search Insights (video del 2026-11-26); cabello concentra el **87 %** de la demanda y los 12 de los 15 primeros puestos; nicho elegido = **accesorios y herramientas de peinado** (pinzas 293K ▲1,000 %+, cabello ondulado 221K ▲1,000 %+), plan B bolsos/hogar, y las advertencias (mide demanda, no competencia)
+- [[desmenuzado-carrusel]] — método para **desmenuzar un carrusel de imágenes** y recrearlo con variación (cuenta nueva hamaca azul): ficha técnica medida, slide por slide (rol + JP + ES), arco narrativo, dónde se guarda **separado del desmenuzado de video**; primer caso = carrusel de frases de Adler (10 slides), con el slide de anuncio ignorado
 - [[tareas-diarias-ttchop]] — rutina diaria del proyecto TikTok Shop: Request Samples de Asu/Sora/Taku, grabar 3 videos, editar 3 videos, 1 video para cuenta nueva; checklist publicado en el hosting
 - [[acceso-ftps-lemon-sushi]] — FTPS verificado al hosting; raíz /public_html/uploads/vps2, subcarpetas obligatorias, URL base y límites de privacidad pública
 - [[dashboards-hosting]] — tableros publicados en el hosting Lemon Sushi: dashboard central (5 grupos, incluye **Tareas/ttJapan**), desmenuzados, estudio integrado con los 3 creadores (Asu/Sora/Taku), estudios por creador y mapas; con sus generadores y reglas
