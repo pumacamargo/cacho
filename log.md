@@ -956,3 +956,9 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - **Visual hook:** `hook03_demolicion` **recortado a 3.0 s** (el original 3.25 s; el beat del golpe queda dentro) — **primera aplicación de la regla hook ≤3 s**. Concat directo → 468 frames (90+378) · 15.6 s.
 - **Entrega:** los videos se mandan también en versión mínima (720×1280, H.264 baseline + AAC mono) porque las versiones grandes no llegaban por Telegram.
 - Hooks ya usados: `hook05`, `hook07`, `hook09`, `hook10`, `hook12` (descartado), `hook01`, `hook03`. Archivos locales; **no publicado**.
+
+## [2026-11-26] fix | «No me mandaste el video» — entrega por Telegram
+- **Diagnóstico con evidencia:** los logs del gateway son **por perfil** (`profiles/ttchop_robot/logs/gateway.log`, no el global). Una entrega normal deja `Delivering 1 non-image MEDIA attachment(s)` + `Sending video attachment (.mp4)`; un archivo ausente deja `Skipping MEDIA directive path (not found on this host)`. **El caso que falla no deja ninguna de las dos**: el turno termina en `Sending response (N chars)` y el tag `MEDIA:` nunca llegó al texto despachado.
+- **Fix adoptado:** entregar el video **directo por la Bot API** (`sendVideo`) con el token del perfil y el chat `6407630145`, **verificando** `ok: true` + `message_id`. Script: [[entrega-de-videos-telegram]] / `scripts/tg_send_video.py`. Prueba real: `message_id 5221` (test) y `5223` (teclado AJAZZ, 2.0 MB).
+- **Formato para el chat:** 720×1280 · H.264 baseline · AAC mono (~2 MB); los másters 1080×1920 se conservan aparte.
+- **Regla:** si el video importa, se manda por el script y se reporta el `message_id`; el tag `MEDIA:` no es garantía.
