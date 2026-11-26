@@ -1013,8 +1013,8 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
   por largo. Sin usar: `hook02`, `hook06`, `hook08`, `hook11`.
 - **Bug del recetario — ARREGLADO (commit `44cc142`, 26-nov):** `pipeline/llm.js` ahora pide
   `response_format: json_object`, **evalúa las expresiones aritméticas** fuera de cadenas cuando el parseo
-  estricto falla y hace **un reintento correctivo**; verificado con 5 casos (5/5). **Falta reiniciar
-  `ttchop-server`** para que aplique (requiere OK de Arturo).
+  estricto falla y hace **un reintento correctivo**; verificado con 5 casos (5/5). **Reinicio autorizado y
+  aplicado el 26-nov** (`ttchop-server` online, health 200, path JSON verificado en vivo).
 
 ## [2026-11-26] fix | Bug del recetario (`callLLMJson`) arreglado en el repo
 - **Qué pasaba:** el LLM del recetario escribía una **expresión aritmética** en un campo numérico
@@ -1027,5 +1027,6 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
   3. Un **reintento correctivo** con el error en el prompt.
 - **Verificación:** 5 casos (el roto real, suma/división, JSON válido que **no** debe cambiar, exponentes
   `1e-5`, aritmética dentro de strings) → **5/5 PASS**; y el import del módulo con la reparación funcionando.
-- **Pendiente:** **reiniciar `ttchop-server`** para que aplique (requiere OK de Arturo). Respaldo del archivo
-  viejo en `/root/llm.js.bak-*` en vps-projects.
+- **Desplegado:** reinicio autorizado por Arturo y aplicado — `ttchop-server` `online`, health **200**, el
+  path JSON del módulo desplegado devuelve objeto con números (verificado en vivo). Respaldo del archivo viejo
+  en `/root/llm.js.bak-*` (vps-projects).
