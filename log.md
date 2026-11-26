@@ -1044,3 +1044,9 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Fuentes disponibles vistas** (solo 3 familias JP reales en los hosts + mono): `KeinannMaruPOPjp` (redondeada, estándar de portadas ttchop, `/root/dualshaver-announcer/`), `Noto Sans CJK JP`, `Noto Serif CJK JP`. Se previsualizaron las 3; Arturo eligió la **sans**.
 - **Entregado:** `final/01..10.png` (1080×1440, PNG, individuales) en `/root/desmenuzados-carrusel/C01_adler-psicologia/`; script `build_slides.py`. **Sin publicar** (publica Arturo).
 - **Aviso dado:** el texto sigue siendo el **mismo** de la referencia (solo cambió el diseño); pendiente decidir si se reescriben las frases y el título/hashtags.
+
+## [2026-11-26] create | Carrusel C01 terminado — texto reescrito + fondo IA (A)
+- Arturo pidió **reescribir las frases similar** (variación de la redacción, misma temática/arco) y, para el fondo, probar opciones. Se generaron **3 fondos con IA** (kie.ai `bytedance/seedream-v4-text-to-image`, ≈5 cr/imagen): **A** retrato de época B/N, **B** silueta junto a ventana con lluvia, **C** textura de papel. **C dio fail** (0 créditos, no cobrado). Gastado total **10 créditos**.
+- **Elegido A** para el post; **B y el resto se guardan** para rehacer el mismo post con otra foto. Carpeta `fondos/` con `A_retrato.jpg` (elegido), `B_ventana.jpg`, `D_adler_dominio-publico.jpg` (la foto original de Adler) y un `README` con el comando de re-render.
+- **Entrega:** `final_A/01..10.png` (1080×1440) — texto **reescrito propio**, fondo A, Noto Sans CJK JP 64 px, B/N, viñeta, atribución 「アドラー心理学」 y número «N / 10». Scripts: `build_carrusel.py` (CLI: `--fondo`, `--texto original|reescrito`, `--out`), `build_slides.py` (renderer), `ai/gen_backgrounds.py` (generación, con manifiesto de `taskId`/créditos).
+- **Entrega al chat:** 10 PNG individuales. **Sin publicar.** Pendiente: **título/hashtags**.

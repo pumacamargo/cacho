@@ -89,6 +89,13 @@ Primer caso. Cuenta japonesa de frases con retrato vintage en B/N.
   **número de orden «N / 10» abajo**. Salida `final/01..10.png` (1080×1440), script `build_slides.py`.
 - **Pendiente:** el texto es aún el mismo de la referencia (decidir si se **reescriben las frases**
   para contenido único) y **título/hashtags**.
+- **Entrega final (2026-11-26):** texto **reescrito** (contenido propio, mismo arco) + fondo **A**
+  (retrato de época **generado con IA**, B/N). Salida `final_A/01..10.png` (1080×1440). Los fondos
+  quedan en `fondos/` (**A** elegido, **B** alternativo, **D** = Adler de dominio público) con un
+  `README` y el comando `build_carrusel.py --fondo … --texto … --out …` para re-renderizar el mismo
+  post con otra foto. Generación IA: `ai/gen_backgrounds.py` (kie.ai seedream-v4, ≈5 cr/imagen;
+  gastado **10 créditos**; el fondo C/textura dio *fail*, sin cobro).
+- **Pendiente:** **título/hashtags**; opcional reintentar el fondo C.
 
 ## Pitfalls
 
