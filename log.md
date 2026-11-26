@@ -900,7 +900,7 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - **Portada NUEVA** (regla de Arturo: **cada video y cada variación llevan thumbnail nuevo**):「全身これ1台 / 電動ボディシェーバー」, **KeinannMaruPOPjp** 80 px, centrada `x=540 / y=377.5` (medida con PIL), ≤2 líneas, con el producto visible. Distinta cuadro y distinto texto de la original.
 - **Hook visual al inicio:** `hook05_gym_battle_rope` (54 cuadros = 1.8 s) empalmado por **JOIN** (audio en una pasada, `adelay=1800` exacto, hook al 35 %). Total **1855 cuadros · 61.84 s**. Clip de **terceros** (referencia/mood, **no publicable**).
 - **QA:** frames por visión en cada ventana; `ffprobe` (1855 frames / 1080×1920 / 44.1 kHz mono); `volumedetect` (hook −42 dB, comercial −18.5 dB).
-- **Archivos (local, vps-tools):** `/root/shaver18-v3-prodc6ftp5t/` (máster, con-hook, audio, assets, guion, render, QA). SHA-256: máster `a769c4a1…8a8a87`, con hook `5bdc9e1a…d2edb7c0`. **Pendiente:** subir al NAS como variación (`18_shaver\production\v8_prod_c6ftp5t\`).
+- **Archivos (local, vps-tools):** `/root/shaver18-v3-prodc6ftp5t/` (máster, con-hook, audio, assets, guion, render, QA). SHA-256: máster `a769c4a1…8a8a87`, con hook `5bdc9e1a…d2edb7c0`. **No se sube al NAS** (regla de Arturo, 26-nov: publica a mano).
 - Registrado el procedimiento en la skill `ttchop-content-ops` → `references/variacion-cambiar-producto.md`; actualizado [[estandar-thumbnail-video]] con la regla de portada nueva.
 
 ## [2026-11-24] create | Voz de personaje con Gemini TTS en kie: Charon elegida y lineamientos de emoción
@@ -919,8 +919,7 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - **Video 2 — `prod_vp68hs3`** (air fryer liners de silicón, jp): mismo flujo. Sesión `sess_46dulev` (4 clips). Audio Charon 18.52 s → **1.5×** (12.35 s) por petición de Arturo; renders `render_mwvgevu0_vp68hs3` (18.5 s) y `render_mwvgjtnb_vp68hs3_1p5x` (12.37 s).
 - **Overlays** (opción a): sobre el collage de 12.35 s se quemó la composición Remotion **`caption-overlay`** de `ttchop-post_templates` — captions cortos (píldora blanca), **tag** 「リンクは/画面下」 + **flecha** + **descargo** 「※価格や割引は投稿時点の情報です」, y **portada nueva** (endCard) 「お手入れラク / くり返し使える」 (KeinannMaruPOPjp 80 px, x=540 / y=378). Remux del audio del base (`-c copy`, sin `-shortest`); audio idéntico al base (−17.2 / −1.5 dB).
 - **Charon en kie**: el modelo `google/gemini-3-8-flash-tts` devolvía **524** (timeout del proveedor, **sin costo**); su variante **`gemini-3-8-flash-lite-tts`** sí funcionó (misma voz). Costos medidos: 0.43 + 0.39 créditos.
-- **Archivos locales (vps-tools)**: `/root/.hermes/profiles/ttchop_robot/media/…` + scratch. **No publicado.**
-- Pendiente: subir al NAS la variación del `18_shaver` y estos dos videos (aún locales).
+- **Archivos locales (vps-tools)**: `/root/.hermes/profiles/ttchop_robot/media/…` + scratch. **No publicado.** No se sube al NAS (regla de Arturo, 26-nov: publica a mano).
 
 ## [2026-11-25] create | Tercer collage (`prod_v2y1zfp`) + overlays + visual hook
 - **Video — `prod_v2y1zfp`** (pen borrador de etiquetas térmicas + cuchilla, jp; sesión `sess_xna6p84`, 6 clips): diálogo casual-creator con hook exagerado, voz **Charon** a **1.5×** (17.76 s → 11.85 s) inyectada como `audioBase64`. Render `render_mwvj5nfj_v2y1zfp_1p5x` → 1080×1920 · **60 fps** · 11.82 s; audio 11.85 s.
@@ -1007,6 +1006,9 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
   flecha, descargo 「※価格や割引は投稿時点の情報です」 y **portada nueva** en cada pieza.
 - **Entrega al chat:** `sendVideo`/`sendAudio` de la Bot API con verificación `ok`/`message_id`
   ([[entrega-de-videos-telegram]]); los `message_id` de las últimas: 5282, 5291, 5299, 5311.
+- **Publicación y almacenamiento (regla de Arturo, 2026-11-26):** **él publica a mano** y **no hace falta subir
+  los videos al NAS** — los archivos se quedan en `~/.hermes/profiles/ttchop_robot/media/` (vps-tools). No
+  proponer subidas al NAS ni marcarlo como pendiente.
 - **Hooks ya usados:** `hook01`, `hook03`, `hook04`, `hook05`, `hook07`, `hook09`, `hook10`; `hook12` descartado
   por largo. Sin usar: `hook02`, `hook06`, `hook08`, `hook11`.
 - **Pendiente de fondo:** el bug del recetario (`callLLMJson` con aritmética en el JSON) tumba renders
