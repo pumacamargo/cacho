@@ -64,9 +64,15 @@ funciona, evita duplicar), pero **no** es garantía: si el video importa, se man
 
 ## Detalles que importan
 
-- **Formato del archivo:** para que Telegram lo acepte sin problemas, el video va en
-  `720×1280 · H.264 baseline/level 3.1 · AAC mono` (≈2 MB). Los másters de 1080×1920 se guardan igual,
-  pero al chat se manda la versión ligera.
+- **Manda el máster (1080×1920) por defecto.** La Bot API acepta hasta 50 MB, así que no hace falta
+  degradar: la versión ligera (720×1280) es **sólo un respaldo** si el máster falla o si se pidió algo
+  muy liviano. Mandar la ligera sin avisar se percibe como «se ve más cuadrado / peor», aunque el
+  aspecto (9:16) sea idéntico.
+- **Verifica el aspecto antes de culpar al archivo:** `ffprobe -select_streams v:0 -show_entries
+  stream=width,height,sample_aspect_ratio,display_aspect_ratio` → un vertical correcto da `9:16` con
+  `SAR 1:1`. Un `N/A` en SAR/DAR es normal (se deduce del ancho/alto).
+- **Formato del respaldo ligero:** `scale=720:1280`, `libx264 -profile:v baseline -level 3.1 -crf 30`,
+  `-pix_fmt yuv420p`, `aac -b:a 96k -ac 1`, `-movflags +faststart` (≈2 MB para ~15 s).
 - **Los archivos se crean antes de responder:** si el `ffmpeg` que produce el video todavía está
   corriendo en segundo plano cuando se escribe la respuesta, el archivo puede no existir aún.
 - **Los logs son la fuente de verdad:** ante cualquier «no llegó», revisar
@@ -74,5 +80,7 @@ funciona, evita duplicar), pero **no** es garantía: si el video importa, se man
 
 ## Changelog
 
+- **2026-11-26 — resolución.** Por defecto se manda el máster 1080×1920; la ligera 720×1280 es respaldo.
+  Se documenta cómo verificar el aspecto (9:16, SAR 1:1) antes de atribuir un problema al archivo.
 - **2026-11-26 — creación.** Diagnóstico con evidencia (logs por perfil) y solución: envío directo por
   `sendVideo` con verificación `ok`/`message_id`.
