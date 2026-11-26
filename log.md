@@ -936,3 +936,11 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - **Overlays** (`caption-overlay`): captions スマホも水筒も手で持ってる？ / 両手ふさがって不便だった / 肩にかけるだけで全部すっきり / 雨の日も中身は濡れない + tag/flecha/descargo + **portada nueva**「肩にかけるだけ / 両手が空く」. Audio idéntico al base (−15.5 / −0.8 dB).
 - **Visual hook:** `hook10_caida_comedia` (2.32 s) por **concat directo** → 445 frames (69+376) · 14.85 s. **Regla §10 aplicada tal cual** (JOIN de 2 archivos).
 - Hooks ya usados: `hook05`, `hook07`, `hook09`, `hook10`. Archivos locales; **no publicado**.
+
+## [2026-11-26] create | Quinto collage (`prod_c6ftp5t` en **ttchop2**) con clips nuevos + overlays + hook
+- **Clips nuevos:** Arturo subió hoy (26-nov) **12 clips** a **ttchop2** para `prod_c6ftp5t` (Enchenal Lab ボディシェーバー メンズ) → **sesión nueva `sess_nzxwh8z`** (creada 2026-11-26 02:10 UTC), todos `source: recorded`, 8.0–33.2 s. Son tomas **de producto en mano** (unboxing), sin tomas de uso.
+- **Voz:** kie seguía caído (524) → **Plan B Announcer** (ElevenLabs JP) generado aparte y a **1.5×** (18.16 s → 12.12 s), inyectado como `audioBase64`.
+- **Render:** `render_mwx1qvjv_c6ftp5t_new` en **proyecto `ttchop2`** (`getDb('ttchop2')`; los renders y sesiones se leen de ese proyecto, no del default) → 1080×1920 · 30 fps · 12.11 s.
+- **Overlays** (`caption-overlay`): まだカミソリで処理してる？ / 肌が荒れるし剃り残しも / 肌に当てるだけでツルツル / 細かいところもラクにケア + tag/flecha/descargo + **portada nueva**「肌に当てるだけ / ツルツル肌へ」. Audio idéntico al base (−15.7 / −0.7 dB).
+- **Visual hook:** `hook12_macro_impresion3d` (17.4 s — el clip completo, según la regla §10) → 885 frames (521+364) · **29.5 s**. Queda pendiente decidir si se recorta el hook a un tramo corto.
+- Hooks ya usados: `hook05`, `hook07`, `hook09`, `hook10`, `hook12`. Archivos locales; **no publicado**.
