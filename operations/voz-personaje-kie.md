@@ -67,6 +67,22 @@ Conclusión práctica: **para que un video nuevo suene como los demás, hay que 
 
 **Aviso técnico:** Charon vive en **kie**, y el pipeline actual de TTChop solo sabe hablar con **ElevenLabs** (`pipeline/elevenlabs.js`). Poner Charon como default automático **no es cambiar un ID**: requiere añadir una rama de TTS por kie en `ttchop-server` (submit a `createTask`, sondeo de `recordInfo`, descarga del MP3 temporal, y el mismo tratamiento de velocidad/pausas con FFmpeg). Mientras eso no se haga, Charon se usa **a mano** con la receta de esta página.
 
+## Variante «más energía» (pedida por Arturo, 2026-11-26)
+
+Cuando pida **más energía en la voz**, **no se cambia el texto** (misma frase, para poder comparar): se sube el
+`style` de «comercial carismático» a **explosivo / rapid-fire**, manteniendo cálido y sin falsete.
+
+```
+Explosive, high-energy TV commercial host with a rich, warm, masculine voice. Rapid-fire and punchy,
+riding a big wave of excitement the whole time. Huge dynamic swings: bursts of loud enthusiasm, then a
+fast conspiratorial drop, then straight back up. Driving, urgent, playful, smiling while talking — like he
+cannot wait to show you this. Never monotone, never calm, never formal, never shouty for its own sake,
+never falsetto, never flat. Warm and friendly underneath all the energy.
+```
+
+Resultado medido (`prod_0lyigbp`, scrubber): 18.16 s a 1.0×; Arturo comparó las tres velocidades y eligió
+**1.25×** (14.53 s). Referencias: 1.0× = 18.16 s · 1.5× = 12.11 s.
+
 ## Lineamientos de emoción (lo aprendido en las pruebas)
 
 1. **El `style` no cambia la garganta, solo la actuación.** Si una voz suena femenina o plana, no se arregla con más adjetivos: se cambia la voz base.
