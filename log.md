@@ -1050,3 +1050,8 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Elegido A** para el post; **B y el resto se guardan** para rehacer el mismo post con otra foto. Carpeta `fondos/` con `A_retrato.jpg` (elegido), `B_ventana.jpg`, `D_adler_dominio-publico.jpg` (la foto original de Adler) y un `README` con el comando de re-render.
 - **Entrega:** `final_A/01..10.png` (1080×1440) — texto **reescrito propio**, fondo A, Noto Sans CJK JP 64 px, B/N, viñeta, atribución 「アドラー心理学」 y número «N / 10». Scripts: `build_carrusel.py` (CLI: `--fondo`, `--texto original|reescrito`, `--out`), `build_slides.py` (renderer), `ai/gen_backgrounds.py` (generación, con manifiesto de `taskId`/créditos).
 - **Entrega al chat:** 10 PNG individuales. **Sin publicar.** Pendiente: **título/hashtags**.
+
+## [2026-11-26] fix | Fondo C (textura) reintentado con éxito
+- El fondo **C (textura de papel)** había dado *fail* (0 créditos). Arturo preguntó si había llegado; se **relanzó** (mismo modelo, prompt afinado) y **salió** a la primera (5 créditos) → `ai/bg3_textura.jpg` → copiado a `fondos/C_textura.jpg`.
+- Quedan 4 fondos en `fondos/`: **A_retrato** (elegido), **B_ventana**, **C_textura**, **D_adler_dominio-publico**. Gastado total en fondos: **15 créditos**.
+- Pendiente: solo **título/hashtags** (ya entregado en su forma corta) y publicar (a mano, Arturo).

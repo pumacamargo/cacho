@@ -94,7 +94,8 @@ Primer caso. Cuenta japonesa de frases con retrato vintage en B/N.
   quedan en `fondos/` (**A** elegido, **B** alternativo, **D** = Adler de dominio público) con un
   `README` y el comando `build_carrusel.py --fondo … --texto … --out …` para re-renderizar el mismo
   post con otra foto. Generación IA: `ai/gen_backgrounds.py` (kie.ai seedream-v4, ≈5 cr/imagen;
-  gastado **10 créditos**; el fondo C/textura dio *fail*, sin cobro).
+  gastado **15 créditos**: A, B y C — el fondo C/textura falló en el primer intento sin cobro y se
+  reintentó con éxito). Fondos guardados: `A_retrato`, `B_ventana`, `C_textura`, `D_adler_dominio-publico`.
 - **Pendiente:** **título/hashtags**; opcional reintentar el fondo C.
 - **Título/hashtags (2026-11-26):** una sola línea de gancho — 「不機嫌で周りを振り回す人には、関わらなくていい。」 — con `#名言 #心理学 #人間関係 #マインドセット #人生 #アドラー心理学 #気づき`. **No** se copia el CTA de la app de la cuenta de referencia (es de ellos y no tenemos esa app).
 
