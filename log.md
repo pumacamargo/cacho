@@ -985,3 +985,29 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - **105 búsquedas** en total; el video termina en *“No more searches”*, así que la lista está completa. Guardada en `raw/creator-search-insights-2026-11-26-videos-suggested.md` con el orden del video y un top 25 por vistas.
 - **Contenido muy distinto al de la lista de carruseles**: aquí es **cultura pop japonesa** (anime, videojuegos, famosos, memes), no producto. Los mayores: 私の魂の色 6.53M, 彼氏 848K, デスノート 429K, 多摩川で恋してみたい 330K. De cabello solo aparece 髪ゴム腕につける意味 (7.9K) y 男子中学生 髪型 (599) — o sea, el nicho de cabello **no** se refleja en esta pestaña.
 - Lectura: esta pestaña sirve para **temas de entretenimiento/tendencias**, no para elegir nicho de producto; el nicho de producto se decidió con la lista de *Photo posts* ([[nicho-cabello-tiktok]]).
+
+## Índice de videos recientes (nov-2026)
+
+Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + overlays + hook visual.
+**Ninguna publicada.** Los másters viven en `~/.hermes/profiles/ttchop_robot/media/` (vps-tools) y en
+`cache/scratch/`; los hooks en `P:\Tiktok\hamaca\assets\hooks\origen_creadores\2026-11-23_lote01\`.
+
+| # | Producto | Caso | Voz (velocidad) | Collage | Final (+overlays+hook) | Hook | Archivo final |
+|---|---|---|---|---|---|---|---|
+| 1 | `prod_c6ftp5t` | `18_shaver` (variación) | PumaVoice01 1.38× | 60.04 s | 61.84 s | `hook05` (1.80 s) | `shaver18_v3_prod_c6ftp5t_hook05.mp4` |
+| 2 | `prod_edpjxug` | collage | Charon 1.0× | 20.08 s | — | — | `edpjxug_collage_charon.mp4` |
+| 3 | `prod_vp68hs3` | collage | Charon 1.5× | 12.37 s | 14.17 s | `hook09` (2.04 s) | `vp68hs3_overlay_hook09.mp4` |
+| 4 | `prod_v2y1zfp` | collage | Charon 1.5× | 11.87 s | 15.37 s | `hook07` (3.51 s) | `v2y1zfp_overlay_hook07.mp4` |
+| 5 | `prod_yrikq4i` | collage | **Announcer** 1.5× | 12.50 s | 14.85 s | `hook10` (2.32 s) | `yrikq4i_overlay_hook10.mp4` |
+| 6 | `prod_c6ftp5t` (ttchop2) | clips nuevos | **Announcer** 1.5× | 12.11 s | 14.73 s | `hook01` (2.60 s) | `shaver_new_overlay_hook01.mp4` |
+| 7 | `prod_0skgwd3` | teclado AJAZZ AK820 | **Announcer** 1.5× | 12.57 s | 15.60 s | `hook03` (3.00 s, **recortado**) | `kbd_overlay_hook03.mp4` |
+| 8 | `prod_0lyigbp` | scrubber eléctrico | **Charon energético** 1.25× | 14.53 s | 17.13 s | `hook04` (2.60 s) | `scrub_overlay_hook04.mp4` |
+
+- **Overlays** (todos salvo #1 y #2): composición Remotion `caption-overlay` — captions, tag 「リンクは/画面下」,
+  flecha, descargo 「※価格や割引は投稿時点の情報です」 y **portada nueva** en cada pieza.
+- **Entrega al chat:** `sendVideo`/`sendAudio` de la Bot API con verificación `ok`/`message_id`
+  ([[entrega-de-videos-telegram]]); los `message_id` de las últimas: 5282, 5291, 5299, 5311.
+- **Hooks ya usados:** `hook01`, `hook03`, `hook04`, `hook05`, `hook07`, `hook09`, `hook10`; `hook12` descartado
+  por largo. Sin usar: `hook02`, `hook06`, `hook08`, `hook11`.
+- **Pendiente de fondo:** el bug del recetario (`callLLMJson` con aritmética en el JSON) tumba renders
+  intermitentemente; conviene endurecerlo.
