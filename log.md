@@ -1055,3 +1055,10 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - El fondo **C (textura de papel)** había dado *fail* (0 créditos). Arturo preguntó si había llegado; se **relanzó** (mismo modelo, prompt afinado) y **salió** a la primera (5 créditos) → `ai/bg3_textura.jpg` → copiado a `fondos/C_textura.jpg`.
 - Quedan 4 fondos en `fondos/`: **A_retrato** (elegido), **B_ventana**, **C_textura**, **D_adler_dominio-publico**. Gastado total en fondos: **15 créditos**.
 - Pendiente: solo **título/hashtags** (ya entregado en su forma corta) y publicar (a mano, Arturo).
+
+## [2026-11-26] docs | Runbook de carruseles de frases para hamaca azul (se van a hacer más)
+- Arturo pidió dejar documentado en Cacho **todo el flujo de carruseles** y registrarlo en la bitácora, porque **vamos a hacer más de estos para hamaca azul**.
+- **[[desmenuzado-carrusel]] reescrito como runbook reutilizable** (no registro de un caso): qué es y para qué, la regla de **no mezclar con el desmenuzado de video**, dónde se guarda, Fase 1 (desmenuzar) / Fase 2 (recrear), **pipeline paso a paso con los comandos** (`gen_backgrounds.py` → `build_carrusel.py --fondo … --texto … --out …` → QA → entrega), la **especificación de diseño vigente** (1080×1440, Noto Sans CJK JP 64 px, blanco centrado, atribución, número «N / 10»), las **3 fuentes JP disponibles**, el **avatar/bio propuestos**, los **costos** (5 créditos por fondo, los fallos no se cobran) y los pitfalls.
+- **Páginas enlazadas/actualizadas:** [[cuentas-tiktok-shop-affiliate]] ahora dice el **formato en producción de hamaca azul** (carruseles de imágenes de frases de psicología, con el runbook); [[index]] actualizado.
+- **Nota de coherencia registrada:** el [[nicho-cabello-tiktok|research de nicho]] eligió *accesorios/herramientas de peinado*, pero lo que se produce son **frases** — encaja con «crecer seguidores primero»; **pendiente confirmar** si el nicho de producto sigue siendo cabello o cambió.
+- Cierre del caso 01: entrega `final_A` (texto reescrito + fondo IA A), 4 fondos guardados, título/hashtags cortos entregados, avatar tipográfico propuesto. **Nada publicado.**

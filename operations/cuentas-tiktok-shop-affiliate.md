@@ -36,6 +36,12 @@ Es la cuenta donde vive todo lo hecho hasta hoy: los videos de producto del pipe
 2. **Contenido propio** — no reciclar el de hamaca shop.
 3. **Validar competencia y monetización** antes de comprometerse: este research mide demanda, no competencia.
 
+**Formato en producción (2026-11-26):** **carruseles de imágenes** de **frases de psicología**
+(no video, no cabello por ahora), con el runbook [[desmenuzado-carrusel]] — desmenuzar un
+carrusel ajeno y recrearlo con **texto propio y fondo propio**. Encaja con «crecer seguidores
+primero»; se van a hacer **más** con ese método. El fondo se genera con IA (Kie.ai) y se guardan
+alternativos para re-publicar el mismo post con otra foto.
+
 ## Reglas comunes
 
 - El contenido de cada cuenta es **exclusivo** de esa cuenta.

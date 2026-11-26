@@ -1,5 +1,5 @@
 ---
-title: Desmenuzar un carrusel de imágenes (método y casos)
+title: Carruseles de frases para hamaca azul (desmenuzar + recrear)
 created: 2026-11-26
 updated: 2026-11-26
 type: runbook
@@ -9,111 +9,180 @@ confidence: high
 related: [cuentas-tiktok-shop-affiliate, nicho-cabello-tiktok, ttchop-carousel-creation, dashboards-hosting]
 ---
 
-# Desmenuzar un carrusel de imágenes
+# Carruseles de frases para hamaca azul (desmenuzar + recrear)
 
-Runbook para **desmenuzar un carrusel** de otra cuenta y luego **recrearlo con una
-variación** para hacer contenido único. Nace para la cuenta nueva
-[[cuentas-tiktok-shop-affiliate]] (hamaca azul), que arranca con carruseles de
-imágenes en vez de video.
+Runbook para **desmenuzar un carrusel de imágenes** de otra cuenta y **recrearlo con
+una variación** (contenido propio) para publicarlo. Es el formato con el que
+**arranca [[cuentas-tiktok-shop-affiliate]] (hamaca azul)**: primero crecer
+seguidores con carruseles, después vender. **Se van a hacer más** — este documento
+es el método reutilizable, no el registro de un caso suelto.
 
 > **Regla de Arturo (2026-11-26): el desmenuzado de un CARRUSEL NO se mezcla con el
 > desmenuzado de un VIDEO.** Son procedimientos y artefactos distintos: el de video
 > mide script + recordings + video editing con audio y tiempos (ver
 > [[recrear-video-creadores-edits]] y [[estudio-creadores-fuentes-datos]]); el de
-> carrusel es slide por slide, sin audio ni edición de video. Van en índices y
-> carpetas separados para que no se revuelvan.
+> carrusel es slide por slide, sin audio ni edición de video. Van en carpetas e
+> índices separados para que no se revuelvan.
 
 ## Dónde se guarda (separado del video)
 
 - **Artefacto local:** `/root/desmenuzados-carrusel/<caso>/` (hermana de
-  `/root/desmenuzados`, **no** dentro). Cada caso: `desmenuzado.md` + `slides/`
-  con los PNG/JPG en orden, renombrados `01.jpg`…`NN.jpg`.
+  `/root/desmenuzados`, **no** dentro). Un caso contiene:
+  - `desmenuzado.md` — el análisis (Fase 1) + la entrega (Fase 2).
+  - `slides/01.jpg…NN.jpg` — los slides de la referencia, en orden.
+  - `fondos/` — las imágenes de fondo usables (elegida + alternativas) + `README.md`
+    con el comando para re-montar con otra.
+  - `ai/` — generación de fondos con IA (`gen_backgrounds.py`) + `manifest.json`.
+  - `final_<letra>/01.png…` — la salida montada (una carpeta por fondo).
+  - `perfil/` — avatar/bio propuestos (si se hicieron).
+  - `build_slides.py` (renderizador) y `build_carrusel.py` (CLI).
 - **Copia de los slides:** imprescindible, porque los adjuntos entrantes viven en la
-  caché del gateway (se autolimpia). El nombre de carpeta que asigna el gateway es
-  el **SHA-256 del archivo** (no sirve para ordenar: el orden lo da el carrusel).
+  caché del gateway (se autolimpia). El nombre de carpeta que asigna el gateway es el
+  **SHA-256 del archivo** — no da orden ni nombre original.
+- **Herramientas compartidas (reusar, no reescribir):** `/root/desmenuzados-carrusel/_tools/`
+  → `build_slides.py` (renderizador), `build_carrusel.py` (CLI) y `gen_backgrounds.py`
+  (fondos con IA). Se **copian** a cada caso nuevo; ver `_tools/README.md`.
 - **Conocimiento:** esta página de Cacho.
-- **Publicación (opcional, solo si Arturo lo pide):** en su propia carpeta/índice
-  del hosting (p. ej. `uploads/vps2/carruseles/`), **nunca** dentro de
-  `creators-research` (el índice de desmenuzados de video). Ver [[dashboards-hosting]].
+- **Publicación del artefacto (opcional, solo si Arturo lo pide):** en su propia
+  carpeta/índice del hosting (p. ej. `uploads/vps2/carruseles/`), **nunca** dentro de
+  `creators-research` (índice de desmenuzados de video). Ver [[dashboards-hosting]].
 
-## Método (Fase 1 — desmenuzar)
+## Fase 1 — desmenuzar (slide por slide)
 
-Slide por slide, y **nada** de script/recordings/video-editing (eso es del video):
+Nada de script/recordings/video-editing: eso es del video.
 
-1. **Inventario de entrada:** cuántos slides llegan y cuál(es) se ignoran (p. ej. el
-   slide final de anuncio/CTA de la cuenta). Confirmarlo con Arturo.
+1. **Inventario de entrada:** cuántos slides llegan y cuál(es) se ignoran (suele haber
+   un slide final de anuncio/CTA de la cuenta ajena). Confirmarlo con Arturo.
 2. **Ficha técnica del formato** (medida, no estimada):
-   - nº de slides de contenido, aspecto (px reales), si el **fondo se repite** o
-     cambia por slide (comparar regiones sin texto por diferencia de píxeles),
-   - color/estilo del texto, presencia de caja o no, sombra, familia tipográfica,
+   - nº de slides de contenido, px reales, si el **fondo se repite** o cambia por slide
+     (comparar regiones sin texto por diferencia de píxeles),
+   - color/estilo del texto, con caja o sin caja, sombra, familia tipográfica,
    - **cuerpo e interlineado** por detección de bandas de texto (filas con píxeles
-     claros), **centro vertical del bloque** (no siempre está anclado arriba),
+     claros) y **centro vertical del bloque** (no siempre anclado arriba),
    - extras: números, flechas, stickers, contador, atribución fija.
 3. **Por cada slide:** nº, **rol narrativo** (hook / definición / mecanismo / tesis /
-   juicio / consecuencia / consejo / mandato / reencuadre / cierre-CTA), descripción
-   de la imagen, y el **texto original (JP) + traducción de revisión (ES)**.
-4. **Arco narrativo:** cómo encadenan los slides (frases que continúan de uno al
-   siguiente, gancho → cierre).
+   juicio / consecuencia / consejo / mandato / reencuadre / cierre-CTA), descripción de
+   la imagen y el **texto original (JP) + traducción ES de revisión**.
+4. **Arco narrativo:** cómo encadenan (a veces las frases continúan de un slide al
+   siguiente) y dónde está el gancho y el cierre.
 
-## Método (Fase 2 — recrear con variación)
+## Fase 2 — recrear con variación
 
-- Misma **estructura y ritmo**; **contenido propio**: texto reescrito y composición
-  propia (no reciclar el fondo ni el texto del original) para que sea único.
-- Fijar antes de generar: **tema/temática** de las frases, **imagen de fondo**
-  (propia vs. reutilizada) e **imágenes** (Kie.ai si son generadas → ver
-  [[ttchop-carousel-creation]]: créditos y autorización de gasto aparte), y
+- Misma **estructura, ritmo y arco**; **contenido propio**: frases **reescritas** y
+  **fondo propio** (no reciclar texto ni foto ajena).
+- Fijar antes de generar: **tema** de las frases, **fondo** (generado vs. reutilizado) y
   **título/hashtags**.
 - **Publicación en TikTok:** ttchop_robot **nunca** publica; Arturo publica a mano.
+
+## Pipeline reproducible — hacer el siguiente (paso a paso)
+
+```bash
+mkdir -p /root/desmenuzados-carrusel/<caso> && cd /root/desmenuzados-carrusel/<caso>
+cp /root/desmenuzados-carrusel/_tools/build_slides.py \
+   /root/desmenuzados-carrusel/_tools/build_carrusel.py .
+mkdir -p ai && cp /root/desmenuzados-carrusel/_tools/gen_backgrounds.py ai/
+
+# 0) Guardar los slides de referencia FUERA de la caché (ver Pitfalls) y analizarlos
+#    -> desmenuzado.md
+#    Editar SLIDES / SLIDES_REESCRITO en build_slides.py con el texto del caso.
+
+# 1) (Opcional) Generar fondos con IA. Editar CONCEPTS en ai/gen_backgrounds.py.
+export KIEAI_API_KEY=$(ssh root@100.68.238.117 \
+  'grep -m1 "^KIEAI_API_KEY=" /root/projects/ttchop/ttchop-server/.env | cut -d= -f2-' \
+  | tr -d '"'"'"'\r\n')          # nunca imprimir la clave
+python3 ai/gen_backgrounds.py     # crea manifiesto ANTES de poll-ear (no re-cobra timeouts)
+
+# 2) Montar el set completo (10 slides) con el fondo elegido y el texto reescrito
+python3 build_carrusel.py --fondo fondos/A_retrato.jpg --texto reescrito --out final_A
+#    --texto: reescrito | original     --out: carpeta nueva (no pisar entregas)
+#    Para publicar el mismo post con otra foto:
+#    python3 build_carrusel.py --fondo fondos/B_ventana.jpg --texto reescrito --out final_B
+
+# 3) QA antes de entregar
+#    - hoja de contacto 5x2 y revisión con visión
+#    - medir márgenes: ninguna línea puede salirse del ancho (a 64 px, ≤16 caracteres/línea)
+# 4) Entregar los PNG individuales en orden por Telegram (no ZIP). Nunca publica el bot.
+```
+
+**Especificación de diseño vigente** (la del caso 01, reutilizable):
+
+| Pieza | Valor |
+| --- | --- |
+| Lienzo | **1080×1440** (3:4) |
+| Fondo | imagen B/N recortada a 3:4 + viñeta/oscurecido para legibilidad |
+| Tipografía | **`Noto Sans CJK JP` Bold 64 px**, interlineado 98 px |
+| Texto | blanco **#ffffff** centrado, **sin caja**, sombra suave |
+| Bloque | centrado vertical a **≈53 %** de la altura |
+| Atribución | 「アドラー心理学」 (o la que corresponda al tema) debajo |
+| Número de orden | **«N / 10»** abajo al centro |
+| Salida | PNG individuales, 1080×1440 |
+
+**Fuentes japonesas disponibles** (son las únicas 3 familias reales en los hosts; DejaVu/
+Liberation no traen japonés):
+`KeinannMaruPOPjp` (redondeada, estándar de portadas ttchop, `/root/dualshaver-announcer/`),
+`Noto Sans CJK JP`, `Noto Serif CJK JP` (+ `Noto Sans Mono CJK JP`, monoespaciada).
+
+**Avatar y bio de la cuenta** (propuestas del 2026-11-26, en `perfil/` del caso 01):
+avatar **tipográfico** — un kanji fijo (p. ej. 「心」) blanco sobre fondo oscuro: se lee a
+tamaño diminuto y mantiene la identidad B/N + texto blanco. Bio propuesta:
+「心を軽くする言葉を、ひとつずつ。／人間関係やマインドセットのヒントを発信しています🌿／
+フォローしてもらえると嬉しいです。」
+
+**Costos:** generar fondos = **5 créditos por imagen** (kie.ai, `bytedance/seedream-v4-text-to-image`).
+Los fallos del proveedor **no se cobran**. Pedir autorización de gasto antes de generar.
 
 ## Caso 01 — Frases de psicología (Adler) · 2026-11-26
 
 Primer caso. Cuenta japonesa de frases con retrato vintage en B/N.
 
-- **Entrada:** 11 imágenes (960×1280, 3:4). **10 de contenido** + **1 final de
-  anuncio de la app Motto**, que Arturo pidió **ignorar** (guardado solo como
-  referencia).
-- **Formato medido:** fondo **idéntico en los 10 slides** (retrato B/N con viñeta);
-  texto blanco **#ffffff** centrado sin caja, con sombra; gothic/rounded sans;
-  cuerpo ≈48 px de tinta e interlineado ≈83 px (a 960 de ancho); atribución fija
-  「アドラー心理学」; bloque de texto **centrado verticalmente a ≈53 %** de la altura.
-- **Arco:** hook («el mal humor es el mayor pecado») → definición (inmaduro) →
-  mecanismo (buscan atención) → tesis (controlar al otro) → juicio (niño de 3 años)
-  → consecuencia (tratarles en serio hace perder) → consejo (ignorar) → mandato (no
-  gastar tu tiempo) → compasión (pobre persona) → cierre (concéntrate en lo tuyo).
-- **Artefacto:** `/root/desmenuzados-carrusel/C01_adler-psicologia/` (`desmenuzado.md`
-  + `slides/01..10.jpg` y `11_CTA_Motto_IGNORADO.jpg`), verificado por SHA-256.
-- **Recreación (Fase 2, 2026-11-26):** montada con el **mismo contenido y diseño cambiado**
-  (pedido de Arturo). Fondo = la imagen de Adler que mandó (`chmc-dubai.com/…/Alfred-Adler.jpg`,
-  432×553) en **blanco y negro** (no sepia), escalada a 1080×1440 con viñeta; tipografía
-  **`Noto Sans CJK JP` Bold 64 px**, blanco centrado con sombra, atribución 「アドラー心理学», y
-  **número de orden «N / 10» abajo**. Salida `final/01..10.png` (1080×1440), script `build_slides.py`.
-- **Pendiente:** el texto es aún el mismo de la referencia (decidir si se **reescriben las frases**
-  para contenido único) y **título/hashtags**.
-- **Entrega final (2026-11-26):** texto **reescrito** (contenido propio, mismo arco) + fondo **A**
-  (retrato de época **generado con IA**, B/N). Salida `final_A/01..10.png` (1080×1440). Los fondos
-  quedan en `fondos/` (**A** elegido, **B** alternativo, **D** = Adler de dominio público) con un
-  `README` y el comando `build_carrusel.py --fondo … --texto … --out …` para re-renderizar el mismo
-  post con otra foto. Generación IA: `ai/gen_backgrounds.py` (kie.ai seedream-v4, ≈5 cr/imagen;
-  gastado **15 créditos**: A, B y C — el fondo C/textura falló en el primer intento sin cobro y se
-  reintentó con éxito). Fondos guardados: `A_retrato`, `B_ventana`, `C_textura`, `D_adler_dominio-publico`.
-- **Pendiente:** **título/hashtags**; opcional reintentar el fondo C.
-- **Título/hashtags (2026-11-26):** una sola línea de gancho — 「不機嫌で周りを振り回す人には、関わらなくていい。」 — con `#名言 #心理学 #人間関係 #マインドセット #人生 #アドラー心理学 #気づき`. **No** se copia el CTA de la app de la cuenta de referencia (es de ellos y no tenemos esa app).
+- **Entrada:** 11 imágenes (960×1280). **10 de contenido** + **1 final de anuncio de la app
+  Motto**, que Arturo pidió **ignorar** (guardado solo como referencia).
+- **Formato medido:** fondo **idéntico en los 10 slides** (retrato B/N con viñeta); texto
+  blanco **#ffffff** centrado sin caja con sombra; gothic/rounded sans; cuerpo ≈48 px de
+  tinta e interlineado ≈83 px (a 960 de ancho); atribución 「アドラー心理学」; bloque centrado
+  vertical a **≈53 %**.
+- **Arco:** hook (el mal humor es el mayor pecado) → definición (inmaduro) → mecanismo
+  (busca atención) → tesis (controla al otro) → juicio (niño de 3 años) → consecuencia
+  (tratarles en serio hace perder) → consejo (ignorar) → mandato (no gastar tu tiempo) →
+  compasión (pobre persona) → cierre (concéntrate en lo tuyo).
+- **Entrega final:** texto **reescrito** (propio, mismo arco) + fondo **A** (retrato de
+  época generado con IA, B/N) → `final_A/01..10.png` (1080×1440).
+- **Fondos guardados** en `fondos/`: `A_retrato` (elegido), `B_ventana`, `C_textura`,
+  `D_adler_dominio-publico` (la foto original de Adler) + `README.md`.
+  Generación: `ai/gen_backgrounds.py`; gastado **15 créditos** (A, B y C — el C falló en el
+  primer intento sin cobro y se reintentó). El texto de referencia se conserva también: para
+  volver a él, `--texto original`.
+- **Título/hashtags entregados:** 不機嫌で周りを振り回す人には、関わらなくていい。 +
+  `#名言 #心理学 #人間関係 #マインドセット #人生 #アドラー心理学 #気づき`. **No** se copia el CTA
+  de la app de la cuenta de referencia (es de ellos y no tenemos esa app).
+- **Nota de coherencia:** el [[nicho-cabello-tiktok|research de nicho]] había elegido
+  *accesorios y herramientas de peinado*; el contenido que se está produciendo para hamaca
+  azul es **carruseles de frases**. Encaja con «crecer seguidores primero» (las frases crecen
+  rápido), pero **queda pendiente confirmar** si el nicho de producto sigue siendo cabello o
+  cambió.
 
 ## Pitfalls
 
 - **No mezclar** con el desmenuzado de video ni con su índice (`creators-research`).
 - **Copiar los slides fuera de la caché** antes de 24 h: los adjuntos entrantes se
   autolimpian y con ellos se pierde la fuente.
-- El nombre de carpeta que da el gateway a cada adjunto es su **SHA-256**: no
-  contiene el orden ni el nombre original.
-- El **fondo puede ser una sola imagen** repetida en todos los slides: comprobarlo
-  por diferencia de píxeles, no a ojo (el zoom aparente engaña).
-- La **traducción es de revisión**, no un hecho verificado: marcar los matices
-  (p. ej. 不機嫌 = mal humor/estar de mal genio; 「幼稚」 = inmaduro/infantil).
+- El nombre de carpeta que da el gateway a cada adjunto es su **SHA-256**: no contiene el
+  orden ni el nombre original.
+- El **fondo puede ser una sola imagen** repetida en todos los slides: comprobarlo por
+  diferencia de píxeles, no a ojo (el zoom aparente engaña).
+- **Dos líneas largas se salen del ancho:** a 64 px, cada carácter CJK mide 64 px, así que
+  ninguna línea puede pasar de ~16 caracteres. Medir los márgenes antes de entregar.
+- Al centrar texto en PIL, **no** usar `anchor="mm"` y restar `ancho/2` a la vez: se
+  desplaza a la izquierda. Con `anchor="mm"`, la x es el centro del lienzo.
+- La **traducción es de revisión**, no un hecho verificado: marcar matices (p. ej. 不機嫌 =
+  mal humor/estar de mal genio; 「幼稚」 = inmaduro/infantil).
+- **La cuenta ajena puede promocionar su propia app**: ese CTA no se copia.
+- Los fondos generados salen **1600×2848** (9:16); al montar se recorta el centro a **3:4**.
 
 ## Relacionado
 
 - [[cuentas-tiktok-shop-affiliate]] — las cuentas (hamaca shop / hamaca azul).
-- [[nicho-cabello-tiktok]] — research de nicho para hamaca azul (carruseles).
+- [[nicho-cabello-tiktok]] — research de nicho para hamaca azul.
 - [[ttchop-carousel-creation]] — creación de carruseles (Kie.ai/local, QA).
 - [[dashboards-hosting]] — dónde viven los dashboards publicados (video).
+- [[recrear-video-creadores-edits]] — el equivalente para VIDEO (no mezclar).
