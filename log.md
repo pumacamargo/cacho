@@ -947,3 +947,12 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
   recorta al tramo del mejor beat. Duraciones medidas de la biblioteca: `hook01` 2.60 · `hook04` 2.60 ·
   `hook03` 3.25 · `hook02` 3.27 · `hook08` 4.50 · `hook06` 5.85 · `hook11` 6.85 · `hook12` 17.4 s.
 - Hooks ya usados: `hook05`, `hook07`, `hook09`, `hook10`, `hook12` (descartado), `hook01`. Archivos locales; **no publicado**.
+
+## [2026-11-26] create | Sexto collage (`prod_0skgwd3`, teclado AJAZZ AK820) + overlays + hook recortado
+- **Producto:** AJAZZ AK820 (teclado mecánico gaming 75%, hot-swap, perilla, gasket) — región jp, sesión `sess_ozjfvbw` (6 clips).
+- **Voz:** kie seguía caído (524) → **Announcer** generado aparte y a **1.5×** (18.88 s → 12.59 s), inyectado como `audioBase64`.
+- **Render:** `render_mwx31pwh_kbd_1p5x` (el primero, `render_mwx30wlu`, falló con `Unknown source clip at recipe index 3` — el LLM generó un clip de relleno con origen inválido; el reintento pasó). 1080×1920 · 30 fps · 12.57 s.
+- **Overlays** (`caption-overlay`): そのキーボード打ちにくくない？ / 打鍵感って本当に大事 / 押した瞬間カチッと決まる / キーを全部自分好みに + tag/flecha/descargo + **portada nueva**「押した瞬間 / カチッと決まる」. Audio idéntico al base (−16.1 / −0.4 dB).
+- **Visual hook:** `hook03_demolicion` **recortado a 3.0 s** (el original 3.25 s; el beat del golpe queda dentro) — **primera aplicación de la regla hook ≤3 s**. Concat directo → 468 frames (90+378) · 15.6 s.
+- **Entrega:** los videos se mandan también en versión mínima (720×1280, H.264 baseline + AAC mono) porque las versiones grandes no llegaban por Telegram.
+- Hooks ya usados: `hook05`, `hook07`, `hook09`, `hook10`, `hook12` (descartado), `hook01`, `hook03`. Archivos locales; **no publicado**.
