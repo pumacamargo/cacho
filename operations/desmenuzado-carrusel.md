@@ -96,7 +96,7 @@ Primer caso. Cuenta japonesa de frases con retrato vintage en B/N.
   post con otra foto. Generación IA: `ai/gen_backgrounds.py` (kie.ai seedream-v4, ≈5 cr/imagen;
   gastado **10 créditos**; el fondo C/textura dio *fail*, sin cobro).
 - **Pendiente:** **título/hashtags**; opcional reintentar el fondo C.
-- **Título/hashtags (2026-11-26):** entregado uno listo para copiar (hook + CTA de guardado + `#名言 #心理学 #人間関係 #マインドセット #人生 #アドラー心理学 #気づき`). **No** se copia el CTA de la app de la cuenta de referencia (es de ellos y no tenemos esa app).
+- **Título/hashtags (2026-11-26):** una sola línea de gancho — 「不機嫌で周りを振り回す人には、関わらなくていい。」 — con `#名言 #心理学 #人間関係 #マインドセット #人生 #アドラー心理学 #気づき`. **No** se copia el CTA de la app de la cuenta de referencia (es de ellos y no tenemos esa app).
 
 ## Pitfalls
 
