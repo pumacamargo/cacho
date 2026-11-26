@@ -1011,5 +1011,21 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
   proponer subidas al NAS ni marcarlo como pendiente.
 - **Hooks ya usados:** `hook01`, `hook03`, `hook04`, `hook05`, `hook07`, `hook09`, `hook10`; `hook12` descartado
   por largo. Sin usar: `hook02`, `hook06`, `hook08`, `hook11`.
-- **Pendiente de fondo:** el bug del recetario (`callLLMJson` con aritmética en el JSON) tumba renders
-  intermitentemente; conviene endurecerlo.
+- **Bug del recetario — ARREGLADO (commit `44cc142`, 26-nov):** `pipeline/llm.js` ahora pide
+  `response_format: json_object`, **evalúa las expresiones aritméticas** fuera de cadenas cuando el parseo
+  estricto falla y hace **un reintento correctivo**; verificado con 5 casos (5/5). **Falta reiniciar
+  `ttchop-server`** para que aplique (requiere OK de Arturo).
+
+## [2026-11-26] fix | Bug del recetario (`callLLMJson`) arreglado en el repo
+- **Qué pasaba:** el LLM del recetario escribía una **expresión aritmética** en un campo numérico
+  (`"trimStart": 5.146147180107526 - 1.0`) → JSON inválido → el render quedaba `failed` **sin `error` en el
+  doc**. Tumbó 3 renders (`render_mwvj3qzd`, `render_mwxd9vxi` y otro el 25-nov).
+- **Fix (`pipeline/llm.js`, commit `44cc142` en `master`):**
+  1. `callLLM` acepta `jsonMode` y manda `response_format: { type: 'json_object' }` en el path JSON.
+  2. Si el parseo estricto falla, `repairJsonArithmetic` **evalúa `NUM <op> NUM` fuera de cadenas** (nunca
+     toca un documento que ya parsea) y reintenta el parseo.
+  3. Un **reintento correctivo** con el error en el prompt.
+- **Verificación:** 5 casos (el roto real, suma/división, JSON válido que **no** debe cambiar, exponentes
+  `1e-5`, aritmética dentro de strings) → **5/5 PASS**; y el import del módulo con la reparación funcionando.
+- **Pendiente:** **reiniciar `ttchop-server`** para que aplique (requiere OK de Arturo). Respaldo del archivo
+  viejo en `/root/llm.js.bak-*` en vps-projects.
