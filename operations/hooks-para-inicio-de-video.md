@@ -172,6 +172,12 @@ Ejemplo llenado con dadawoca ナノグラス ムダ毛ケア (producto JP; solo 
 > de hook y (2) el render final. **No se edita, no se re-monta y no se re-renderiza nada.** El hook sólo se
 > **antepone**; el render entra **intacto** detrás. Cualquier intento de «meter el hook en la edición» mueve el
 > audio y los overlays del render → **no hacerlo**.
+>
+> **Regla (Arturo, 2026-11-26):** el hook **no debe durar más de 3 s**; si el clip dura más, **se recorta** a
+> ≤3 s (el tramo con el beat más fuerte). Recortar el hook **no** es «editar el render»: el render sigue
+> entrando completo e intacto. Duraciones de la biblioteca: `hook01` 2.60 s · `hook04` 2.60 s · `hook03`
+> 3.25 s · `hook02` 3.27 s · `hook08` 4.50 s · `hook06` 5.85 s · `hook11` 6.85 s · `hook12` 17.4 s
+> (los ≥3 s se recortan antes de empalmar).
 
 El hook va **antes** del render, no reemplazando cuadros: la duración sube el largo del hook y los
 rótulos/captions del render **conservan su alineación interna** (sólo el bloque completo arranca más tarde,
@@ -231,6 +237,8 @@ La derivada lleva su `*_hook.json` con el clip, su largo y la nota de que se us�
 
 ## Changelog
 
+- **2026-11-26 — §10: hook ≤3 s.** Regla de Arturo: el hook no dura más de 3 s; si el clip es más largo se
+  recorta al tramo del mejor beat (el render sigue intacto). Se anotan las duraciones medidas de la biblioteca.
 - **2026-11-25 — §11 Título listo para copiar.** Regla: un título, un bloque, sin alternativas.
 - **2026-11-25 — §10 reescrita (regla de Arturo).** Agregar un visual hook es **unir 2 archivos** (hook + render):
   concat directo, sin `amix`/`adelay`/`atrim`/atenuar el hook. La receta anterior (mezcla al 35 %) es ahora el

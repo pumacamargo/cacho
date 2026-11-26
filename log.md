@@ -942,5 +942,8 @@ Cierre de los 4 huecos de documentación aprobados por Arturo ("sí, a fondo"). 
 - **Voz:** kie seguía caído (524) → **Plan B Announcer** (ElevenLabs JP) generado aparte y a **1.5×** (18.16 s → 12.12 s), inyectado como `audioBase64`.
 - **Render:** `render_mwx1qvjv_c6ftp5t_new` en **proyecto `ttchop2`** (`getDb('ttchop2')`; los renders y sesiones se leen de ese proyecto, no del default) → 1080×1920 · 30 fps · 12.11 s.
 - **Overlays** (`caption-overlay`): まだカミソリで処理してる？ / 肌が荒れるし剃り残しも / 肌に当てるだけでツルツル / 細かいところもラクにケア + tag/flecha/descargo + **portada nueva**「肌に当てるだけ / ツルツル肌へ」. Audio idéntico al base (−15.7 / −0.7 dB).
-- **Visual hook:** `hook12_macro_impresion3d` (17.4 s — el clip completo, según la regla §10) → 885 frames (521+364) · **29.5 s**. Queda pendiente decidir si se recorta el hook a un tramo corto.
-- Hooks ya usados: `hook05`, `hook07`, `hook09`, `hook10`, `hook12`. Archivos locales; **no publicado**.
+- **Visual hook:** `hook01_pov_moto` (**2.60 s**) por concat directo → 442 frames (78+364) · **14.73 s**. Se
+  descartó `hook12` (17.4 s) porque **la regla nueva es hook ≤3 s** (Arturo, 26-nov): si el clip dura más, se
+  recorta al tramo del mejor beat. Duraciones medidas de la biblioteca: `hook01` 2.60 · `hook04` 2.60 ·
+  `hook03` 3.25 · `hook02` 3.27 · `hook08` 4.50 · `hook06` 5.85 · `hook11` 6.85 · `hook12` 17.4 s.
+- Hooks ya usados: `hook05`, `hook07`, `hook09`, `hook10`, `hook12` (descartado), `hook01`. Archivos locales; **no publicado**.
