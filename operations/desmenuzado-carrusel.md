@@ -255,6 +255,14 @@ Lo que quedó como formato propio:
 - El formato **tategaki se puede repetir con tema hermano** cuando el molde llega dos veces: en vez
   de republicar lo mismo (caso C03 → C05), se cambia **la etiqueta de categoría y las 10 frases**
   manteniendo lienzo, fuente, etiqueta y pie.
+- **Si el fondo lleva una persona, pide la etnia en el prompt y compruébala con visión.** Medido el
+  27-nov: sin decirlo, `seedream` devolvió **rasgos europeos**; con «japanese» en el prompt, un señor
+  mayor japonés (C05). Se generan 2 y se elige.
+- **Con fondo de retrato, el bloque de texto centrado del molde tapa la cara.** Solución aplicada en el
+  C05: bajar el bloque (`CY_Q 0.63`), la etiqueta (`CY_L 0.78`) y el pie (`FOOT_Y 0.945`; el
+  renderizador `build_tategaki.py` ahora expone `FOOT_Y`, antes fijo en 0.845) para que el texto vertical
+  caiga sobre la ropa oscura y la cara quede libre. (En el C01, aprobado, el texto sí cae sobre la cara:
+  el criterio admite ambas, pero en vertical se lee mejor despejada.)
 
 ## Relacionado
 
