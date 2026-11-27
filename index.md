@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-11-26 | Total pages: 64
+> Last updated: 2026-11-26 | Total pages: 65
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
@@ -49,8 +49,9 @@
 - [[hermes-agentes]] — agentes persistentes de Hermes (research, developer, jr_developer, ttchop_robot)
 
 ## Operaciones
-- [[cuentas-tiktok-shop-affiliate]] — las cuentas de TikTok Shop affiliate: **hamaca shop** (principal; **todo el contenido hasta el 2026-11-26 es exclusivo de ella**) y **hamaca azul** (secundaria, **nueva**, arranca desde cero con objetivo de **crecer seguidores primero** y vender después)
+- [[cuentas-tiktok-shop-affiliate]] — las cuentas de TikTok Shop affiliate: **hamaca shop** (principal; **todo el contenido hasta el 2026-11-26 es exclusivo de ella**), **hamaca azul** (secundaria, **nueva**, arranca desde cero con objetivo de **crecer seguidores primero** y vender después) y **totocha** (cuenta nueva de su mamá)
 - [[nicho-cabello-tiktok]] — research de nicho para hamaca azul: extracción y agrupación de **56 temas** de Creator Search Insights (video del 2026-11-26); cabello concentra el **87 %** de la demanda y los 12 de los 15 primeros puestos; nicho elegido = **accesorios y herramientas de peinado** (pinzas 293K ▲1,000 %+, cabello ondulado 221K ▲1,000 %+), plan B bolsos/hogar, y las advertencias (mide demanda, no competencia)
+- [[nicho-totocha]] — research de **totocha**: dos videos del 2026-11-27 (pestaña *Sugerencia*), **20 + 22 búsquedas** con vistas; dos grupos — **cómo viralizar con fotos** (PT/ES: *mas vistas en tiktok* 244K, *Fotos lindas* 486K) y **reflexiones/emociones** (ES: *Percepción de la propia imagen* 510K ▲834.8 %, *cosas que han cambiado en mi* 299K, con etiqueta **Popular en MX**)
 - [[desmenuzado-carrusel]] — **runbook reutilizable** para los carruseles de **hamaca azul**: desmenuzar un carrusel ajeno (ficha técnica medida, slide por slide con rol + JP + ES, arco) y **recrearlo con texto y fondo propios** (pipeline paso a paso, especificación de diseño, fondos B/N generados con IA y guardados para reusar, costo y pitfalls); **separado** del desmenuzado de video. Primer caso: frases de Adler (10 slides).
 - [[tareas-diarias-ttchop]] — rutina diaria del proyecto TikTok Shop: Request Samples de Asu/Sora/Taku, grabar 3 videos, editar 3 videos, 1 video para cuenta nueva; checklist publicado en el hosting
 - [[acceso-ftps-lemon-sushi]] — FTPS verificado al hosting; raíz /public_html/uploads/vps2, subcarpetas obligatorias, URL base y límites de privacidad pública
