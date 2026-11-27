@@ -161,6 +161,37 @@ Primer caso. Cuenta japonesa de frases con retrato vintage en B/N.
   rápido), pero **queda pendiente confirmar** si el nicho de producto sigue siendo cabello o
   cambió.
 
+## Segundo formato: texto vertical (tategaki) — casos 02 y 03
+
+La misma cuenta de referencia (Motto) publica **otro diseño**: **frases sueltas en texto vertical**
+sobre fondo crema. Es el formato de los casos 02 y 03 (ver `desmenuzado.md` de cada uno).
+
+| Pieza | Valor |
+| --- | --- |
+| Lienzo | **1180×1574** o **1080×1440** (3:4) |
+| Fondo | **crema liso `#F4EDDB`** |
+| Texto | **vertical (tategaki)**, columnas **de derecha a izquierda**, tinta `#2C231A` |
+| Cuerpo | ≈**66–72 px** (ancho de columna ≈63–79 px) |
+| Intercolumnas | paso ≈78 px |
+| Etiqueta / atribución | vertical, ≈**35 px**, al pie **a la izquierda**, en dos columnas |
+| Marca | wordmark del dueño abajo al centro (**su marca: no se reutiliza**) |
+| Extras | sin números, flechas ni contador |
+
+- **Qué lleva cada cuenta como "etiqueta"**: el caso 02 atribuye cada frase a **personas reales**
+  (nombre + rol) — y varias son **misatribuciones conocidas**; el caso 03 usa una **etiqueta de
+  categoría** (「ムカついた時に読みたい言葉»). Para lo nuestro: **frases propias** con etiqueta de
+  categoría, o citas **verificadas** si se quiere atribuir.
+- **La portada es el punto delicado**: el caso 02 abría con una **obra con copyright** (Magritte);
+  el 03 **no tiene portada** (10 frases + CTA). Si un molde trae una imagen ajena, **hay que
+  hacer una propia**.
+- **El renderizador de este formato es nuevo**: PIL no trae maquetación vertical; hay que
+  **dibujar carácter por carácter**, por columna, de derecha a izquierda (ojo con 、。「」 y con el
+  centrado del bloque).
+- **Casos:** **C02** (`/root/desmenuzados-carrusel/C02_motto-meigen/` — 12 de contenido + CTA;
+  traía la portada de Magritte y atribuciones a personas) y **C03**
+  (`/root/desmenuzados-carrusel/C03_motto-mukatsuita/` — 10 frases + CTA, etiqueta de categoría,
+  **sin portada ni duplicados: el molde más limpio**).
+
 ## Pitfalls
 
 - **No mezclar** con el desmenuzado de video ni con su índice (`creators-research`).
