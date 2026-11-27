@@ -213,7 +213,7 @@ Lo que quedó como formato propio:
 | Fondo | **UNA imagen generada con IA** reutilizada en todos los slides + degradado oscuro arriba para el texto. Elegido: **paisaje al amanecer sin cruz**; se generaron 5 opciones (Biblia, iglesia, amanecer con cruz, manos, paisaje sin cruz) y Arturo eligió |
 | Tipografía | **latina**: `DejaVu Sans Bold` (gancho) y `Liberation Serif` (cita y reflexión) |
 | Texto | blanco cálido con contorno/sombra, alineado a la izquierda (salvo el gancho, centrado) |
-| Slides | **3**: gancho («Es solo un verso de la biblia...») → **cita bíblica real** (Romanos 8:28) → **reflexión propia** rotulada «REFLEXIÓN» |
+| Slides | **3**: gancho («Es solo un verso de la biblia...») → **cita bíblica real** (Romanos 8:28, texto RVR1960) → **reflexión propia** rotulada «REFLEXIÓN» |
 | Marca | **sin marca** en los slides (el nombre de la cuenta va en el perfil) |
 
 - **Contenido religioso:** la cita debe ser **bíblica y real**; si se añade una reflexión, **rotularla**
@@ -227,6 +227,10 @@ Lo que quedó como formato propio:
 ## Pitfalls
 
 - **No mezclar** con el desmenuzado de video ni con su índice (`creators-research`).
+- **Bajo «Libro capítulo:versículo» va el TEXTO REAL del versículo**, no una paráfrasis
+  inspiracional. El molde de Davi ponía «Lo que Dios tiene para ti no necesitará que lo persigas
+  desesperadamente» bajo **Romanos 8:28**, que **no es** ese versículo: se detectó y se sustituyó por
+  el texto real (RVR1960). Verificar el versículo antes de montarlo.
 - **Copiar los slides fuera de la caché** antes de 24 h: los adjuntos entrantes se
   autolimpian y con ellos se pierde la fuente.
 - El nombre de carpeta que da el gateway a cada adjunto es su **SHA-256**: no contiene el

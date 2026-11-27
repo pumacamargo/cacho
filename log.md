@@ -1089,6 +1089,11 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - Se generaron **3 fondos alternativos** (iglesia con vitral, amanecer con cruz, manos con Biblia) además del primero → hoja `opciones.jpg` (4 columnas, con el montaje real del slide 1 y 2 sobre cada fondo). Arturo eligió **el paisaje** pero **sin la cruz**: se generó `ai/paisaje_sin_cruz.jpg`.
 - **Gastado en fondos del C04: 25 créditos** (5 imágenes). Lección: **ofrecer varias opciones de fondo** (y poder corregir una en concreto) es exactamente lo que él espera.
 - **Final:** `final/01..03.png` con el paisaje; gancho nuevo, `Romanos 8:28` + el mensaje del molde, y la reflexión propia rotulada «REFLEXIÓN». Sin marca. **Sin publicar.**
+
+## [2026-11-27] fix | C04 — el «Romanos 8:28» del molde era una paráfrasis; se puso el texto real
+- Arturo preguntó si el texto bajo `Romanos 8:28` era correcto. **No lo era**: el molde de Davi pone bajo el número del versículo una **paráfrasis** («Lo que Dios tiene para ti no necesitará que lo persigas desesperadamente»), no el versículo.
+- **Verificado** por búsqueda: Romanos 8:28 (RVR1960) = «Y sabemos que a los que aman a Dios, todas las cosas les ayudan a bien, esto es, a los que conforme a su propósito son llamados.»
+- Se re-montó el slide 2 con el **texto real** (5 líneas, cuerpo 50 px) y se añadió el **pitfall** al runbook: bajo «Libro cap:vers» va el texto real, no una paráfrasis. **Sin publicar.**
 - **Nueva cuenta registrada: `totocha`** (cuenta nueva de la mamá de Arturo, 2026-11-26) en [[cuentas-tiktok-shop-affiliate]]. Regla añadida: **cada cuenta lleva su propio research** y los datos extraídos de videos se guardan con el nombre de la cuenta (`...-hamaca-azul-...`, `...-totocha-...`) para no mezclar los de hamaca azul con los de totocha.
 
 ## [2026-11-27] extract | Dos videos de insights para la cuenta totocha
