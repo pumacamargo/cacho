@@ -210,16 +210,18 @@ Lo que quedó como formato propio:
 | Pieza | Valor |
 | --- | --- |
 | Lienzo | **1080×1440** (3:4) |
-| Fondo | **UNA imagen generada con IA** reutilizada en todos los slides (Biblia abierta, luz cálida) + degradado oscuro arriba para el texto |
+| Fondo | **UNA imagen generada con IA** reutilizada en todos los slides + degradado oscuro arriba para el texto. Elegido: **paisaje al amanecer sin cruz**; se generaron 5 opciones (Biblia, iglesia, amanecer con cruz, manos, paisaje sin cruz) y Arturo eligió |
 | Tipografía | **latina**: `DejaVu Sans Bold` (gancho) y `Liberation Serif` (cita y reflexión) |
 | Texto | blanco cálido con contorno/sombra, alineado a la izquierda (salvo el gancho, centrado) |
-| Slides | **3**: gancho (`La Biblia dice:`) → **cita bíblica real** → **reflexión propia** rotulada «REFLEXIÓN» |
+| Slides | **3**: gancho («Es solo un verso de la biblia...») → **cita bíblica real** (Romanos 8:28) → **reflexión propia** rotulada «REFLEXIÓN» |
 | Marca | **sin marca** en los slides (el nombre de la cuenta va en el perfil) |
 
 - **Contenido religioso:** la cita debe ser **bíblica y real**; si se añade una reflexión, **rotularla**
   como reflexión y no atribuirle frases inventadas a la Biblia.
 - **Idioma español** ⇒ tipografías latinas (las JP de los otros formatos no aplican).
-- Coste: **1 imagen IA = 5 créditos**. Artefacto: `/root/desmenuzados-carrusel/C04_davi-biblia/`
+- Coste: **5 créditos por imagen IA**. Ojo: ofrecer **varias opciones de fondo** es lo que Arturo
+  espera (pidió «otras imágenes como opciones» y luego descartar la cruz de una); el C04 gastó
+  **25 créditos** en 5 fondos. Artefacto: `/root/desmenuzados-carrusel/C04_davi-biblia/`
   (`final/01..03.png`, `ai/`, `build_c04.py`).
 
 ## Pitfalls
