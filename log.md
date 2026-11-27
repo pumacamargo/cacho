@@ -1110,6 +1110,10 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Fondo nuevo generado a medida** (`amanecer_portrait.jpg`, **5 créditos**): amanecer vertical con **cielo oscuro y estrellas arriba**, sol bajo y niebla en los valles — llena todo el cuadro, sin bordes. Gastado del C04: **30 créditos** en 6 imágenes.
 - **Lienzo cambiado a 1080×1920 (9:16)**: el fondo es 9:16 y entra **completo, sin recorte**; el velo bajó a ≈58/255 solo en la franja superior. Tipografías y bloques re-escalados (gancho 92 px, referencia 60, versículo 48, reflexión 58) con `--check` en OK.
 - **Sin publicar.**
+
+## [2026-11-27] update | C04 — variante en blanco y negro
+- Arturo pidió probar el fondo **en blanco y negro**. Se añadió `--bw` al compositor (fondo a gris con autocontraste, mismo diseño) → `final_bn/01..03.png`, junto a la versión en color (`final/`).
+- Pendiente: que elija la variante final y el **título/hashtags**. **Sin publicar.**
 - **Nueva cuenta registrada: `totocha`** (cuenta nueva de la mamá de Arturo, 2026-11-26) en [[cuentas-tiktok-shop-affiliate]]. Regla añadida: **cada cuenta lleva su propio research** y los datos extraídos de videos se guardan con el nombre de la cuenta (`...-hamaca-azul-...`, `...-totocha-...`) para no mezclar los de hamaca azul con los de totocha.
 
 ## [2026-11-27] extract | Dos videos de insights para la cuenta totocha
