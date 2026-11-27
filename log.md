@@ -1203,3 +1203,10 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Mismo fondo del C06** (`ai/luz_nubes.jpg`) → **0 créditos nuevos**. Gancho: «Hay un versículo que dice que Dios canta por ti» (la idea de «canta» sale del propio versículo). Reflexión propia en el slide 3.
 - **Salida:** `C07_sofonias-3-17/final/01..03.png` (color) y `final_bn/`, entregados (mensajes **5850-5852**). **Sin publicar.**
 - Quedan verificadas como alternativas **Salmos 147:3** («Él sana a los quebrantados de corazón, Y venda sus heridas») y **Mateo 11:28**.
+
+## [2026-11-28] create | Carrusel C08 de 四字熟語 (Hamaca Azul) — formato nuevo, referencia viral
+- Arturo mandó `…_TikTok_Photo_Slideshow_Downloader_….mht` (página de `snaptik.fi` guardada). Dentro: los slides de un post de TikTok de **四字熟語** con **1.9M vistas y 104.4K ❤**. Formato: **foto a sangre + el giro en kanji grande + furigana encima + una línea de significado** (8 slides: 7 giros + portada; 1180×1574 la primera, 960×1280 el resto).
+- **Las partes de imagen del `.mht` venían destruidas** (binario → texto `\ufffd`), pero las cabeceras `Content-Location:` traían las **URLs firmadas del CDN de TikTok** → **8/8 imágenes recuperadas** en HD. Técnica documentada en [[desmenuzado-carrusel]].
+- **Recreación propia:** selección de 6 giros con significado amable (**lecturas verificadas**: 一期一会・雨過天晴・一陽来復・和顔愛語・花鳥風月・温故知新) + portada 「そっと心を軽くする / 四字熟語». **Nada copiado** del original (ni sus giros, ni su CTA, ni sus fotos).
+- **7 fotos nuevas generadas** (kie seedream, **35 créditos**), **sin texto quemado**, todas oscuras para texto blanco. Lienzo **1080×1440** con la fuente del proyecto (Noto Sans CJK JP Bold) + número «N / 7» y pie «Hamaca Azul».
+- **Salida:** `C08_yojijukugo/final/00..06.png`, entregados (mensajes **5864-5870**). **Sin publicar.**

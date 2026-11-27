@@ -264,6 +264,18 @@ Lo que quedó como formato propio:
   caiga sobre la ropa oscura y la cara quede libre. (En el C01, aprobado, el texto sí cae sobre la cara:
   el criterio admite ambas, pero en vertical se lee mejor despejada.)
 
+## Sacar las imágenes de una referencia guardada como `.mht`
+
+Cuando Arturo manda la página del descargador (`snaptik.fi`, «Saved by Blink») en vez del ZIP:
+
+- El `.mht` es MIME multipart: `email` de Python lo parsea. La parte `text/html` trae el **copy del post**
+  (con los hashtags y **las métricas: vistas / ❤ / comentarios**) y las partes `image/*` traen los slides.
+- **Las partes de imagen pueden venir destruidas:** con `Content-Transfer-Encoding: binary` pero el binario
+  convertido a texto (cada byte inválido → el literal `\ufffd`), así que **no decodifican** como JPEG.
+- **Lo que sí sirve:** las cabeceras `Content-Location:` llevan las **URLs firmadas del CDN de TikTok**;
+  se descargan con `urllib` + `User-Agent` normal y salen en HD (comprobado 8/8, con ~5 días de validez).
+- Copiar el `.mht` fuera de la caché del gateway antes de trabajarlo.
+
 ## Relacionado
 
 - [[cuentas-tiktok-shop-affiliate]] — las cuentas (hamaca shop / hamaca azul).
