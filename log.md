@@ -1002,6 +1002,7 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 | 7 | `prod_0skgwd3` | teclado AJAZZ AK820 | **Announcer** 1.5× | 12.57 s | 15.60 s | `hook03` (3.00 s, **recortado**) | `kbd_overlay_hook03.mp4` |
 | 8 | `prod_0lyigbp` | scrubber eléctrico | **Charon energético** 1.25× | 14.53 s | 17.13 s | `hook04` (2.60 s) | `scrub_overlay_hook04.mp4` |
 | 9 | `prod_bp6m33h` | papel para freidora de aire | **Announcer** 1.25× (Charon caído, 524) | 21.64 s | 24.64 s | `hook11` (3.00 s, **recortado** 1.2–4.2) | `bp6m33h_final.mp4` |
+| 10 | `prod_q35yx6n` | top con copas SELECT SOLEIL | **Charon energético** 1.25× (revivió en *flash-lite*) | 17.82 s | 20.85 s | `hook08` (3.00 s, **recortado** 1.0–4.0) | `q35yx6n_final.mp4` |
 
 - **Overlays** (todos salvo #1 y #2): composición Remotion `caption-overlay` — captions, tag 「リンクは/画面下」,
   flecha, descargo 「※価格や割引は投稿時点の情報です」 y **portada nueva** en cada pieza.
@@ -1010,8 +1011,8 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Publicación y almacenamiento (regla de Arturo, 2026-11-26):** **él publica a mano** y **no hace falta subir
   los videos al NAS** — los archivos se quedan en `~/.hermes/profiles/ttchop_robot/media/` (vps-tools). No
   proponer subidas al NAS ni marcarlo como pendiente.
-- **Hooks ya usados:** `hook01`, `hook03`, `hook04`, `hook05`, `hook07`, `hook09`, `hook10`, `hook11`; `hook12` descartado
-  por largo. Sin usar: `hook02`, `hook06`, `hook08`.
+- **Hooks ya usados:** `hook01`, `hook03`, `hook04`, `hook05`, `hook07`, `hook08`, `hook09`, `hook10`, `hook11`; `hook12` descartado
+  por largo. Sin usar: `hook02`, `hook06`.
 - **Bug del recetario — ARREGLADO (commit `44cc142`, 26-nov):** `pipeline/llm.js` ahora pide
   `response_format: json_object`, **evalúa las expresiones aritméticas** fuera de cadenas cuando el parseo
   estricto falla y hace **un reintento correctivo**; verificado con 5 casos (5/5). **Reinicio autorizado y
@@ -1133,3 +1134,12 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Hook: `hook11_tobogan_agua` recortado a 3.00 s** (ventana 1.2–4.2 s del original, para **cerrar en la salpicadura** y no en la lente mojada gris). Empalmado por **concat directo** (§10): 739 cuadros (90 + 649) · **24.64 s**; el audio del render, medido desde t=3.0, queda **idéntico** (mean −16.4 dB).
 - Máster `bp6m33h_final.mp4` (22.0 MB, sha256 `fd9fc129…`) en `~/.hermes/profiles/ttchop_robot/media/`; copia ligera de 10.1 MB para el chat. **No publicado.**
 - **Lección de método:** el lienzo del collage y el del overlay son distintos (25 fps del builder vs **30 fps** de la composición) y el máster del collage había que dejarlo en `ttchop-post_templates/public/` (no en la raíz del repo) porque `staticFile()` resuelve ahí.
+
+## [2026-11-27] create | Décimo collage (`prod_q35yx6n`, top con copas SELECT SOLEIL) + overlays + hook08
+- **Producto:** `【SELECT SOLEIL】…シームレスブラ付きインナー` (región `jp`, **1,790円**, 23.8K vendidos, 4.3★/1.3K reseñas; colores 肌色/黒/ブラウン/ホワイト, tallas M–XXL). Sesión **`sess_8eknkcn`** con **7 clips** (5.9 s tras trim + 12.0 + 11.5 + 13.5 + 24.8 + 12.5 + 17.5).
+- **Voz: Charon a 1.25× (17.88 s).** kie **revivió** por el modelo **`google/gemini-3-8-flash-lite-tts`** (0.47 créditos) después de que el principal volviera a dar `524` → **reintentar el hermano antes de rendirse** es lo que funcionó. Se mandaron las 3 velocidades por la Bot API (msgs 5701/5702/5703) y Arturo eligió 1.25×.
+- **Collage:** `render_1795767797715_q35yx6n` → 1080×1920, 25 fps, **17.82 s**; el audio del builder salió **24 kHz mono** (no 44.1). Remux y concat normalizados a **24 kHz mono**.
+- **Tiempos de los captions: medidos segmentando la voz por energía** (RMS a 20 ms + umbral relativo, 9 tramos de voz) porque **`silencedetect` no separaba limpio las 5 líneas**: las pausas de `<sigh>`/`<gasp>` de Charon (0.6 s) y las comas internas aparecían como pausas del mismo tamaño. Regla: con tags de sonido en el guion, segmentar por energía y mapear tramos → líneas por longitud esperada.
+- **Overlays:** 4 captions (0→2.08 / 2.08→5.88 / 5.88→10.22 / 10.22→14.2) + tag/flecha/descargo (14.2→17.82) + **portada nueva** (cuadro de las copas sostenidas, texto 「ブラ付きインナー / ラインが出ない」). 535 cuadros a 30 fps.
+- **Hook: `hook08_mansion_alberca` recortado a 3.00 s** (ventana **1.0–4.0 s**, cierra en la salpicadura; el nadador queda lejos y **no hay caras**). Concat directo → **625 cuadros (90+535) · 20.85 s**; audio del render idéntico (mean −17.0 dB).
+- Máster `q35yx6n_final.mp4` (27.4 MB, sha256 `3bffacdc…`) en `~/.hermes/profiles/ttchop_robot/media/`, entregado al chat con `tg_send.py` (**message_id 5718**). **No publicado.**
