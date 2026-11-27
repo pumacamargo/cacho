@@ -1069,3 +1069,10 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **C03** (`C03_motto-mukatsuita`, 11 imágenes) — **el molde más limpio**: **sin portada, sin duplicados y sin atribuciones a personas**; solo una **etiqueta de categoría** 「ムカついた時に読みたい言葉». 10 frases con tono asertivo. Arturo lo mandó justamente «a ver si tiene menos problemas»: **confirmado que sí**.
 - **Ambos desmenuzados** (ficha medida + tabla JP→ES + arco + alertas) están en el `desmenuzado.md` de cada caso. Runbook actualizado con una sección **«Segundo formato: texto vertical (tategaki)»** (spec medido + pitfalls + los dos casos).
 - **Pendiente (Fase 2):** decidir el **nombre/marca del pie** y si las frases se **reescriben** (propias, con etiqueta de categoría) o se usan **citas verificadas**. El renderizador de este formato hay que escribirlo (texto vertical).
+
+## [2026-11-26] create | C03 entregado: 10 frases en texto vertical con fondo propio
+- Arturo resolvió el wizard: pie **«Hamaca Azul»**, **frases reescritas por el agente**, **etiqueta propia**, y **1 slide de muestra** antes de montar.
+- **Renderizador nuevo (texto vertical)**: `build_tategaki.py` + `build_c03.py` (copia en `_tools/`). PIL no trae maquetación vertical: se dibuja carácter por carácter, columnas de derecha a izquierda, cada columna centrada verticalmente; la etiqueta va a la izquierda del bloque y el wordmark abajo al centro. Soporta **fondo crema o FOTO**.
+- **El fondo es una foto que mandó Arturo** (papel arrugado en B/N): recortada a 1180×1574 y oscurecida ×0.86; el texto pasa a **claro con sombra**.
+- **Corrección de Arturo:** la primera muestra iba en **mincho** (que es lo que usa el molde) y él dijo que **no es la fuente definida** → se cambió a **`Noto Sans CJK JP` Bold (gothic)**.
+- **Entrega:** `final_foto/01..10.png` (1180×1574) — 10 frases propias (tabla JP→ES en `frases_propias.md`), etiqueta 「自分を守る言葉», pie «Hamaca Azul». **Sin publicar.** Pendiente: título/hashtags.

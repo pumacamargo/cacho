@@ -187,10 +187,17 @@ sobre fondo crema. Es el formato de los casos 02 y 03 (ver `desmenuzado.md` de c
 - **El renderizador de este formato es nuevo**: PIL no trae maquetación vertical; hay que
   **dibujar carácter por carácter**, por columna, de derecha a izquierda (ojo con 、。「」 y con el
   centrado del bloque).
-- **Casos:** **C02** (`/root/desmenuzados-carrusel/C02_motto-meigen/` — 12 de contenido + CTA;
-  traía la portada de Magritte y atribuciones a personas) y **C03**
-  (`/root/desmenuzados-carrusel/C03_motto-mukatsuita/` — 10 frases + CTA, etiqueta de categoría,
-  **sin portada ni duplicados: el molde más limpio**).
+- **La fuente la define Arturo, no el molde**: aunque la referencia use **mincho**, para lo
+  nuestro va **la fuente definida del proyecto** (`Noto Sans CJK JP`, **gothic**). Dijo
+  explícitamente que la mincho "no es la fuente que definimos" (2026-11-26).
+- **El fondo puede ser una FOTO propia** (no solo el crema): el renderizador acepta foto y
+  entonces el texto va **en claro con sombra**. El C03 usó el **papel arrugado en B/N** que mandó
+  Arturo (`fondos/fondo-papel-negro.jpg`), recortado a 1180×1574 y oscurecido ×0.86.
+- **Casos:** **C02** (`C02_motto-meigen`) — 12 de contenido + CTA; traía la portada de Magritte y
+  atribuciones a personas. **C03** (`C03_motto-mukatsuita`) — el **molde más limpio** (10 frases +
+  CTA, etiqueta de categoría, sin portada ni duplicados) y **el primer formato ENTREGADO**: 10
+  frases propias, fondo de papel propio, pie «Hamaca Azul», etiqueta 「自分を守る言葉» →
+  `final_foto/01..10.png`, scripts `build_tategaki.py` + `build_c03.py` (copia en `_tools/`).
 
 ## Pitfalls
 
