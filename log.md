@@ -1003,6 +1003,7 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 | 8 | `prod_0lyigbp` | scrubber eléctrico | **Charon energético** 1.25× | 14.53 s | 17.13 s | `hook04` (2.60 s) | `scrub_overlay_hook04.mp4` |
 | 9 | `prod_bp6m33h` | papel para freidora de aire | **Announcer** 1.25× (Charon caído, 524) | 21.64 s | 24.64 s | `hook11` (3.00 s, **recortado** 1.2–4.2) | `bp6m33h_final.mp4` |
 | 10 | `prod_q35yx6n` | top con copas SELECT SOLEIL | **Charon energético** 1.25× (revivió en *flash-lite*) | 17.82 s | 20.85 s | `hook08` (3.00 s, **recortado** 1.0–4.0) | `q35yx6n_final.mp4` |
+| 11 | `prod_3rzqxjf` | BabyBus 水塗り絵 (libro con agua) | **Charon energético** 1.25× (salió al 1.er intento, 0.77 cr) | 19.28 s | 22.00 s | `hook02` (2.70 s, **recortado** 0.2–2.9) | `3rzqxjf_final.mp4` |
 
 - **Overlays** (todos salvo #1 y #2): composición Remotion `caption-overlay` — captions, tag 「リンクは/画面下」,
   flecha, descargo 「※価格や割引は投稿時点の情報です」 y **portada nueva** en cada pieza.
@@ -1011,8 +1012,8 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Publicación y almacenamiento (regla de Arturo, 2026-11-26):** **él publica a mano** y **no hace falta subir
   los videos al NAS** — los archivos se quedan en `~/.hermes/profiles/ttchop_robot/media/` (vps-tools). No
   proponer subidas al NAS ni marcarlo como pendiente.
-- **Hooks ya usados:** `hook01`, `hook03`, `hook04`, `hook05`, `hook07`, `hook08`, `hook09`, `hook10`, `hook11`; `hook12` descartado
-  por largo. Sin usar: `hook02`, `hook06`.
+- **Hooks ya usados:** `hook01`, `hook02`, `hook03`, `hook04`, `hook05`, `hook07`, `hook08`, `hook09`, `hook10`, `hook11`; `hook12` descartado
+  por largo. Sin usar: `hook06`.
 - **Bug del recetario — ARREGLADO (commit `44cc142`, 26-nov):** `pipeline/llm.js` ahora pide
   `response_format: json_object`, **evalúa las expresiones aritméticas** fuera de cadenas cuando el parseo
   estricto falla y hace **un reintento correctivo**; verificado con 5 casos (5/5). **Reinicio autorizado y
@@ -1153,3 +1154,13 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - Arturo: «todas las respuestas son las que tú me recomiendes, a menos que te pida preguntas por wizard» y «por lo menos haciendo videos que sea así».
 - **Qué cambia:** al producir un video, ttchop_robot elige **por su cuenta** guion, voz, velocidad, overlays, hook y título con su mejor recomendación y los aplica **sin abrir el wizard**; el `clarify` se usa **solo si él lo pide**. No se vuelve a preguntar lo ya recomendado en el video anterior.
 - Documentado en [[ttchop-video-paths]] § «Reglas que aplican a todas las vías» y en la skill `ttchop-content-ops` (`references/collage-ttchop-server-y-voces.md`).
+
+## [2026-11-27] create | Undécimo collage (`prod_3rzqxjf`, BabyBus ふしぎな水塗り絵) + overlays + hook02
+- **Producto:** `BabyBus ふしぎな水塗り絵` (región `jp`, **1,078円**, 5.2K vendidos, 4.6★/322 reseñas, envío gratis). Sesión **`sess_eyu5atq`** con **6 clips** (producto solo rotando + demo del lápiz de agua + una niña usándolo, **de espaldas, sin rostro**).
+- **Primer video con la regla nueva** (decide el agente): guion, voz **Charon 1.25×**, overlays y hook elegidos sin wizard. Charon salió **al primer intento** con el modelo principal (`google/gemini-3-8-flash-tts`, 0.77 créditos).
+- **Collage:** `render_1795769375456_3rzqxjf` → 1080×1920, 25 fps, **19.28 s**, audio 24 kHz mono.
+- **Tiempos de los captions:** segmentación por energía → **11 tramos**; el `<sigh>` de Charon aparece como **tramo audible propio** (0.72 s) seguido de una pausa de 0.60 s, y el `<gasp>` cae **dentro** de la línea 3. Mapeo: L1 = tramos 1-2, L2 = tramo 4, L3 = tramos 5-6, L4 = tramos 7-9, L5 = tramos 10-11. Captions: 0→4.36 / 4.36→7.8 / 7.8→12.04 / 12.04→15.92 + tag/flecha/descargo 15.92→19.28.
+- **Overlays:** 578 cuadros a 30 fps; **portada nueva** = cuadro del producto (libro rosa sobre fondo amarillo) con 「水だけで / 何度でも遊べる」.
+- **Hook: `hook02_gorila` recortado a 2.70 s** (ventana 0.2–2.9). **Ojo:** el clip original **termina con un fundido a otra escena**; hubo que recortar antes del dissolve para que cierre en el gesto del gorila. Sin caras.
+- Concat directo → **659 cuadros (81+578) · 22.00 s**; audio del render idéntico (mean −13.5 dB).
+- Máster `3rzqxjf_final.mp4` (24.0 MB, sha256 `f3a4e63a…`) en `~/.hermes/profiles/ttchop_robot/media/`, entregado con `tg_send.py` (**message_id 5740**) junto con el título en el mismo mensaje. **No publicado.**
