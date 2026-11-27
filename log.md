@@ -1210,3 +1210,5 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Recreación propia:** selección de 6 giros con significado amable (**lecturas verificadas**: 一期一会・雨過天晴・一陽来復・和顔愛語・花鳥風月・温故知新) + portada 「そっと心を軽くする / 四字熟語». **Nada copiado** del original (ni sus giros, ni su CTA, ni sus fotos).
 - **7 fotos nuevas generadas** (kie seedream, **35 créditos**), **sin texto quemado**, todas oscuras para texto blanco. Lienzo **1080×1440** con la fuente del proyecto (Noto Sans CJK JP Bold) + número «N / 7» y pie «Hamaca Azul».
 - **Salida:** `C08_yojijukugo/final/00..06.png`, entregados (mensajes **5864-5870**). **Sin publicar.**
+- **Descripción larga del post** entregada el 28-nov (texto completo en `C08_yojijukugo/desmenuzado.md`): empieza con la empatía («hoy tengo el corazón pesado»), recorre los 6 giros con una línea cada uno, cierra pidiendo **guardado y comentario**; sin hashtag de afiliado y sin el CTA de la app ajena.
+- **Transcripción comparada** de la referencia (dicen 紅塵白刃・一期一笑・一水四見・過眼雲煙・光陰如夢・一日一生, tono melancólico) frente a los nuestros (luminosos): solo coincide temáticamente 一期一会 ≈ su 一期一笑.
