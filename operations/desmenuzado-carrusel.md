@@ -213,7 +213,7 @@ Lo que quedó como formato propio:
 | Fondo | **UNA imagen generada con IA** reutilizada en todos los slides + degradado oscuro arriba para el texto. Elegido: **paisaje al amanecer sin cruz**; se generaron 5 opciones (Biblia, iglesia, amanecer con cruz, manos, paisaje sin cruz) y Arturo eligió |
 | Tipografía | **profesional (fuentes variables OFL)**: `Playfair Display` (referencia y gancho), `Lora` (versículo y reflexión), `Inter` (rótulo). **Sombra suave en capas**, nunca contorno duro (`stroke_width`) |
 | Texto | blanco cálido, alineado a la izquierda (salvo el gancho, centrado); `Lora` a 0.2 pt de interletrado natural; márgenes x=96 |
-| Slides | **3**: gancho (“Es solo un verso de la biblia…”) → **cita bíblica real** (texto RVR1960; el C04 terminó con **Isaías 41:10**) → **reflexión propia** rotulada «REFLEXIÓN» |
+| Slides | **3**: gancho (“Es solo un verso de la biblia…”) → **cita bíblica real** (texto RVR1960; el C04 terminó con **Isaías 41:10**) → **reflexión propia** (el C04 la llevó **sin rótulo**, por pedido de Arturo) |
 | Cuenta | **totocha** = cuenta **cristiana en español (México)**, de la mamá de Arturo ⇒ versículos en **RVR1960** (versión cristiana/evangélica usada en México) |
 | Marca | **sin marca** en los slides (el nombre de la cuenta va en el perfil) |
 
