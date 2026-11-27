@@ -2,7 +2,7 @@
 
 > Catálogo de contenido. Toda página listada bajo su tipo con un resumen de una línea.
 > Léeme primero para encontrar páginas relevantes para cualquier consulta.
-> Last updated: 2026-11-26 | Total pages: 65
+> Last updated: 2026-11-27 | Total pages: 65
 
 ## Persona
 - [[arturo]] — perfil: biografía, carrera (rigger), ubicación, gustos y preferencias
