@@ -1098,6 +1098,12 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 ## [2026-11-27] update | C04 — versículo cambiado a Isaías 54:10
 - Arturo pidió **Isaías 54:10** en lugar de Romanos 8:28. Verificado (RVR1960): «Porque los montes se moverán, y los collados temblarán, pero no se apartará de ti mi misericordia, ni el pacto de mi paz se quebrantará, dijo Jehová, el que tiene misericordia de ti.»
 - Slide 2 re-montado (6 líneas, cuerpo 46 px, sin cortes) sobre el mismo paisaje. `final/01..03.png`. **Sin publicar.**
+
+## [2026-11-27] update | C04 — versículo Isaías 41:10 y tipografía profesional
+- Arturo pidió un versículo **muy emotivo**: se le recomendó **Isaías 41:10** (verificado RVR1960: «No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te esfuerzo; siempre te ayudaré, siempre te sustentaré con la diestra de mi justicia.») y lo aprobó.
+- Pidió además que **la calidad del texto se vea muy profesional**. Se reescribió el compositor: **fuentes variables OFL** descargadas a `fonts/` (**Playfair Display** para referencia y gancho, **Lora** para versículo y reflexión, **Inter** para el rótulo), **sombra suave en capas en lugar del contorno duro**, velo superior reforzado para el contraste, márgenes y ritmo medidos, y comillas/elipsis tipográficas (“…”, “Es solo un verso de la biblia…”).
+- Añadido `--check` al script: verifica que ninguna línea se salga del ancho útil antes de entregar. Fuentes y compositor copiados a `_tools/`.
+- **Sin publicar.**
 - **Nueva cuenta registrada: `totocha`** (cuenta nueva de la mamá de Arturo, 2026-11-26) en [[cuentas-tiktok-shop-affiliate]]. Regla añadida: **cada cuenta lleva su propio research** y los datos extraídos de videos se guardan con el nombre de la cuenta (`...-hamaca-azul-...`, `...-totocha-...`) para no mezclar los de hamaca azul con los de totocha.
 
 ## [2026-11-27] extract | Dos videos de insights para la cuenta totocha
