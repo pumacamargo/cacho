@@ -17,6 +17,7 @@ related: [nicho-cabello-tiktok, categoria-tts, ttchop, proyecto-lemon-sushi]
 | --- | --- | --- | --- |
 | **hamaca shop** | **Principal** | Activa, en producción | **Todo el contenido producido hasta el 2026-11-26 es exclusivo de esta cuenta** |
 | **hamaca azul** | **Secundaria** | **Nueva** (2026-11-26) | Se arranca desde cero, con contenido propio |
+| **totocha** | **Cuenta nueva de su mamá** | **Nueva** (2026-11-26) | Contenido propio; su research de nicho va **aparte** del de hamaca azul |
 
 ## hamaca shop (principal)
 
@@ -47,3 +48,4 @@ alternativos para re-publicar el mismo post con otra foto.
 - El contenido de cada cuenta es **exclusivo** de esa cuenta.
 - La cuenta nueva no reemplaza a la principal: se trabaja en paralelo.
 - Antes de publicar en hamaca azul, revisar el nicho y el plan de contenido en [[nicho-cabello-tiktok]].
+- **Cada cuenta lleva su propio research de nicho.** Los datos extraídos de videos para una cuenta **no** se mezclan con los de otra: al guardar, el nombre del archivo lleva la cuenta (`...-hamaca-azul-...`, `...-totocha-...`).

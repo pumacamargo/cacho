@@ -1076,3 +1076,4 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **El fondo es una foto que mandó Arturo** (papel arrugado en B/N): recortada a 1180×1574 y oscurecida ×0.86; el texto pasa a **claro con sombra**.
 - **Corrección de Arturo:** la primera muestra iba en **mincho** (que es lo que usa el molde) y él dijo que **no es la fuente definida** → se cambió a **`Noto Sans CJK JP` Bold (gothic)**.
 - **Entrega:** `final_foto/01..10.png` (1180×1574) — 10 frases propias (tabla JP→ES en `frases_propias.md`), etiqueta 「自分を守る言葉», pie «Hamaca Azul». **Sin publicar.** Pendiente: título/hashtags.
+- **Nueva cuenta registrada: `totocha`** (cuenta nueva de la mamá de Arturo, 2026-11-26) en [[cuentas-tiktok-shop-affiliate]]. Regla añadida: **cada cuenta lleva su propio research** y los datos extraídos de videos se guardan con el nombre de la cuenta (`...-hamaca-azul-...`, `...-totocha-...`) para no mezclar los de hamaca azul con los de totocha.
