@@ -1143,3 +1143,8 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Overlays:** 4 captions (0→2.08 / 2.08→5.88 / 5.88→10.22 / 10.22→14.2) + tag/flecha/descargo (14.2→17.82) + **portada nueva** (cuadro de las copas sostenidas, texto 「ブラ付きインナー / ラインが出ない」). 535 cuadros a 30 fps.
 - **Hook: `hook08_mansion_alberca` recortado a 3.00 s** (ventana **1.0–4.0 s**, cierra en la salpicadura; el nadador queda lejos y **no hay caras**). Concat directo → **625 cuadros (90+535) · 20.85 s**; audio del render idéntico (mean −17.0 dB).
 - Máster `q35yx6n_final.mp4` (27.4 MB, sha256 `3bffacdc…`) en `~/.hermes/profiles/ttchop_robot/media/`, entregado al chat con `tg_send.py` (**message_id 5718**). **No publicado.**
+
+## [2026-11-27] regla | El título va siempre en el mensaje de entrega del video
+- Arturo: «así como me mandaste el título en el mensaje pasado estuvo perfecto, así mándamelo siempre, documéntalo en Cacho».
+- **Formato fijo:** el título con sus hashtags se manda **dentro del mismo mensaje en el que se entrega el video**, **al final**, en **un solo bloque de código** (línea de título + línea de hashtags). No en un mensaje aparte, no en el mensaje de preguntas, y **sin esperar a que lo pida**.
+- Documentado en [[hooks-para-inicio-de-video]] §11 (regla + changelog) y en la skill `ttchop-content-ops` (`references/recreated-video-montage-and-captions.md` y `references/announcer-voz-y-overlays.md`).

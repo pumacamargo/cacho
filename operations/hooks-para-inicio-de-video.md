@@ -234,9 +234,17 @@ La derivada lleva su `*_hook.json` con el clip, su largo y la nota de que se us�
 > **un solo bloque** (título + hashtags), sin alternativas, sin viñetas, sin comentarios ni explicación.
 > Es para pegar en TikTok tal cual. Abre con el dolor/duda del espectador y la palabra clave del producto;
 > sin precio y sin promesas que la ficha no respalde.
+>
+> **Regla (Arturo, 2026-11-27) — dónde y cómo se manda:** el título va **siempre dentro del mismo mensaje en
+> el que se entrega el video**, **al final de ese mensaje**, en **un bloque de código** con la línea del
+> título y debajo la línea de los hashtags. **No** en un mensaje aparte, **no** en el mensaje de preguntas, y
+> **no** hace falta que lo pida: se manda junto con la entrega. Arturo confirmó que ese formato «estuvo
+> perfecto» y pidió usarlo siempre.
 
 ## Changelog
 
+- **2026-11-27 — §11: formato de entrega fijo.** El título con hashtags se manda **dentro del mensaje de
+  entrega del video**, al final y en un bloque de código, sin esperar a que lo pida (confirmado por Arturo).
 - **2026-11-26 — §10: hook ≤3 s.** Regla de Arturo: el hook no dura más de 3 s; si el clip es más largo se
   recorta al tramo del mejor beat (el render sigue intacto). Se anotan las duraciones medidas de la biblioteca.
 - **2026-11-25 — §11 Título listo para copiar.** Regla: un título, un bloque, sin alternativas.
