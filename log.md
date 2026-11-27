@@ -1164,3 +1164,10 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Hook: `hook02_gorila` recortado a 2.70 s** (ventana 0.2–2.9). **Ojo:** el clip original **termina con un fundido a otra escena**; hubo que recortar antes del dissolve para que cierre en el gesto del gorila. Sin caras.
 - Concat directo → **659 cuadros (81+578) · 22.00 s**; audio del render idéntico (mean −13.5 dB).
 - Máster `3rzqxjf_final.mp4` (24.0 MB, sha256 `f3a4e63a…`) en `~/.hermes/profiles/ttchop_robot/media/`, entregado con `tg_send.py` (**message_id 5740**) junto con el título en el mismo mensaje. **No publicado.**
+
+## [2026-11-27] create | Carrusel C05 «心が疲れた日に読みたい言葉» (Hamaca Azul) — molde Motto, frases propias
+- Arturo mandó otra vez `Motto_photos.zip` («ayúdame otro carrusel de Hamaca Azul»). **Es el MISMO set de referencia del C03** (mismos 10 giros + el CTA de la app Motto al final), así que no se repitió el post: se hizo una **entrega nueva** con el mismo molde, **tema hermano** y **10 frases nuevas**.
+- **Tema/etiqueta propia:** 「心が疲れた日に」 / 「読みたい言葉». **Frases:** 10 propias (tabla JP→ES en `C05_motto_nuevo/frases_propias.md`), sin atribuir a nadie y sin el CTA ajeno. Ficha técnica del molde: 1180×1574, tategaki, cuerpo ≈72 px, etiqueta vertical abajo-izquierda, wordmark del dueño (no se reutiliza).
+- **Fondo nuevo generado con IA** (kie seedream, 5 créditos) → papel washi oscuro. **Dos generaciones (10 créditos) trajeron TEXTO inventado quemado** («HOTONE' & PROURG»; «MASHA PASHI») **aunque el prompt decía "no letters"**; se resolvió **recortando por debajo del rótulo** (offset 420) → `fondo-papel-c05.jpg`. **Pitfall nuevo:** revisar con visión cada fondo generado y recortar por debajo de cualquier letra antes de montar el texto.
+- **Salida:** `final/01..10.png` con número «N / 10» arriba a la derecha, pie «Hamaca Azul» y la fuente del proyecto (Noto Sans CJK JP Bold). Entregados como **PNG individuales** por la Bot API (mensajes 5757-5767) — se añadió soporte de imágenes a `tg_send.py` (**sendDocument**, para que Telegram no recomprima el texto; `--photo` si se quiere inline).
+- **Sin publicar.**

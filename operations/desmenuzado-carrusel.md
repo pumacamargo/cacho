@@ -246,6 +246,15 @@ Lo que quedó como formato propio:
   mal humor/estar de mal genio; 「幼稚」 = inmaduro/infantil).
 - **La cuenta ajena puede promocionar su propia app**: ese CTA no se copia.
 - Los fondos generados salen **1600×2848** (9:16); al montar se recorta el centro a **3:4**.
+- **Los fondos de IA pueden traer TEXTO quemado aunque el prompt pida «no letters».** Medido el
+  27-nov con `bytedance/seedream-v4-text-to-image` (kie): **las dos** generaciones de un papel
+  arrugado salieron con rótulos inventados («HOTONE' & PROURG», «MASHA PASHI» + subtítulo).
+  **Regla:** mirar con visión **cada** fondo generado antes de montarlo y, si el rótulo está en una
+  franja (casi siempre arriba), **recortar por debajo** (escalar a 1180 de ancho y recortar con el
+  offset que deje el texto fuera). No basta con confiar en el prompt.
+- El formato **tategaki se puede repetir con tema hermano** cuando el molde llega dos veces: en vez
+  de republicar lo mismo (caso C03 → C05), se cambia **la etiqueta de categoría y las 10 frases**
+  manteniendo lienzo, fuente, etiqueta y pie.
 
 ## Relacionado
 
