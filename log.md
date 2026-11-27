@@ -1189,3 +1189,10 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Aspect ratio comprobado:** lienzo **1180×1574** = el exacto del molde (ratio 0.7497 ≈ 3:4) y los 10 PNG salen a 1180×1574 verificados con `ffprobe`.
 - **Salida:** `final_bosque/01..10.png`, entregados (mensajes **5823-5832**). **Sin publicar.**
 - **Gasto de fondos del C05:** papel (2 generaciones) + retratos (2) + bosque (1) = **25 créditos**.
+
+## [2026-11-27] create | Carrusel bíblico C06 (Totocha) — Salmos 34:18
+- Arturo: «hazme otro carrusel de los de la biblia con algún versículo de los que me recomendaste» → se usó **Salmos 34:18** (los recomendados eran Isaías 41:10 —usado en el C04—, Sofonías 3:17 y Salmos 34:18).
+- **Texto RVR1960 verificado** en fuentes (Bible Gateway / Bible.com): «Cercano está Jehová a los quebrantados de corazón; Y salva a los contritos de espíritu.» Se usa **literal**, sin paráfrasis.
+- **Formato del C04** (1080×1920, 3 slides: gancho → versículo → reflexión propia sin rótulo) con **fondo nuevo generado** (`ai/luz_nubes.jpg`, 5 créditos): cielo de tormenta con un **rayo de luz dorada** sobre un valle con niebla.
+- **Mejora del compositor:** `build_c06.py` **auto-ajusta el cuerpo** (baja hasta 40 px) hasta que ninguna línea se sale del ancho útil, con `--check` para verificar sin renderizar. Salida `final/01..03.png` (color) y `final_bn/` (B/N). Entregados (mensajes **5842-5844**). **Sin publicar.**
+- Documentado en `C06_salmos-34-18/desmenuzado.md`.
