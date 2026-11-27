@@ -175,7 +175,8 @@ sobre fondo crema. Es el formato de los casos 02 y 03 (ver `desmenuzado.md` de c
 | Intercolumnas | paso ≈78 px |
 | Etiqueta / atribución | vertical, ≈**35 px**, al pie **a la izquierda**, en dos columnas |
 | Marca | wordmark del dueño abajo al centro (**su marca: no se reutiliza**) |
-| Extras | sin números, flechas ni contador |
+| Número de orden | **«N / 10» arriba a la derecha** (lo pide Arturo; el molde no lo trae) |
+| Extras | sin flechas ni contador (el molde no numera) |
 
 - **Qué lleva cada cuenta como "etiqueta"**: el caso 02 atribuye cada frase a **personas reales**
   (nombre + rol) — y varias son **misatribuciones conocidas**; el caso 03 usa una **etiqueta de
