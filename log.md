@@ -1104,6 +1104,12 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - Pidió además que **la calidad del texto se vea muy profesional**. Se reescribió el compositor: **fuentes variables OFL** descargadas a `fonts/` (**Playfair Display** para referencia y gancho, **Lora** para versículo y reflexión, **Inter** para el rótulo), **sombra suave en capas en lugar del contorno duro**, velo superior reforzado para el contraste, márgenes y ritmo medidos, y comillas/elipsis tipográficas (“…”, “Es solo un verso de la biblia…”).
 - Añadido `--check` al script: verifica que ninguna línea se salga del ancho útil antes de entregar. Fuentes y compositor copiados a `_tools/`.
 - Ajuste final: Arturo pidió **quitar la palabra «REFLEXIÓN»** del slide 3 → queda solo la frase, sin rótulo (aviso dado: sin rótulo, la reflexión puede leerse como si fuera Escritura; es su decisión). **Sin publicar.**
+
+## [2026-11-27] fix | C04 — fondo a pantalla completa (amanecer portrait) y lienzo 9:16
+- Arturo: «la imagen de fondo parece que no está en pantalla completa… asegúrate que sea un amanecer en portrait». El problema era **mi velo oscuro** (222/255 hasta 0.66H), que dejaba el tercio superior casi negro y parecía «solo una sección con el resto negro».
+- **Fondo nuevo generado a medida** (`amanecer_portrait.jpg`, **5 créditos**): amanecer vertical con **cielo oscuro y estrellas arriba**, sol bajo y niebla en los valles — llena todo el cuadro, sin bordes. Gastado del C04: **30 créditos** en 6 imágenes.
+- **Lienzo cambiado a 1080×1920 (9:16)**: el fondo es 9:16 y entra **completo, sin recorte**; el velo bajó a ≈58/255 solo en la franja superior. Tipografías y bloques re-escalados (gancho 92 px, referencia 60, versículo 48, reflexión 58) con `--check` en OK.
+- **Sin publicar.**
 - **Nueva cuenta registrada: `totocha`** (cuenta nueva de la mamá de Arturo, 2026-11-26) en [[cuentas-tiktok-shop-affiliate]]. Regla añadida: **cada cuenta lleva su propio research** y los datos extraídos de videos se guardan con el nombre de la cuenta (`...-hamaca-azul-...`, `...-totocha-...`) para no mezclar los de hamaca azul con los de totocha.
 
 ## [2026-11-27] extract | Dos videos de insights para la cuenta totocha

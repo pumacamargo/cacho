@@ -209,8 +209,8 @@ Lo que quedó como formato propio:
 
 | Pieza | Valor |
 | --- | --- |
-| Lienzo | **1080×1440** (3:4) |
-| Fondo | **UNA imagen generada con IA** reutilizada en todos los slides + degradado oscuro arriba para el texto. Elegido: **paisaje al amanecer sin cruz**; se generaron 5 opciones (Biblia, iglesia, amanecer con cruz, manos, paisaje sin cruz) y Arturo eligió |
+| Lienzo | **1080×1920 (9:16)** — el fondo es 9:16 y entra **completo, sin recorte** (pantalla completa) |
+| Fondo | **UNA imagen generada con IA** reutilizada en todos los slides, **a sangre**; velo mínimo (≈58/255 solo arriba). El C04 usó un **amanecer vertical hecho a medida** (cielo oscuro arriba para el texto). Se ofrecen **varias opciones** y él elige |
 | Tipografía | **profesional (fuentes variables OFL)**: `Playfair Display` (referencia y gancho), `Lora` (versículo y reflexión), `Inter` (rótulo). **Sombra suave en capas**, nunca contorno duro (`stroke_width`) |
 | Texto | blanco cálido, alineado a la izquierda (salvo el gancho, centrado); `Lora` a 0.2 pt de interletrado natural; márgenes x=96 |
 | Slides | **3**: gancho (“Es solo un verso de la biblia…”) → **cita bíblica real** (texto RVR1960; el C04 terminó con **Isaías 41:10**) → **reflexión propia** (el C04 la llevó **sin rótulo**, por pedido de Arturo) |
