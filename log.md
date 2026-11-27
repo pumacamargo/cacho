@@ -1076,6 +1076,13 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **El fondo es una foto que mandó Arturo** (papel arrugado en B/N): recortada a 1180×1574 y oscurecida ×0.86; el texto pasa a **claro con sombra**.
 - **Corrección de Arturo:** la primera muestra iba en **mincho** (que es lo que usa el molde) y él dijo que **no es la fuente definida** → se cambió a **`Noto Sans CJK JP` Bold (gothic)**.
 - **Entrega:** `final_foto/01..10.png` (1180×1574) — 10 frases propias (tabla JP→ES en `frases_propias.md`), etiqueta 「自分を守る言葉», pie «Hamaca Azul». **Sin publicar.** Pendiente: título/hashtags.
+
+## [2026-11-26] create | C04 entregado: carrusel bíblico en español (cuenta Totocha)
+- Arturo mandó `Davi_photos.zip` (**2 slides**) de una cuenta cristiana **en español**, y pidió: usar esa estructura + **un tercer slide con una reflexión**, con **un fondo de IA** y **el texto reescrito**, **sin marca** en los slides. Cuenta nueva: **Totocha**.
+- **Desmenuzado (C04):** slide 1 = collage 2×2 B/N + «La biblia dice:» (sans bold blanco con contorno, centrado al 46 %); slide 2 = foto de Biblia desenfocada + `Romanos 8:28` y 3 líneas en serif, alineadas a la izquierda y con el bloque **inclinado** siguiendo la perspectiva de la página.
+- **Alertas registradas:** contenido religioso (la cita debe ser bíblica real, no inventarle frases), las fotos son suyas, y el idioma es español (cambia el pipeline).
+- **Recreación:** **1 fondo IA** (`seedream-v4`, **5 créditos**) = Biblia abierta con luz cálida → recortado a 1080×1440 con degradado oscuro arriba. **3 slides**: «La Biblia dice:» → **Filipenses 4:13** (cita real) → **reflexión propia** rotulada «REFLEXIÓN». Tipografía **latina** (DejaVu Sans Bold + Liberation Serif). Salida `final/01..03.png`; script `build_c04.py`.
+- Runbook de Cacho con el **tercer formato** documentado. **Sin publicar.** Pendiente: título/hashtags.
 - **Nueva cuenta registrada: `totocha`** (cuenta nueva de la mamá de Arturo, 2026-11-26) en [[cuentas-tiktok-shop-affiliate]]. Regla añadida: **cada cuenta lleva su propio research** y los datos extraídos de videos se guardan con el nombre de la cuenta (`...-hamaca-azul-...`, `...-totocha-...`) para no mezclar los de hamaca azul con los de totocha.
 
 ## [2026-11-27] extract | Dos videos de insights para la cuenta totocha

@@ -200,6 +200,28 @@ sobre fondo crema. Es el formato de los casos 02 y 03 (ver `desmenuzado.md` de c
   frases propias, fondo de papel propio, pie «Hamaca Azul», etiqueta 「自分を守る言葉» →
   `final_foto/01..10.png`, scripts `build_tategaki.py` + `build_c03.py` (copia en `_tools/`).
 
+## Tercer formato: carrusel en ESPAÑOL con fondo IA — C04 (cuenta Totocha)
+
+Cuenta nueva **Totocha** (en español, contenido cristiano/bíblico), a partir del molde «Davi».
+Molde: **2 slides** (collage B/N + «La biblia dice:» y una foto de Biblia con cita + mensaje).
+
+Lo que quedó como formato propio:
+
+| Pieza | Valor |
+| --- | --- |
+| Lienzo | **1080×1440** (3:4) |
+| Fondo | **UNA imagen generada con IA** reutilizada en todos los slides (Biblia abierta, luz cálida) + degradado oscuro arriba para el texto |
+| Tipografía | **latina**: `DejaVu Sans Bold` (gancho) y `Liberation Serif` (cita y reflexión) |
+| Texto | blanco cálido con contorno/sombra, alineado a la izquierda (salvo el gancho, centrado) |
+| Slides | **3**: gancho (`La Biblia dice:`) → **cita bíblica real** → **reflexión propia** rotulada «REFLEXIÓN» |
+| Marca | **sin marca** en los slides (el nombre de la cuenta va en el perfil) |
+
+- **Contenido religioso:** la cita debe ser **bíblica y real**; si se añade una reflexión, **rotularla**
+  como reflexión y no atribuirle frases inventadas a la Biblia.
+- **Idioma español** ⇒ tipografías latinas (las JP de los otros formatos no aplican).
+- Coste: **1 imagen IA = 5 créditos**. Artefacto: `/root/desmenuzados-carrusel/C04_davi-biblia/`
+  (`final/01..03.png`, `ai/`, `build_c04.py`).
+
 ## Pitfalls
 
 - **No mezclar** con el desmenuzado de video ni con su índice (`creators-research`).
