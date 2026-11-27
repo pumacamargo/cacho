@@ -214,6 +214,7 @@ Lo que quedó como formato propio:
 | Tipografía | **latina**: `DejaVu Sans Bold` (gancho) y `Liberation Serif` (cita y reflexión) |
 | Texto | blanco cálido con contorno/sombra, alineado a la izquierda (salvo el gancho, centrado) |
 | Slides | **3**: gancho («Es solo un verso de la biblia...») → **cita bíblica real** (texto RVR1960; el C04 terminó con **Isaías 54:10**) → **reflexión propia** rotulada «REFLEXIÓN» |
+| Cuenta | **totocha** = cuenta **cristiana en español (México)**, de la mamá de Arturo ⇒ versículos en **RVR1960** (versión cristiana/evangélica usada en México) |
 | Marca | **sin marca** en los slides (el nombre de la cuenta va en el perfil) |
 
 - **Contenido religioso:** la cita debe ser **bíblica y real**; si se añade una reflexión, **rotularla**

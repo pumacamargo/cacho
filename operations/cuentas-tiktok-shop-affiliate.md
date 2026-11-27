@@ -17,7 +17,7 @@ related: [nicho-cabello-tiktok, categoria-tts, ttchop, proyecto-lemon-sushi]
 | --- | --- | --- | --- |
 | **hamaca shop** | **Principal** | Activa, en producción | **Todo el contenido producido hasta el 2026-11-26 es exclusivo de esta cuenta** |
 | **hamaca azul** | **Secundaria** | **Nueva** (2026-11-26) | Se arranca desde cero, con contenido propio |
-| **totocha** | **Cuenta nueva de su mamá** | **Nueva** (2026-11-26) | Contenido propio; su research de nicho va **aparte** del de hamaca azul |
+| **totocha** | **Cuenta nueva de su mamá** | **Nueva** (2026-11-26) | Contenido propio, **cristiano y en español (México)**; versículos en versión **RVR1960**. Su research de nicho va **aparte** del de hamaca azul |
 
 ## hamaca shop (principal)
 
