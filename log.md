@@ -1182,3 +1182,10 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - Arturo: «intenta letras horizontales». Nuevo renderizador **`build_c05h.py`** (patrón del C01): texto horizontal centrado, blanco, **sombra suave en capas**, fuente del proyecto (Noto Sans CJK JP Bold) a **62 px** / interlineado 92, bloque a **0.58H** (sobre la ropa oscura, cara libre), etiqueta horizontal debajo, **«N / 10» arriba a la derecha** y pie «Hamaca Azul» a 0.955H. El script **comprueba el ancho** de cada línea antes de renderizar.
 - **Salida:** `final_horizontal/01..10.png` (1180×1574), entregados (mensajes **5798-5807**). Quedan las tres versiones en disco: papel, retrato-vertical y retrato-horizontal. **Sin publicar.**
 - **Lección:** para repetir un molde con otro idioma/algoritmo de maquetación, el renderizador horizontal del **C01** (`_tools/build_slides.py`) es la base reutilizable — solo hay que cambiar lienzo, frases y la etiqueta/pie.
+
+## [2026-11-27] update | C05 con fondo de BOSQUE (elegido) + aspect ratio verificado
+- Tras la pregunta «¿qué otro fondo le quedaría?» se ofrecieron dos: **bosque con niebla** (nuevo, B/N) y **ventana con lluvia** (ya usada en el C01). Arturo eligió el **bosque** y pidió **asegurar el aspect ratio**.
+- **Fondo:** `bosque_niebla.jpg` (kie seedream, **5 créditos**), sin personas y sin texto quemado; escalado **por ancho** y recortado → **sin deformación**.
+- **Aspect ratio comprobado:** lienzo **1180×1574** = el exacto del molde (ratio 0.7497 ≈ 3:4) y los 10 PNG salen a 1180×1574 verificados con `ffprobe`.
+- **Salida:** `final_bosque/01..10.png`, entregados (mensajes **5823-5832**). **Sin publicar.**
+- **Gasto de fondos del C05:** papel (2 generaciones) + retratos (2) + bosque (1) = **25 créditos**.
