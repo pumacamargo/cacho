@@ -1001,6 +1001,7 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 | 6 | `prod_c6ftp5t` (ttchop2) | clips nuevos | **Announcer** 1.5× | 12.11 s | 14.73 s | `hook01` (2.60 s) | `shaver_new_overlay_hook01.mp4` |
 | 7 | `prod_0skgwd3` | teclado AJAZZ AK820 | **Announcer** 1.5× | 12.57 s | 15.60 s | `hook03` (3.00 s, **recortado**) | `kbd_overlay_hook03.mp4` |
 | 8 | `prod_0lyigbp` | scrubber eléctrico | **Charon energético** 1.25× | 14.53 s | 17.13 s | `hook04` (2.60 s) | `scrub_overlay_hook04.mp4` |
+| 9 | `prod_bp6m33h` | papel para freidora de aire | **Announcer** 1.25× (Charon caído, 524) | 21.64 s | 24.64 s | `hook11` (3.00 s, **recortado** 1.2–4.2) | `bp6m33h_final.mp4` |
 
 - **Overlays** (todos salvo #1 y #2): composición Remotion `caption-overlay` — captions, tag 「リンクは/画面下」,
   flecha, descargo 「※価格や割引は投稿時点の情報です」 y **portada nueva** en cada pieza.
@@ -1009,8 +1010,8 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Publicación y almacenamiento (regla de Arturo, 2026-11-26):** **él publica a mano** y **no hace falta subir
   los videos al NAS** — los archivos se quedan en `~/.hermes/profiles/ttchop_robot/media/` (vps-tools). No
   proponer subidas al NAS ni marcarlo como pendiente.
-- **Hooks ya usados:** `hook01`, `hook03`, `hook04`, `hook05`, `hook07`, `hook09`, `hook10`; `hook12` descartado
-  por largo. Sin usar: `hook02`, `hook06`, `hook08`, `hook11`.
+- **Hooks ya usados:** `hook01`, `hook03`, `hook04`, `hook05`, `hook07`, `hook09`, `hook10`, `hook11`; `hook12` descartado
+  por largo. Sin usar: `hook02`, `hook06`, `hook08`.
 - **Bug del recetario — ARREGLADO (commit `44cc142`, 26-nov):** `pipeline/llm.js` ahora pide
   `response_format: json_object`, **evalúa las expresiones aritméticas** fuera de cadenas cuando el parseo
   estricto falla y hace **un reintento correctivo**; verificado con 5 casos (5/5). **Reinicio autorizado y
@@ -1122,3 +1123,13 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Extraído**: video 1 = **20 búsquedas**, video 2 = **22 búsquedas**, con vistas y etiquetas. Guardado en `raw/creator-search-insights-totocha-2026-11-27.md` y documentado en [[nicho-totocha]].
 - **Dos grupos claros**: (A) *cómo viralizar con fotos* en portugués/español (mas vistas en tiktok 244K, Fotos lindas 486K, quero viralizar no tiktok 2026) y (B) *reflexiones y emociones* en español (Percepción de la propia imagen 510K ▲834.8 %, cosas que han cambiado en mi 299K, Saludos para comenzar el día 316K). Tres filas traen la etiqueta **Popular en MX**.
 - **Filtrado por idioma**: de las 42 búsquedas de totocha, **25 están en español** (9 en portugués, 6 en inglés, 2 neutras: *Fotos lindas* y *paratiiiiiiii*). Guardado en `raw/totocha-solo-espanol-2026-11-27.md`, ordenado por vistas.
+
+## [2026-11-27] create | Noveno collage (`prod_bp6m33h`, papel para freidora de aire) + overlays + hook
+- **Producto:** papel de rejilla desechable para freidora de aire (`prod_bp6m33h`, región `jp`, 489円). Sesión `sess_44dgs49` con 3 clips (3.38 s + 4.67 s + 36.50 s, duraciones **medidas con ffprobe** porque en Firestore estaban en 0).
+- **Voz: Announcer JP a 1.25×** (22.0 s). **Charon (kie.ai) estaba caído**: `failCode 524 generate task timeout` con **ambos** modelos (`google/gemini-3-8-flash-tts` y `…-flash-lite-tts`) y **0 créditos** consumidos en todos los intentos → fallback a Announcer, como autorizó Arturo. Los tres takes de velocidad se midieron (1.0× 27.48 s · **1.25× 21.99 s** · 1.5× 18.34 s) y Arturo eligió **1.25×**.
+- **Guion (5 líneas, aprobado tal cual):** 後片付けが面倒 → 食材がくっついてボロボロ → 敷くだけでスルッと外れる → 洗う手間が減った → 今なら489円 + link.
+- **Collage:** `POST /collage/create` con `audioBase64` (el take ya sintetizado) + `audioDurationSeconds: 21.995` y `needsOverlay: false` → esperado, **salió en 83 s** (los clips son URLs de Firebase Storage, no CIFS). Render `render_1795754514556_bp6m33h` → 1080×1920, 25 fps, **21.64 s**.
+- **Overlays (Remotion `caption-overlay`):** captions por línea del guion con los tiempos de las **pausas largas** medidas por `silencedetect` (4 límites: 3.62 / 8.11 / 13.19 / 16.94 s) + tag 「リンクは/画面下」 + flecha + descargo + **portada nueva** (último cuadro con 「敷くだけで / 後片付けラク」). Render 649 cuadros a 30 fps; audio del máster remuxeado con `-c copy` (mono 44.1 kHz, `mean_volume` idéntico).
+- **Hook: `hook11_tobogan_agua` recortado a 3.00 s** (ventana 1.2–4.2 s del original, para **cerrar en la salpicadura** y no en la lente mojada gris). Empalmado por **concat directo** (§10): 739 cuadros (90 + 649) · **24.64 s**; el audio del render, medido desde t=3.0, queda **idéntico** (mean −16.4 dB).
+- Máster `bp6m33h_final.mp4` (22.0 MB, sha256 `fd9fc129…`) en `~/.hermes/profiles/ttchop_robot/media/`; copia ligera de 10.1 MB para el chat. **No publicado.**
+- **Lección de método:** el lienzo del collage y el del overlay son distintos (25 fps del builder vs **30 fps** de la composición) y el máster del collage había que dejarlo en `ttchop-post_templates/public/` (no en la raíz del repo) porque `staticFile()` resuelve ahí.
