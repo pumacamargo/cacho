@@ -1148,3 +1148,8 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - Arturo: «así como me mandaste el título en el mensaje pasado estuvo perfecto, así mándamelo siempre, documéntalo en Cacho».
 - **Formato fijo:** el título con sus hashtags se manda **dentro del mismo mensaje en el que se entrega el video**, **al final**, en **un solo bloque de código** (línea de título + línea de hashtags). No en un mensaje aparte, no en el mensaje de preguntas, y **sin esperar a que lo pida**.
 - Documentado en [[hooks-para-inicio-de-video]] §11 (regla + changelog) y en la skill `ttchop-content-ops` (`references/recreated-video-montage-and-captions.md` y `references/announcer-voz-y-overlays.md`).
+
+## [2026-11-27] regla | Al hacer videos, decide el agente (sin wizard)
+- Arturo: «todas las respuestas son las que tú me recomiendes, a menos que te pida preguntas por wizard» y «por lo menos haciendo videos que sea así».
+- **Qué cambia:** al producir un video, ttchop_robot elige **por su cuenta** guion, voz, velocidad, overlays, hook y título con su mejor recomendación y los aplica **sin abrir el wizard**; el `clarify` se usa **solo si él lo pide**. No se vuelve a preguntar lo ya recomendado en el video anterior.
+- Documentado en [[ttchop-video-paths]] § «Reglas que aplican a todas las vías» y en la skill `ttchop-content-ops` (`references/collage-ttchop-server-y-voces.md`).

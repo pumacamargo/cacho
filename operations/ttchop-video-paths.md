@@ -112,6 +112,12 @@ Para un comercial ilustrado, en lugar de montar clips: **[[ttchop-popup-book-com
 
 ## Reglas que aplican a todas las vías
 
+- **Decide el agente, no se pregunta (regla de Arturo, 2026-11-27).** Al hacer un video, ttchop_robot elige
+  **por su cuenta** guion, voz, velocidad, overlays, hook y título, con su mejor recomendación, y los aplica
+  **sin abrir el wizard de preguntas**. El wizard (`clarify`) se usa **solo si Arturo lo pide** («hazme las
+  preguntas en wizard»). Su frase: «todas las respuestas son las que tú me recomiendes, a menos que te pida
+  preguntas por wizard» y «por lo menos haciendo videos que sea así». Tampoco hay que volver a preguntar lo ya
+  recomendado en el video anterior: se repite la recomendación (p. ej. voz Charon a 1.25×) salvo que él diga otra cosa.
 - **Regla de publicación:** ttchop_robot nunca publica videos ni carruseles en TikTok; Arturo siempre realiza la publicación manualmente. La aprobación de un video/carrusel o una autorización excepcional no delega esa acción. El agente termina al crear, verificar y entregar los archivos (NAS/chat) y, cuando corresponda, el título. El estado es «entregado»/«guardado»; solo se registra «publicado» si Arturo confirma que él mismo lo publicó. La publicación de HTML/GIFs de revisión en FTPS sí puede ejecutarse cuando se solicita y es distinta de TikTok.
 - **Sin precio, sin % inventado** y sin afirmaciones que la ficha del producto no respalde (los claims del habla del creador no están verificados).
 - **Verificar en vivo** lo entregado (`ffprobe`/`volumedetect`/decode + hoja de contacto + el último frame) y reportar lo que falte.
