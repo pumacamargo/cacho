@@ -213,7 +213,7 @@ Lo que quedó como formato propio:
 | Fondo | **UNA imagen generada con IA** reutilizada en todos los slides + degradado oscuro arriba para el texto. Elegido: **paisaje al amanecer sin cruz**; se generaron 5 opciones (Biblia, iglesia, amanecer con cruz, manos, paisaje sin cruz) y Arturo eligió |
 | Tipografía | **latina**: `DejaVu Sans Bold` (gancho) y `Liberation Serif` (cita y reflexión) |
 | Texto | blanco cálido con contorno/sombra, alineado a la izquierda (salvo el gancho, centrado) |
-| Slides | **3**: gancho («Es solo un verso de la biblia...») → **cita bíblica real** (Romanos 8:28, texto RVR1960) → **reflexión propia** rotulada «REFLEXIÓN» |
+| Slides | **3**: gancho («Es solo un verso de la biblia...») → **cita bíblica real** (texto RVR1960; el C04 terminó con **Isaías 54:10**) → **reflexión propia** rotulada «REFLEXIÓN» |
 | Marca | **sin marca** en los slides (el nombre de la cuenta va en el perfil) |
 
 - **Contenido religioso:** la cita debe ser **bíblica y real**; si se añade una reflexión, **rotularla**
