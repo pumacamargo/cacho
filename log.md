@@ -1196,3 +1196,10 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Formato del C04** (1080×1920, 3 slides: gancho → versículo → reflexión propia sin rótulo) con **fondo nuevo generado** (`ai/luz_nubes.jpg`, 5 créditos): cielo de tormenta con un **rayo de luz dorada** sobre un valle con niebla.
 - **Mejora del compositor:** `build_c06.py` **auto-ajusta el cuerpo** (baja hasta 40 px) hasta que ninguna línea se sale del ancho útil, con `--check` para verificar sin renderizar. Salida `final/01..03.png` (color) y `final_bn/` (B/N). Entregados (mensajes **5842-5844**). **Sin publicar.**
 - Documentado en `C06_salmos-34-18/desmenuzado.md`.
+
+## [2026-11-27] create | Carrusel bíblico C07 (Totocha) — Sofonías 3:17 (más emotivo)
+- Arturo: «¿hay algo más emotivo? que llame más la atención» → se montó **Sofonías 3:17**, el más emotivo de los recomendados y **mucho menos visto** que Isaías 41:10 o Jeremías 29:11.
+- **Texto RVR1960 verificado** (Bible Gateway / Bible.com), literal: «Jehová está en medio de ti, poderoso, él salvará; se gozará sobre ti con alegría, callará de amor, se regocijará sobre ti con cánticos.»
+- **Mismo fondo del C06** (`ai/luz_nubes.jpg`) → **0 créditos nuevos**. Gancho: «Hay un versículo que dice que Dios canta por ti» (la idea de «canta» sale del propio versículo). Reflexión propia en el slide 3.
+- **Salida:** `C07_sofonias-3-17/final/01..03.png` (color) y `final_bn/`, entregados (mensajes **5850-5852**). **Sin publicar.**
+- Quedan verificadas como alternativas **Salmos 147:3** («Él sana a los quebrantados de corazón, Y venda sus heridas») y **Mateo 11:28**.
