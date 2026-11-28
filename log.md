@@ -1232,3 +1232,9 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - Gasto del caso C09: **60 créditos** (7 iniciales + 3 nuevas + 2 regeneradas).
 - **Descripción larga de la v2** entregada el 28-nov (mismos consejos que las láminas, cierre pidiendo guardado y comentario, afirmaciones suaves como «ayuda a» / «baja el estrés»; sin promesas médicas duras).
 - **Cierre corregido** («el último se encima todo»): el generador deja la figura arriba y la cabeza caía detrás del texto → se probó componer a mano (se veía el parche) y la solución buena fue **bajar el texto al pie en el cierre** (`text_y ≈ 0.70`, parámetro nuevo del compositor). Reenviado (mensaje **5929**).
+
+## [2026-11-28] create | Carrusel C10 — SEGUNDO set de 四字熟語 (Hamaca Azul)
+- Arturo mandó `Motto_photos (1).zip` (mismo nombre que el del C03, **contenido distinto**): otro set de 四字熟語 (portada 「素敵な意味を持つ四字熟語» + 万里一空 · 一得一失 · 七転八起 · 花様年華 · 知足安分 + el CTA de la app). Se recreó con **6 giros propios y distintos** (順風満帆 · 日進月歩 · 大器晩成 · 心機一転 · 前途洋洋 · 和気藹々, **lecturas verificadas**) y portada 「前を向きたくなる四字熟語».
+- **7 fotos nuevas** (kie, **35 créditos**), sin texto quemado; mismo formato del C08 (1080×1440, fuente del proyecto, furigana, significado, «N / 7» y pie «Hamaca Azul»).
+- **Salida:** `C10_motto/final/00..06.png`, entregados (mensajes **5940-5946**) con **título y descripción larga en el mismo mensaje**. **Sin publicar.**
+- **Registro de giros usados** (para no repetir en la serie): C08 → 一期一会・雨過天晴・一陽来復・和顔愛語・花鳥風月・温故知新; C10 → 順風満帆・日進月歩・大器晩成・心機一転・前途洋洋・和気藹々.
