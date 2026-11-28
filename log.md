@@ -1224,3 +1224,9 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Maqueta 1080×1440**, texto arriba (Inter) con halo claro y el dibujo abajo; sin número ni pie (el nombre vive en el perfil, como en el C04).
 - **Pitfall nuevo (encuadre):** el `cover` a offset fijo **cortaba el dibujo** (cada lámina lo tiene a distinta altura y dos traían **marco dibujado**). Se resolvió **localizando la tinta por franjas** (oscuras, ≥90 % de ancho = marco → descartar; agrupar y quedarse con el **bloque más bajo**; acercar si mide <22 % del alto) — **todo con PIL, sin numpy** (no está instalado).
 - **Salida:** `C09_laureano/final/01..07.png`, entregados (mensajes **5898-5904**). **Sin publicar.**
+
+## [2026-11-28] update | C09 v2 «más parecido al original» (totocha) + copy de la v2
+- Arturo: «Este es para totocha pero no lo cambies mucho, déjalo más parecido al original» → se **repuso su secuencia** (correr → siesta → pesas → sol → meditar → cierre «Abrázate») con redacción propia; se generaron **3 ilustraciones nuevas** (cerebro/foco, correr, pesas; 15 créditos) y se reutilizaron siesta, sol, meditar y corazón.
+- **Pitfall del encuadre, segunda vuelta:** centrar el bloque de tinta **cortaba la cabeza** cuando el dibujo mide **más que el cuadro** (el cierre venía al 125 % de H). Regla final: **la base del dibujo a 0,90 de alto**, zoom ≤ ×3,5 solo si el dibujo mide <30 % de H, y **regenerar** la lámina si los pies están pegados al borde o si el sol queda lejos del personaje.
+- **Salida:** `C09_laureano/final_v2/01..07.png` (1080×1440), entregados (mensajes **5915-5921**) con **título y descripción larga en el mismo mensaje** (regla del 28-nov). **Sin publicar.**
+- Gasto del caso C09: **60 créditos** (7 iniciales + 3 nuevas + 2 regeneradas).
