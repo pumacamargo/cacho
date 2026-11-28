@@ -1238,3 +1238,5 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **7 fotos nuevas** (kie, **35 créditos**), sin texto quemado; mismo formato del C08 (1080×1440, fuente del proyecto, furigana, significado, «N / 7» y pie «Hamaca Azul»).
 - **Salida:** `C10_motto/final/00..06.png`, entregados (mensajes **5940-5946**) con **título y descripción larga en el mismo mensaje**. **Sin publicar.**
 - **Registro de giros usados** (para no repetir en la serie): C08 → 一期一会・雨過天晴・一陽来復・和顔愛語・花鳥風月・温故知新; C10 → 順風満帆・日進月歩・大器晩成・心機一転・前途洋洋・和気藹々.
+- **Segunda versión con los giros de la REFERENCIA** (万里一空・一得一失・七転八起・花様年華・知足安分, significado y fotos propios, sin su CTA): `final_original/00..05.png`, entregada (mensajes 5954-5959 y reenviada 5964-5969). **Arturo eligió esta** («vamos a poner los mismos de ellos»).
+- **Bug corregido:** la numeración salía del nombre del archivo de la foto (3/6, 5/6, 9/6…) → ahora usa el índice del slide.
