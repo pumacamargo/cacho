@@ -1240,3 +1240,10 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Registro de giros usados** (para no repetir en la serie): C08 → 一期一会・雨過天晴・一陽来復・和顔愛語・花鳥風月・温故知新; C10 → 順風満帆・日進月歩・大器晩成・心機一転・前途洋洋・和気藹々.
 - **Segunda versión con los giros de la REFERENCIA** (万里一空・一得一失・七転八起・花様年華・知足安分, significado y fotos propios, sin su CTA): `final_original/00..05.png`, entregada (mensajes 5954-5959 y reenviada 5964-5969). **Arturo eligió esta** («vamos a poner los mismos de ellos»).
 - **Bug corregido:** la numeración salía del nombre del archivo de la foto (3/6, 5/6, 9/6…) → ahora usa el índice del slide.
+
+## [2026-11-28] create | Carrusel C11 «15 lecciones de vida» (totocha) — formato nuevo
+- Arturo mandó `POLYTELIUM_photos.zip` («este es para totocha»): **16 slides 1180×2096** con foto **muy oscura a sangre** y **texto blanco sans centrado a media altura** (≈30 px, bloque estrecho): portada «15 lecciones de vida:» + **15 lecciones numeradas** (etiqueta/códigos de vida).
+- **Recreación propia:** portada «15 lecciones que aprendí con el tiempo:» + **15 lecciones nuevas** (ninguna copiada) y **16 fotos propias** (kie, **80 créditos**) del mismo registro oscuro e íntimo (lluvia en el cristal, puerta con aldaba, cuaderno, cafés, silla vacía, sobre, mesa a la luna, cartera, móvil boca abajo, bandeja, reloj, banco, foto antigua, vela).
+- **Maqueta:** 1180×2096, foto oscurecida ×0,62, **Inter 600 a 34 px** centrado (ancho máx. 720), centro a **0,48 de alto**, sombra suave; **sin logo ni número tipográfico** (el número va en el texto: «N. …»), como la referencia.
+- **Salida:** `C11_polytelium/final/00..15.png`, entregados (mensajes **5987-6002**) con **título y descripción larga en el mismo mensaje**. **Sin publicar.**
+- **Nota de costo:** es el caso más caro hasta ahora (**80 créditos** = 16 fotos × 5).
