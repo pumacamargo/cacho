@@ -264,6 +264,21 @@ Lo que quedó como formato propio:
   caiga sobre la ropa oscura y la cara quede libre. (En el C01, aprobado, el texto sí cae sobre la cara:
   el criterio admite ambas, pero en vertical se lee mejor despejada.)
 
+## Descripción larga para carruseles (regla de Arturo, 2026-11-28)
+
+Arturo: «dice TikTok que una descripción larga es mejor para el carrusel». **A partir de ahora, todo
+carrusel se entrega con descripción larga**, no solo con el título:
+
+- **Qué se entrega, en el mismo mensaje de entrega y en bloques de código listos para pegar:**
+  1. el **título** con sus hashtags (regla ya existente), y
+  2. la **descripción larga** del post.
+- **Anatomía de la descripción larga** (probada en el C08): **gancho empático** en una línea (la frase que
+  el lector diría de sí mismo) → una línea por bloque/slide del carrusel (ídem si son frases o giros) →
+  una frase que baje el tono («no son palabras difíciles…») → **cierre que pida guardado y comentario**
+  (las dos señales que empujan alcance) → **hashtags**.
+- **Idioma:** el de la cuenta (japonés para hamaca azul / hamaca shop; español para totocha).
+- **Nunca** el CTA de la app ajena ni hashtags de afiliado en un post de contenido.
+
 ## Sacar las imágenes de una referencia guardada como `.mht`
 
 Cuando Arturo manda la página del descargador (`snaptik.fi`, «Saved by Blink») en vez del ZIP:

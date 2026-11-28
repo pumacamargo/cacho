@@ -1212,3 +1212,8 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - **Salida:** `C08_yojijukugo/final/00..06.png`, entregados (mensajes **5864-5870**). **Sin publicar.**
 - **Descripción larga del post** entregada el 28-nov (texto completo en `C08_yojijukugo/desmenuzado.md`): empieza con la empatía («hoy tengo el corazón pesado»), recorre los 6 giros con una línea cada uno, cierra pidiendo **guardado y comentario**; sin hashtag de afiliado y sin el CTA de la app ajena.
 - **Transcripción comparada** de la referencia (dicen 紅塵白刃・一期一笑・一水四見・過眼雲煙・光陰如夢・一日一生, tono melancólico) frente a los nuestros (luminosos): solo coincide temáticamente 一期一会 ≈ su 一期一笑.
+
+## [2026-11-28] regla | Carruseles: siempre con DESCRIPCIÓN LARGA
+- Arturo: «dice TikTok que una descripción larga es mejor para el carrusel» + «guarda bitácora».
+- **Regla nueva:** todo carrusel se entrega con **dos bloques listos para pegar**: el **título con hashtags** (regla del 27-nov) y la **descripción larga**. Anatomía: gancho empático → una línea por slide → frase que baja el tono → cierre que pide guardado y comentario → hashtags. Idioma el de la cuenta. Sin CTA de app ajena ni hashtag de afiliado en posts de contenido.
+- Documentado en [[desmenuzado-carrusel]] § «Descripción larga para carruseles» y en la skill `ttchop-content-ops` (`references/carousel-image-workflow.md`).
