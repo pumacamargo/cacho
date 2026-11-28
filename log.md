@@ -1217,3 +1217,10 @@ Piezas hechas con el pipeline `ttchop-server` (`/collage/create`) + voces + over
 - Arturo: «dice TikTok que una descripción larga es mejor para el carrusel» + «guarda bitácora».
 - **Regla nueva:** todo carrusel se entrega con **dos bloques listos para pegar**: el **título con hashtags** (regla del 27-nov) y la **descripción larga**. Anatomía: gancho empático → una línea por slide → frase que baja el tono → cierre que pide guardado y comentario → hashtags. Idioma el de la cuenta. Sin CTA de app ajena ni hashtag de afiliado en posts de contenido.
 - Documentado en [[desmenuzado-carrusel]] § «Descripción larga para carruseles» y en la skill `ttchop-content-ops` (`references/carousel-image-workflow.md`).
+
+## [2026-11-28] create | Carrusel C09 de autocuidado mental (español) — recreado de `laureano_photos.zip`
+- Arturo mandó `laureano_photos.zip`: 7 slides en **español** con la fórmula **[emoción]? [acción]!** + dibujo de palitos sobre papel claro (Estresado→corre, Malhumorado→siesta, Enojado→pesas, Triste→sol, Ansioso→medita) y cierre «TU SALUD MENTAL TAMBIÉN ES IMPORTANTE 💪».
+- **Recreación propia:** 6 consejos nuevos (¿Ansioso? Respira y cuenta hasta 10 · ¿Enojado? Camina 10 min · ¿Triste? Sal a ver el sol · ¿Estresado? Suelta lo que no controlas · ¿Cansado? Duerme 20 min sin culpa · ¿Abrumado? Escribe 3 cosas que sí puedes) + cierre «Tu salud mental también importa». **Copy e ilustraciones propios** (7 generadas, **35 créditos**).
+- **Maqueta 1080×1440**, texto arriba (Inter) con halo claro y el dibujo abajo; sin número ni pie (el nombre vive en el perfil, como en el C04).
+- **Pitfall nuevo (encuadre):** el `cover` a offset fijo **cortaba el dibujo** (cada lámina lo tiene a distinta altura y dos traían **marco dibujado**). Se resolvió **localizando la tinta por franjas** (oscuras, ≥90 % de ancho = marco → descartar; agrupar y quedarse con el **bloque más bajo**; acercar si mide <22 % del alto) — **todo con PIL, sin numpy** (no está instalado).
+- **Salida:** `C09_laureano/final/01..07.png`, entregados (mensajes **5898-5904**). **Sin publicar.**
